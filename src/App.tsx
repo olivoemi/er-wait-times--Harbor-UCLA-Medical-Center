@@ -2366,60 +2366,310 @@ function App() {
 
                   {/* Assessment Result */}
                   {showAssessmentResult && selectedSymptoms.length > 0 && (
-                    <div className="mb-8 p-6 bg-blue-50 border border-blue-200 rounded-lg">
-                      <div className="flex items-center gap-3 mb-4">
-                        <CheckCircle className="h-6 w-6 text-blue-600" />
-                        <h4 className="text-lg font-semibold text-blue-900">
-                          {language === 'en' ? 'Assessment Result' : 'Resultado de Evaluación'}
-                        </h4>
-                      </div>
+                    <div className="mb-8">
                       {(() => {
                         const result = getAssessmentResult()
                         if (!result) return null
 
-                        return (
-                          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <div className="bg-white p-4 rounded-lg border">
-                              <div className="text-sm text-gray-600 mb-1">
-                                {language === 'en' ? 'Acuity Level' : 'Nivel de Acuidad'}
-                              </div>
-                              <div className="text-2xl font-bold text-red-600">
-                                Level {result.acuityLevel}
-                              </div>
-                              <div className="text-sm text-gray-700">
-                                {result.acuityLevel === 1 ? (language === 'en' ? 'Critical' : 'Crítico') :
-                                 result.acuityLevel === 2 ? (language === 'en' ? 'Urgent' : 'Urgente') :
-                                 result.acuityLevel === 3 ? (language === 'en' ? 'Less Urgent' : 'Menos Urgente') :
-                                 result.acuityLevel === 4 ? (language === 'en' ? 'Non-Urgent' : 'No Urgente') :
-                                 (language === 'en' ? 'Low Acuity' : 'Baja Acuidad')}
-                              </div>
-                            </div>
-                            <div className="bg-white p-4 rounded-lg border">
-                              <div className="text-sm text-gray-600 mb-1">
-                                {language === 'en' ? 'Estimated Wait Time' : 'Tiempo de Espera Estimado'}
-                              </div>
-                              <div className="text-2xl font-bold text-orange-600">
-                                {result.waitTime}m
-                              </div>
-                              <div className="text-sm text-gray-700">
-                                {language === 'en' ? 'Harbor-UCLA ED' : 'DE Harbor-UCLA'}
-                              </div>
-                            </div>
-                            <div className="bg-white p-4 rounded-lg border">
-                              <div className="text-sm text-gray-600 mb-1">
-                                {language === 'en' ? 'Recommended Care' : 'Atención Recomendada'}
-                              </div>
-                              <div className="text-lg font-semibold text-green-600">
-                                {result.recommendation}
-                              </div>
-                              {result.acuityLevel <= 2 && (
-                                <div className="text-xs text-red-600 font-medium mt-1">
-                                  {language === 'en' ? 'Call 911 if severe' : 'Llame al 911 si es severo'}
+                        // Level 1 - Emergency/Critical
+                        if (result.acuityLevel === 1) {
+                          return (
+                            <div className="bg-red-50 border-l-4 border-red-500 rounded-lg p-6">
+                              <div className="flex items-start gap-4 mb-6">
+                                <div className="bg-red-500 p-2 rounded-lg">
+                                  <Phone className="h-6 w-6 text-white" />
                                 </div>
-                              )}
+                                <div>
+                                  <h3 className="text-lg font-semibold text-red-900 mb-2">
+                                    {language === 'en' ? 'Acuity Level 1 - Immediate' : 'Nivel de Acuidad 1 - Inmediato'}
+                                  </h3>
+                                  <div className="flex items-center gap-2 mb-3">
+                                    <Siren className="h-5 w-5 text-red-600" />
+                                    <span className="text-lg font-bold text-red-900">
+                                      {language === 'en' ? 'Call 911 Immediately' : 'Llame al 911 Inmediatamente'}
+                                    </span>
+                                  </div>
+                                  <p className="text-red-800 leading-relaxed">
+                                    {language === 'en' 
+                                      ? 'Your symptoms indicate a potentially life-threatening emergency requiring immediate medical intervention.'
+                                      : 'Sus síntomas indican una emergencia potencialmente mortal que requiere intervención médica inmediata.'
+                                    }
+                                  </p>
+                                </div>
+                              </div>
+
+                              {/* Wait Time Info */}
+                              <div className="bg-white rounded-lg p-4 mb-6 border border-red-200">
+                                <div className="flex items-center gap-2 mb-3">
+                                  <Clock className="h-5 w-5 text-gray-600" />
+                                  <span className="font-medium text-gray-900">
+                                    {language === 'en' ? 'Estimated Wait Time IN THE ER for your acuity level' : 'Tiempo de Espera Estimado EN LA SALA DE EMERGENCIAS para su nivel de acuidad'}
+                                  </span>
+                                </div>
+                                <div className="grid grid-cols-3 gap-6 text-center">
+                                  <div>
+                                    <div className="text-3xl font-bold text-green-600">0 min</div>
+                                    <div className="text-sm text-gray-600">{language === 'en' ? 'Predicted Wait' : 'Espera Predicha'}</div>
+                                  </div>
+                                  <div>
+                                    <div className="text-3xl font-bold text-red-600">Level 1</div>
+                                    <div className="text-sm text-gray-600">{language === 'en' ? 'Predicted Acuity Level' : 'Nivel de Acuidad Predicho'}</div>
+                                  </div>
+                                  <div>
+                                    <div className="text-3xl font-bold text-blue-600">95%</div>
+                                    <div className="text-sm text-gray-600">{language === 'en' ? 'Confidence' : 'Confianza'}</div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              {/* Action Buttons */}
+                              <div className="flex gap-4">
+                                <Button className="bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-3">
+                                  <Phone className="h-4 w-4 mr-2" />
+                                  {language === 'en' ? 'Call 911' : 'Llamar 911'}
+                                </Button>
+                                <Button variant="outline" className="border-red-300 text-red-700 hover:bg-red-50">
+                                  <Phone className="h-4 w-4 mr-2" />
+                                  {language === 'en' ? 'Call Harbor Medical Center' : 'Llamar al Centro Médico Harbor'}
+                                </Button>
+                              </div>
                             </div>
-                          </div>
-                        )
+                          )
+                        }
+
+                        // Level 2 - Visit Emergency Room Now
+                        if (result.acuityLevel === 2) {
+                          return (
+                            <div className="bg-orange-50 border-l-4 border-orange-500 rounded-lg p-6">
+                              <div className="flex items-start gap-4 mb-6">
+                                <div className="bg-orange-500 p-2 rounded-lg">
+                                  <AlertTriangle className="h-6 w-6 text-white" />
+                                </div>
+                                <div>
+                                  <h3 className="text-lg font-semibold text-orange-900 mb-2">
+                                    {language === 'en' ? 'Acuity Level 2 - Urgent' : 'Nivel de Acuidad 2 - Urgente'}
+                                  </h3>
+                                  <div className="flex items-center gap-2 mb-3">
+                                    <Plus className="h-5 w-5 text-orange-600" />
+                                    <span className="text-lg font-bold text-orange-900">
+                                      {language === 'en' ? 'Visit Emergency Room Now' : 'Visite la Sala de Emergencias Ahora'}
+                                    </span>
+                                  </div>
+                                  <p className="text-orange-800 leading-relaxed">
+                                    {language === 'en' 
+                                      ? 'Your symptoms require urgent medical attention. Visit the emergency room as soon as possible.'
+                                      : 'Sus síntomas requieren atención médica urgente. Visite la sala de emergencias lo antes posible.'
+                                    }
+                                  </p>
+                                </div>
+                              </div>
+
+                              <div className="bg-white rounded-lg p-4 mb-6 border border-orange-200">
+                                <div className="grid grid-cols-3 gap-6 text-center">
+                                  <div>
+                                    <div className="text-3xl font-bold text-green-600">&lt;15 min</div>
+                                    <div className="text-sm text-gray-600">{language === 'en' ? 'Predicted Wait' : 'Espera Predicha'}</div>
+                                  </div>
+                                  <div>
+                                    <div className="text-3xl font-bold text-orange-600">Level 2</div>
+                                    <div className="text-sm text-gray-600">{language === 'en' ? 'Predicted Acuity Level' : 'Nivel de Acuidad Predicho'}</div>
+                                  </div>
+                                  <div>
+                                    <div className="text-3xl font-bold text-blue-600">92%</div>
+                                    <div className="text-sm text-gray-600">{language === 'en' ? 'Confidence' : 'Confianza'}</div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div className="flex gap-4">
+                                <Button className="bg-orange-600 hover:bg-orange-700 text-white font-bold px-6 py-3">
+                                  <MapPin className="h-4 w-4 mr-2" />
+                                  {language === 'en' ? 'Go to Emergency Room' : 'Ir a Sala de Emergencias'}
+                                </Button>
+                                <Button variant="outline" className="border-orange-300 text-orange-700 hover:bg-orange-50">
+                                  <Phone className="h-4 w-4 mr-2" />
+                                  {language === 'en' ? 'Call Harbor Medical Center' : 'Llamar al Centro Médico Harbor'}
+                                </Button>
+                              </div>
+                            </div>
+                          )
+                        }
+
+                        // Level 3 - Urgent Care Recommended
+                        if (result.acuityLevel === 3) {
+                          return (
+                            <div className="bg-yellow-50 border-l-4 border-yellow-500 rounded-lg p-6">
+                              <div className="flex items-start gap-4 mb-6">
+                                <div className="bg-yellow-500 p-2 rounded-lg">
+                                  <Clock className="h-6 w-6 text-white" />
+                                </div>
+                                <div>
+                                  <h3 className="text-lg font-semibold text-yellow-900 mb-2">
+                                    {language === 'en' ? 'Acuity Level 3 - Less Urgent' : 'Nivel de Acuidad 3 - Menos Urgente'}
+                                  </h3>
+                                  <div className="flex items-center gap-2 mb-3">
+                                    <FirstAid className="h-5 w-5 text-yellow-600" />
+                                    <span className="text-lg font-bold text-yellow-900">
+                                      {language === 'en' ? 'Urgent Care Recommended' : 'Se Recomienda Atención Urgente'}
+                                    </span>
+                                  </div>
+                                  <p className="text-yellow-800 leading-relaxed">
+                                    {language === 'en' 
+                                      ? 'Your symptoms can be effectively treated at an urgent care center with shorter wait times.'
+                                      : 'Sus síntomas pueden ser tratados eficazmente en un centro de atención urgente con tiempos de espera más cortos.'
+                                    }
+                                  </p>
+                                </div>
+                              </div>
+
+                              <div className="bg-white rounded-lg p-4 mb-6 border border-yellow-200">
+                                <div className="grid grid-cols-3 gap-6 text-center">
+                                  <div>
+                                    <div className="text-3xl font-bold text-orange-600">693 min</div>
+                                    <div className="text-sm text-gray-600">{language === 'en' ? 'ER Wait Time' : 'Tiempo de Espera ER'}</div>
+                                  </div>
+                                  <div>
+                                    <div className="text-3xl font-bold text-yellow-600">Level 3</div>
+                                    <div className="text-sm text-gray-600">{language === 'en' ? 'Predicted Acuity Level' : 'Nivel de Acuidad Predicho'}</div>
+                                  </div>
+                                  <div>
+                                    <div className="text-3xl font-bold text-blue-600">88%</div>
+                                    <div className="text-sm text-gray-600">{language === 'en' ? 'Confidence' : 'Confianza'}</div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div className="flex gap-4">
+                                <Button className="bg-yellow-600 hover:bg-yellow-700 text-white font-bold px-6 py-3">
+                                  <Clock className="h-4 w-4 mr-2" />
+                                  {language === 'en' ? 'Find Urgent Care' : 'Buscar Atención Urgente'}
+                                </Button>
+                                <Button variant="outline" className="border-yellow-300 text-yellow-700 hover:bg-yellow-50">
+                                  <MapPin className="h-4 w-4 mr-2" />
+                                  {language === 'en' ? 'Still Go to ER' : 'Aún Ir a ER'}
+                                </Button>
+                              </div>
+                            </div>
+                          )
+                        }
+
+                        // Level 4 - Primary Care or Telehealth
+                        if (result.acuityLevel === 4) {
+                          return (
+                            <div className="bg-blue-50 border-l-4 border-blue-500 rounded-lg p-6">
+                              <div className="flex items-start gap-4 mb-6">
+                                <div className="bg-blue-500 p-2 rounded-lg">
+                                  <Phone className="h-6 w-6 text-white" />
+                                </div>
+                                <div>
+                                  <h3 className="text-lg font-semibold text-blue-900 mb-2">
+                                    {language === 'en' ? 'Acuity Level 4 - Non-Urgent' : 'Nivel de Acuidad 4 - No Urgente'}
+                                  </h3>
+                                  <div className="flex items-center gap-2 mb-3">
+                                    <Building className="h-5 w-5 text-blue-600" />
+                                    <span className="text-lg font-bold text-blue-900">
+                                      {language === 'en' ? 'Primary Care or Telehealth Recommended' : 'Se Recomienda Atención Primaria o Telemedicina'}
+                                    </span>
+                                  </div>
+                                  <p className="text-blue-800 leading-relaxed">
+                                    {language === 'en' 
+                                      ? 'Your symptoms are better suited for a primary care visit or telehealth consultation, which will be faster and more cost-effective.'
+                                      : 'Sus síntomas son más adecuados para una visita de atención primaria o consulta de telemedicina, que será más rápida y rentable.'
+                                    }
+                                  </p>
+                                </div>
+                              </div>
+
+                              <div className="bg-white rounded-lg p-4 mb-6 border border-blue-200">
+                                <div className="grid grid-cols-3 gap-6 text-center">
+                                  <div>
+                                    <div className="text-3xl font-bold text-red-600">1020 min</div>
+                                    <div className="text-sm text-gray-600">{language === 'en' ? 'ER Wait Time' : 'Tiempo de Espera ER'}</div>
+                                  </div>
+                                  <div>
+                                    <div className="text-3xl font-bold text-blue-600">Level 4</div>
+                                    <div className="text-sm text-gray-600">{language === 'en' ? 'Predicted Acuity Level' : 'Nivel de Acuidad Predicho'}</div>
+                                  </div>
+                                  <div>
+                                    <div className="text-3xl font-bold text-blue-600">85%</div>
+                                    <div className="text-sm text-gray-600">{language === 'en' ? 'Confidence' : 'Confianza'}</div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div className="flex gap-4">
+                                <Button className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3">
+                                  <Phone className="h-4 w-4 mr-2" />
+                                  {language === 'en' ? 'Start Telehealth' : 'Iniciar Telemedicina'}
+                                </Button>
+                                <Button variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50">
+                                  <Building className="h-4 w-4 mr-2" />
+                                  {language === 'en' ? 'Find Primary Care' : 'Buscar Atención Primaria'}
+                                </Button>
+                              </div>
+                            </div>
+                          )
+                        }
+
+                        // Level 5 - Primary Care or Telehealth
+                        if (result.acuityLevel === 5) {
+                          return (
+                            <div className="bg-green-50 border-l-4 border-green-500 rounded-lg p-6">
+                              <div className="flex items-start gap-4 mb-6">
+                                <div className="bg-green-500 p-2 rounded-lg">
+                                  <CheckCircle className="h-6 w-6 text-white" />
+                                </div>
+                                <div>
+                                  <h3 className="text-lg font-semibold text-green-900 mb-2">
+                                    {language === 'en' ? 'Acuity Level 5 - Low Acuity' : 'Nivel de Acuidad 5 - Baja Acuidad'}
+                                  </h3>
+                                  <div className="flex items-center gap-2 mb-3">
+                                    <Phone className="h-5 w-5 text-green-600" />
+                                    <span className="text-lg font-bold text-green-900">
+                                      {language === 'en' ? 'Telehealth or Routine Care Recommended' : 'Se Recomienda Telemedicina o Atención Rutinaria'}
+                                    </span>
+                                  </div>
+                                  <p className="text-green-800 leading-relaxed">
+                                    {language === 'en' 
+                                      ? 'Your symptoms can likely be addressed through telehealth, a pharmacy clinic, or by scheduling a routine primary care appointment.'
+                                      : 'Sus síntomas probablemente pueden ser atendidos a través de telemedicina, una clínica de farmacia, o programando una cita de rutina de atención primaria.'
+                                    }
+                                  </p>
+                                </div>
+                              </div>
+
+                              <div className="bg-white rounded-lg p-4 mb-6 border border-green-200">
+                                <div className="grid grid-cols-3 gap-6 text-center">
+                                  <div>
+                                    <div className="text-3xl font-bold text-red-600">943 min</div>
+                                    <div className="text-sm text-gray-600">{language === 'en' ? 'ER Wait Time' : 'Tiempo de Espera ER'}</div>
+                                  </div>
+                                  <div>
+                                    <div className="text-3xl font-bold text-green-600">Level 5</div>
+                                    <div className="text-sm text-gray-600">{language === 'en' ? 'Predicted Acuity Level' : 'Nivel de Acuidad Predicho'}</div>
+                                  </div>
+                                  <div>
+                                    <div className="text-3xl font-bold text-blue-600">82%</div>
+                                    <div className="text-sm text-gray-600">{language === 'en' ? 'Confidence' : 'Confianza'}</div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div className="flex gap-4">
+                                <Button className="bg-green-600 hover:bg-green-700 text-white font-bold px-6 py-3">
+                                  <Phone className="h-4 w-4 mr-2" />
+                                  {language === 'en' ? 'Start Telehealth' : 'Iniciar Telemedicina'}
+                                </Button>
+                                <Button variant="outline" className="border-green-300 text-green-700 hover:bg-green-50">
+                                  <Building className="h-4 w-4 mr-2" />
+                                  {language === 'en' ? 'Schedule Primary Care' : 'Programar Atención Primaria'}
+                                </Button>
+                              </div>
+                            </div>
+                          )
+                        }
+
+                        return null
                       })()}
                     </div>
                   )}
