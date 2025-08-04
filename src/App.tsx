@@ -3307,10 +3307,11 @@ function App() {
                             {language === 'en' ? 'Availability' : 'Disponibilidad'}
                           </span>
                         </div>
+                        <div className="text-lg font-bold text-green-600">
+                          {language === 'en' ? '24/7 availability' : 'Disponibilidad 24/7'}
                         </div>
                       </div>
-                        </div>
-                      </div>
+                    </div>
                     {/* Best For Section */}
                     <div className="mb-6">
                       <div className="flex items-center gap-2 mb-4">
