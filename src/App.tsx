@@ -2235,7 +2235,7 @@ function App() {
                         : 'Evaluación Mejorada Basada en Acuidad'
                       }
                     </h3>
-                    <p className="text-gray-600 leading-relaxed break-words">
+                    <p className="text-gray-600">
                       {language === 'en' 
                         ? 'Select your symptoms to receive a clinical acuity level assessment (1-5) with personalized care recommendations and estimated wait times.'
                         : 'Seleccione sus síntomas para recibir una evaluación de nivel de acuidad clínica (1-5) con recomendaciones de atención personalizadas y tiempos de espera estimados.'
@@ -2253,7 +2253,7 @@ function App() {
                         {language === 'en' ? 'Insurance Coverage' : 'Cobertura de Seguro'}
                       </h4>
                     </div>
-                    <p className="text-sm text-blue-700 mb-4 leading-relaxed break-words">
+                    <p className="text-sm text-blue-700 mb-4">
                       {language === 'en' 
                         ? 'Select your insurance type to see personalized cost estimates'
                         : 'Seleccione su tipo de seguro para ver estimaciones de costo personalizadas'
@@ -2867,7 +2867,7 @@ function App() {
                           <div className="font-medium text-blue-900 text-sm mb-2">
                             {language === 'en' ? 'Enter Zip Code for Manual Location' : 'Ingrese Código Postal para Ubicación Manual'}
                           </div>
-                          <div className="text-blue-700 text-xs mb-3 leading-relaxed break-words">
+                          <div className="text-blue-700 text-xs mb-3">
                             {language === 'en' 
                               ? 'Enter your zip code to classify urgent care centers by proximity to your location.'
                               : 'Ingrese su código postal para clasificar los centros de atención urgente por proximidad a su ubicación.'
@@ -2966,8 +2966,8 @@ function App() {
                       
                       <div className="text-center">
                         <div className="flex items-center justify-center gap-2 mb-2">
-                          <Building className="h-4 w-4 text-green-600 flex-shrink-0" />
-                          <span className="text-sm font-medium text-gray-600 text-center leading-tight break-words">
+                          <Building className="h-4 w-4 text-green-600" />
+                          <span className="text-sm font-medium text-gray-600">
                             {language === 'en' ? 'Your expected cost without insurance or if your deductible hasn\'t been met yet' : 'Su costo esperado sin seguro o si su deducible aún no se ha cumplido'}
                           </span>
                         </div>
@@ -3290,8 +3290,8 @@ function App() {
                       
                       <div className="text-center">
                         <div className="flex items-center justify-center gap-2 mb-2">
-                          <Building className="h-4 w-4 text-purple-600 flex-shrink-0" />
-                          <span className="text-sm font-medium text-gray-600 text-center leading-tight break-words">
+                          <Building className="h-4 w-4 text-purple-600" />
+                          <span className="text-sm font-medium text-gray-600">
                             {language === 'en' ? 'Your expected cost without insurance or if your deductible hasn\'t been met yet' : 'Su costo esperado sin seguro o si su deducible aún no se ha cumplido'}
                           </span>
                         </div>
@@ -3407,8 +3407,8 @@ function App() {
                       
                       <div className="text-center">
                         <div className="flex items-center justify-center gap-2 mb-2">
-                          <Building className="h-4 w-4 text-green-600 flex-shrink-0" />
-                          <span className="text-sm font-medium text-gray-600 text-center leading-tight break-words">
+                          <Building className="h-4 w-4 text-green-600" />
+                          <span className="text-sm font-medium text-gray-600">
                             {language === 'en' ? 'Your expected cost without insurance or if your deductible hasn\'t been met yet' : 'Su costo esperado sin seguro o si su deducible aún no se ha cumplido'}
                           </span>
                         </div>
