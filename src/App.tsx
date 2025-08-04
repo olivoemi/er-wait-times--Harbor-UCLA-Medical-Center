@@ -137,7 +137,8 @@ function App() {
       waitTimesByConditionSeverity: 'Wait Times by Condition Severity',
       serviciosEspecializadosDisponibles: 'Servicios Especializados Disponibles',
       centroDeTrauma: 'Centro de Trauma',
-      atencionCardiaca: 'Atención Cardíaca'
+      atencionCardiaca: 'Atención Cardíaca',
+      additionalInfoPanel: 'Additional information panel'
     },
     es: {
       title: 'ER Wait Times',
@@ -229,7 +230,8 @@ function App() {
       waitTimesByConditionSeverity: 'Tiempos de Espera por Severidad de Condición',
       serviciosEspecializadosDisponibles: 'Servicios Especializados Disponibles',
       centroDeTrauma: 'Centro de Trauma',
-      atencionCardiaca: 'Atención Cardíaca'
+      atencionCardiaca: 'Atención Cardíaca',
+      additionalInfoPanel: 'Panel de información adicional'
     }
   }
 
@@ -475,118 +477,243 @@ function App() {
             </div>
 
             {/* Harbor-UCLA Medical Center Card */}
-            {sortedHospitals.map((hospital) => (
-              <Card key={hospital.id} className="overflow-hidden">
-                <CardContent className="p-6">
-                  {/* Hospital Header */}
-                  <div className="flex items-start justify-between mb-6">
-                    <div className="flex items-start gap-4">
-                      {/* Harbor Logo */}
-                      <div className="bg-red-600 text-white px-3 py-2 rounded font-bold text-sm">
-                        {t[language].harborShort}
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+            {viewMode === 'overview' ? (
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {/* Left side - Hospital Card */}
+                <div>
+                  {sortedHospitals.map((hospital) => (
+                    <Card key={hospital.id} className="overflow-hidden">
+                      <CardContent className="p-6">
+                        {/* Hospital Header */}
+                        <div className="flex items-start justify-between mb-6">
+                          <div className="flex items-start gap-4">
+                            {/* Harbor Logo */}
+                            <div className="bg-red-600 text-white px-3 py-2 rounded font-bold text-sm">
+                              {t[language].harborShort}
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                              <div>
+                                <h3 className="font-semibold text-gray-900 mb-1">
+                                  {t[language].harborUCLAMedicalCenter}
+                                </h3>
+                                <div className="flex items-center gap-2 text-sm text-gray-600">
+                                  <MapPin className="h-3 w-3" />
+                                  <span>18.4 {language === 'en' ? 'miles' : 'millas'}</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="text-right">
+                            <div className="text-sm text-gray-600 mb-1">{t[language].status}</div>
+                            <div className="font-semibold text-green-600">{t[language].open}</div>
+                          </div>
+                        </div>
+
+                        {/* Stats Row */}
+                        <div className="flex gap-8 mb-6">
+                          <div className="text-center">
+                            <div className="text-sm text-gray-600 mb-1">{t[language].avgWaitTime}</div>
+                            <div className="text-3xl font-bold text-orange-500">42</div>
+                            <div className="text-sm text-gray-600">{t[language].minutes}</div>
+                          </div>
+                          <div className="text-center">
+                            <div className="text-sm text-gray-600 mb-1">{t[language].currentCensus}</div>
+                            <div className="text-3xl font-bold text-gray-700">46</div>
+                            <div className="text-sm text-gray-600">{t[language].patients}</div>
+                          </div>
+                        </div>
+
+                        {/* Wait Times by Condition Severity */}
+                        <div className="mb-6">
+                          <h4 className="font-semibold text-gray-900 mb-4">{t[language].waitTimesByConditionSeverity}</h4>
+                          <div className="flex gap-4">
+                            {/* L1 */}
+                            <div className="text-center flex-1">
+                              <div className="w-3 h-3 bg-red-500 rounded-full mx-auto mb-2"></div>
+                              <div className="text-xs font-medium text-gray-600 mb-1">L1</div>
+                              <div className="text-xs text-gray-500 mb-1">Q: 3</div>
+                              <div className="text-sm font-bold text-green-600">&lt;15m</div>
+                            </div>
+                            {/* L2 */}
+                            <div className="text-center flex-1">
+                              <div className="w-3 h-3 bg-orange-500 rounded-full mx-auto mb-2"></div>
+                              <div className="text-xs font-medium text-gray-600 mb-1">L2</div>
+                              <div className="text-xs text-gray-500 mb-1">Q: 7</div>
+                              <div className="text-sm font-bold text-green-600">&lt;15m</div>
+                            </div>
+                            {/* L3 */}
+                            <div className="text-center flex-1">
+                              <div className="w-3 h-3 bg-yellow-500 rounded-full mx-auto mb-2"></div>
+                              <div className="text-xs font-medium text-gray-600 mb-1">L3</div>
+                              <div className="text-xs text-gray-500 mb-1">Q: 19</div>
+                              <div className="text-sm font-bold text-orange-600">693m</div>
+                            </div>
+                            {/* L4 */}
+                            <div className="text-center flex-1">
+                              <div className="w-3 h-3 bg-blue-500 rounded-full mx-auto mb-2"></div>
+                              <div className="text-xs font-medium text-gray-600 mb-1">L4</div>
+                              <div className="text-xs text-gray-500 mb-1">Q: 13</div>
+                              <div className="text-sm font-bold text-red-600">1020m</div>
+                            </div>
+                            {/* L5 */}
+                            <div className="text-center flex-1">
+                              <div className="w-3 h-3 bg-green-500 rounded-full mx-auto mb-2"></div>
+                              <div className="text-xs font-medium text-gray-600 mb-1">L5</div>
+                              <div className="text-xs text-gray-500 mb-1">Q: 3</div>
+                              <div className="text-sm font-bold text-red-600">943m</div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Specialized Services */}
                         <div>
-                          <h3 className="font-semibold text-gray-900 mb-1">
-                            {t[language].harborUCLAMedicalCenter}
-                          </h3>
-                          <div className="flex items-center gap-2 text-sm text-gray-600">
-                            <MapPin className="h-3 w-3" />
-                            <span>18.4 miles</span>
+                          <h4 className="font-semibold text-gray-900 mb-3">{t[language].serviciosEspecializadosDisponibles}</h4>
+                          <div className="space-y-2">
+                            <div className="flex items-center justify-between p-3 bg-red-50 rounded-lg border border-red-200">
+                              <div className="flex items-center gap-3">
+                                <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
+                                  <Plus className="h-4 w-4 text-red-600" />
+                                </div>
+                                <span className="font-medium text-red-900">{t[language].centroDeTrauma}</span>
+                              </div>
+                              <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                            </div>
+                            <div className="flex items-center justify-between p-3 bg-pink-50 rounded-lg border border-pink-200">
+                              <div className="flex items-center gap-3">
+                                <div className="w-8 h-8 bg-pink-100 rounded-full flex items-center justify-center">
+                                  <Heart className="h-4 w-4 text-pink-600" />
+                                </div>
+                                <span className="font-medium text-pink-900">{t[language].atencionCardiaca}</span>
+                              </div>
+                              <div className="w-2 h-2 bg-pink-500 rounded-full"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+                {/* Right side - Placeholder for additional content */}
+                <div className="bg-gray-50 rounded-lg p-6 flex items-center justify-center text-gray-500">
+                  {t[language].additionalInfoPanel}
+                </div>
+              </div>
+            ) : (
+              /* Detailed view - Full width */
+              sortedHospitals.map((hospital) => (
+                <Card key={hospital.id} className="overflow-hidden">
+                  <CardContent className="p-6">
+                    {/* Hospital Header */}
+                    <div className="flex items-start justify-between mb-6">
+                      <div className="flex items-start gap-4">
+                        {/* Harbor Logo */}
+                        <div className="bg-red-600 text-white px-3 py-2 rounded font-bold text-sm">
+                          {t[language].harborShort}
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                          <div>
+                            <h3 className="font-semibold text-gray-900 mb-1">
+                              {t[language].harborUCLAMedicalCenter}
+                            </h3>
+                            <div className="flex items-center gap-2 text-sm text-gray-600">
+                              <MapPin className="h-3 w-3" />
+                              <span>18.4 {language === 'en' ? 'miles' : 'millas'}</span>
+                            </div>
                           </div>
                         </div>
                       </div>
+                      <div className="text-right">
+                        <div className="text-sm text-gray-600 mb-1">{t[language].status}</div>
+                        <div className="font-semibold text-green-600">{t[language].open}</div>
+                      </div>
                     </div>
-                    <div className="text-right">
-                      <div className="text-sm text-gray-600 mb-1">{t[language].status}</div>
-                      <div className="font-semibold text-green-600">{t[language].open}</div>
-                    </div>
-                  </div>
 
-                  {/* Stats Row */}
-                  <div className="flex gap-8 mb-6">
-                    <div className="text-center">
-                      <div className="text-sm text-gray-600 mb-1">{t[language].avgWaitTime}</div>
-                      <div className="text-3xl font-bold text-orange-500">42</div>
-                      <div className="text-sm text-gray-600">{t[language].minutes}</div>
+                    {/* Stats Row */}
+                    <div className="flex gap-8 mb-6">
+                      <div className="text-center">
+                        <div className="text-sm text-gray-600 mb-1">{t[language].avgWaitTime}</div>
+                        <div className="text-3xl font-bold text-orange-500">42</div>
+                        <div className="text-sm text-gray-600">{t[language].minutes}</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-sm text-gray-600 mb-1">{t[language].currentCensus}</div>
+                        <div className="text-3xl font-bold text-gray-700">46</div>
+                        <div className="text-sm text-gray-600">{t[language].patients}</div>
+                      </div>
                     </div>
-                    <div className="text-center">
-                      <div className="text-sm text-gray-600 mb-1">{t[language].currentCensus}</div>
-                      <div className="text-3xl font-bold text-gray-700">46</div>
-                      <div className="text-sm text-gray-600">{t[language].patients}</div>
-                    </div>
-                  </div>
 
-                  {/* Wait Times by Condition Severity */}
-                  <div className="mb-6">
-                    <h4 className="font-semibold text-gray-900 mb-4">{t[language].waitTimesByConditionSeverity}</h4>
-                    <div className="flex gap-4">
-                      {/* L1 */}
-                      <div className="text-center flex-1">
-                        <div className="w-3 h-3 bg-red-500 rounded-full mx-auto mb-2"></div>
-                        <div className="text-xs font-medium text-gray-600 mb-1">L1</div>
-                        <div className="text-xs text-gray-500 mb-1">Q: 3</div>
-                        <div className="text-sm font-bold text-green-600">&lt;15m</div>
-                      </div>
-                      {/* L2 */}
-                      <div className="text-center flex-1">
-                        <div className="w-3 h-3 bg-orange-500 rounded-full mx-auto mb-2"></div>
-                        <div className="text-xs font-medium text-gray-600 mb-1">L2</div>
-                        <div className="text-xs text-gray-500 mb-1">Q: 7</div>
-                        <div className="text-sm font-bold text-green-600">&lt;15m</div>
-                      </div>
-                      {/* L3 */}
-                      <div className="text-center flex-1">
-                        <div className="w-3 h-3 bg-yellow-500 rounded-full mx-auto mb-2"></div>
-                        <div className="text-xs font-medium text-gray-600 mb-1">L3</div>
-                        <div className="text-xs text-gray-500 mb-1">Q: 19</div>
-                        <div className="text-sm font-bold text-orange-600">693m</div>
-                      </div>
-                      {/* L4 */}
-                      <div className="text-center flex-1">
-                        <div className="w-3 h-3 bg-blue-500 rounded-full mx-auto mb-2"></div>
-                        <div className="text-xs font-medium text-gray-600 mb-1">L4</div>
-                        <div className="text-xs text-gray-500 mb-1">Q: 13</div>
-                        <div className="text-sm font-bold text-red-600">1020m</div>
-                      </div>
-                      {/* L5 */}
-                      <div className="text-center flex-1">
-                        <div className="w-3 h-3 bg-green-500 rounded-full mx-auto mb-2"></div>
-                        <div className="text-xs font-medium text-gray-600 mb-1">L5</div>
-                        <div className="text-xs text-gray-500 mb-1">Q: 3</div>
-                        <div className="text-sm font-bold text-red-600">943m</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Specialized Services */}
-                  <div>
-                    <h4 className="font-semibold text-gray-900 mb-3">{t[language].serviciosEspecializadosDisponibles}</h4>
-                    <div className="space-y-2">
-                      <div className="flex items-center justify-between p-3 bg-red-50 rounded-lg border border-red-200">
-                        <div className="flex items-center gap-3">
-                          <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
-                            <Plus className="h-4 w-4 text-red-600" />
-                          </div>
-                          <span className="font-medium text-red-900">{t[language].centroDeTrauma}</span>
+                    {/* Wait Times by Condition Severity */}
+                    <div className="mb-6">
+                      <h4 className="font-semibold text-gray-900 mb-4">{t[language].waitTimesByConditionSeverity}</h4>
+                      <div className="flex gap-4">
+                        {/* L1 */}
+                        <div className="text-center flex-1">
+                          <div className="w-3 h-3 bg-red-500 rounded-full mx-auto mb-2"></div>
+                          <div className="text-xs font-medium text-gray-600 mb-1">L1</div>
+                          <div className="text-xs text-gray-500 mb-1">Q: 3</div>
+                          <div className="text-sm font-bold text-green-600">&lt;15m</div>
                         </div>
-                        <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                      </div>
-                      <div className="flex items-center justify-between p-3 bg-pink-50 rounded-lg border border-pink-200">
-                        <div className="flex items-center gap-3">
-                          <div className="w-8 h-8 bg-pink-100 rounded-full flex items-center justify-center">
-                            <Heart className="h-4 w-4 text-pink-600" />
-                          </div>
-                          <span className="font-medium text-pink-900">{t[language].atencionCardiaca}</span>
+                        {/* L2 */}
+                        <div className="text-center flex-1">
+                          <div className="w-3 h-3 bg-orange-500 rounded-full mx-auto mb-2"></div>
+                          <div className="text-xs font-medium text-gray-600 mb-1">L2</div>
+                          <div className="text-xs text-gray-500 mb-1">Q: 7</div>
+                          <div className="text-sm font-bold text-green-600">&lt;15m</div>
                         </div>
-                        <div className="w-2 h-2 bg-pink-500 rounded-full"></div>
+                        {/* L3 */}
+                        <div className="text-center flex-1">
+                          <div className="w-3 h-3 bg-yellow-500 rounded-full mx-auto mb-2"></div>
+                          <div className="text-xs font-medium text-gray-600 mb-1">L3</div>
+                          <div className="text-xs text-gray-500 mb-1">Q: 19</div>
+                          <div className="text-sm font-bold text-orange-600">693m</div>
+                        </div>
+                        {/* L4 */}
+                        <div className="text-center flex-1">
+                          <div className="w-3 h-3 bg-blue-500 rounded-full mx-auto mb-2"></div>
+                          <div className="text-xs font-medium text-gray-600 mb-1">L4</div>
+                          <div className="text-xs text-gray-500 mb-1">Q: 13</div>
+                          <div className="text-sm font-bold text-red-600">1020m</div>
+                        </div>
+                        {/* L5 */}
+                        <div className="text-center flex-1">
+                          <div className="w-3 h-3 bg-green-500 rounded-full mx-auto mb-2"></div>
+                          <div className="text-xs font-medium text-gray-600 mb-1">L5</div>
+                          <div className="text-xs text-gray-500 mb-1">Q: 3</div>
+                          <div className="text-sm font-bold text-red-600">943m</div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+
+                    {/* Specialized Services */}
+                    <div>
+                      <h4 className="font-semibold text-gray-900 mb-3">{t[language].serviciosEspecializadosDisponibles}</h4>
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between p-3 bg-red-50 rounded-lg border border-red-200">
+                          <div className="flex items-center gap-3">
+                            <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
+                              <Plus className="h-4 w-4 text-red-600" />
+                            </div>
+                            <span className="font-medium text-red-900">{t[language].centroDeTrauma}</span>
+                          </div>
+                          <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                        </div>
+                        <div className="flex items-center justify-between p-3 bg-pink-50 rounded-lg border border-pink-200">
+                          <div className="flex items-center gap-3">
+                            <div className="w-8 h-8 bg-pink-100 rounded-full flex items-center justify-center">
+                              <Heart className="h-4 w-4 text-pink-600" />
+                            </div>
+                            <span className="font-medium text-pink-900">{t[language].atencionCardiaca}</span>
+                          </div>
+                          <div className="w-2 h-2 bg-pink-500 rounded-full"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))
+            )}
 
             {sortedHospitals.length === 0 && !isLoading && (
               <div className="text-center py-12">
