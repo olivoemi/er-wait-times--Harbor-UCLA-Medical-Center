@@ -2036,7 +2036,7 @@ function App() {
                               </h6>
                               <ul className="space-y-1 text-blue-800">
                                 <li>• {t[language].minorCuts}</li>
-                                <li>• {t[language].mildHeadache}</li>
+                                <li>��� {t[language].mildHeadache}</li>
                                 <li>• {t[language].coldFluSymptoms}</li>
                               </ul>
                             </div>
