@@ -1028,10 +1028,9 @@ function App() {
                           <div className="text-center">
                             <div className="text-xs font-medium text-green-700 mb-2">{t[language].status}</div>
                             <div className="text-xl font-bold text-green-600 mb-1">{t[language].open}</div>
-                            <div className="text-xs text-green-600">24/7</div>
                           </div>
                         </div>
-                      </div>
+                        </div>
 
                       {/* Comprehensive Facility Information */}
                       <div className="space-y-6">
