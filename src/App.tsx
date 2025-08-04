@@ -362,6 +362,57 @@ function App() {
         { id: 'loss-consciousness', name: 'Loss of Consciousness', acuityLevel: 1, category: 'neurological' },
         { id: 'cardiac-arrest', name: 'Cardiac Arrest Symptoms', acuityLevel: 1, category: 'cardiac' }
       ]
+    },
+    {
+      name: 'Level 2 - Emergent (High Priority)',
+      symptoms: [
+        { id: 'chest-pain-moderate', name: 'Chest Pain (Moderate)', acuityLevel: 2, category: 'cardiac' },
+        { id: 'breathing-difficulty', name: 'Breathing Difficulty', acuityLevel: 2, category: 'respiratory' },
+        { id: 'severe-abdominal-pain', name: 'Severe Abdominal Pain', acuityLevel: 2, category: 'gastrointestinal' },
+        { id: 'high-fever-confusion', name: 'High Fever with Confusion', acuityLevel: 2, category: 'general' },
+        { id: 'severe-headache', name: 'Severe Headache', acuityLevel: 2, category: 'neurological' },
+        { id: 'head-injury', name: 'Head Injury', acuityLevel: 2, category: 'trauma' },
+        { id: 'moderate-bleeding', name: 'Moderate Bleeding', acuityLevel: 2, category: 'trauma' },
+        { id: 'allergic-reaction-severe', name: 'Severe Allergic Reaction', acuityLevel: 2, category: 'allergic' }
+      ]
+    },
+    {
+      name: 'Level 3 - Urgent (Less Urgent)',
+      symptoms: [
+        { id: 'moderate-pain', name: 'Moderate Pain', acuityLevel: 3, category: 'general' },
+        { id: 'minor-fractures', name: 'Minor Fractures', acuityLevel: 3, category: 'trauma' },
+        { id: 'persistent-fever', name: 'Persistent Fever', acuityLevel: 3, category: 'general' },
+        { id: 'vomiting-diarrhea', name: 'Vomiting/Diarrhea', acuityLevel: 3, category: 'gastrointestinal' },
+        { id: 'eye-injury', name: 'Eye Injury', acuityLevel: 3, category: 'trauma' },
+        { id: 'animal-bite', name: 'Animal Bite', acuityLevel: 3, category: 'trauma' },
+        { id: 'burns-minor', name: 'Minor Burns', acuityLevel: 3, category: 'trauma' },
+        { id: 'dehydration', name: 'Dehydration', acuityLevel: 3, category: 'general' }
+      ]
+    },
+    {
+      name: 'Level 4 - Semi-Urgent (Non-Urgent)',
+      symptoms: [
+        { id: 'minor-cuts', name: 'Minor Cuts and Scrapes', acuityLevel: 4, category: 'trauma' },
+        { id: 'mild-headache', name: 'Mild Headache', acuityLevel: 4, category: 'neurological' },
+        { id: 'cold-flu-symptoms', name: 'Cold or Flu Symptoms', acuityLevel: 4, category: 'respiratory' },
+        { id: 'minor-sprains', name: 'Minor Sprains or Strains', acuityLevel: 4, category: 'musculoskeletal' },
+        { id: 'minor-allergic', name: 'Minor Allergic Reactions', acuityLevel: 4, category: 'allergic' },
+        { id: 'back-pain-nonsevere', name: 'Non-Severe Back Pain', acuityLevel: 4, category: 'musculoskeletal' },
+        { id: 'extreme-fatigue', name: 'Extreme Fatigue', acuityLevel: 4, category: 'general' },
+        { id: 'joint-pain', name: 'Joint Pain', acuityLevel: 4, category: 'musculoskeletal' }
+      ]
+    },
+    {
+      name: 'Level 5 - Fast Track (Minimal Resources)',
+      symptoms: [
+        { id: 'minor-skin-conditions', name: 'Minor Skin Conditions', acuityLevel: 5, category: 'dermatological' },
+        { id: 'prescription-refills', name: 'Prescription Refills (Non-Emergency)', acuityLevel: 5, category: 'general' },
+        { id: 'routine-checkup', name: 'Routine Check-up Needs', acuityLevel: 5, category: 'general' },
+        { id: 'minor-eye-irritation', name: 'Minor Eye or Ear Irritation', acuityLevel: 5, category: 'general' },
+        { id: 'wound-dressing', name: 'Simple Wound Dressing Changes', acuityLevel: 5, category: 'general' },
+        { id: 'blood-pressure-check', name: 'Blood Pressure Checks', acuityLevel: 5, category: 'general' },
+        { id: 'minor-dental', name: 'Minor Dental Issues', acuityLevel: 5, category: 'dental' }
+      ]
     }
   ]
 
@@ -2374,59 +2425,52 @@ function App() {
                   </div>
                 </div>
 
-                {/* Traditional Care Guide Cards - kept for reference */}
-                <div className="bg-gray-50 rounded-xl p-6">
-                  <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                    {language === 'en' ? 'Quick Reference Guide' : 'Guía de Referencia Rápida'}
-                  </h3>
-                  <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                    {careGuideItems.map((item) => (
-                      <Card key={item.id} className="hover:shadow-md transition-shadow">
-                        <CardHeader>
-                          <CardTitle className="flex items-center justify-between">
-                            <div className="flex items-center gap-3">
-                              <div className={`p-2 rounded-lg ${
-                                item.urgency === 'emergency' ? 'bg-red-100 text-red-600' :
-                                item.urgency === 'urgent' ? 'bg-yellow-100 text-yellow-600' :
-                                'bg-green-100 text-green-600'
-                              }`}>
-                                {item.icon}
-                              </div>
-                              <span className="text-lg">{item.title}</span>
-                            </div>
-                          </CardTitle>
-                        </CardHeader>
-                        <CardContent className="space-y-4">
-                          <p className="text-sm text-muted-foreground">{item.description}</p>
-                          
-                          {getUrgencyBadge(item.urgency)}
+                {/* Disclaimer and Medical Information Boxes */}
+                <div className="grid gap-6 lg:grid-cols-2">
+                  {/* When in Doubt, Seek Immediate Care */}
+                  <div className="bg-red-50 border border-red-200 rounded-lg p-6">
+                    <div className="flex items-start gap-3 mb-4">
+                      <AlertTriangle className="h-5 w-5 text-red-600 mt-1 flex-shrink-0" />
+                      <h3 className="text-lg font-semibold text-red-900">
+                        {language === 'en' ? 'When in Doubt, Seek Immediate Care' : 'Cuando Tenga Dudas, Busque Atención Inmediata'}
+                      </h3>
+                    </div>
+                    <p className="text-sm text-red-800 mb-4">
+                      {language === 'en' 
+                        ? 'This enhanced acuity-based assessment provides clinical-grade triaging and wait time predictions, but should not replace professional medical judgment. The 5-level acuity system helps prioritize care based on medical urgency.'
+                        : 'Esta evaluación mejorada basada en acuidad proporciona triaje de grado clínico y predicciones de tiempo de espera, pero no debe reemplazar el juicio médico profesional. El sistema de acuidad de 5 niveles ayuda a priorizar la atención basada en la urgencia médica.'
+                      }
+                    </p>
+                    <p className="text-sm font-medium text-red-900">
+                      {language === 'en' 
+                        ? 'Always call 911 immediately for Acuity Level 1 conditions: Life-threatening symptoms require immediate emergency response.'
+                        : 'Siempre llame al 911 inmediatamente para condiciones de Nivel de Acuidad 1: Los síntomas que amenazan la vida requieren respuesta de emergencia inmediata.'
+                      }
+                    </p>
+                  </div>
 
-                          <div>
-                            <h4 className="font-medium text-sm mb-2">{t[language].commonSymptoms}</h4>
-                            <ul className="text-sm text-muted-foreground space-y-1">
-                              {item.symptoms.map((symptom, index) => (
-                                <li key={index} className="flex items-center gap-2">
-                                  <span className="w-1 h-1 bg-muted-foreground rounded-full"></span>
-                                  {symptom}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-
-                          <div>
-                            <h4 className="font-medium text-sm mb-2">{t[language].recommendations}</h4>
-                            <ul className="text-sm text-muted-foreground space-y-1">
-                              {item.recommendations.map((rec, index) => (
-                                <li key={index} className="flex items-center gap-2">
-                                  <span className="w-1 h-1 bg-muted-foreground rounded-full"></span>
-                                  {rec}
-                                </li>
-                              ))}
-                            </ul>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    ))}
+                  {/* Medical Disclaimer */}
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                    <div className="flex items-start gap-3 mb-4">
+                      <Info className="h-5 w-5 text-blue-600 mt-1 flex-shrink-0" />
+                      <h3 className="text-lg font-semibold text-blue-900">
+                        {language === 'en' ? 'Medical Disclaimer' : 'Descargo de Responsabilidad Médica'}
+                      </h3>
+                    </div>
+                    <div className="space-y-3 text-sm text-blue-800">
+                      <p>
+                        {language === 'en' 
+                          ? 'The information provided on this page is for educational purposes only and should not be used as a substitute for professional medical advice, diagnosis, or treatment. Always consult with a qualified healthcare provider about any health concerns or before making any decisions related to your health or treatment.'
+                          : 'La información proporcionada en esta página es solo para fines educativos y no debe usarse como sustituto del consejo médico profesional, diagnóstico o tratamiento. Siempre consulte con un proveedor de atención médica calificado sobre cualquier preocupación de salud o antes de tomar cualquier decisión relacionada con su salud o tratamiento.'
+                        }
+                      </p>
+                      <p className="font-medium">
+                        {language === 'en' 
+                          ? 'In case of a medical emergency, call 911 immediately. This facility is not responsible for any actions taken based on the information provided through this guidance tool.'
+                          : 'En caso de emergencia médica, llame al 911 inmediatamente. Esta instalación no es responsable de ninguna acción tomada basada en la información proporcionada a través de esta herramienta de orientación.'
+                        }
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -2697,29 +2741,6 @@ function App() {
                 </Card>
               </div>
             )}
-
-            {/* Additional Resources */}
-            <Card className="bg-muted">
-              <CardHeader>
-                <CardTitle className="text-lg">{t[language].importantNumbers}</CardTitle>
-              </CardHeader>
-              <CardContent className="grid gap-3 sm:grid-cols-2">
-                <div className="flex items-center gap-3">
-                  <Phone className="h-5 w-5 text-red-600" />
-                  <div>
-                    <div className="font-medium">{t[language].emergency911}</div>
-                    <div className="text-lg font-bold text-red-600">911</div>
-                  </div>
-                </div>
-                <div className="flex items-center gap-3">
-                  <Phone className="h-5 w-5 text-blue-600" />
-                  <div>
-                    <div className="font-medium">{t[language].poisonControl}</div>
-                    <div className="text-lg font-bold text-blue-600">1-800-222-1222</div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
           </TabsContent>
         </Tabs>
       </div>
