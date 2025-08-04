@@ -46,6 +46,7 @@ function App() {
   const [viewMode, setViewMode] = useState<'overview' | 'detailed'>('overview')
   const [sortBy, setSortBy] = useState('wait-time')
   const [facilityInfoExpanded, setFacilityInfoExpanded] = useState(true)
+  const [careGuideSection, setCareGuideSection] = useState<'recommendation' | 'options' | 'prepare'>('recommendation')
 
   // Translation object
   const t = {
@@ -111,6 +112,14 @@ function App() {
       careGuideSubtitle: 'Quick reference for common medical situations and when to seek care',
       emergencyAlert: 'Life-threatening emergency?',
       emergencyAlertText: 'Call 911 immediately. Don\'t wait or drive yourself to the hospital.',
+      emergencyCareGuidance: 'Emergency Care Guidance',
+      emergencyCareGuidanceSubtitle: 'Get expert guidance on when to seek emergency care, understand how emergency rooms work, and discover alternative care options that might be faster and more appropriate for your needs.',
+      lifeThreatening: 'Life-Threatening Emergency?',
+      lifeThreateneingDescription: 'If you\'re experiencing chest pain, difficulty breathing, severe bleeding, or any life-threatening symptoms, don\'t wait - call 911 immediately.',
+      careRecommendation: 'Care Recommendation',
+      careOptions: 'Care Options',
+      prepareForVisit: 'Prepare for Your Visit',
+      call911: 'Call 911',
       emergencyBadge: 'Emergency - Call 911',
       urgentBadge: 'Urgent Care',
       selfCareBadge: 'Self Care',
@@ -204,6 +213,14 @@ function App() {
       careGuideSubtitle: 'Referencia rápida para situaciones médicas comunes y cuándo buscar atención',
       emergencyAlert: '¿Emergencia que amenaza la vida?',
       emergencyAlertText: 'Llame al 911 inmediatamente. No espere ni conduzca usted mismo al hospital.',
+      emergencyCareGuidance: 'Orientación para Atención de Emergencia',
+      emergencyCareGuidanceSubtitle: 'Obtenga orientación experta sobre cuándo buscar atención de emergencia, comprenda cómo funcionan las salas de emergencia y descubra opciones de atención alternativas que podrían ser más rápidas y apropiadas para sus necesidades.',
+      lifeThreatening: '¿Emergencia que Amenaza la Vida?',
+      lifeThreateneingDescription: 'Si está experimentando dolor en el pecho, dificultad para respirar, sangrado severo, o cualquier síntoma que amenace la vida, no espere - llame al 911 inmediatamente.',
+      careRecommendation: 'Recomendación de Atención',
+      careOptions: 'Opciones de Atención',
+      prepareForVisit: 'Prepárese para su Visita',
+      call911: 'Llamar 911',
       emergencyBadge: 'Emergencia - Llame al 911',
       urgentBadge: 'Atención Urgente',
       selfCareBadge: 'Autocuidado',
@@ -1940,71 +1957,397 @@ function App() {
 
           {/* Care Guide Tab */}
           <TabsContent value="care-guide" className="space-y-6">
-            <div className="text-center mb-6">
-              <h2 className="text-2xl font-semibold mb-2">{t[language].medicalCareGuide}</h2>
-              <p className="text-muted-foreground">
-                {t[language].careGuideSubtitle}
+            <div className="text-center mb-8">
+              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Heart className="h-8 w-8 text-blue-600" />
+              </div>
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">{t[language].emergencyCareGuidance}</h2>
+              <p className="text-gray-600 max-w-4xl mx-auto text-lg leading-relaxed">
+                {t[language].emergencyCareGuidanceSubtitle}
               </p>
             </div>
 
-            {/* Emergency Call-to-Action */}
-            <Alert className="border-red-200 bg-red-50">
-              <Phone className="h-4 w-4 text-red-600" />
-              <AlertDescription className="text-red-800">
-                <strong>{t[language].emergencyAlert}</strong> {t[language].emergencyAlertText}
-              </AlertDescription>
-            </Alert>
+            {/* Life-Threatening Emergency Alert */}
+            <div className="bg-red-50 border border-red-200 rounded-lg p-6 mb-8">
+              <div className="flex items-start justify-between">
+                <div className="flex items-start gap-4">
+                  <div className="bg-red-100 p-2 rounded-lg">
+                    <AlertTriangle className="h-6 w-6 text-red-600" />
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold text-red-900 mb-2">{t[language].lifeThreatening}</h3>
+                    <p className="text-red-800 leading-relaxed">
+                      {t[language].lifeThreateneingDescription}
+                    </p>
+                  </div>
+                </div>
+                <Button className="bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-3">
+                  📞 {t[language].call911}
+                </Button>
+              </div>
+            </div>
 
-            {/* Care Guide Cards */}
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {careGuideItems.map((item) => (
-                <Card key={item.id} className="hover:shadow-md transition-shadow">
-                  <CardHeader>
-                    <CardTitle className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
-                        <div className={`p-2 rounded-lg ${
-                          item.urgency === 'emergency' ? 'bg-red-100 text-red-600' :
-                          item.urgency === 'urgent' ? 'bg-yellow-100 text-yellow-600' :
-                          'bg-green-100 text-green-600'
-                        }`}>
-                          {item.icon}
+            {/* Care Guide Navigation */}
+            <div className="flex border-b border-gray-200 mb-8">
+              <Button
+                variant={careGuideSection === 'recommendation' ? 'default' : 'ghost'}
+                onClick={() => setCareGuideSection('recommendation')}
+                className={`flex items-center gap-2 rounded-none border-b-2 px-6 py-3 ${
+                  careGuideSection === 'recommendation' 
+                    ? 'border-blue-600 bg-transparent text-blue-600 hover:bg-blue-50' 
+                    : 'border-transparent text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                }`}
+              >
+                <Heart className="h-4 w-4" />
+                {t[language].careRecommendation}
+              </Button>
+              <Button
+                variant={careGuideSection === 'options' ? 'default' : 'ghost'}
+                onClick={() => setCareGuideSection('options')}
+                className={`flex items-center gap-2 rounded-none border-b-2 px-6 py-3 ${
+                  careGuideSection === 'options' 
+                    ? 'border-blue-600 bg-transparent text-blue-600 hover:bg-blue-50' 
+                    : 'border-transparent text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                }`}
+              >
+                <MapPin className="h-4 w-4" />
+                {t[language].careOptions}
+              </Button>
+              <Button
+                variant={careGuideSection === 'prepare' ? 'default' : 'ghost'}
+                onClick={() => setCareGuideSection('prepare')}
+                className={`flex items-center gap-2 rounded-none border-b-2 px-6 py-3 ${
+                  careGuideSection === 'prepare' 
+                    ? 'border-blue-600 bg-transparent text-blue-600 hover:bg-blue-50' 
+                    : 'border-transparent text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                }`}
+              >
+                <Clock className="h-4 w-4" />
+                {t[language].prepareForVisit}
+              </Button>
+            </div>
+
+            {/* Care Guide Content */}
+            {careGuideSection === 'recommendation' && (
+              <div className="space-y-6">
+                {/* Care Guide Cards */}
+                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                  {careGuideItems.map((item) => (
+                    <Card key={item.id} className="hover:shadow-md transition-shadow">
+                      <CardHeader>
+                        <CardTitle className="flex items-center justify-between">
+                          <div className="flex items-center gap-3">
+                            <div className={`p-2 rounded-lg ${
+                              item.urgency === 'emergency' ? 'bg-red-100 text-red-600' :
+                              item.urgency === 'urgent' ? 'bg-yellow-100 text-yellow-600' :
+                              'bg-green-100 text-green-600'
+                            }`}>
+                              {item.icon}
+                            </div>
+                            <span className="text-lg">{item.title}</span>
+                          </div>
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent className="space-y-4">
+                        <p className="text-sm text-muted-foreground">{item.description}</p>
+                        
+                        {getUrgencyBadge(item.urgency)}
+
+                        <div>
+                          <h4 className="font-medium text-sm mb-2">{t[language].commonSymptoms}</h4>
+                          <ul className="text-sm text-muted-foreground space-y-1">
+                            {item.symptoms.map((symptom, index) => (
+                              <li key={index} className="flex items-center gap-2">
+                                <span className="w-1 h-1 bg-muted-foreground rounded-full"></span>
+                                {symptom}
+                              </li>
+                            ))}
+                          </ul>
                         </div>
-                        <span className="text-lg">{item.title}</span>
+
+                        <div>
+                          <h4 className="font-medium text-sm mb-2">{t[language].recommendations}</h4>
+                          <ul className="text-sm text-muted-foreground space-y-1">
+                            {item.recommendations.map((rec, index) => (
+                              <li key={index} className="flex items-center gap-2">
+                                <span className="w-1 h-1 bg-muted-foreground rounded-full"></span>
+                                {rec}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {careGuideSection === 'options' && (
+              <div className="space-y-6">
+                <div className="text-center mb-8">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                    {language === 'en' ? 'Care Options Available' : 'Opciones de Atención Disponibles'}
+                  </h3>
+                  <p className="text-gray-600 max-w-3xl mx-auto">
+                    {language === 'en' 
+                      ? 'Understanding your care options can help you get the right treatment at the right time and place.'
+                      : 'Entender sus opciones de atención puede ayudarle a obtener el tratamiento correcto en el momento y lugar adecuados.'
+                    }
+                  </p>
+                </div>
+
+                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                  {/* Emergency Room */}
+                  <Card className="border-red-200 bg-red-50">
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-3 text-red-900">
+                        <Plus className="h-6 w-6 text-red-600" />
+                        {language === 'en' ? 'Emergency Room' : 'Sala de Emergencias'}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <p className="text-red-800 text-sm">
+                        {language === 'en' 
+                          ? 'For life-threatening conditions requiring immediate medical attention.'
+                          : 'Para condiciones que amenazan la vida que requieren atención médica inmediata.'
+                        }
+                      </p>
+                      <div>
+                        <h5 className="font-semibold text-red-900 mb-2">
+                          {language === 'en' ? 'Best for:' : 'Mejor para:'}
+                        </h5>
+                        <ul className="text-sm text-red-800 space-y-1">
+                          <li>• {language === 'en' ? 'Heart attack, stroke' : 'Ataque cardíaco, derrame'}</li>
+                          <li>• {language === 'en' ? 'Severe injuries' : 'Lesiones graves'}</li>
+                          <li>• {language === 'en' ? 'Difficulty breathing' : 'Dificultad para respirar'}</li>
+                        </ul>
                       </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Urgent Care */}
+                  <Card className="border-yellow-200 bg-yellow-50">
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-3 text-yellow-900">
+                        <Clock className="h-6 w-6 text-yellow-600" />
+                        {language === 'en' ? 'Urgent Care' : 'Atención Urgente'}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <p className="text-yellow-800 text-sm">
+                        {language === 'en' 
+                          ? 'For urgent but non-life-threatening conditions that need prompt attention.'
+                          : 'Para condiciones urgentes pero no mortales que necesitan atención pronta.'
+                        }
+                      </p>
+                      <div>
+                        <h5 className="font-semibold text-yellow-900 mb-2">
+                          {language === 'en' ? 'Best for:' : 'Mejor para:'}
+                        </h5>
+                        <ul className="text-sm text-yellow-800 space-y-1">
+                          <li>• {language === 'en' ? 'Minor fractures' : 'Fracturas menores'}</li>
+                          <li>• {language === 'en' ? 'Cuts requiring stitches' : 'Cortes que requieren puntadas'}</li>
+                          <li>• {language === 'en' ? 'High fever' : 'Fiebre alta'}</li>
+                        </ul>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Primary Care */}
+                  <Card className="border-green-200 bg-green-50">
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-3 text-green-900">
+                        <FirstAid className="h-6 w-6 text-green-600" />
+                        {language === 'en' ? 'Primary Care' : 'Atención Primaria'}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <p className="text-green-800 text-sm">
+                        {language === 'en' 
+                          ? 'For routine health needs, preventive care, and ongoing medical management.'
+                          : 'Para necesidades de salud rutinarias, atención preventiva y manejo médico continuo.'
+                        }
+                      </p>
+                      <div>
+                        <h5 className="font-semibold text-green-900 mb-2">
+                          {language === 'en' ? 'Best for:' : 'Mejor para:'}
+                        </h5>
+                        <ul className="text-sm text-green-800 space-y-1">
+                          <li>• {language === 'en' ? 'Annual checkups' : 'Exámenes anuales'}</li>
+                          <li>• {language === 'en' ? 'Prescription refills' : 'Reposición de recetas'}</li>
+                          <li>• {language === 'en' ? 'Chronic condition management' : 'Manejo de condiciones crónicas'}</li>
+                        </ul>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+            )}
+
+            {careGuideSection === 'prepare' && (
+              <div className="space-y-6">
+                <div className="text-center mb-8">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                    {language === 'en' ? 'Prepare for Your Emergency Visit' : 'Prepárese para su Visita de Emergencia'}
+                  </h3>
+                  <p className="text-gray-600 max-w-3xl mx-auto">
+                    {language === 'en' 
+                      ? 'Being prepared can help ensure you receive the best possible care and make your visit more efficient.'
+                      : 'Estar preparado puede ayudar a asegurar que reciba la mejor atención posible y hacer su visita más eficiente.'
+                    }
+                  </p>
+                </div>
+
+                <div className="grid gap-6 lg:grid-cols-2">
+                  {/* What to Bring */}
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-3">
+                        <Building className="h-6 w-6 text-blue-600" />
+                        {language === 'en' ? 'What to Bring' : 'Qué Traer'}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-4">
+                        <div className="flex items-start gap-3 p-3 bg-blue-50 rounded-lg">
+                          <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
+                          <div>
+                            <h5 className="font-semibold text-blue-900">
+                              {language === 'en' ? 'Identification & Insurance' : 'Identificación y Seguro'}
+                            </h5>
+                            <p className="text-sm text-blue-800">
+                              {language === 'en' 
+                                ? 'Valid photo ID and insurance card'
+                                : 'ID con foto válida y tarjeta de seguro'
+                              }
+                            </p>
+                          </div>
+                        </div>
+                        <div className="flex items-start gap-3 p-3 bg-blue-50 rounded-lg">
+                          <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
+                          <div>
+                            <h5 className="font-semibold text-blue-900">
+                              {language === 'en' ? 'Medication List' : 'Lista de Medicamentos'}
+                            </h5>
+                            <p className="text-sm text-blue-800">
+                              {language === 'en' 
+                                ? 'All current medications, dosages, and allergies'
+                                : 'Todos los medicamentos actuales, dosis y alergias'
+                              }
+                            </p>
+                          </div>
+                        </div>
+                        <div className="flex items-start gap-3 p-3 bg-blue-50 rounded-lg">
+                          <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
+                          <div>
+                            <h5 className="font-semibold text-blue-900">
+                              {language === 'en' ? 'Emergency Contacts' : 'Contactos de Emergencia'}
+                            </h5>
+                            <p className="text-sm text-blue-800">
+                              {language === 'en' 
+                                ? 'Contact information for family or friends'
+                                : 'Información de contacto de familiares o amigos'
+                              }
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* What to Expect */}
+                  <Card>
+                    <CardHeader>
+                      <CardTitle className="flex items-center gap-3">
+                        <Info className="h-6 w-6 text-green-600" />
+                        {language === 'en' ? 'What to Expect' : 'Qué Esperar'}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="space-y-4">
+                        <div className="flex items-start gap-3 p-3 bg-green-50 rounded-lg">
+                          <div className="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
+                          <div>
+                            <h5 className="font-semibold text-green-900">
+                              {language === 'en' ? 'Triage Assessment' : 'Evaluación de Triaje'}
+                            </h5>
+                            <p className="text-sm text-green-800">
+                              {language === 'en' 
+                                ? 'Initial evaluation to determine priority level'
+                                : 'Evaluación inicial para determinar el nivel de prioridad'
+                              }
+                            </p>
+                          </div>
+                        </div>
+                        <div className="flex items-start gap-3 p-3 bg-green-50 rounded-lg">
+                          <div className="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
+                          <div>
+                            <h5 className="font-semibold text-green-900">
+                              {language === 'en' ? 'Wait Times Vary' : 'Los Tiempos de Espera Varían'}
+                            </h5>
+                            <p className="text-sm text-green-800">
+                              {language === 'en' 
+                                ? 'Based on severity and current patient volume'
+                                : 'Basado en la severidad y el volumen actual de pacientes'
+                              }
+                            </p>
+                          </div>
+                        </div>
+                        <div className="flex items-start gap-3 p-3 bg-green-50 rounded-lg">
+                          <div className="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
+                          <div>
+                            <h5 className="font-semibold text-green-900">
+                              {language === 'en' ? 'Medical Team' : 'Equipo Médico'}
+                            </h5>
+                            <p className="text-sm text-green-800">
+                              {language === 'en' 
+                                ? 'Multiple specialists available 24/7'
+                                : 'Múltiples especialistas disponibles 24/7'
+                              }
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                {/* Additional Tips */}
+                <Card className="bg-gray-50">
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-3">
+                      <Thermometer className="h-6 w-6 text-purple-600" />
+                      {language === 'en' ? 'Additional Tips' : 'Consejos Adicionales'}
                     </CardTitle>
                   </CardHeader>
-                  <CardContent className="space-y-4">
-                    <p className="text-sm text-muted-foreground">{item.description}</p>
-                    
-                    {getUrgencyBadge(item.urgency)}
-
-                    <div>
-                      <h4 className="font-medium text-sm mb-2">{t[language].commonSymptoms}</h4>
-                      <ul className="text-sm text-muted-foreground space-y-1">
-                        {item.symptoms.map((symptom, index) => (
-                          <li key={index} className="flex items-center gap-2">
-                            <span className="w-1 h-1 bg-muted-foreground rounded-full"></span>
-                            {symptom}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div>
-                      <h4 className="font-medium text-sm mb-2">{t[language].recommendations}</h4>
-                      <ul className="text-sm text-muted-foreground space-y-1">
-                        {item.recommendations.map((rec, index) => (
-                          <li key={index} className="flex items-center gap-2">
-                            <span className="w-1 h-1 bg-muted-foreground rounded-full"></span>
-                            {rec}
-                          </li>
-                        ))}
-                      </ul>
+                  <CardContent>
+                    <div className="grid gap-4 md:grid-cols-2">
+                      <div>
+                        <h5 className="font-semibold text-gray-900 mb-3">
+                          {language === 'en' ? 'Before You Arrive:' : 'Antes de Llegar:'}
+                        </h5>
+                        <ul className="space-y-2 text-sm text-gray-700">
+                          <li>• {language === 'en' ? 'Call ahead if possible' : 'Llame antes si es posible'}</li>
+                          <li>• {language === 'en' ? 'Arrange transportation' : 'Organice transporte'}</li>
+                          <li>• {language === 'en' ? 'Notify family members' : 'Notifique a familiares'}</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h5 className="font-semibold text-gray-900 mb-3">
+                          {language === 'en' ? 'During Your Visit:' : 'Durante su Visita:'}
+                        </h5>
+                        <ul className="space-y-2 text-sm text-gray-700">
+                          <li>• {language === 'en' ? 'Be honest about symptoms' : 'Sea honesto sobre los síntomas'}</li>
+                          <li>• {language === 'en' ? 'Ask questions if unclear' : 'Haga preguntas si no está claro'}</li>
+                          <li>• {language === 'en' ? 'Follow discharge instructions' : 'Siga las instrucciones de alta'}</li>
+                        </ul>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
-              ))}
-            </div>
+              </div>
+            )}
 
             {/* Additional Resources */}
             <Card className="bg-muted">
