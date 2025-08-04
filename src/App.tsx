@@ -3606,10 +3606,10 @@ function App() {
                     </div>
 
                     {/* Action Buttons */}
-                        <FirstAid className="h-4 w-4 mr-2" />
+                    <div className="flex gap-3">
                       <Button className="bg-green-600 hover:bg-green-700 text-white flex-1">
-                      </Button>
-                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50">
+                        <FirstAid className="h-4 w-4 mr-2" />
+                        {language === 'en' ? 'Schedule Appointment' : 'Programar Cita'}
                       </Button>
                       <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50">
                         <Phone className="h-4 w-4 mr-2" />
