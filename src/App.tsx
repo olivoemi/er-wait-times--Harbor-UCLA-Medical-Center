@@ -3184,71 +3184,7 @@ function App() {
                           </div>
                         </div>
 
-                        {/* Medical Centers with UCC */}
-                        <div className="space-y-2 pt-4 border-t border-gray-200">
-                          <h6 className="text-xs font-semibold text-red-700 uppercase tracking-wide flex items-center gap-2">
-                            {language === 'en' ? 'Medical Centers (24/7 Emergency Available)' : 'Centros Médicos (Emergencia 24/7 Disponible)'}
-                            <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                          </h6>
-                          
-                          {/* Harbor-UCLA UCC */}
-                          <div className="bg-red-50 border border-red-200 rounded-lg p-3 hover:shadow-md transition-shadow">
-                            <div className="flex items-start justify-between">
-                              <div className="flex-1">
-                                <h6 className="font-semibold text-gray-900 text-sm">Harbor-UCLA Med Center (UCC)</h6>
-                                <p className="text-xs text-gray-600 mt-1">1000 W. Carson St., Torrance, CA 90509</p>
-                                <p className="text-xs text-blue-600 mt-1">(424) 306-4110</p>
-                                <div className="text-xs text-gray-500 mt-2">
-                                  <div>{language === 'en' ? 'Mon-Fri: 8:00 AM - 9:00 PM' : 'Lun-Vie: 8:00 AM - 9:00 PM'}</div>
-                                  <div>{language === 'en' ? 'Sat: 8:00 AM - 3:00 PM' : 'Sáb: 8:00 AM - 3:00 PM'}</div>
-                                </div>
-                                <div className="bg-red-100 text-red-800 px-2 py-1 rounded text-xs font-medium mt-2 inline-block">
-                                  {language === 'en' ? 'Emergency Room 24/7' : 'Sala de Emergencias 24/7'}
-                                </div>
-                              </div>
-                              <div className="w-2 h-2 bg-red-500 rounded-full mt-2"></div>
-                            </div>
-                          </div>
 
-                          {/* LA General UCC */}
-                          <div className="bg-red-50 border border-red-200 rounded-lg p-3 hover:shadow-md transition-shadow">
-                            <div className="flex items-start justify-between">
-                              <div className="flex-1">
-                                <h6 className="font-semibold text-gray-900 text-sm">LA General Medical Center (UCC)</h6>
-                                <p className="text-xs text-gray-600 mt-1">1100 N State Street, Tower A2B (second floor)</p>
-                                <p className="text-xs text-gray-600 mt-1">Los Angeles, CA 90033</p>
-                                <p className="text-xs text-blue-600 mt-1">(323) 409-3753</p>
-                                <div className="text-xs text-gray-500 mt-2">
-                                  <div>{language === 'en' ? 'Mon-Sat: 8:00 AM - 7:00 PM' : 'Lun-Sáb: 8:00 AM - 7:00 PM'}</div>
-                                </div>
-                                <div className="bg-red-100 text-red-800 px-2 py-1 rounded text-xs font-medium mt-2 inline-block">
-                                  {language === 'en' ? 'Emergency Room 24/7' : 'Sala de Emergencias 24/7'}
-                                </div>
-                              </div>
-                              <div className="w-2 h-2 bg-red-500 rounded-full mt-2"></div>
-                            </div>
-                          </div>
-
-                          {/* Olive View UCC */}
-                          <div className="bg-red-50 border border-red-200 rounded-lg p-3 hover:shadow-md transition-shadow">
-                            <div className="flex items-start justify-between">
-                              <div className="flex-1">
-                                <h6 className="font-semibold text-gray-900 text-sm">Olive View Medical Center (UCC)</h6>
-                                <p className="text-xs text-gray-600 mt-1">14445 Olive View Drive, Sylmar, CA 91342</p>
-                                <p className="text-xs text-blue-600 mt-1">(747) 210-3127</p>
-                                <div className="text-xs text-gray-500 mt-2">
-                                  <div>{language === 'en' ? 'Mon-Fri: 8:00 AM - 8:00 PM' : 'Lun-Vie: 8:00 AM - 8:00 PM'}</div>
-                                  <div>{language === 'en' ? 'Sat: 8:00 AM - 4:30 PM' : 'Sáb: 8:00 AM - 4:30 PM'}</div>
-                                  <div>{language === 'en' ? 'Holidays: 8:00 AM - 8:00 PM' : 'Días Festivos: 8:00 AM - 8:00 PM'}</div>
-                                </div>
-                                <div className="bg-red-100 text-red-800 px-2 py-1 rounded text-xs font-medium mt-2 inline-block">
-                                  {language === 'en' ? 'Emergency Room 24/7' : 'Sala de Emergencias 24/7'}
-                                </div>
-                              </div>
-                              <div className="w-2 h-2 bg-red-500 rounded-full mt-2"></div>
-                            </div>
-                          </div>
-                        </div>
                       </div>
                     </div>
                   </div>
