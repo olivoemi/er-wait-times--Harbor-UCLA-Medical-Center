@@ -51,14 +51,70 @@ function App() {
       waitTimes: 'Wait Times',
       careGuide: 'Care Guide',
       emergency: '911',
-      language: 'English'
+      language: 'English',
+      emergencyLabel: 'Emergency:',
+      locationDenied: 'Location access denied. Showing all hospitals.',
+      searchPlaceholder: 'Search hospitals by name or address...',
+      refresh: 'Refresh',
+      lastUpdated: 'Last updated:',
+      milesAway: 'miles away',
+      estimatedWait: 'Estimated wait:',
+      minutes: 'minutes',
+      updated: 'Updated:',
+      noHospitalsFound: 'No hospitals found matching your search.',
+      medicalCareGuide: 'Medical Care Guide',
+      careGuideSubtitle: 'Quick reference for common medical situations and when to seek care',
+      emergencyAlert: 'Life-threatening emergency?',
+      emergencyAlertText: 'Call 911 immediately. Don\'t wait or drive yourself to the hospital.',
+      emergencyBadge: 'Emergency - Call 911',
+      urgentBadge: 'Urgent Care',
+      selfCareBadge: 'Self Care',
+      lowWait: 'Low:',
+      moderateWait: 'Moderate:',
+      highWait: 'High:',
+      min: 'min',
+      commonSymptoms: 'Common Symptoms:',
+      recommendations: 'Recommendations:',
+      importantNumbers: 'Important Numbers',
+      emergency911: 'Emergency',
+      poisonControl: 'Poison Control',
+      disclaimer: 'This information is for reference only and should not replace professional medical judgment. Wait times are estimates and may vary. For life-threatening emergencies, call 911 immediately.',
+      important: 'Important:'
     },
     es: {
       title: 'ER Wait Times',
       waitTimes: 'Tiempos de Espera',
       careGuide: 'Guía de Atención',
       emergency: '911',
-      language: 'Español'
+      language: 'Español',
+      emergencyLabel: 'Emergencia:',
+      locationDenied: 'Acceso a ubicación denegado. Mostrando todos los hospitales.',
+      searchPlaceholder: 'Buscar hospitales por nombre o dirección...',
+      refresh: 'Actualizar',
+      lastUpdated: 'Última actualización:',
+      milesAway: 'millas de distancia',
+      estimatedWait: 'Tiempo estimado de espera:',
+      minutes: 'minutos',
+      updated: 'Actualizado:',
+      noHospitalsFound: 'No se encontraron hospitales que coincidan con su búsqueda.',
+      medicalCareGuide: 'Guía de Atención Médica',
+      careGuideSubtitle: 'Referencia rápida para situaciones médicas comunes y cuándo buscar atención',
+      emergencyAlert: '¿Emergencia que amenaza la vida?',
+      emergencyAlertText: 'Llame al 911 inmediatamente. No espere ni conduzca usted mismo al hospital.',
+      emergencyBadge: 'Emergencia - Llame al 911',
+      urgentBadge: 'Atención Urgente',
+      selfCareBadge: 'Autocuidado',
+      lowWait: 'Bajo:',
+      moderateWait: 'Moderado:',
+      highWait: 'Alto:',
+      min: 'min',
+      commonSymptoms: 'Síntomas Comunes:',
+      recommendations: 'Recomendaciones:',
+      importantNumbers: 'Números Importantes',
+      emergency911: 'Emergencia',
+      poisonControl: 'Control de Envenenamiento',
+      disclaimer: 'Esta información es solo para referencia y no debe reemplazar el juicio médico profesional. Los tiempos de espera son estimados y pueden variar. Para emergencias que amenazan la vida, llame al 911 inmediatamente.',
+      important: 'Importante:'
     }
   }
 
@@ -114,11 +170,11 @@ function App() {
   const getUrgencyBadge = (urgency: string) => {
     switch (urgency) {
       case 'emergency':
-        return <Badge className="bg-red-100 text-red-800 hover:bg-red-100">Emergency - Call 911</Badge>
+        return <Badge className="bg-red-100 text-red-800 hover:bg-red-100">{t[language].emergencyBadge}</Badge>
       case 'urgent':
-        return <Badge className="bg-yellow-100 text-yellow-800 hover:bg-yellow-100">Urgent Care</Badge>
+        return <Badge className="bg-yellow-100 text-yellow-800 hover:bg-yellow-100">{t[language].urgentBadge}</Badge>
       case 'non-urgent':
-        return <Badge className="bg-green-100 text-green-800 hover:bg-green-100">Self Care</Badge>
+        return <Badge className="bg-green-100 text-green-800 hover:bg-green-100">{t[language].selfCareBadge}</Badge>
       default:
         return null
     }
@@ -180,11 +236,11 @@ function App() {
 
   const getWaitTimeBadge = (waitTime: number) => {
     if (waitTime <= 20) {
-      return <Badge className="bg-green-100 text-green-800 hover:bg-green-100">Low: {waitTime} min</Badge>
+      return <Badge className="bg-green-100 text-green-800 hover:bg-green-100">{t[language].lowWait} {waitTime} {t[language].min}</Badge>
     } else if (waitTime <= 45) {
-      return <Badge className="bg-yellow-100 text-yellow-800 hover:bg-yellow-100">Moderate: {waitTime} min</Badge>
+      return <Badge className="bg-yellow-100 text-yellow-800 hover:bg-yellow-100">{t[language].moderateWait} {waitTime} {t[language].min}</Badge>
     } else {
-      return <Badge className="bg-red-100 text-red-800 hover:bg-red-100">High: {waitTime} min</Badge>
+      return <Badge className="bg-red-100 text-red-800 hover:bg-red-100">{t[language].highWait} {waitTime} {t[language].min}</Badge>
     }
   }
 
@@ -230,7 +286,7 @@ function App() {
               </Button>
 
               {/* Emergency Button */}
-              <span className="text-gray-600 text-sm">Emergencia:</span>
+              <span className="text-gray-600 text-sm">{t[language].emergencyLabel}</span>
               <Button
                 size="sm"
                 className="bg-red-600 hover:bg-red-700 text-white font-bold px-4"
@@ -273,7 +329,7 @@ function App() {
             {locationError && (
               <Alert>
                 <AlertTriangle className="h-4 w-4" />
-                <AlertDescription>{locationError}</AlertDescription>
+                <AlertDescription>{t[language].locationDenied}</AlertDescription>
               </Alert>
             )}
 
@@ -282,7 +338,7 @@ function App() {
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
                 <Input
-                  placeholder="Search hospitals by name or address..."
+                  placeholder={t[language].searchPlaceholder}
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="pl-10"
@@ -294,13 +350,13 @@ function App() {
                 className="flex items-center gap-2"
               >
                 <RefreshCw className={`h-4 w-4 ${isLoading ? 'animate-spin' : ''}`} />
-                Refresh
+                {t[language].refresh}
               </Button>
             </div>
 
             {/* Last Updated */}
             <div className="text-sm text-muted-foreground text-center">
-              Last updated: {lastRefresh.toLocaleTimeString()}
+              {t[language].lastUpdated} {lastRefresh.toLocaleTimeString()}
             </div>
 
             {/* Hospital Cards */}
@@ -321,14 +377,14 @@ function App() {
                     
                     {hospital.distance && (
                       <div className="text-sm text-muted-foreground">
-                        📍 {hospital.distance.toFixed(1)} miles away
+                        📍 {hospital.distance.toFixed(1)} {t[language].milesAway}
                       </div>
                     )}
 
                     <div className="flex items-center gap-2">
                       <Clock className="h-4 w-4 text-muted-foreground" />
                       <span className="text-sm font-medium">
-                        Estimated wait: {hospital.waitTime} minutes
+                        {t[language].estimatedWait} {hospital.waitTime} {t[language].minutes}
                       </span>
                     </div>
 
@@ -345,7 +401,7 @@ function App() {
                     </div>
                     
                     <div className="text-xs text-muted-foreground">
-                      Updated: {new Date(hospital.lastUpdated).toLocaleTimeString()}
+                      {t[language].updated} {new Date(hospital.lastUpdated).toLocaleTimeString()}
                     </div>
                   </CardContent>
                 </Card>
@@ -354,7 +410,7 @@ function App() {
 
             {filteredHospitals.length === 0 && !isLoading && (
               <div className="text-center py-12">
-                <p className="text-muted-foreground">No hospitals found matching your search.</p>
+                <p className="text-muted-foreground">{t[language].noHospitalsFound}</p>
               </div>
             )}
           </TabsContent>
@@ -362,9 +418,9 @@ function App() {
           {/* Care Guide Tab */}
           <TabsContent value="care-guide" className="space-y-6">
             <div className="text-center mb-6">
-              <h2 className="text-2xl font-semibold mb-2">Medical Care Guide</h2>
+              <h2 className="text-2xl font-semibold mb-2">{t[language].medicalCareGuide}</h2>
               <p className="text-muted-foreground">
-                Quick reference for common medical situations and when to seek care
+                {t[language].careGuideSubtitle}
               </p>
             </div>
 
@@ -372,7 +428,7 @@ function App() {
             <Alert className="border-red-200 bg-red-50">
               <Phone className="h-4 w-4 text-red-600" />
               <AlertDescription className="text-red-800">
-                <strong>Life-threatening emergency?</strong> Call 911 immediately. Don't wait or drive yourself to the hospital.
+                <strong>{t[language].emergencyAlert}</strong> {t[language].emergencyAlertText}
               </AlertDescription>
             </Alert>
 
@@ -400,7 +456,7 @@ function App() {
                     {getUrgencyBadge(item.urgency)}
 
                     <div>
-                      <h4 className="font-medium text-sm mb-2">Common Symptoms:</h4>
+                      <h4 className="font-medium text-sm mb-2">{t[language].commonSymptoms}</h4>
                       <ul className="text-sm text-muted-foreground space-y-1">
                         {item.symptoms.map((symptom, index) => (
                           <li key={index} className="flex items-center gap-2">
@@ -412,7 +468,7 @@ function App() {
                     </div>
 
                     <div>
-                      <h4 className="font-medium text-sm mb-2">Recommendations:</h4>
+                      <h4 className="font-medium text-sm mb-2">{t[language].recommendations}</h4>
                       <ul className="text-sm text-muted-foreground space-y-1">
                         {item.recommendations.map((rec, index) => (
                           <li key={index} className="flex items-center gap-2">
@@ -430,20 +486,20 @@ function App() {
             {/* Additional Resources */}
             <Card className="bg-muted">
               <CardHeader>
-                <CardTitle className="text-lg">Important Numbers</CardTitle>
+                <CardTitle className="text-lg">{t[language].importantNumbers}</CardTitle>
               </CardHeader>
               <CardContent className="grid gap-3 sm:grid-cols-2">
                 <div className="flex items-center gap-3">
                   <Phone className="h-5 w-5 text-red-600" />
                   <div>
-                    <div className="font-medium">Emergency</div>
+                    <div className="font-medium">{t[language].emergency911}</div>
                     <div className="text-lg font-bold text-red-600">911</div>
                   </div>
                 </div>
                 <div className="flex items-center gap-3">
                   <Phone className="h-5 w-5 text-blue-600" />
                   <div>
-                    <div className="font-medium">Poison Control</div>
+                    <div className="font-medium">{t[language].poisonControl}</div>
                     <div className="text-lg font-bold text-blue-600">1-800-222-1222</div>
                   </div>
                 </div>
@@ -457,8 +513,7 @@ function App() {
       <div className="container mx-auto px-4">
         <div className="mt-12 p-4 bg-muted rounded-lg">
           <p className="text-sm text-muted-foreground text-center">
-            <strong>Important:</strong> This information is for reference only and should not replace professional medical judgment. 
-            Wait times are estimates and may vary. For life-threatening emergencies, call 911 immediately.
+            <strong>{t[language].important}</strong> {t[language].disclaimer}
           </p>
         </div>
       </div>
