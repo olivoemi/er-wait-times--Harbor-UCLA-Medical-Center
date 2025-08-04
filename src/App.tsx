@@ -971,78 +971,371 @@ function App() {
                       </div>
                     </div>
 
-                    {/* Facility Information Section */}
-                    <div className="mb-6">
-                      <button 
-                        onClick={() => setFacilityInfoExpanded(!facilityInfoExpanded)}
-                        className="flex items-center justify-between w-full p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
-                      >
-                        <div className="flex items-center gap-3">
-                          <Building className="h-5 w-5 text-blue-600" />
-                          <span className="font-semibold text-gray-900">{t[language].facilityInformation}</span>
-                        </div>
-                        {facilityInfoExpanded ? <CaretUp className="h-4 w-4" /> : <CaretDown className="h-4 w-4" />}
-                      </button>
-                      
-                      {facilityInfoExpanded && (
-                        <div className="mt-4 p-4 border border-gray-200 rounded-lg">
-                          <div className="flex items-start gap-3 mb-4">
-                            <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                              <Plus className="h-4 w-4 text-blue-600" />
-                            </div>
-                            <div>
-                              <h4 className="font-semibold text-blue-900 mb-1">{t[language].level1TraumaCenter}</h4>
-                              <p className="text-sm text-gray-600">{t[language].traumaCenterDescription}</p>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-
-                    {/* Two Column Layout for Contact and Operating Hours */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-                      {/* Contact Information */}
+                    {/* Comprehensive Facility Information */}
+                    <div className="mb-8 space-y-6">
+                      {/* Facility Information Section */}
                       <div>
-                        <h4 className="font-semibold text-gray-900 mb-4">{t[language].contactInformation}</h4>
-                        <div className="space-y-4">
-                          <div className="flex items-start gap-3">
-                            <MapPin className="h-4 w-4 text-gray-500 mt-1 flex-shrink-0" />
-                            <div>
-                              <div className="font-medium text-gray-900">1000 W Carson St, Torrance, CA 90509</div>
-                              <div className="text-sm text-gray-600">Torrance, CA 90509</div>
+                        <button 
+                          onClick={() => setFacilityInfoExpanded(!facilityInfoExpanded)}
+                          className="flex items-center justify-between w-full p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+                        >
+                          <div className="flex items-center gap-3">
+                            <Building className="h-5 w-5 text-blue-600" />
+                            <span className="font-semibold text-gray-900">{t[language].facilityInformation}</span>
+                          </div>
+                          {facilityInfoExpanded ? <CaretUp className="h-4 w-4" /> : <CaretDown className="h-4 w-4" />}
+                        </button>
+                        
+                        {facilityInfoExpanded && (
+                          <div className="mt-4 p-6 border border-gray-200 rounded-lg bg-white">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                              <div>
+                                <h4 className="font-semibold text-gray-900 mb-3">{t[language].level1TraumaCenter}</h4>
+                                <p className="text-sm text-gray-600 mb-4">{t[language].traumaCenterDescription}</p>
+                                
+                                <div className="space-y-3">
+                                  <div className="flex items-center gap-2">
+                                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                                    <span className="text-sm text-gray-700">
+                                      {language === 'en' ? '298 licensed beds' : '298 camas con licencia'}
+                                    </span>
+                                  </div>
+                                  <div className="flex items-center gap-2">
+                                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                                    <span className="text-sm text-gray-700">
+                                      {language === 'en' ? 'Level 1 Trauma Center designation' : 'Designación de Centro de Trauma Nivel 1'}
+                                    </span>
+                                  </div>
+                                  <div className="flex items-center gap-2">
+                                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                                    <span className="text-sm text-gray-700">
+                                      {language === 'en' ? 'UCLA teaching hospital' : 'Hospital de enseñanza de UCLA'}
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+                              
+                              <div>
+                                <h4 className="font-semibold text-gray-900 mb-3">
+                                  {language === 'en' ? 'Accreditations' : 'Acreditaciones'}
+                                </h4>
+                                <div className="space-y-3">
+                                  <div className="flex items-center gap-2">
+                                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                                    <span className="text-sm text-gray-700">
+                                      {language === 'en' ? 'Joint Commission Accredited' : 'Acreditado por Joint Commission'}
+                                    </span>
+                                  </div>
+                                  <div className="flex items-center gap-2">
+                                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                                    <span className="text-sm text-gray-700">
+                                      {language === 'en' ? 'Magnet Recognition Program' : 'Programa de Reconocimiento Magnet'}
+                                    </span>
+                                  </div>
+                                  <div className="flex items-center gap-2">
+                                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                                    <span className="text-sm text-gray-700">
+                                      {language === 'en' ? 'ACS Verified Level 1 Trauma Center' : 'Centro de Trauma Nivel 1 Verificado por ACS'}
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
                           </div>
-                          <div className="flex items-start gap-3">
-                            <Phone className="h-4 w-4 text-gray-500 mt-1 flex-shrink-0" />
-                            <div>
-                              <div className="font-medium text-gray-900">(310) 222-2345</div>
-                              <div className="text-sm text-gray-600">{t[language].mainLine}</div>
+                        )}
+                      </div>
+
+                      {/* Contact Information & Operating Hours */}
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {/* Contact Information */}
+                        <div className="bg-white border border-gray-200 rounded-lg p-6">
+                          <h4 className="font-semibold text-gray-900 mb-4">{t[language].contactInformation}</h4>
+                          <div className="space-y-4">
+                            <div className="flex items-start gap-3">
+                              <MapPin className="h-4 w-4 text-gray-500 mt-1 flex-shrink-0" />
+                              <div>
+                                <div className="font-medium text-gray-900">1000 W Carson St</div>
+                                <div className="text-sm text-gray-600">Torrance, CA 90509</div>
+                              </div>
+                            </div>
+                            <div className="flex items-start gap-3">
+                              <Phone className="h-4 w-4 text-gray-500 mt-1 flex-shrink-0" />
+                              <div>
+                                <div className="font-medium text-gray-900">(310) 222-2345</div>
+                                <div className="text-sm text-gray-600">{t[language].mainLine}</div>
+                              </div>
+                            </div>
+                            <div className="flex items-start gap-3">
+                              <Globe className="h-4 w-4 text-gray-500 mt-1 flex-shrink-0" />
+                              <div>
+                                <a 
+                                  href="https://dhs.lacounty.gov/harbor-ucla-medical-center/" 
+                                  target="_blank" 
+                                  rel="noopener noreferrer"
+                                  className="font-medium text-blue-600 hover:text-blue-800 text-sm"
+                                >
+                                  dhs.lacounty.gov/harbor-ucla-medical-center/
+                                </a>
+                                <div className="text-sm text-gray-600">{t[language].officialWebsite}</div>
+                              </div>
                             </div>
                           </div>
-                          <div className="flex items-start gap-3">
-                            <Globe className="h-4 w-4 text-gray-500 mt-1 flex-shrink-0" />
-                            <div>
-                              <a 
-                                href="https://dhs.lacounty.gov/harbor-ucla-medical-center/" 
-                                target="_blank" 
-                                rel="noopener noreferrer"
-                                className="font-medium text-blue-600 hover:text-blue-800"
-                              >
-                                dhs.lacounty.gov/harbor-ucla-medical-center/
-                              </a>
-                              <div className="text-sm text-gray-600">{t[language].officialWebsite}</div>
+                        </div>
+
+                        {/* Operating Hours */}
+                        <div className="bg-white border border-gray-200 rounded-lg p-6">
+                          <h4 className="font-semibold text-gray-900 mb-4">{t[language].operatingHours}</h4>
+                          <div className="space-y-3">
+                            <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                              <div className="flex items-center gap-2 mb-2">
+                                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                                <span className="font-medium text-green-900">{t[language].open24_7}</span>
+                              </div>
+                              <div className="text-sm text-green-800">
+                                {language === 'en' ? 'Emergency Department never closes' : 'Departamento de Emergencias nunca cierra'}
+                              </div>
+                            </div>
+                            <div className="text-sm text-gray-600">
+                              <p className="mb-2">
+                                {language === 'en' ? 'Other Departments:' : 'Otros Departamentos:'}
+                              </p>
+                              <div className="space-y-1">
+                                <div>• {language === 'en' ? 'Outpatient Services: 6:00 AM - 6:00 PM' : 'Servicios Ambulatorios: 6:00 AM - 6:00 PM'}</div>
+                                <div>• {language === 'en' ? 'Visitor Hours: 8:00 AM - 8:00 PM' : 'Horario de Visitas: 8:00 AM - 8:00 PM'}</div>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
 
-                      {/* Operating Hours */}
-                      <div>
-                        <h4 className="font-semibold text-gray-900 mb-4">{t[language].operatingHours}</h4>
-                        <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                          <div className="flex items-center gap-2">
-                            <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                            <span className="font-medium text-green-900">{t[language].open24_7}</span>
+                      {/* Amenities and Services */}
+                      <div className="bg-white border border-gray-200 rounded-lg p-6">
+                        <h4 className="font-semibold text-gray-900 mb-4">
+                          {language === 'en' ? 'Amenities & Services' : 'Servicios y Comodidades'}
+                        </h4>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                          <div>
+                            <h5 className="font-medium text-gray-800 mb-3">
+                              {language === 'en' ? 'Patient Amenities' : 'Comodidades para Pacientes'}
+                            </h5>
+                            <div className="space-y-2">
+                              <div className="flex items-center gap-2">
+                                <div className="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
+                                <span className="text-sm text-gray-600">
+                                  {language === 'en' ? 'Free WiFi' : 'WiFi Gratuito'}
+                                </span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <div className="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
+                                <span className="text-sm text-gray-600">
+                                  {language === 'en' ? 'Cafeteria' : 'Cafetería'}
+                                </span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <div className="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
+                                <span className="text-sm text-gray-600">
+                                  {language === 'en' ? 'Gift Shop' : 'Tienda de Regalos'}
+                                </span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <div className="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
+                                <span className="text-sm text-gray-600">
+                                  {language === 'en' ? 'Parking Available' : 'Estacionamiento Disponible'}
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <div>
+                            <h5 className="font-medium text-gray-800 mb-3">
+                              {language === 'en' ? 'Support Services' : 'Servicios de Apoyo'}
+                            </h5>
+                            <div className="space-y-2">
+                              <div className="flex items-center gap-2">
+                                <div className="w-1.5 h-1.5 bg-purple-500 rounded-full"></div>
+                                <span className="text-sm text-gray-600">
+                                  {language === 'en' ? 'Interpreter Services' : 'Servicios de Interpretación'}
+                                </span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <div className="w-1.5 h-1.5 bg-purple-500 rounded-full"></div>
+                                <span className="text-sm text-gray-600">
+                                  {language === 'en' ? 'Social Services' : 'Servicios Sociales'}
+                                </span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <div className="w-1.5 h-1.5 bg-purple-500 rounded-full"></div>
+                                <span className="text-sm text-gray-600">
+                                  {language === 'en' ? 'Chaplain Services' : 'Servicios de Capellán'}
+                                </span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <div className="w-1.5 h-1.5 bg-purple-500 rounded-full"></div>
+                                <span className="text-sm text-gray-600">
+                                  {language === 'en' ? 'Patient Relations' : 'Relaciones con Pacientes'}
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <div>
+                            <h5 className="font-medium text-gray-800 mb-3">
+                              {language === 'en' ? 'Accessibility' : 'Accesibilidad'}
+                            </h5>
+                            <div className="space-y-2">
+                              <div className="flex items-center gap-2">
+                                <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                                <span className="text-sm text-gray-600">
+                                  {language === 'en' ? 'ADA Compliant' : 'Cumple con ADA'}
+                                </span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                                <span className="text-sm text-gray-600">
+                                  {language === 'en' ? 'Wheelchair Access' : 'Acceso para Sillas de Ruedas'}
+                                </span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                                <span className="text-sm text-gray-600">
+                                  {language === 'en' ? 'Accessible Restrooms' : 'Baños Accesibles'}
+                                </span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                                <span className="text-sm text-gray-600">
+                                  {language === 'en' ? 'Hearing Assistance' : 'Asistencia Auditiva'}
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Emergency Contact & Insurance Info */}
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {/* Emergency Contact */}
+                        <div className="bg-red-50 border border-red-200 rounded-lg p-6">
+                          <h4 className="font-semibold text-red-900 mb-4">
+                            {language === 'en' ? 'Emergency Contact' : 'Contacto de Emergencia'}
+                          </h4>
+                          <div className="space-y-3">
+                            <div className="flex items-center gap-3">
+                              <Phone className="h-5 w-5 text-red-600" />
+                              <div>
+                                <div className="font-bold text-red-900 text-lg">911</div>
+                                <div className="text-sm text-red-700">
+                                  {language === 'en' ? 'Life-threatening emergencies' : 'Emergencias que amenazan la vida'}
+                                </div>
+                              </div>
+                            </div>
+                            <div className="flex items-center gap-3">
+                              <Phone className="h-5 w-5 text-red-600" />
+                              <div>
+                                <div className="font-medium text-red-900">(310) 222-2345</div>
+                                <div className="text-sm text-red-700">
+                                  {language === 'en' ? 'Hospital main line' : 'Línea principal del hospital'}
+                                </div>
+                              </div>
+                            </div>
+                            <div className="bg-red-100 border border-red-300 rounded p-3 mt-4">
+                              <p className="text-xs text-red-800">
+                                {language === 'en' 
+                                  ? 'For life-threatening emergencies, call 911 immediately. Do not drive yourself to the hospital.'
+                                  : 'Para emergencias que amenazan la vida, llame al 911 inmediatamente. No conduzca usted mismo al hospital.'
+                                }
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Insurance Information */}
+                        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                          <h4 className="font-semibold text-blue-900 mb-4">
+                            {language === 'en' ? 'Insurance Information' : 'Información de Seguro'}
+                          </h4>
+                          <div className="space-y-3">
+                            <div>
+                              <h5 className="font-medium text-blue-800 mb-2">
+                                {language === 'en' ? 'Accepted Insurance:' : 'Seguros Aceptados:'}
+                              </h5>
+                              <div className="space-y-1 text-sm text-blue-700">
+                                <div>• Medi-Cal</div>
+                                <div>• Medicare</div>
+                                <div>• Blue Cross Blue Shield</div>
+                                <div>• Aetna</div>
+                                <div>• United Healthcare</div>
+                                <div>• {language === 'en' ? 'Most major insurance plans' : 'La mayoría de planes de seguro principales'}</div>
+                              </div>
+                            </div>
+                            <div className="bg-blue-100 border border-blue-300 rounded p-3 mt-4">
+                              <p className="text-xs text-blue-800">
+                                {language === 'en' 
+                                  ? 'Emergency services are provided regardless of insurance status or ability to pay.'
+                                  : 'Los servicios de emergencia se brindan independientemente del estado del seguro o la capacidad de pago.'
+                                }
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Patient Resources */}
+                      <div className="bg-white border border-gray-200 rounded-lg p-6">
+                        <h4 className="font-semibold text-gray-900 mb-4">
+                          {language === 'en' ? 'Patient Resources' : 'Recursos para Pacientes'}
+                        </h4>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                          <div>
+                            <h5 className="font-medium text-gray-800 mb-3">
+                              {language === 'en' ? 'Before Your Visit' : 'Antes de su Visita'}
+                            </h5>
+                            <div className="space-y-2 text-sm text-gray-600">
+                              <div>• {language === 'en' ? 'Bring valid ID and insurance card' : 'Traiga ID válida y tarjeta de seguro'}</div>
+                              <div>• {language === 'en' ? 'List of current medications' : 'Lista de medicamentos actuales'}</div>
+                              <div>• {language === 'en' ? 'Emergency contact information' : 'Información de contacto de emergencia'}</div>
+                              <div>• {language === 'en' ? 'Medical history summary' : 'Resumen de historial médico'}</div>
+                            </div>
+                          </div>
+                          
+                          <div>
+                            <h5 className="font-medium text-gray-800 mb-3">
+                              {language === 'en' ? 'During Your Visit' : 'Durante su Visita'}
+                            </h5>
+                            <div className="space-y-2 text-sm text-gray-600">
+                              <div>• {language === 'en' ? 'Check in at registration desk' : 'Registrarse en el mostrador de registro'}</div>
+                              <div>• {language === 'en' ? 'Triage assessment will prioritize care' : 'La evaluación de triaje priorizará la atención'}</div>
+                              <div>• {language === 'en' ? 'Family member can accompany you' : 'Un familiar puede acompañarlo'}</div>
+                              <div>• {language === 'en' ? 'Ask questions about your treatment' : 'Haga preguntas sobre su tratamiento'}</div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        <div className="mt-6 pt-4 border-t border-gray-200">
+                          <h5 className="font-medium text-gray-800 mb-3">
+                            {language === 'en' ? 'Additional Resources' : 'Recursos Adicionales'}
+                          </h5>
+                          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div className="bg-gray-50 rounded-lg p-3">
+                              <div className="font-medium text-gray-800 text-sm mb-1">
+                                {language === 'en' ? 'Patient Portal' : 'Portal del Paciente'}
+                              </div>
+                              <a href="#" className="text-xs text-blue-600 hover:text-blue-800">
+                                mylaharbor.org
+                              </a>
+                            </div>
+                            <div className="bg-gray-50 rounded-lg p-3">
+                              <div className="font-medium text-gray-800 text-sm mb-1">
+                                {language === 'en' ? 'Financial Assistance' : 'Asistencia Financiera'}
+                              </div>
+                              <div className="text-xs text-gray-600">(310) 222-1234</div>
+                            </div>
+                            <div className="bg-gray-50 rounded-lg p-3">
+                              <div className="font-medium text-gray-800 text-sm mb-1">
+                                {language === 'en' ? 'Medical Records' : 'Registros Médicos'}
+                              </div>
+                              <div className="text-xs text-gray-600">(310) 222-5678</div>
+                            </div>
                           </div>
                         </div>
                       </div>
