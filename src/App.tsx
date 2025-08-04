@@ -1481,6 +1481,170 @@ function App() {
                         </div>
                       </div>
 
+                      {/* Wait Times Graph Section */}
+                      <div className="mb-8">
+                        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+                          <div className="flex items-center justify-between mb-6">
+                            <div className="flex items-center gap-3">
+                              <div className="bg-blue-100 p-3 rounded-lg">
+                                <Clock className="h-6 w-6 text-blue-600" />
+                              </div>
+                              <h4 className="text-xl font-bold text-gray-900">
+                                {language === 'en' ? 'Wait Times by Acuity Level Over Time' : 'Tiempos de Espera por Nivel de Acuidad a lo Largo del Tiempo'}
+                              </h4>
+                            </div>
+                            <div className="flex gap-2">
+                              <Button variant="default" size="sm" className="bg-blue-600 hover:bg-blue-700 text-white">
+                                {language === 'en' ? 'Today' : 'Hoy'}
+                              </Button>
+                              <Button variant="outline" size="sm">
+                                {language === 'en' ? 'Yesterday' : 'Ayer'}
+                              </Button>
+                              <Button variant="outline" size="sm">
+                                {language === 'en' ? 'Week' : 'Semana'}
+                              </Button>
+                            </div>
+                          </div>
+
+                          {/* Graph Container */}
+                          <div className="relative bg-gray-50 rounded-lg p-6 mb-6" style={{ height: '300px' }}>
+                            {/* Y-axis label */}
+                            <div className="absolute left-4 top-1/2 transform -rotate-90 text-sm text-gray-600 font-medium origin-center">
+                              {language === 'en' ? 'Wait Time (min)' : 'Tiempo de Espera (min)'}
+                            </div>
+                            
+                            {/* Graph area */}
+                            <div className="ml-12 mr-4 h-full relative">
+                              {/* Y-axis grid lines and labels */}
+                              <div className="absolute left-0 top-0 h-full border-l border-gray-300">
+                                {[280, 210, 140, 70, 0].map((value, index) => (
+                                  <div key={value} className="absolute left-0 w-full border-t border-gray-200" style={{ top: `${index * 25}%` }}>
+                                    <span className="absolute -left-8 -mt-2 text-xs text-gray-500">{value}</span>
+                                  </div>
+                                ))}
+                              </div>
+
+                              {/* Current time indicator */}
+                              <div className="absolute right-1/4 top-0 h-full">
+                                <div className="w-px h-full bg-blue-600 opacity-75"></div>
+                                <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 text-xs text-blue-600 font-medium whitespace-nowrap">
+                                  {language === 'en' ? 'Current Time' : 'Tiempo Actual'}
+                                </div>
+                              </div>
+
+                              {/* Time axis labels */}
+                              <div className="absolute -bottom-8 left-0 w-full flex justify-between text-xs text-gray-500">
+                                <span>12 AM</span>
+                                <span>3 AM</span>
+                                <span>6 AM</span>
+                                <span>9 AM</span>
+                                <span>12 PM</span>
+                                <span>3 PM</span>
+                                <span>6 PM</span>
+                                <span>9 PM</span>
+                              </div>
+
+                              {/* Graph lines - SVG for better line drawing */}
+                              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                                {/* Level 1 - Red line (lowest, near bottom) */}
+                                <polyline
+                                  fill="none"
+                                  stroke="#EF4444"
+                                  strokeWidth="0.5"
+                                  points="0,90 12,88 25,85 37,82 50,80 62,78 75,82 87,85 100,88"
+                                />
+                                {/* Level 2 - Orange line */}
+                                <polyline
+                                  fill="none"
+                                  stroke="#F97316"
+                                  strokeWidth="0.5"
+                                  points="0,85 12,83 25,80 37,75 50,70 62,65 75,68 87,72 100,75"
+                                />
+                                {/* Level 3 - Yellow line */}
+                                <polyline
+                                  fill="none"
+                                  stroke="#EAB308"
+                                  strokeWidth="0.5"
+                                  points="0,70 12,65 25,55 37,45 50,40 62,35 75,30 87,25 100,20"
+                                />
+                                {/* Level 4 - Blue line */}
+                                <polyline
+                                  fill="none"
+                                  stroke="#3B82F6"
+                                  strokeWidth="0.5"
+                                  points="0,45 12,40 25,35 37,25 50,15 62,10 75,8 87,12 100,18"
+                                />
+                                {/* Level 5 - Green line (highest, near top) */}
+                                <polyline
+                                  fill="none"
+                                  stroke="#10B981"
+                                  strokeWidth="0.5"
+                                  points="0,50 12,45 25,40 37,30 50,20 62,15 75,12 87,15 100,22"
+                                />
+                              </svg>
+                            </div>
+                          </div>
+
+                          {/* Legend */}
+                          <div className="flex justify-center gap-6 mb-6">
+                            <div className="flex items-center gap-2">
+                              <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                              <span className="text-sm text-gray-700">Level 1</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
+                              <span className="text-sm text-gray-700">Level 2</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                              <span className="text-sm text-gray-700">Level 3</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                              <span className="text-sm text-gray-700">Level 4</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                              <span className="text-sm text-gray-700">Level 5</span>
+                            </div>
+                          </div>
+
+                          {/* Peak times summary */}
+                          <div className="grid grid-cols-5 gap-4">
+                            <div className="bg-red-50 border border-red-200 rounded-lg p-3 text-center">
+                              <div className="font-semibold text-red-900 text-sm">L1</div>
+                              <div className="text-xs text-red-700 mt-1">
+                                {language === 'en' ? 'Peak: 70 min' : 'Pico: 70 min'}
+                              </div>
+                            </div>
+                            <div className="bg-orange-50 border border-orange-200 rounded-lg p-3 text-center">
+                              <div className="font-semibold text-orange-900 text-sm">L2</div>
+                              <div className="text-xs text-orange-700 mt-1">
+                                {language === 'en' ? 'Peak: 120 min' : 'Pico: 120 min'}
+                              </div>
+                            </div>
+                            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 text-center">
+                              <div className="font-semibold text-yellow-900 text-sm">L3</div>
+                              <div className="text-xs text-yellow-700 mt-1">
+                                {language === 'en' ? 'Peak: 220 min' : 'Pico: 220 min'}
+                              </div>
+                            </div>
+                            <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 text-center">
+                              <div className="font-semibold text-blue-900 text-sm">L4</div>
+                              <div className="text-xs text-blue-700 mt-1">
+                                {language === 'en' ? 'Peak: 270 min' : 'Pico: 270 min'}
+                              </div>
+                            </div>
+                            <div className="bg-green-50 border border-green-200 rounded-lg p-3 text-center">
+                              <div className="font-semibold text-green-900 text-sm">L5</div>
+                              <div className="text-xs text-green-700 mt-1">
+                                {language === 'en' ? 'Peak: 190 min' : 'Pico: 190 min'}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
                       {/* Wait Times by Condition Severity - Detailed */}
                       <div className="mb-8">
                         <div className="flex items-center gap-3 mb-6">
