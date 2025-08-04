@@ -2036,7 +2036,7 @@ function App() {
                               </h6>
                               <ul className="space-y-1 text-blue-800">
                                 <li>• {t[language].minorCuts}</li>
-                                <li>������� {t[language].mildHeadache}</li>
+                                <li>��������� {t[language].mildHeadache}</li>
                                 <li>• {t[language].coldFluSymptoms}</li>
                               </ul>
                             </div>
@@ -3471,12 +3471,10 @@ function App() {
                             {language === 'en' ? 'Availability' : 'Disponibilidad'}
                           </span>
                         </div>
-                        <div className="text-lg font-bold text-gray-900">
-                          {language === 'en' ? 'Mon-Fri business hours' : 'Horario comercial Lun-Vie'}
                         </div>
                       </div>
-                    </div>
-
+                        </div>
+                      </div>
                     {/* Best For Section */}
                     <div className="mb-6">
                       <div className="flex items-center gap-2 mb-4">
@@ -3491,47 +3489,44 @@ function App() {
                             <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
                             {language === 'en' ? 'Annual check-ups' : 'Exámenes anuales'}
                           </li>
-                          <li className="flex items-center gap-2">
+                            {language === 'en' ? 'Annual check-ups' : 'Exámenes anuales'}
                             <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                          <li className="flex items-center gap-2">
+                          </li>
                             {language === 'en' ? 'Preventive care' : 'Atención preventiva'}
-                          </li>
-                          <li className="flex items-center gap-2">
                             <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                            {language === 'en' ? 'Medication management' : 'Manejo de medicamentos'}
-                          </li>
-                        </ul>
-                        <ul className="space-y-2 text-sm text-gray-700">
                           <li className="flex items-center gap-2">
+                          </li>
+                            {language === 'en' ? 'Medication management' : 'Manejo de medicamentos'}
+                        <ul className="space-y-2 text-sm text-gray-700">
+                        </ul>
                             <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
                             {language === 'en' ? 'Chronic condition management' : 'Manejo de condiciones crónicas'}
                           </li>
-                          <li className="flex items-center gap-2">
+                            {language === 'en' ? 'Chronic condition management' : 'Manejo de condiciones crónicas'}
                             <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                          <li className="flex items-center gap-2">
+                          </li>
                             {language === 'en' ? 'Routine screenings' : 'Exámenes de rutina'}
-                          </li>
-                          <li className="flex items-center gap-2">
                             <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                            {language === 'en' ? 'Health maintenance' : 'Mantenimiento de salud'}
+                          <li className="flex items-center gap-2">
                           </li>
-                        </ul>
+                            {language === 'en' ? 'Health maintenance' : 'Mantenimiento de salud'}
                       </div>
-                    </div>
+                        </ul>
 
                     {/* Available Services */}
                     <div className="mb-6">
-                      <div className="flex items-center gap-2 mb-4">
-                        <h5 className="font-semibold text-gray-900">
                           {language === 'en' ? 'Available Services' : 'Servicios Disponibles'}
+                    <div className="mb-6">
+                      <div className="flex items-center gap-2 mb-4">
+                      <div className="space-y-4">
+                        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
                         </h5>
                       </div>
-                      <div className="space-y-4">
+                              <h6 className="font-semibold text-blue-900 mb-1">
                         {/* Same-Day Appointments */}
                         <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                          <div className="flex items-center justify-between">
-                            <div>
-                              <h6 className="font-semibold text-blue-900 mb-1">
-                                {language === 'en' ? 'Same-Day Appointments' : 'Citas el Mismo Día'}
-                              </h6>
                               <p className="text-sm text-blue-700 mb-2">
                                 {language === 'en' ? 'Available for urgent but non-emergency concerns' : 'Disponible para problemas urgentes pero no de emergencia'}
                               </p>
@@ -3607,15 +3602,20 @@ function App() {
 
                     {/* Action Buttons */}
                     <div className="flex gap-3">
-                      <Button className="bg-blue-600 hover:bg-blue-700 text-white flex-1">
                         <FirstAid className="h-4 w-4 mr-2" />
-                        {language === 'en' ? 'Access Patient Portal' : 'Acceder al Portal del Paciente'}
-                      </Button>
+                    </div>anguage === 'en' ? 'Access Patient Portal' : 'Acceder al Portal del Paciente'}
+
                       <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50">
                         <Phone className="h-4 w-4 mr-2" />
                         {language === 'en' ? 'Call for Info' : 'Llamar para Información'}
                       </Button>
                     </div>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {careGuideSection === 'prepare' && (
                   </div>
                 </div>
               </div>
@@ -3645,7 +3645,7 @@ function App() {
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <div className="space-y-4">
+                            </h5>
                         <div className="flex items-start gap-3 p-3 bg-blue-50 rounded-lg">
                           <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
                           <div>
@@ -3702,12 +3702,6 @@ function App() {
                     </CardHeader>
                     <CardContent>
                       <div className="space-y-4">
-                        <div className="flex items-start gap-3 p-3 bg-green-50 rounded-lg">
-                          <div className="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
-                          <div>
-                            <h5 className="font-semibold text-green-900">
-                              {language === 'en' ? 'Triage Assessment' : 'Evaluación de Triaje'}
-                            </h5>
                             <p className="text-sm text-green-800">
                               {language === 'en' 
                                 ? 'Initial evaluation to determine priority level'
