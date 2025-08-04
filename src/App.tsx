@@ -6,7 +6,7 @@ import { Badge } from '@/components/ui/badge'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { MapPin, Clock, RefreshCw, AlertTriangle, Heart, FirstAid, Phone, Thermometer, Pill, Eye, Plus, Globe, Info, X, Building, CaretDown, CaretUp, MagnifyingGlass, CheckCircle } from '@phosphor-icons/react'
+import { MapPin, Clock, RefreshCw, AlertTriangle, Heart, FirstAid, Phone, Thermometer, Pill, Eye, Plus, Globe, Info, X, Building, CaretDown, CaretUp, MagnifyingGlass, CheckCircle, Brain, Lungs, Drop, Bandage, Siren, Pulse, Tooth, Activity } from '@phosphor-icons/react'
 import qrCodeImage from '@/assets/images/qr-code.png'
 
 interface Hospital {
@@ -346,6 +346,71 @@ function App() {
     { value: 'uninsured', label: 'Uninsured/Self-Pay' },
     { value: 'covered-ca', label: 'Covered California' }
   ]
+
+  // Function to get icon for symptom
+  const getSymptomIcon = (symptomId: string, category: string) => {
+    // Specific icon mappings for certain symptoms
+    const specificIcons: { [key: string]: JSX.Element } = {
+      'thoughts-harm': <Brain className="h-4 w-4 text-purple-600" />,
+      'severe-chest-pain': <Heart className="h-4 w-4 text-red-600" />,
+      'chest-pain-moderate': <Heart className="h-4 w-4 text-red-600" />,
+      'cardiac-arrest': <Pulse className="h-4 w-4 text-red-600" />,
+      'severe-breathing': <Lungs className="h-4 w-4 text-blue-600" />,
+      'breathing-difficulty': <Lungs className="h-4 w-4 text-blue-600" />,
+      'cold-flu-symptoms': <Lungs className="h-4 w-4 text-blue-600" />,
+      'severe-bleeding': <Drop className="h-4 w-4 text-red-600" />,
+      'moderate-bleeding': <Drop className="h-4 w-4 text-red-600" />,
+      'vomiting-blood': <Drop className="h-4 w-4 text-red-600" />,
+      'stroke-signs': <Brain className="h-4 w-4 text-purple-600" />,
+      'active-seizure': <Brain className="h-4 w-4 text-purple-600" />,
+      'loss-consciousness': <Brain className="h-4 w-4 text-purple-600" />,
+      'severe-headache': <Brain className="h-4 w-4 text-purple-600" />,
+      'mild-headache': <Brain className="h-4 w-4 text-purple-600" />,
+      'head-injury': <Brain className="h-4 w-4 text-purple-600" />,
+      'minor-cuts': <Bandage className="h-4 w-4 text-orange-600" />,
+      'minor-fractures': <Bandage className="h-4 w-4 text-orange-600" />,
+      'burns-minor': <Bandage className="h-4 w-4 text-orange-600" />,
+      'animal-bite': <Bandage className="h-4 w-4 text-orange-600" />,
+      'eye-injury': <Eye className="h-4 w-4 text-blue-600" />,
+      'minor-eye-irritation': <Eye className="h-4 w-4 text-blue-600" />,
+      'high-fever-confusion': <Thermometer className="h-4 w-4 text-orange-600" />,
+      'persistent-fever': <Thermometer className="h-4 w-4 text-orange-600" />,
+      'prescription-refills': <Pill className="h-4 w-4 text-green-600" />,
+      'minor-dental': <Tooth className="h-4 w-4 text-blue-600" />,
+      'blood-pressure-check': <Activity className="h-4 w-4 text-blue-600" />
+    }
+
+    if (specificIcons[symptomId]) {
+      return specificIcons[symptomId]
+    }
+
+    // Category-based fallback icons
+    switch (category) {
+      case 'cardiac':
+        return <Heart className="h-4 w-4 text-red-600" />
+      case 'respiratory':
+        return <Lungs className="h-4 w-4 text-blue-600" />
+      case 'neurological':
+      case 'mental-health':
+        return <Brain className="h-4 w-4 text-purple-600" />
+      case 'trauma':
+        return <Bandage className="h-4 w-4 text-orange-600" />
+      case 'gastrointestinal':
+        return <Activity className="h-4 w-4 text-green-600" />
+      case 'general':
+        return <Thermometer className="h-4 w-4 text-orange-600" />
+      case 'allergic':
+        return <AlertTriangle className="h-4 w-4 text-yellow-600" />
+      case 'musculoskeletal':
+        return <Bandage className="h-4 w-4 text-orange-600" />
+      case 'dermatological':
+        return <Activity className="h-4 w-4 text-green-600" />
+      case 'dental':
+        return <Tooth className="h-4 w-4 text-blue-600" />
+      default:
+        return <Activity className="h-4 w-4 text-gray-600" />
+    }
+  }
 
   // Symptom categories and symptoms
   const symptomCategories: SymptomCategory[] = [
@@ -2386,25 +2451,7 @@ function App() {
                               >
                                 <div className="flex items-start justify-between mb-3">
                                   <div className="flex items-center gap-3">
-                                    {isThoughtsOfHarm ? (
-                                      <AlertTriangle className="h-5 w-5 text-red-600 flex-shrink-0" />
-                                    ) : symptom.category === 'cardiac' ? (
-                                      <Heart className="h-5 w-5 text-red-600 flex-shrink-0" />
-                                    ) : symptom.category === 'respiratory' ? (
-                                      <div className="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                                        <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
-                                      </div>
-                                    ) : symptom.category === 'neurological' ? (
-                                      <div className="w-5 h-5 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
-                                        <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
-                                      </div>
-                                    ) : symptom.category === 'trauma' ? (
-                                      <FirstAid className="h-5 w-5 text-red-600 flex-shrink-0" />
-                                    ) : (
-                                      <div className="w-5 h-5 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
-                                        <div className="w-2 h-2 bg-gray-600 rounded-full"></div>
-                                      </div>
-                                    )}
+                                    {getSymptomIcon(symptom.id, symptom.category)}
                                     {isSelected && (
                                       <CheckCircle className="h-5 w-5 text-red-600" />
                                     )}
