@@ -3620,7 +3620,7 @@ function App() {
                 </div>
               </div>
             )}
-              <div className="space-y-6">
+
             {careGuideSection === 'prepare' && (
               <div className="space-y-6">
                 <div className="text-center mb-8">
