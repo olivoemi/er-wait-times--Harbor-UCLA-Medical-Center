@@ -597,7 +597,12 @@ function App() {
                 {/* Right side - QR Code and Information */}
                 <div className="bg-gray-50 rounded-lg p-6 flex flex-col items-center justify-center space-y-4">
                   {/* QR Code */}
-                  <div className="bg-white p-4 rounded-lg shadow-sm">
+                  <a 
+                    href="https://youtu.be/86z2k4zEOlw" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+                  >
                     <svg width="120" height="120" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                       {/* Top left finder pattern */}
                       <rect x="0" y="0" width="7" height="7" fill="black"/>
@@ -824,7 +829,7 @@ function App() {
                       <rect x="19" y="20" width="1" height="1" fill="black"/>
                       <rect x="20" y="20" width="1" height="1" fill="white"/>
                     </svg>
-                  </div>
+                  </a>
                   
                   {/* Explanatory text */}
                   <p className="text-sm text-gray-600 text-center max-w-48">
