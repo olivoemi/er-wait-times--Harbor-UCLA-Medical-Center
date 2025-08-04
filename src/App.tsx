@@ -438,14 +438,146 @@ function App() {
 
           {/* Wait Times Tab */}
           <TabsContent value="wait-times" className="space-y-6">
-            {/* Header with department count */}
-            <div className="flex items-center gap-2 text-gray-600">
-              <Building className="h-4 w-4" />
-              <span className="text-sm">{t[language].oneEmergencyDepartment}</span>
+            {/* Emergency Departments Header Section */}
+            <div className="space-y-6">
+              {/* Title and Status Row */}
+              <div className="flex items-center justify-between">
+                <div>
+                  <h2 className="text-3xl font-bold text-gray-900 mb-2">{t[language].emergencyDepartments}</h2>
+                  <p className="text-gray-600">{t[language].realTimeWaitTimes}</p>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                    <span className="text-sm text-gray-600">{t[language].live}</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-500">
+                    <Clock className="h-4 w-4" />
+                    <span className="text-sm">{t[language].timeAgo}</span>
+                  </div>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={refreshData}
+                    disabled={isLoading}
+                    className="flex items-center gap-2"
+                  >
+                    <RefreshCw className={`h-4 w-4 ${isLoading ? 'animate-spin' : ''}`} />
+                    {t[language].refreshButton}
+                  </Button>
+                </div>
+              </div>
+
+              {/* How Our Wait Time System Works */}
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <div className="flex items-start gap-3">
+                  <Info className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-semibold text-blue-900 mb-2">{t[language].howSystemWorks}</h3>
+                    <p className="text-blue-800 text-sm leading-relaxed">{t[language].systemDescription}</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Emergency Condition Severity Levels */}
+              <div className="space-y-4">
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">{t[language].conditionSeverityLevels}</h3>
+                  <p className="text-gray-600">{t[language].acuityDescription}</p>
+                </div>
+
+                {/* Acuity Level Cards */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+                  {/* Level 1 - Critical */}
+                  <Card className="bg-red-50 border-red-200">
+                    <CardContent className="p-4">
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-4 h-4 bg-red-500 rounded-full"></div>
+                        <h4 className="font-semibold text-red-900">{t[language].level1Critical}</h4>
+                      </div>
+                      <ul className="space-y-1 text-sm text-red-800 mb-3">
+                        <li>• {t[language].cardiacArrest}</li>
+                        <li>• {t[language].severeBreathing}</li>
+                        <li>• {t[language].majorTrauma}</li>
+                        <li>• {t[language].strokeSymptoms}</li>
+                      </ul>
+                      <div className="text-xs font-medium text-red-900">{t[language].highestPriority}</div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Level 2 - Urgent */}
+                  <Card className="bg-orange-50 border-orange-200">
+                    <CardContent className="p-4">
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-4 h-4 bg-orange-500 rounded-full"></div>
+                        <h4 className="font-semibold text-orange-900">{t[language].level2Urgent}</h4>
+                      </div>
+                      <ul className="space-y-1 text-sm text-orange-800 mb-3">
+                        <li>• {t[language].chestPain}</li>
+                        <li>• {t[language].severeAbdominal}</li>
+                        <li>• {t[language].highFeverConfusion}</li>
+                        <li>• {t[language].moderateBleeding}</li>
+                      </ul>
+                      <div className="text-xs font-medium text-orange-900">{t[language].highPriority}</div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Level 3 - Less Urgent */}
+                  <Card className="bg-yellow-50 border-yellow-200">
+                    <CardContent className="p-4">
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-4 h-4 bg-yellow-500 rounded-full"></div>
+                        <h4 className="font-semibold text-yellow-900">{t[language].level3LessUrgent}</h4>
+                      </div>
+                      <ul className="space-y-1 text-sm text-yellow-800 mb-3">
+                        <li>• {t[language].moderatePain}</li>
+                        <li>• {t[language].minorFractures}</li>
+                        <li>• {t[language].persistentFever}</li>
+                        <li>• {t[language].vomitingDiarrhea}</li>
+                      </ul>
+                      <div className="text-xs font-medium text-yellow-900">{t[language].mediumPriority}</div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Level 4 - Non-Urgent */}
+                  <Card className="bg-blue-50 border-blue-200">
+                    <CardContent className="p-4">
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-4 h-4 bg-blue-500 rounded-full"></div>
+                        <h4 className="font-semibold text-blue-900">{t[language].level4NonUrgent}</h4>
+                      </div>
+                      <ul className="space-y-1 text-sm text-blue-800 mb-3">
+                        <li>• {t[language].minorCuts}</li>
+                        <li>• {t[language].mildHeadache}</li>
+                        <li>• {t[language].coldFluSymptoms}</li>
+                        <li>• {t[language].minorSprains}</li>
+                      </ul>
+                      <div className="text-xs font-medium text-blue-900">{t[language].lowPriority}</div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Level 5 - Low Acuity */}
+                  <Card className="bg-green-50 border-green-200">
+                    <CardContent className="p-4">
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-4 h-4 bg-green-500 rounded-full"></div>
+                        <h4 className="font-semibold text-green-900">{t[language].level5LowAcuity}</h4>
+                      </div>
+                      <ul className="space-y-1 text-sm text-green-800 mb-3">
+                        <li>• {t[language].minorSkinConditions}</li>
+                        <li>• {t[language].prescriptionRefills}</li>
+                        <li>• {t[language].routineConcerns}</li>
+                        <li>• {t[language].minorEyeIrritation}</li>
+                      </ul>
+                      <div className="text-xs font-medium text-green-900">{t[language].lowestPriority}</div>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
             </div>
 
             {/* Controls Row */}
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center pt-6 border-t border-gray-200">
               {/* Overview/Detailed Toggle */}
               <div className="flex gap-2">
                 <Button
