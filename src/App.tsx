@@ -983,26 +983,52 @@ function App() {
                     <div className="p-6">
 
                       {/* Key Metrics Dashboard */}
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                        <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl p-6 border border-orange-200">
+                      <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-8">
+                        <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-4 border border-blue-200">
                           <div className="text-center">
-                            <div className="text-sm font-medium text-orange-700 mb-2">{t[language].avgWaitTime}</div>
-                            <div className="text-4xl font-bold text-orange-600 mb-1">42</div>
-                            <div className="text-sm text-orange-600">{t[language].minutes}</div>
+                            <div className="text-xs font-medium text-blue-700 mb-2">
+                              {language === 'en' ? 'Avg. Boarding De (%' : 'Prom. Internación De (%'}
+                            </div>
+                            <div className="text-2xl font-bold text-blue-600 mb-1">6:45</div>
+                            <div className="text-xs text-blue-600">
+                              {language === 'en' ? 'last 6 hours' : 'últimas 6 horas'}
+                            </div>
                           </div>
                         </div>
-                        <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 border border-blue-200">
+                        <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl p-4 border border-orange-200">
                           <div className="text-center">
-                            <div className="text-sm font-medium text-blue-700 mb-2">{t[language].currentCensus}</div>
-                            <div className="text-4xl font-bold text-blue-600 mb-1">46</div>
-                            <div className="text-sm text-blue-600">{t[language].patients}</div>
+                            <div className="text-xs font-medium text-orange-700 mb-2">
+                              {language === 'en' ? 'Avg. Arrival to DOC' : 'Prom. Llegada a DOC'}
+                            </div>
+                            <div className="text-2xl font-bold text-orange-600 mb-1">42 mins.</div>
+                            <div className="text-xs text-orange-600">
+                              {language === 'en' ? 'last 6 hours' : 'últimas 6 horas'}
+                            </div>
                           </div>
                         </div>
-                        <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-6 border border-green-200">
+                        <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-xl p-4 border border-yellow-200">
                           <div className="text-center">
-                            <div className="text-sm font-medium text-green-700 mb-2">{t[language].status}</div>
+                            <div className="text-xs font-medium text-yellow-700 mb-2">
+                              {language === 'en' ? 'Avg. Disposition to Discharge' : 'Prom. Disposición a Alta'}
+                            </div>
+                            <div className="text-2xl font-bold text-yellow-600 mb-1">21 mins.</div>
+                            <div className="text-xs text-yellow-600">
+                              {language === 'en' ? 'last 6 hours' : 'últimas 6 horas'}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-4 border border-blue-200">
+                          <div className="text-center">
+                            <div className="text-xs font-medium text-blue-700 mb-2">{t[language].currentCensus}</div>
+                            <div className="text-3xl font-bold text-blue-600 mb-1">46</div>
+                            <div className="text-xs text-blue-600">{t[language].patients}</div>
+                          </div>
+                        </div>
+                        <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-4 border border-green-200">
+                          <div className="text-center">
+                            <div className="text-xs font-medium text-green-700 mb-2">{t[language].status}</div>
                             <div className="text-xl font-bold text-green-600 mb-1">{t[language].open}</div>
-                            <div className="text-sm text-green-600">24/7</div>
+                            <div className="text-xs text-green-600">24/7</div>
                           </div>
                         </div>
                       </div>
