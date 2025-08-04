@@ -3015,123 +3015,6 @@ function App() {
                   </div>
                 </div>
 
-                {/* Primary Care Centers */}
-                <div className="bg-white rounded-lg border border-gray-200 shadow-sm">
-                  <div className="p-6 border-b border-gray-200">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                        <FirstAid className="h-6 w-6 text-green-600" />
-                      </div>
-                      <div>
-                        <h4 className="text-xl font-bold text-gray-900">
-                          {language === 'en' ? 'Primary Care' : 'Atención Primaria'}
-                        </h4>
-                        <p className="text-gray-600 text-sm">
-                          {language === 'en' 
-                            ? 'For routine care and chronic condition management'
-                            : 'Para atención rutinaria y manejo de condiciones crónicas'
-                          }
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="p-6">
-                    {/* Stats Row */}
-                    <div className="grid grid-cols-3 gap-8 mb-6">
-                      <div className="text-center">
-                        <div className="flex items-center justify-center gap-2 mb-2">
-                          <Clock className="h-4 w-4 text-green-600" />
-                          <span className="text-sm font-medium text-gray-600">
-                            {language === 'en' ? 'Wait Time' : 'Tiempo de Espera'}
-                          </span>
-                        </div>
-                        <div className="text-2xl font-bold text-green-600 mb-1">{language === 'en' ? '1-2 weeks' : '1-2 semanas'}</div>
-                      </div>
-                      
-                      <div className="text-center">
-                        <div className="flex items-center justify-center gap-2 mb-2">
-                          <Building className="h-4 w-4 text-green-600" />
-                          <span className="text-sm font-medium text-gray-600">
-                            {language === 'en' ? 'Your expected cost without insurance or if your deductible hasn\'t been met yet' : 'Su costo esperado sin seguro o si su deducible aún no se ha cumplido'}
-                          </span>
-                        </div>
-                        <div className="text-2xl font-bold text-green-600 mb-1">$50-$150</div>
-                      </div>
-                      
-                      <div className="text-center">
-                        <div className="flex items-center justify-center gap-2 mb-2">
-                          <MapPin className="h-4 w-4 text-green-600" />
-                          <span className="text-sm font-medium text-gray-600">
-                            {language === 'en' ? 'Availability' : 'Disponibilidad'}
-                          </span>
-                        </div>
-                        <div className="text-lg font-bold text-green-600">
-                          {language === 'en' ? 'Business hours, M-F' : 'Horario comercial, L-V'}
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Best For Section */}
-                    <div className="mb-6">
-                      <div className="flex items-center gap-2 mb-4">
-                        <CheckCircle className="h-5 w-5 text-green-600" />
-                        <h5 className="font-semibold text-gray-900">
-                          {language === 'en' ? 'Best For' : 'Mejor Para'}
-                        </h5>
-                      </div>
-                      <div className="grid grid-cols-2 gap-4">
-                        <ul className="space-y-2 text-sm text-gray-700">
-                          <li className="flex items-center gap-2">
-                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                            {language === 'en' ? 'Annual checkups' : 'Exámenes anuales'}
-                          </li>
-                          <li className="flex items-center gap-2">
-                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                            {language === 'en' ? 'Prescription management' : 'Manejo de recetas'}
-                          </li>
-                          <li className="flex items-center gap-2">
-                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                            {language === 'en' ? 'Preventive care' : 'Atención preventiva'}
-                          </li>
-                        </ul>
-                        <ul className="space-y-2 text-sm text-gray-700">
-                          <li className="flex items-center gap-2">
-                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                            {language === 'en' ? 'Chronic disease management' : 'Manejo de enfermedades crónicas'}
-                          </li>
-                          <li className="flex items-center gap-2">
-                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                            {language === 'en' ? 'Health screenings' : 'Exámenes de salud'}
-                          </li>
-                          <li className="flex items-center gap-2">
-                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                            {language === 'en' ? 'Immunizations' : 'Inmunizaciones'}
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-
-                    {/* Nearby Locations */}
-                    <div>
-                      <div className="flex items-center gap-2 mb-4">
-                        <MapPin className="h-5 w-5 text-green-600" />
-                        <h5 className="font-semibold text-gray-900">
-                          {language === 'en' ? 'Nearby Locations' : 'Ubicaciones Cercanas'}
-                        </h5>
-                      </div>
-                      <div className="bg-gray-50 rounded-lg p-4 text-center">
-                        <p className="text-gray-600 text-sm">
-                          {language === 'en' 
-                            ? 'Enable location services or enter your zip code to see nearby primary care providers'
-                            : 'Habilite los servicios de ubicación o ingrese su código postal para ver proveedores de atención primaria cercanos'
-                          }
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
                 {/* Telehealth */}
                 <div className="bg-white rounded-lg border border-gray-200 shadow-sm">
                   <div className="p-6 border-b border-gray-200">
@@ -3242,6 +3125,123 @@ function App() {
                           {language === 'en' 
                             ? 'Connect with healthcare providers through video, phone, or text messaging from any device'
                             : 'Conéctese con proveedores de atención médica a través de video, teléfono o mensajería de texto desde cualquier dispositivo'
+                          }
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Primary Care Centers */}
+                <div className="bg-white rounded-lg border border-gray-200 shadow-sm">
+                  <div className="p-6 border-b border-gray-200">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                        <FirstAid className="h-6 w-6 text-green-600" />
+                      </div>
+                      <div>
+                        <h4 className="text-xl font-bold text-gray-900">
+                          {language === 'en' ? 'Primary Care' : 'Atención Primaria'}
+                        </h4>
+                        <p className="text-gray-600 text-sm">
+                          {language === 'en' 
+                            ? 'For routine care and chronic condition management'
+                            : 'Para atención rutinaria y manejo de condiciones crónicas'
+                          }
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-6">
+                    {/* Stats Row */}
+                    <div className="grid grid-cols-3 gap-8 mb-6">
+                      <div className="text-center">
+                        <div className="flex items-center justify-center gap-2 mb-2">
+                          <Clock className="h-4 w-4 text-green-600" />
+                          <span className="text-sm font-medium text-gray-600">
+                            {language === 'en' ? 'Wait Time' : 'Tiempo de Espera'}
+                          </span>
+                        </div>
+                        <div className="text-2xl font-bold text-green-600 mb-1">{language === 'en' ? '1-2 weeks' : '1-2 semanas'}</div>
+                      </div>
+                      
+                      <div className="text-center">
+                        <div className="flex items-center justify-center gap-2 mb-2">
+                          <Building className="h-4 w-4 text-green-600" />
+                          <span className="text-sm font-medium text-gray-600">
+                            {language === 'en' ? 'Your expected cost without insurance or if your deductible hasn\'t been met yet' : 'Su costo esperado sin seguro o si su deducible aún no se ha cumplido'}
+                          </span>
+                        </div>
+                        <div className="text-2xl font-bold text-green-600 mb-1">$50-$150</div>
+                      </div>
+                      
+                      <div className="text-center">
+                        <div className="flex items-center justify-center gap-2 mb-2">
+                          <MapPin className="h-4 w-4 text-green-600" />
+                          <span className="text-sm font-medium text-gray-600">
+                            {language === 'en' ? 'Availability' : 'Disponibilidad'}
+                          </span>
+                        </div>
+                        <div className="text-lg font-bold text-green-600">
+                          {language === 'en' ? 'Business hours, M-F' : 'Horario comercial, L-V'}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Best For Section */}
+                    <div className="mb-6">
+                      <div className="flex items-center gap-2 mb-4">
+                        <CheckCircle className="h-5 w-5 text-green-600" />
+                        <h5 className="font-semibold text-gray-900">
+                          {language === 'en' ? 'Best For' : 'Mejor Para'}
+                        </h5>
+                      </div>
+                      <div className="grid grid-cols-2 gap-4">
+                        <ul className="space-y-2 text-sm text-gray-700">
+                          <li className="flex items-center gap-2">
+                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                            {language === 'en' ? 'Annual checkups' : 'Exámenes anuales'}
+                          </li>
+                          <li className="flex items-center gap-2">
+                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                            {language === 'en' ? 'Prescription management' : 'Manejo de recetas'}
+                          </li>
+                          <li className="flex items-center gap-2">
+                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                            {language === 'en' ? 'Preventive care' : 'Atención preventiva'}
+                          </li>
+                        </ul>
+                        <ul className="space-y-2 text-sm text-gray-700">
+                          <li className="flex items-center gap-2">
+                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                            {language === 'en' ? 'Chronic disease management' : 'Manejo de enfermedades crónicas'}
+                          </li>
+                          <li className="flex items-center gap-2">
+                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                            {language === 'en' ? 'Health screenings' : 'Exámenes de salud'}
+                          </li>
+                          <li className="flex items-center gap-2">
+                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                            {language === 'en' ? 'Immunizations' : 'Inmunizaciones'}
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    {/* Nearby Locations */}
+                    <div>
+                      <div className="flex items-center gap-2 mb-4">
+                        <MapPin className="h-5 w-5 text-green-600" />
+                        <h5 className="font-semibold text-gray-900">
+                          {language === 'en' ? 'Nearby Locations' : 'Ubicaciones Cercanas'}
+                        </h5>
+                      </div>
+                      <div className="bg-gray-50 rounded-lg p-4 text-center">
+                        <p className="text-gray-600 text-sm">
+                          {language === 'en' 
+                            ? 'Enable location services or enter your zip code to see nearby primary care providers'
+                            : 'Habilite los servicios de ubicación o ingrese su código postal para ver proveedores de atención primaria cercanos'
                           }
                         </p>
                       </div>
