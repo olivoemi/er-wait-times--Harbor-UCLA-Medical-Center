@@ -3606,10 +3606,10 @@ function App() {
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="flex gap-3">
-                      <Button className="bg-green-600 hover:bg-green-700 text-white flex-1">
                         <FirstAid className="h-4 w-4 mr-2" />
-                        {language === 'en' ? 'Access Patient Portal' : 'Acceder al Portal del Paciente'}
+                      <Button className="bg-green-600 hover:bg-green-700 text-white flex-1">
+                      </Button>
+                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50">
                       </Button>
                       <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50">
                         <Phone className="h-4 w-4 mr-2" />
@@ -3620,7 +3620,7 @@ function App() {
                 </div>
               </div>
             )}
-
+              <div className="space-y-6">
             {careGuideSection === 'prepare' && (
               <div className="space-y-6">
                 <div className="text-center mb-8">
