@@ -2334,11 +2334,26 @@ function App() {
                             return (
                               <div
                                 key={symptomId}
-                                className="flex items-center gap-2 bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm"
+                                className={`flex items-center gap-2 px-3 py-1 rounded-full text-sm ${
+                                  symptom.acuityLevel === 1 ? 'bg-red-100 text-red-800' :
+                                  symptom.acuityLevel === 2 ? 'bg-orange-100 text-orange-800' :
+                                  symptom.acuityLevel === 3 ? 'bg-yellow-100 text-yellow-800' :
+                                  symptom.acuityLevel === 4 ? 'bg-blue-100 text-blue-800' : 'bg-green-100 text-green-800'
+                                }`}
                               >
-                                <AlertTriangle className="h-3 w-3" />
+                                <AlertTriangle className={`h-3 w-3 ${
+                                  symptom.acuityLevel === 1 ? 'text-red-600' :
+                                  symptom.acuityLevel === 2 ? 'text-orange-600' :
+                                  symptom.acuityLevel === 3 ? 'text-yellow-600' :
+                                  symptom.acuityLevel === 4 ? 'text-blue-600' : 'text-green-600'
+                                }`} />
                                 <span>{symptom.name}</span>
-                                <span className="font-semibold">Level {symptom.acuityLevel}</span>
+                                <span className={`font-semibold ${
+                                  symptom.acuityLevel === 1 ? 'text-red-900' :
+                                  symptom.acuityLevel === 2 ? 'text-orange-900' :
+                                  symptom.acuityLevel === 3 ? 'text-yellow-900' :
+                                  symptom.acuityLevel === 4 ? 'text-blue-900' : 'text-green-900'
+                                }`}>Level {symptom.acuityLevel}</span>
                                 <button
                                   onClick={() => handleSymptomToggle(symptomId)}
                                   className="ml-1 hover:bg-red-200 rounded-full p-0.5"
@@ -2676,46 +2691,99 @@ function App() {
 
                   {/* Symptom Categories */}
                   <div className="space-y-6">
-                    {symptomCategories.map((category) => (
-                      <div key={category.name}>
-                        <h4 className="text-lg font-semibold text-gray-900 mb-4">
-                          {category.name}
-                        </h4>
+                    {symptomCategories.map((category, categoryIndex) => {
+                      // Define colors for category headers
+                      const getCategoryColors = (index: number) => {
+                        const colorMap = {
+                          0: 'text-red-900 border-red-200', // Level 1
+                          1: 'text-orange-900 border-orange-200', // Level 2
+                          2: 'text-yellow-900 border-yellow-200', // Level 3
+                          3: 'text-blue-900 border-blue-200', // Level 4
+                          4: 'text-green-900 border-green-200', // Level 5
+                        }
+                        return colorMap[index as keyof typeof colorMap] || 'text-gray-900 border-gray-200'
+                      }
+
+                      const categoryColors = getCategoryColors(categoryIndex)
+
+                      return (
+                        <div key={category.name}>
+                          <h4 className={`text-lg font-semibold mb-4 pb-2 border-b ${categoryColors}`}>
+                            {category.name}
+                          </h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                           {category.symptoms.map((symptom) => {
                             const isSelected = selectedSymptoms.includes(symptom.id)
                             const isThoughtsOfHarm = symptom.id === 'thoughts-harm'
                             
+                            // Define colors based on acuity level
+                            const getAcuityColors = (level: number, isSelected: boolean) => {
+                              const colorMap = {
+                                1: {
+                                  bg: isSelected ? 'bg-red-50' : 'bg-white',
+                                  border: isSelected ? 'border-red-300 ring-2 ring-red-200' : 'border-red-200 hover:border-red-300',
+                                  text: 'text-red-900',
+                                  badge: 'bg-red-500 text-white'
+                                },
+                                2: {
+                                  bg: isSelected ? 'bg-orange-50' : 'bg-white',
+                                  border: isSelected ? 'border-orange-300 ring-2 ring-orange-200' : 'border-orange-200 hover:border-orange-300',
+                                  text: 'text-orange-900',
+                                  badge: 'bg-orange-500 text-white'
+                                },
+                                3: {
+                                  bg: isSelected ? 'bg-yellow-50' : 'bg-white',
+                                  border: isSelected ? 'border-yellow-300 ring-2 ring-yellow-200' : 'border-yellow-200 hover:border-yellow-300',
+                                  text: 'text-yellow-900',
+                                  badge: 'bg-yellow-500 text-white'
+                                },
+                                4: {
+                                  bg: isSelected ? 'bg-blue-50' : 'bg-white',
+                                  border: isSelected ? 'border-blue-300 ring-2 ring-blue-200' : 'border-blue-200 hover:border-blue-300',
+                                  text: 'text-blue-900',
+                                  badge: 'bg-blue-500 text-white'
+                                },
+                                5: {
+                                  bg: isSelected ? 'bg-green-50' : 'bg-white',
+                                  border: isSelected ? 'border-green-300 ring-2 ring-green-200' : 'border-green-200 hover:border-green-300',
+                                  text: 'text-green-900',
+                                  badge: 'bg-green-500 text-white'
+                                }
+                              }
+                              return colorMap[level as keyof typeof colorMap] || colorMap[5]
+                            }
+
+                            const colors = getAcuityColors(symptom.acuityLevel, isSelected)
+                            
                             return (
                               <div
                                 key={symptom.id}
                                 onClick={() => handleSymptomToggle(symptom.id)}
-                                className={`p-4 rounded-lg border cursor-pointer transition-all hover:shadow-md ${
-                                  isSelected 
-                                    ? 'bg-red-50 border-red-300 ring-2 ring-red-200' 
-                                    : 'bg-white border-gray-200 hover:border-gray-300'
-                                }`}
+                                className={`p-4 rounded-lg border cursor-pointer transition-all hover:shadow-md ${colors.bg} ${colors.border}`}
                               >
                                 <div className="flex items-start justify-between mb-3">
                                   <div className="flex items-center gap-3">
                                     {getSymptomIcon(symptom.id, symptom.category)}
                                     {isSelected && (
-                                      <CheckCircle className="h-5 w-5 text-red-600" />
+                                      <CheckCircle className={`h-5 w-5 ${symptom.acuityLevel === 1 ? 'text-red-600' : 
+                                        symptom.acuityLevel === 2 ? 'text-orange-600' :
+                                        symptom.acuityLevel === 3 ? 'text-yellow-600' :
+                                        symptom.acuityLevel === 4 ? 'text-blue-600' : 'text-green-600'}`} />
                                     )}
                                   </div>
-                                  <div className="text-xs font-semibold text-gray-600">
-                                    {language === 'en' ? `Acuity Level ${symptom.acuityLevel}` : `Nivel de Acuidad ${symptom.acuityLevel}`}
+                                  <div className={`text-xs font-semibold px-2 py-1 rounded-full ${colors.badge}`}>
+                                    {language === 'en' ? `Level ${symptom.acuityLevel}` : `Nivel ${symptom.acuityLevel}`}
                                   </div>
                                 </div>
-                                <div className="text-sm font-medium text-gray-900 leading-tight">
+                                <div className={`text-sm font-medium leading-tight ${colors.text}`}>
                                   {symptom.name}
                                 </div>
                               </div>
                             )
                           })}
                         </div>
-                      </div>
-                    ))}
+                      )
+                    })}
                   </div>
                 </div>
 
