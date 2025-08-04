@@ -139,48 +139,12 @@ function App() {
     const sampleHospitals: Hospital[] = [
       {
         id: '1',
-        name: 'St. Mary\'s Medical Center',
-        address: '450 Stanyan St, San Francisco, CA 94117',
-        waitTime: 25,
+        name: 'UC Irvine Medical Center',
+        address: '101 The City Dr S, Orange, CA 92868',
+        waitTime: 35,
         lastUpdated: new Date().toISOString(),
-        specialties: ['Emergency', 'Trauma', 'Cardiac'],
-        phone: '(415) 668-1000'
-      },
-      {
-        id: '2',
-        name: 'UCSF Medical Center',
-        address: '505 Parnassus Ave, San Francisco, CA 94143',
-        waitTime: 45,
-        lastUpdated: new Date().toISOString(),
-        specialties: ['Emergency', 'Trauma', 'Pediatric', 'Stroke'],
-        phone: '(415) 476-1000'
-      },
-      {
-        id: '3',
-        name: 'California Pacific Medical Center',
-        address: '2333 Buchanan St, San Francisco, CA 94115',
-        waitTime: 15,
-        lastUpdated: new Date().toISOString(),
-        specialties: ['Emergency', 'Cardiac'],
-        phone: '(415) 600-6000'
-      },
-      {
-        id: '4',
-        name: 'San Francisco General Hospital',
-        address: '1001 Potrero Ave, San Francisco, CA 94110',
-        waitTime: 90,
-        lastUpdated: new Date().toISOString(),
-        specialties: ['Emergency', 'Trauma', 'Burn', 'Psychiatric'],
-        phone: '(415) 206-8000'
-      },
-      {
-        id: '5',
-        name: 'Kaiser Permanente San Francisco',
-        address: '2425 Geary Blvd, San Francisco, CA 94115',
-        waitTime: 30,
-        lastUpdated: new Date().toISOString(),
-        specialties: ['Emergency', 'Urgent Care'],
-        phone: '(415) 833-2000'
+        specialties: ['Emergency', 'Trauma', 'Cardiac', 'Stroke', 'Pediatric'],
+        phone: '(714) 456-6011'
       }
     ]
 
