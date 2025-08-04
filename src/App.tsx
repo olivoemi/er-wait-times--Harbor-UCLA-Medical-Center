@@ -3258,17 +3258,17 @@ function App() {
                 <div className="bg-white rounded-lg border border-gray-200 shadow-sm">
                   <div className="p-6 border-b border-gray-200">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
-                        <Phone className="h-6 w-6 text-purple-600" />
+                      <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                        <Phone className="h-6 w-6 text-green-600" />
                       </div>
                       <div>
                         <h4 className="text-xl font-bold text-gray-900">
-                          {language === 'en' ? 'Telehealth' : 'Telemedicina'}
+                          {language === 'en' ? 'Telehealth Services' : 'Servicios de Telesalud'}
                         </h4>
                         <p className="text-gray-600 text-sm">
                           {language === 'en' 
-                            ? 'Virtual consultations from home'
-                            : 'Consultas virtuales desde casa'
+                            ? 'Virtual consultations with healthcare providers'
+                            : 'Consultas virtuales con proveedores de atención médica'
                           }
                         </p>
                       </div>
@@ -3277,36 +3277,38 @@ function App() {
 
                   <div className="p-6">
                     {/* Stats Row */}
-                    <div className="grid grid-cols-3 gap-8 mb-6">
-                      <div className="text-center">
-                        <div className="flex items-center justify-center gap-2 mb-2">
-                          <Clock className="h-4 w-4 text-purple-600" />
+                    <div className="grid grid-cols-3 gap-6 mb-6">
+                      <div className="text-left">
+                        <div className="flex items-center gap-2 mb-2">
+                          <Clock className="h-4 w-4 text-green-600" />
                           <span className="text-sm font-medium text-gray-600">
                             {language === 'en' ? 'Wait Time' : 'Tiempo de Espera'}
                           </span>
                         </div>
-                        <div className="text-2xl font-bold text-purple-600 mb-1">{language === 'en' ? 'Same day' : 'Mismo día'}</div>
+                        <div className="text-lg font-bold text-gray-900">
+                          {language === 'en' ? '5-15 minutes' : '5-15 minutos'}
+                        </div>
                       </div>
                       
-                      <div className="text-center">
-                        <div className="flex items-center justify-center gap-2 mb-2">
-                          <Building className="h-4 w-4 text-purple-600" />
-                          <span className="text-sm font-medium text-gray-600">
+                      <div className="text-left">
+                        <div className="flex items-center gap-2 mb-2">
+                          <Building className="h-4 w-4 text-orange-600" />
+                          <span className="text-xs font-medium text-gray-500 leading-tight">
                             {language === 'en' ? 'Your expected cost without insurance or if your deductible hasn\'t been met yet' : 'Su costo esperado sin seguro o si su deducible aún no se ha cumplido'}
                           </span>
                         </div>
-                        <div className="text-2xl font-bold text-purple-600 mb-1">$30-$80</div>
+                        <div className="text-lg font-bold text-gray-900">$50-$150</div>
                       </div>
                       
-                      <div className="text-center">
-                        <div className="flex items-center justify-center gap-2 mb-2">
-                          <MapPin className="h-4 w-4 text-purple-600" />
+                      <div className="text-left">
+                        <div className="flex items-center gap-2 mb-2">
+                          <MapPin className="h-4 w-4 text-blue-600" />
                           <span className="text-sm font-medium text-gray-600">
                             {language === 'en' ? 'Availability' : 'Disponibilidad'}
                           </span>
                         </div>
-                        <div className="text-lg font-bold text-purple-600">
-                          {language === 'en' ? '24/7 access, immediate' : 'Acceso 24/7, inmediato'}
+                        <div className="text-lg font-bold text-gray-900">
+                          {language === 'en' ? '24/7 for urgent issues' : '24/7 para problemas urgentes'}
                         </div>
                       </div>
                     </div>
@@ -3314,7 +3316,7 @@ function App() {
                     {/* Best For Section */}
                     <div className="mb-6">
                       <div className="flex items-center gap-2 mb-4">
-                        <CheckCircle className="h-5 w-5 text-purple-600" />
+                        <CheckCircle className="h-5 w-5 text-green-600" />
                         <h5 className="font-semibold text-gray-900">
                           {language === 'en' ? 'Best For' : 'Mejor Para'}
                         </h5>
@@ -3323,50 +3325,97 @@ function App() {
                         <ul className="space-y-2 text-sm text-gray-700">
                           <li className="flex items-center gap-2">
                             <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                            {language === 'en' ? 'Minor symptoms' : 'Síntomas menores'}
+                            {language === 'en' ? 'Cold and flu symptoms' : 'Síntomas de resfriado y gripe'}
+                          </li>
+                          <li className="flex items-center gap-2">
+                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                            {language === 'en' ? 'Mental health support' : 'Apoyo de salud mental'}
                           </li>
                           <li className="flex items-center gap-2">
                             <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
                             {language === 'en' ? 'Follow-up appointments' : 'Citas de seguimiento'}
                           </li>
-                          <li className="flex items-center gap-2">
-                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                            {language === 'en' ? 'Prescription refills' : 'Reposición de recetas'}
-                          </li>
                         </ul>
                         <ul className="space-y-2 text-sm text-gray-700">
                           <li className="flex items-center gap-2">
                             <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                            {language === 'en' ? 'Mental health consultations' : 'Consultas de salud mental'}
+                            {language === 'en' ? 'Skin conditions' : 'Condiciones de la piel'}
                           </li>
                           <li className="flex items-center gap-2">
                             <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                            {language === 'en' ? 'Specialist referrals' : 'Referencias de especialistas'}
+                            {language === 'en' ? 'Prescription refills' : 'Reposición de recetas'}
                           </li>
                           <li className="flex items-center gap-2">
                             <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                            {language === 'en' ? 'Lab result discussions' : 'Discusiones de resultados de laboratorio'}
+                            {language === 'en' ? 'General health questions' : 'Preguntas generales de salud'}
                           </li>
                         </ul>
                       </div>
                     </div>
 
-                    {/* Nearby Locations */}
-                    <div>
+                    {/* Available Services */}
+                    <div className="mb-6">
                       <div className="flex items-center gap-2 mb-4">
-                        <Phone className="h-5 w-5 text-purple-600" />
+                        <Activity className="h-5 w-5 text-blue-600" />
                         <h5 className="font-semibold text-gray-900">
-                          {language === 'en' ? 'Available Platforms' : 'Plataformas Disponibles'}
+                          {language === 'en' ? 'Available Services' : 'Servicios Disponibles'}
                         </h5>
                       </div>
-                      <div className="bg-gray-50 rounded-lg p-4 text-center">
-                        <p className="text-gray-600 text-sm">
-                          {language === 'en' 
-                            ? 'Connect with healthcare providers through video, phone, or text messaging from any device'
-                            : 'Conéctese con proveedores de atención médica a través de video, teléfono o mensajería de texto desde cualquier dispositivo'
-                          }
-                        </p>
+                      <div className="space-y-3">
+                        {/* Virtual Urgent Care */}
+                        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                          <div className="flex items-center justify-between">
+                            <div>
+                              <h6 className="font-semibold text-blue-900 mb-1">
+                                {language === 'en' ? 'Virtual Urgent Care' : 'Atención Urgente Virtual'}
+                              </h6>
+                              <p className="text-sm text-blue-700 mb-2">
+                                {language === 'en' ? 'Same-day virtual visits for urgent health concerns' : 'Visitas virtuales el mismo día para problemas de salud urgentes'}
+                              </p>
+                              <div className="text-xs text-blue-600">
+                                {language === 'en' ? 'Daily: 7:00 AM - 11:00 PM' : 'Diario: 7:00 AM - 11:00 PM'}
+                              </div>
+                            </div>
+                            <div className="text-right">
+                              <div className="text-sm font-bold text-blue-900">10 min</div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Video Visits */}
+                        <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                          <div className="flex items-center justify-between">
+                            <div>
+                              <h6 className="font-semibold text-green-900 mb-1">
+                                {language === 'en' ? 'Video Visits' : 'Visitas por Video'}
+                              </h6>
+                              <p className="text-sm text-green-700 mb-2">
+                                {language === 'en' ? 'Scheduled appointments with your regular provider' : 'Citas programadas con su proveedor habitual'}
+                              </p>
+                              <div className="text-xs text-green-600">
+                                {language === 'en' ? 'Mon-Fri: 8:00 AM - 5:00 PM' : 'Lun-Vie: 8:00 AM - 5:00 PM'}
+                              </div>
+                            </div>
+                            <div className="text-right">
+                              <div className="text-sm font-bold text-green-900">
+                                {language === 'en' ? 'Scheduled' : 'Programado'}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
+                    </div>
+
+                    {/* Action Buttons */}
+                    <div className="flex gap-3">
+                      <Button className="bg-green-600 hover:bg-green-700 text-white flex-1">
+                        <Phone className="h-4 w-4 mr-2" />
+                        {language === 'en' ? 'Start Virtual Visit' : 'Iniciar Visita Virtual'}
+                      </Button>
+                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50">
+                        <Phone className="h-4 w-4 mr-2" />
+                        {language === 'en' ? 'Call for Info' : 'Llamar para Información'}
+                      </Button>
                     </div>
                   </div>
                 </div>
