@@ -65,4 +65,19 @@
 
 body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Ensure all containers handle text overflow properly */
+.grid, .flex {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Specific utility for breaking long words */
+.break-words {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
 }
