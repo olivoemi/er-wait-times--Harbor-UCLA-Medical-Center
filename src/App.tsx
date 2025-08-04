@@ -2774,103 +2774,326 @@ function App() {
             )}
 
             {careGuideSection === 'options' && (
-              <div className="space-y-6">
-                <div className="text-center mb-8">
+              <div className="space-y-8">
+                {/* Header */}
+                <div className="text-left">
+                  <div className="text-sm text-gray-600 mb-2">
+                    {language === 'en' ? 'Alternative care facilities' : 'Instalaciones de atención alternativa'}
+                  </div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                    {language === 'en' ? 'Care Options Available' : 'Opciones de Atención Disponibles'}
+                    {language === 'en' ? 'Alternative Care Options' : 'Opciones de Atención Alternativa'}
                   </h3>
-                  <p className="text-gray-600 max-w-3xl mx-auto">
+                  <p className="text-gray-600 max-w-4xl">
                     {language === 'en' 
-                      ? 'Understanding your care options can help you get the right treatment at the right time and place.'
-                      : 'Entender sus opciones de atención puede ayudarle a obtener el tratamiento correcto en el momento y lugar adecuados.'
+                      ? 'Many health concerns can be addressed faster and more cost-effectively outside the emergency room.'
+                      : 'Muchas preocupaciones de salud pueden ser abordadas más rápido y de manera más rentable fuera de la sala de emergencias.'
                     }
                   </p>
                 </div>
 
-                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                  {/* Emergency Room */}
-                  <Card className="border-red-200 bg-red-50">
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-3 text-red-900">
-                        <Plus className="h-6 w-6 text-red-600" />
-                        {language === 'en' ? 'Emergency Room' : 'Sala de Emergencias'}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <p className="text-red-800 text-sm">
-                        {language === 'en' 
-                          ? 'For life-threatening conditions requiring immediate medical attention.'
-                          : 'Para condiciones que amenazan la vida que requieren atención médica inmediata.'
-                        }
-                      </p>
+                {/* Location and Filter Controls */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  {/* Location-Based Classification */}
+                  <div className="bg-white rounded-lg border border-gray-200 p-6">
+                    <div className="flex items-center gap-3 mb-4">
+                      <MapPin className="h-5 w-5 text-blue-600" />
+                      <h4 className="text-lg font-semibold text-gray-900">
+                        {language === 'en' ? 'Location-Based Classification' : 'Clasificación Basada en Ubicación'}
+                      </h4>
+                    </div>
+                    
+                    {/* Enable Location Toggle */}
+                    <div className="mb-4">
+                      <button className="flex items-center gap-2 text-blue-600 text-sm font-medium hover:text-blue-700">
+                        <div className="w-4 h-4 border border-blue-600 rounded flex items-center justify-center">
+                          <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                        </div>
+                        {language === 'en' ? 'Enable Location for Distance Sorting' : 'Habilitar Ubicación para Ordenar por Distancia'}
+                      </button>
+                    </div>
+
+                    {/* Location Warning */}
+                    <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 mb-4">
+                      <div className="flex items-start gap-3">
+                        <AlertTriangle className="h-5 w-5 text-orange-600 mt-0.5 flex-shrink-0" />
+                        <div>
+                          <div className="font-medium text-orange-900 text-sm">
+                            {language === 'en' ? 'Location unavailable' : 'Ubicación no disponible'}
+                          </div>
+                          <div className="text-orange-700 text-xs mt-1">
+                            {language === 'en' ? 'Location access denied by user' : 'Acceso a ubicación denegado por el usuario'}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Manual Location Entry */}
+                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                      <div className="flex items-start gap-3">
+                        <MapPin className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                        <div className="flex-1">
+                          <div className="font-medium text-blue-900 text-sm mb-2">
+                            {language === 'en' ? 'Enter Zip Code for Manual Location' : 'Ingrese Código Postal para Ubicación Manual'}
+                          </div>
+                          <div className="text-blue-700 text-xs mb-3">
+                            {language === 'en' 
+                              ? 'Enter your zip code to classify urgent care centers by proximity to your location.'
+                              : 'Ingrese su código postal para clasificar los centros de atención urgente por proximidad a su ubicación.'
+                            }
+                          </div>
+                          <div className="flex gap-2">
+                            <input 
+                              type="text" 
+                              placeholder={language === 'en' ? 'Enter 5-digit zip code' : 'Ingrese código postal de 5 dígitos'}
+                              className="flex-1 px-3 py-2 border border-blue-300 rounded-md text-sm bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            />
+                            <Button 
+                              size="sm" 
+                              className="bg-blue-600 hover:bg-blue-700 text-white px-4"
+                            >
+                              <MagnifyingGlass className="h-4 w-4 mr-1" />
+                              {language === 'en' ? 'Classify by Zip Code' : 'Clasificar por Código Postal'}
+                            </Button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Cost Transparency Filter */}
+                  <div className="bg-white rounded-lg border border-gray-200 p-6">
+                    <div className="flex items-center gap-3 mb-4">
+                      <Building className="h-5 w-5 text-green-600" />
+                      <h4 className="text-lg font-semibold text-gray-900">
+                        {language === 'en' ? 'Cost Transparency Filter' : 'Filtro de Transparencia de Costos'}
+                      </h4>
+                    </div>
+                    
+                    <Select>
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder={
+                          language === 'en' ? 'Select your insurance type' : 'Seleccione su tipo de seguro'
+                        } />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="medicare">Medicare</SelectItem>
+                        <SelectItem value="medicaid">Medicaid/Medi-Cal</SelectItem>
+                        <SelectItem value="private">Private Insurance</SelectItem>
+                        <SelectItem value="uninsured">Uninsured/Self-Pay</SelectItem>
+                        <SelectItem value="covered-ca">Covered California</SelectItem>
+                      </SelectContent>
+                    </Select>
+
+                    <div className="bg-green-50 border border-green-200 rounded-lg p-4 mt-4">
+                      <div className="flex items-start gap-2">
+                        <Info className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                        <div className="text-green-800 text-xs">
+                          {language === 'en' 
+                            ? 'All costs shown are adapted to specific insurance plans including copays, coinsurance and out-of-pocket maximums'
+                            : 'Todos los costos mostrados están adaptados a planes de seguro específicos incluyendo copagos, coseguro y máximos de gastos de bolsillo'
+                          }
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Urgent Care Centers */}
+                <div className="bg-white rounded-lg border border-gray-200 shadow-sm">
+                  <div className="p-6 border-b border-gray-200">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                        <Clock className="h-6 w-6 text-blue-600" />
+                      </div>
                       <div>
-                        <h5 className="font-semibold text-red-900 mb-2">
-                          {language === 'en' ? 'Best for:' : 'Mejor para:'}
+                        <h4 className="text-xl font-bold text-gray-900">
+                          {language === 'en' ? 'Urgent Care Centers' : 'Centros de Atención Urgente'}
+                        </h4>
+                        <p className="text-gray-600 text-sm">
+                          {language === 'en' 
+                            ? 'For conditions that are not life-threatening but need same-day care'
+                            : 'Para condiciones que no amenazan la vida que necesitan atención el mismo día'
+                          }
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-6">
+                    {/* Stats Row */}
+                    <div className="grid grid-cols-3 gap-8 mb-6">
+                      <div className="text-center">
+                        <div className="flex items-center justify-center gap-2 mb-2">
+                          <Clock className="h-4 w-4 text-blue-600" />
+                          <span className="text-sm font-medium text-gray-600">
+                            {language === 'en' ? 'Wait Time' : 'Tiempo de Espera'}
+                          </span>
+                        </div>
+                        <div className="text-2xl font-bold text-blue-600 mb-1">15-45 {language === 'en' ? 'minutes' : 'minutos'}</div>
+                      </div>
+                      
+                      <div className="text-center">
+                        <div className="flex items-center justify-center gap-2 mb-2">
+                          <Building className="h-4 w-4 text-green-600" />
+                          <span className="text-sm font-medium text-gray-600">
+                            {language === 'en' ? 'Your expected cost without insurance or if your deductible hasn\'t been met yet' : 'Su costo esperado sin seguro o si su deducible aún no se ha cumplido'}
+                          </span>
+                        </div>
+                        <div className="text-2xl font-bold text-green-600 mb-1">$150-$300</div>
+                      </div>
+                      
+                      <div className="text-center">
+                        <div className="flex items-center justify-center gap-2 mb-2">
+                          <MapPin className="h-4 w-4 text-purple-600" />
+                          <span className="text-sm font-medium text-gray-600">
+                            {language === 'en' ? 'Availability' : 'Disponibilidad'}
+                          </span>
+                        </div>
+                        <div className="text-lg font-bold text-purple-600">
+                          {language === 'en' ? '7 days a week, extended hours' : '7 días a la semana, horario extendido'}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Best For Section */}
+                    <div className="mb-6">
+                      <div className="flex items-center gap-2 mb-4">
+                        <CheckCircle className="h-5 w-5 text-green-600" />
+                        <h5 className="font-semibold text-gray-900">
+                          {language === 'en' ? 'Best For' : 'Mejor Para'}
                         </h5>
-                        <ul className="text-sm text-red-800 space-y-1">
-                          <li>• {language === 'en' ? 'Heart attack, stroke' : 'Ataque cardíaco, derrame'}</li>
-                          <li>• {language === 'en' ? 'Severe injuries' : 'Lesiones graves'}</li>
-                          <li>• {language === 'en' ? 'Difficulty breathing' : 'Dificultad para respirar'}</li>
+                      </div>
+                      <div className="grid grid-cols-2 gap-4">
+                        <ul className="space-y-2 text-sm text-gray-700">
+                          <li className="flex items-center gap-2">
+                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                            {language === 'en' ? 'Minor injuries and cuts' : 'Lesiones menores y cortes'}
+                          </li>
+                          <li className="flex items-center gap-2">
+                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                            {language === 'en' ? 'Cold and flu symptoms' : 'Síntomas de resfriado y gripe'}
+                          </li>
+                          <li className="flex items-center gap-2">
+                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                            {language === 'en' ? 'Ear infections' : 'Infecciones del oído'}
+                          </li>
+                        </ul>
+                        <ul className="space-y-2 text-sm text-gray-700">
+                          <li className="flex items-center gap-2">
+                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                            {language === 'en' ? 'Sprains and strains' : 'Esguinces y distensiones'}
+                          </li>
+                          <li className="flex items-center gap-2">
+                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                            {language === 'en' ? 'Minor burns' : 'Quemaduras menores'}
+                          </li>
+                          <li className="flex items-center gap-2">
+                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                            {language === 'en' ? 'Urinary tract infections' : 'Infecciones del tracto urinario'}
+                          </li>
                         </ul>
                       </div>
-                    </CardContent>
-                  </Card>
+                    </div>
 
-                  {/* Urgent Care */}
-                  <Card className="border-yellow-200 bg-yellow-50">
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-3 text-yellow-900">
-                        <Clock className="h-6 w-6 text-yellow-600" />
-                        {language === 'en' ? 'Urgent Care' : 'Atención Urgente'}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <p className="text-yellow-800 text-sm">
-                        {language === 'en' 
-                          ? 'For urgent but non-life-threatening conditions that need prompt attention.'
-                          : 'Para condiciones urgentes pero no mortales que necesitan atención pronta.'
-                        }
-                      </p>
-                      <div>
-                        <h5 className="font-semibold text-yellow-900 mb-2">
-                          {language === 'en' ? 'Best for:' : 'Mejor para:'}
+                    {/* Nearby Locations */}
+                    <div>
+                      <div className="flex items-center gap-2 mb-4">
+                        <MapPin className="h-5 w-5 text-blue-600" />
+                        <h5 className="font-semibold text-gray-900">
+                          {language === 'en' ? 'Nearby Locations' : 'Ubicaciones Cercanas'}
                         </h5>
-                        <ul className="text-sm text-yellow-800 space-y-1">
-                          <li>• {language === 'en' ? 'Minor fractures' : 'Fracturas menores'}</li>
-                          <li>• {language === 'en' ? 'Cuts requiring stitches' : 'Cortes que requieren puntadas'}</li>
-                          <li>• {language === 'en' ? 'High fever' : 'Fiebre alta'}</li>
-                        </ul>
                       </div>
-                    </CardContent>
-                  </Card>
+                      <div className="bg-gray-50 rounded-lg p-4 text-center">
+                        <p className="text-gray-600 text-sm">
+                          {language === 'en' 
+                            ? 'Enable location services or enter your zip code to see nearby urgent care centers'
+                            : 'Habilite los servicios de ubicación o ingrese su código postal para ver centros de atención urgente cercanos'
+                          }
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
+                {/* Additional Care Options Grid */}
+                <div className="grid gap-6 md:grid-cols-2">
                   {/* Primary Care */}
-                  <Card className="border-green-200 bg-green-50">
-                    <CardHeader>
-                      <CardTitle className="flex items-center gap-3 text-green-900">
+                  <div className="bg-white rounded-lg border border-gray-200 shadow-sm p-6">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
                         <FirstAid className="h-6 w-6 text-green-600" />
-                        {language === 'en' ? 'Primary Care' : 'Atención Primaria'}
-                      </CardTitle>
-                    </CardHeader>
-                    <CardContent className="space-y-4">
-                      <p className="text-green-800 text-sm">
-                        {language === 'en' 
-                          ? 'For routine health needs, preventive care, and ongoing medical management.'
-                          : 'Para necesidades de salud rutinarias, atención preventiva y manejo médico continuo.'
-                        }
-                      </p>
+                      </div>
                       <div>
-                        <h5 className="font-semibold text-green-900 mb-2">
-                          {language === 'en' ? 'Best for:' : 'Mejor para:'}
-                        </h5>
-                        <ul className="text-sm text-green-800 space-y-1">
+                        <h4 className="text-lg font-bold text-gray-900">
+                          {language === 'en' ? 'Primary Care' : 'Atención Primaria'}
+                        </h4>
+                        <p className="text-gray-600 text-sm">
+                          {language === 'en' 
+                            ? 'For routine care and chronic condition management'
+                            : 'Para atención rutinaria y manejo de condiciones crónicas'
+                          }
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-3">
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm text-gray-600">{language === 'en' ? 'Wait Time:' : 'Tiempo de Espera:'}</span>
+                        <span className="font-medium text-green-600">{language === 'en' ? '1-2 weeks' : '1-2 semanas'}</span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm text-gray-600">{language === 'en' ? 'Cost:' : 'Costo:'}</span>
+                        <span className="font-medium text-green-600">$50-$150</span>
+                      </div>
+                      <div className="pt-2">
+                        <h6 className="font-medium text-gray-900 mb-2">{language === 'en' ? 'Best for:' : 'Mejor para:'}</h6>
+                        <ul className="text-sm text-gray-700 space-y-1">
                           <li>• {language === 'en' ? 'Annual checkups' : 'Exámenes anuales'}</li>
-                          <li>• {language === 'en' ? 'Prescription refills' : 'Reposición de recetas'}</li>
-                          <li>• {language === 'en' ? 'Chronic condition management' : 'Manejo de condiciones crónicas'}</li>
+                          <li>• {language === 'en' ? 'Prescription management' : 'Manejo de recetas'}</li>
+                          <li>• {language === 'en' ? 'Preventive care' : 'Atención preventiva'}</li>
                         </ul>
                       </div>
-                    </CardContent>
-                  </Card>
+                    </div>
+                  </div>
+
+                  {/* Telehealth */}
+                  <div className="bg-white rounded-lg border border-gray-200 shadow-sm p-6">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                        <Phone className="h-6 w-6 text-purple-600" />
+                      </div>
+                      <div>
+                        <h4 className="text-lg font-bold text-gray-900">
+                          {language === 'en' ? 'Telehealth' : 'Telemedicina'}
+                        </h4>
+                        <p className="text-gray-600 text-sm">
+                          {language === 'en' 
+                            ? 'Virtual consultations from home'
+                            : 'Consultas virtuales desde casa'
+                          }
+                        </p>
+                      </div>
+                    </div>
+                    
+                    <div className="space-y-3">
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm text-gray-600">{language === 'en' ? 'Wait Time:' : 'Tiempo de Espera:'}</span>
+                        <span className="font-medium text-purple-600">{language === 'en' ? 'Same day' : 'Mismo día'}</span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-sm text-gray-600">{language === 'en' ? 'Cost:' : 'Costo:'}</span>
+                        <span className="font-medium text-purple-600">$30-$80</span>
+                      </div>
+                      <div className="pt-2">
+                        <h6 className="font-medium text-gray-900 mb-2">{language === 'en' ? 'Best for:' : 'Mejor para:'}</h6>
+                        <ul className="text-sm text-gray-700 space-y-1">
+                          <li>• {language === 'en' ? 'Minor symptoms' : 'Síntomas menores'}</li>
+                          <li>• {language === 'en' ? 'Follow-up appointments' : 'Citas de seguimiento'}</li>
+                          <li>• {language === 'en' ? 'Prescription refills' : 'Reposición de recetas'}</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             )}
