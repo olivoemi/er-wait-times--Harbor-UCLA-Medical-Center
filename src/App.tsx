@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react'
 import { useKV } from '@github/spark/hooks'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
 import { Badge } from '@/components/ui/badge'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { MapPin, Clock, RefreshCw, Search, AlertTriangle, Heart, FirstAid, Phone, Thermometer, Pill, Eye, Plus, Globe, Info, X } from '@phosphor-icons/react'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { MapPin, Clock, RefreshCw, AlertTriangle, Heart, FirstAid, Phone, Thermometer, Pill, Eye, Plus, Globe, Info, X, Building } from '@phosphor-icons/react'
 
 interface Hospital {
   id: string
@@ -37,12 +37,13 @@ interface CareGuideItem {
 function App() {
   const [hospitals, setHospitals] = useKV<Hospital[]>('hospitals', [])
   const [userLocation, setUserLocation] = useState<UserLocation | null>(null)
-  const [searchTerm, setSearchTerm] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [lastRefresh, setLastRefresh] = useState<Date>(new Date())
   const [locationError, setLocationError] = useState<string>('')
   const [activeTab, setActiveTab] = useState('wait-times')
   const [language, setLanguage] = useState<'en' | 'es'>('en')
+  const [viewMode, setViewMode] = useState<'overview' | 'detailed'>('overview')
+  const [sortBy, setSortBy] = useState('wait-time')
 
   // Translation object
   const t = {
@@ -121,7 +122,22 @@ function App() {
       emergency911: 'Emergency',
       poisonControl: 'Poison Control',
       disclaimer: 'This information is for reference only and should not replace professional medical judgment. Wait times are estimates and may vary. For life-threatening emergencies, call 911 immediately.',
-      important: 'Important:'
+      important: 'Important:',
+      oneEmergencyDepartment: '1 emergency department',
+      overview: 'Overview',
+      detailed: 'Detailed',
+      sortByWaitTime: 'Sort by Wait Time',
+      status: 'Status',
+      open: 'Open',
+      harborShort: 'Harbor',
+      harborUCLAMedicalCenter: 'Harbor-UCLA Medical Center Emergency Department',
+      avgWaitTime: 'Avg Wait Time',
+      currentCensus: 'Current Census',
+      patients: 'patients',
+      waitTimesByConditionSeverity: 'Wait Times by Condition Severity',
+      serviciosEspecializadosDisponibles: 'Servicios Especializados Disponibles',
+      centroDeTrauma: 'Centro de Trauma',
+      atencionCardiaca: 'Atención Cardíaca'
     },
     es: {
       title: 'ER Wait Times',
@@ -198,7 +214,22 @@ function App() {
       emergency911: 'Emergencia',
       poisonControl: 'Control de Envenenamiento',
       disclaimer: 'Esta información es solo para referencia y no debe reemplazar el juicio médico profesional. Los tiempos de espera son estimados y pueden variar. Para emergencias que amenazan la vida, llame al 911 inmediatamente.',
-      important: 'Importante:'
+      important: 'Importante:',
+      oneEmergencyDepartment: '1 departamento de emergencia',
+      overview: 'Vista General',
+      detailed: 'Detallado',
+      sortByWaitTime: 'Ordenar por Tiempo de Espera',
+      status: 'Estado',
+      open: 'Abierto',
+      harborShort: 'Harbor',
+      harborUCLAMedicalCenter: 'Departamento de Emergencias Harbor-UCLA Medical Center',
+      avgWaitTime: 'Tiempo Promedio de Espera',
+      currentCensus: 'Censo Actual',
+      patients: 'pacientes',
+      waitTimesByConditionSeverity: 'Tiempos de Espera por Severidad de Condición',
+      serviciosEspecializadosDisponibles: 'Servicios Especializados Disponibles',
+      centroDeTrauma: 'Centro de Trauma',
+      atencionCardiaca: 'Atención Cardíaca'
     }
   }
 
@@ -298,12 +329,12 @@ function App() {
     const sampleHospitals: Hospital[] = [
       {
         id: '1',
-        name: 'UC Irvine Medical Center',
-        address: '101 The City Dr S, Orange, CA 92868',
-        waitTime: 35,
+        name: 'Harbor-UCLA Medical Center Emergency Department',
+        address: '1000 W Carson St, Torrance, CA 90509',
+        waitTime: 42,
         lastUpdated: new Date().toISOString(),
         specialties: ['Emergency', 'Trauma', 'Cardiac', 'Stroke', 'Pediatric'],
-        phone: '(714) 456-6011'
+        phone: '(310) 222-2345'
       }
     ]
 
@@ -328,17 +359,12 @@ function App() {
     }
   }
 
-  const filteredHospitals = hospitals
-    .filter(hospital => 
-      hospital.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      hospital.address.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-    .sort((a, b) => {
-      if (userLocation && a.distance && b.distance) {
-        return a.distance - b.distance
-      }
+  const sortedHospitals = hospitals.sort((a, b) => {
+    if (sortBy === 'wait-time') {
       return a.waitTime - b.waitTime
-    })
+    }
+    return a.name.localeCompare(b.name)
+  })
 
   return (
     <div className="min-h-screen bg-background">
@@ -409,277 +435,160 @@ function App() {
 
           {/* Wait Times Tab */}
           <TabsContent value="wait-times" className="space-y-6">
-            {/* Emergency Departments Header */}
-            <div className="space-y-6">
-              {/* Title and Status */}
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                <div>
-                  <h1 className="text-3xl font-bold text-gray-900 mb-2">
-                    {t[language].emergencyDepartments}
-                  </h1>
-                  <p className="text-gray-600">
-                    {t[language].realTimeWaitTimes}
-                  </p>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                    <span className="text-sm text-gray-600">{t[language].live}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Clock className="h-4 w-4 text-gray-400" />
-                    <span className="text-sm text-gray-600">{t[language].timeAgo}</span>
-                  </div>
-                  <Button 
-                    onClick={refreshData} 
-                    disabled={isLoading}
-                    variant="outline"
-                    size="sm"
-                    className="flex items-center gap-2"
-                  >
-                    <RefreshCw className={`h-4 w-4 ${isLoading ? 'animate-spin' : ''}`} />
-                    {t[language].refreshButton}
-                  </Button>
-                </div>
-              </div>
-
-              {/* Demo Section */}
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                <div className="flex items-start justify-between">
-                  <div className="flex items-start gap-3">
-                    <div className="bg-blue-100 text-blue-600 p-2 rounded-lg">
-                      <Info className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold text-blue-900 mb-1">
-                        {t[language].emergencyDepartmentDemo}
-                      </h3>
-                      <p className="text-blue-700 text-sm mb-2">
-                        {t[language].demoDescription}
-                      </p>
-                      <p className="text-blue-600 text-xs">
-                        {t[language].demoTime}
-                      </p>
-                    </div>
-                  </div>
-                  <Button variant="ghost" size="sm" className="text-blue-600 hover:text-blue-700">
-                    <X className="h-4 w-4" />
-                  </Button>
-                </div>
-              </div>
-
-              {/* How System Works */}
-              <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
-                <div className="flex items-start gap-3">
-                  <div className="bg-gray-100 text-gray-600 p-2 rounded-lg">
-                    <Info className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 mb-2">
-                      {t[language].howSystemWorks}
-                    </h3>
-                    <p className="text-gray-700 text-sm">
-                      {t[language].systemDescription}
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Emergency Condition Severity Levels */}
-              <div className="space-y-4">
-                <div>
-                  <h2 className="text-xl font-semibold text-gray-900 mb-2">
-                    {t[language].conditionSeverityLevels}
-                  </h2>
-                  <p className="text-gray-600 text-sm">
-                    {t[language].acuityDescription}
-                  </p>
-                </div>
-
-                {/* Acuity Level Cards */}
-                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
-                  {/* Level 1 - Critical */}
-                  <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-                    <div className="flex items-center gap-2 mb-3">
-                      <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                      <h3 className="font-semibold text-red-900 text-sm">
-                        {t[language].level1Critical}
-                      </h3>
-                    </div>
-                    <ul className="space-y-1 text-xs text-red-800">
-                      <li>• {t[language].cardiacArrest}</li>
-                      <li>• {t[language].severeBreathing}</li>
-                      <li>• {t[language].majorTrauma}</li>
-                      <li>• {t[language].strokeSymptoms}</li>
-                    </ul>
-                    <div className="mt-3 text-xs font-medium text-red-900">
-                      {t[language].highestPriority}
-                    </div>
-                  </div>
-
-                  {/* Level 2 - Urgent */}
-                  <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
-                    <div className="flex items-center gap-2 mb-3">
-                      <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
-                      <h3 className="font-semibold text-orange-900 text-sm">
-                        {t[language].level2Urgent}
-                      </h3>
-                    </div>
-                    <ul className="space-y-1 text-xs text-orange-800">
-                      <li>• {t[language].chestPain}</li>
-                      <li>• {t[language].severeAbdominal}</li>
-                      <li>• {t[language].highFeverConfusion}</li>
-                      <li>• {t[language].moderateBleeding}</li>
-                    </ul>
-                    <div className="mt-3 text-xs font-medium text-orange-900">
-                      {t[language].highPriority}
-                    </div>
-                  </div>
-
-                  {/* Level 3 - Less Urgent */}
-                  <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-                    <div className="flex items-center gap-2 mb-3">
-                      <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                      <h3 className="font-semibold text-yellow-900 text-sm">
-                        {t[language].level3LessUrgent}
-                      </h3>
-                    </div>
-                    <ul className="space-y-1 text-xs text-yellow-800">
-                      <li>• {t[language].moderatePain}</li>
-                      <li>• {t[language].minorFractures}</li>
-                      <li>• {t[language].persistentFever}</li>
-                      <li>• {t[language].vomitingDiarrhea}</li>
-                    </ul>
-                    <div className="mt-3 text-xs font-medium text-yellow-900">
-                      {t[language].mediumPriority}
-                    </div>
-                  </div>
-
-                  {/* Level 4 - Non-Urgent */}
-                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                    <div className="flex items-center gap-2 mb-3">
-                      <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                      <h3 className="font-semibold text-blue-900 text-sm">
-                        {t[language].level4NonUrgent}
-                      </h3>
-                    </div>
-                    <ul className="space-y-1 text-xs text-blue-800">
-                      <li>• {t[language].minorCuts}</li>
-                      <li>• {t[language].mildHeadache}</li>
-                      <li>• {t[language].coldFluSymptoms}</li>
-                      <li>• {t[language].minorSprains}</li>
-                    </ul>
-                    <div className="mt-3 text-xs font-medium text-blue-900">
-                      {t[language].lowPriority}
-                    </div>
-                  </div>
-
-                  {/* Level 5 - Low Acuity */}
-                  <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                    <div className="flex items-center gap-2 mb-3">
-                      <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                      <h3 className="font-semibold text-green-900 text-sm">
-                        {t[language].level5LowAcuity}
-                      </h3>
-                    </div>
-                    <ul className="space-y-1 text-xs text-green-800">
-                      <li>• {t[language].minorSkinConditions}</li>
-                      <li>• {t[language].prescriptionRefills}</li>
-                      <li>• {t[language].routineConcerns}</li>
-                      <li>• {t[language].minorEyeIrritation}</li>
-                    </ul>
-                    <div className="mt-3 text-xs font-medium text-green-900">
-                      {t[language].lowestPriority}
-                    </div>
-                  </div>
-                </div>
-              </div>
+            {/* Header with department count */}
+            <div className="flex items-center gap-2 text-gray-600">
+              <Building className="h-4 w-4" />
+              <span className="text-sm">{t[language].oneEmergencyDepartment}</span>
             </div>
 
-            {/* Location Alert */}
-            {locationError && (
-              <Alert>
-                <AlertTriangle className="h-4 w-4" />
-                <AlertDescription>{t[language].locationDenied}</AlertDescription>
-              </Alert>
-            )}
-
-            {/* Controls */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <div className="relative flex-1">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
-                <Input
-                  placeholder={t[language].searchPlaceholder}
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="pl-10"
-                />
+            {/* Controls Row */}
+            <div className="flex justify-between items-center">
+              {/* Overview/Detailed Toggle */}
+              <div className="flex gap-2">
+                <Button
+                  variant={viewMode === 'overview' ? 'default' : 'outline'}
+                  size="sm"
+                  onClick={() => setViewMode('overview')}
+                  className={viewMode === 'overview' ? 'bg-blue-600 hover:bg-blue-700' : ''}
+                >
+                  {t[language].overview}
+                </Button>
+                <Button
+                  variant={viewMode === 'detailed' ? 'default' : 'outline'}
+                  size="sm"
+                  onClick={() => setViewMode('detailed')}
+                  className={viewMode === 'detailed' ? 'bg-blue-600 hover:bg-blue-700' : ''}
+                >
+                  {t[language].detailed}
+                </Button>
               </div>
-              <Button 
-                onClick={refreshData} 
-                disabled={isLoading}
-                className="flex items-center gap-2"
-              >
-                <RefreshCw className={`h-4 w-4 ${isLoading ? 'animate-spin' : ''}`} />
-                {t[language].refresh}
-              </Button>
+
+              {/* Sort Dropdown */}
+              <Select value={sortBy} onValueChange={setSortBy}>
+                <SelectTrigger className="w-48">
+                  <SelectValue placeholder={t[language].sortByWaitTime} />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="wait-time">{t[language].sortByWaitTime}</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
 
-            {/* Last Updated */}
-            <div className="text-sm text-muted-foreground text-center">
-              {t[language].lastUpdated} {lastRefresh.toLocaleTimeString()}
-            </div>
-
-            {/* Hospital Cards */}
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-              {filteredHospitals.map((hospital) => (
-                <Card key={hospital.id} className="hover:shadow-md transition-shadow">
-                  <CardHeader>
-                    <CardTitle className="flex items-center justify-between">
-                      <span className="text-lg">{hospital.name}</span>
-                      {getWaitTimeBadge(hospital.waitTime)}
-                    </CardTitle>
-                  </CardHeader>
-                  <CardContent className="space-y-3">
-                    <div className="flex items-start gap-2">
-                      <MapPin className="h-4 w-4 text-muted-foreground mt-0.5 flex-shrink-0" />
-                      <span className="text-sm text-muted-foreground">{hospital.address}</span>
-                    </div>
-                    
-                    {hospital.distance && (
-                      <div className="text-sm text-muted-foreground">
-                        📍 {hospital.distance.toFixed(1)} {t[language].milesAway}
+            {/* Harbor-UCLA Medical Center Card */}
+            {sortedHospitals.map((hospital) => (
+              <Card key={hospital.id} className="overflow-hidden">
+                <CardContent className="p-6">
+                  {/* Hospital Header */}
+                  <div className="flex items-start justify-between mb-6">
+                    <div className="flex items-start gap-4">
+                      {/* Harbor Logo */}
+                      <div className="bg-red-600 text-white px-3 py-2 rounded font-bold text-sm">
+                        {t[language].harborShort}
                       </div>
-                    )}
-
-                    <div className="flex items-center gap-2">
-                      <Clock className="h-4 w-4 text-muted-foreground" />
-                      <span className="text-sm font-medium">
-                        {t[language].estimatedWait} {hospital.waitTime} {t[language].minutes}
-                      </span>
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <div>
+                          <h3 className="font-semibold text-gray-900 mb-1">
+                            {t[language].harborUCLAMedicalCenter}
+                          </h3>
+                          <div className="flex items-center gap-2 text-sm text-gray-600">
+                            <MapPin className="h-3 w-3" />
+                            <span>18.4 miles</span>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-
-                    <div className="flex flex-wrap gap-1">
-                      {hospital.specialties.map((specialty) => (
-                        <Badge key={specialty} variant="outline" className="text-xs">
-                          {specialty}
-                        </Badge>
-                      ))}
+                    <div className="text-right">
+                      <div className="text-sm text-gray-600 mb-1">{t[language].status}</div>
+                      <div className="font-semibold text-green-600">{t[language].open}</div>
                     </div>
+                  </div>
 
-                    <div className="text-sm text-muted-foreground">
-                      📞 {hospital.phone}
+                  {/* Stats Row */}
+                  <div className="flex gap-8 mb-6">
+                    <div className="text-center">
+                      <div className="text-sm text-gray-600 mb-1">{t[language].avgWaitTime}</div>
+                      <div className="text-3xl font-bold text-orange-500">42</div>
+                      <div className="text-sm text-gray-600">{t[language].minutes}</div>
                     </div>
-                    
-                    <div className="text-xs text-muted-foreground">
-                      {t[language].updated} {new Date(hospital.lastUpdated).toLocaleTimeString()}
+                    <div className="text-center">
+                      <div className="text-sm text-gray-600 mb-1">{t[language].currentCensus}</div>
+                      <div className="text-3xl font-bold text-gray-700">46</div>
+                      <div className="text-sm text-gray-600">{t[language].patients}</div>
                     </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+                  </div>
 
-            {filteredHospitals.length === 0 && !isLoading && (
+                  {/* Wait Times by Condition Severity */}
+                  <div className="mb-6">
+                    <h4 className="font-semibold text-gray-900 mb-4">{t[language].waitTimesByConditionSeverity}</h4>
+                    <div className="flex gap-4">
+                      {/* L1 */}
+                      <div className="text-center flex-1">
+                        <div className="w-3 h-3 bg-red-500 rounded-full mx-auto mb-2"></div>
+                        <div className="text-xs font-medium text-gray-600 mb-1">L1</div>
+                        <div className="text-xs text-gray-500 mb-1">Q: 3</div>
+                        <div className="text-sm font-bold text-green-600">&lt;15m</div>
+                      </div>
+                      {/* L2 */}
+                      <div className="text-center flex-1">
+                        <div className="w-3 h-3 bg-orange-500 rounded-full mx-auto mb-2"></div>
+                        <div className="text-xs font-medium text-gray-600 mb-1">L2</div>
+                        <div className="text-xs text-gray-500 mb-1">Q: 7</div>
+                        <div className="text-sm font-bold text-green-600">&lt;15m</div>
+                      </div>
+                      {/* L3 */}
+                      <div className="text-center flex-1">
+                        <div className="w-3 h-3 bg-yellow-500 rounded-full mx-auto mb-2"></div>
+                        <div className="text-xs font-medium text-gray-600 mb-1">L3</div>
+                        <div className="text-xs text-gray-500 mb-1">Q: 19</div>
+                        <div className="text-sm font-bold text-orange-600">693m</div>
+                      </div>
+                      {/* L4 */}
+                      <div className="text-center flex-1">
+                        <div className="w-3 h-3 bg-blue-500 rounded-full mx-auto mb-2"></div>
+                        <div className="text-xs font-medium text-gray-600 mb-1">L4</div>
+                        <div className="text-xs text-gray-500 mb-1">Q: 13</div>
+                        <div className="text-sm font-bold text-red-600">1020m</div>
+                      </div>
+                      {/* L5 */}
+                      <div className="text-center flex-1">
+                        <div className="w-3 h-3 bg-green-500 rounded-full mx-auto mb-2"></div>
+                        <div className="text-xs font-medium text-gray-600 mb-1">L5</div>
+                        <div className="text-xs text-gray-500 mb-1">Q: 3</div>
+                        <div className="text-sm font-bold text-red-600">943m</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Specialized Services */}
+                  <div>
+                    <h4 className="font-semibold text-gray-900 mb-3">{t[language].serviciosEspecializadosDisponibles}</h4>
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between p-3 bg-red-50 rounded-lg border border-red-200">
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
+                            <Plus className="h-4 w-4 text-red-600" />
+                          </div>
+                          <span className="font-medium text-red-900">{t[language].centroDeTrauma}</span>
+                        </div>
+                        <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                      </div>
+                      <div className="flex items-center justify-between p-3 bg-pink-50 rounded-lg border border-pink-200">
+                        <div className="flex items-center gap-3">
+                          <div className="w-8 h-8 bg-pink-100 rounded-full flex items-center justify-center">
+                            <Heart className="h-4 w-4 text-pink-600" />
+                          </div>
+                          <span className="font-medium text-pink-900">{t[language].atencionCardiaca}</span>
+                        </div>
+                        <div className="w-2 h-2 bg-pink-500 rounded-full"></div>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+
+            {sortedHospitals.length === 0 && !isLoading && (
               <div className="text-center py-12">
                 <p className="text-muted-foreground">{t[language].noHospitalsFound}</p>
               </div>
