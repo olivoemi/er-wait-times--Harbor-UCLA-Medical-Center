@@ -6,7 +6,7 @@ import { Badge } from '@/components/ui/badge'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { MapPin, Clock, RefreshCw, AlertTriangle, Heart, FirstAid, Phone, Thermometer, Pill, Eye, Plus, Globe, Info, X, Building, CaretDown, CaretUp } from '@phosphor-icons/react'
+import { MapPin, Clock, RefreshCw, AlertTriangle, Heart, FirstAid, Phone, Thermometer, Pill, Eye, Plus, Globe, Info, X, Building, CaretDown, CaretUp, MagnifyingGlass, CheckCircle } from '@phosphor-icons/react'
 import qrCodeImage from '@/assets/images/qr-code.png'
 
 interface Hospital {
@@ -35,6 +35,18 @@ interface CareGuideItem {
   icon: JSX.Element
 }
 
+interface Symptom {
+  id: string
+  name: string
+  acuityLevel: number
+  category: string
+}
+
+interface SymptomCategory {
+  name: string
+  symptoms: Symptom[]
+}
+
 function App() {
   const [hospitals, setHospitals] = useKV<Hospital[]>('hospitals', [])
   const [userLocation, setUserLocation] = useState<UserLocation | null>(null)
@@ -47,6 +59,9 @@ function App() {
   const [sortBy, setSortBy] = useState('wait-time')
   const [facilityInfoExpanded, setFacilityInfoExpanded] = useState(true)
   const [careGuideSection, setCareGuideSection] = useState<'recommendation' | 'options' | 'prepare'>('recommendation')
+  const [selectedInsurance, setSelectedInsurance] = useState('')
+  const [selectedSymptoms, setSelectedSymptoms] = useState<string[]>([])
+  const [showAssessmentResult, setShowAssessmentResult] = useState(false)
 
   // Translation object
   const t = {
@@ -322,6 +337,65 @@ function App() {
       icon: <Pill className="h-6 w-6" />
     }
   ]
+
+  // Insurance options
+  const insuranceOptions = [
+    { value: 'medicare', label: 'Medicare' },
+    { value: 'medicaid', label: 'Medicaid/Medi-Cal' },
+    { value: 'private', label: 'Private Insurance' },
+    { value: 'uninsured', label: 'Uninsured/Self-Pay' },
+    { value: 'covered-ca', label: 'Covered California' }
+  ]
+
+  // Symptom categories and symptoms
+  const symptomCategories: SymptomCategory[] = [
+    {
+      name: 'Level 1 - Immediate (Life-Threatening)',
+      symptoms: [
+        { id: 'thoughts-harm', name: 'Thoughts of Harming Yourself or Others', acuityLevel: 1, category: 'mental-health' },
+        { id: 'severe-chest-pain', name: 'Severe Chest Pain', acuityLevel: 1, category: 'cardiac' },
+        { id: 'severe-breathing', name: 'Severe Difficulty Breathing', acuityLevel: 1, category: 'respiratory' },
+        { id: 'severe-bleeding', name: 'Severe Bleeding (Uncontrollable)', acuityLevel: 1, category: 'trauma' },
+        { id: 'stroke-signs', name: 'Signs of Stroke (FAST symptoms)', acuityLevel: 1, category: 'neurological' },
+        { id: 'active-seizure', name: 'Active Seizure', acuityLevel: 1, category: 'neurological' },
+        { id: 'vomiting-blood', name: 'Vomiting Blood', acuityLevel: 1, category: 'gastrointestinal' },
+        { id: 'loss-consciousness', name: 'Loss of Consciousness', acuityLevel: 1, category: 'neurological' },
+        { id: 'cardiac-arrest', name: 'Cardiac Arrest Symptoms', acuityLevel: 1, category: 'cardiac' }
+      ]
+    }
+  ]
+
+  const handleSymptomToggle = (symptomId: string) => {
+    setSelectedSymptoms(prev => 
+      prev.includes(symptomId) 
+        ? prev.filter(id => id !== symptomId)
+        : [...prev, symptomId]
+    )
+  }
+
+  const clearAllSymptoms = () => {
+    setSelectedSymptoms([])
+    setShowAssessmentResult(false)
+  }
+
+  const getAssessmentResult = () => {
+    if (selectedSymptoms.length === 0) return null
+
+    // Find the highest acuity level among selected symptoms
+    const allSymptoms = symptomCategories.flatMap(cat => cat.symptoms)
+    const selectedSymptomObjects = allSymptoms.filter(symptom => selectedSymptoms.includes(symptom.id))
+    const highestAcuity = Math.min(...selectedSymptomObjects.map(s => s.acuityLevel))
+
+    return {
+      acuityLevel: highestAcuity,
+      waitTime: highestAcuity === 1 ? '<15' : highestAcuity === 2 ? '<15' : highestAcuity === 3 ? '693' : highestAcuity === 4 ? '1020' : '943',
+      recommendation: highestAcuity <= 2 ? 'Emergency Department' : highestAcuity === 3 ? 'Emergency Department or Urgent Care' : 'Urgent Care or Primary Care'
+    }
+  }
+
+  const performAssessment = () => {
+    setShowAssessmentResult(true)
+  }
 
   const getUrgencyBadge = (urgency: string) => {
     switch (urgency) {
@@ -2029,56 +2103,331 @@ function App() {
 
             {/* Care Guide Content */}
             {careGuideSection === 'recommendation' && (
-              <div className="space-y-6">
-                {/* Care Guide Cards */}
-                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                  {careGuideItems.map((item) => (
-                    <Card key={item.id} className="hover:shadow-md transition-shadow">
-                      <CardHeader>
-                        <CardTitle className="flex items-center justify-between">
-                          <div className="flex items-center gap-3">
-                            <div className={`p-2 rounded-lg ${
-                              item.urgency === 'emergency' ? 'bg-red-100 text-red-600' :
-                              item.urgency === 'urgent' ? 'bg-yellow-100 text-yellow-600' :
-                              'bg-green-100 text-green-600'
-                            }`}>
-                              {item.icon}
+              <div className="space-y-8">
+                {/* Enhanced Acuity-Based Assessment */}
+                <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+                  <div className="mb-6">
+                    <div className="text-sm text-gray-600 mb-2">
+                      {language === 'en' 
+                        ? 'Get personalized guidance on urgent care vs emergency room'
+                        : 'Obtenga orientación personalizada sobre atención urgente vs sala de emergencias'
+                      }
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-2">
+                      {language === 'en' 
+                        ? 'Enhanced Acuity-Based Assessment'
+                        : 'Evaluación Mejorada Basada en Acuidad'
+                      }
+                    </h3>
+                    <p className="text-gray-600">
+                      {language === 'en' 
+                        ? 'Select your symptoms to receive a clinical acuity level assessment (1-5) with personalized care recommendations and estimated wait times.'
+                        : 'Seleccione sus síntomas para recibir una evaluación de nivel de acuidad clínica (1-5) con recomendaciones de atención personalizadas y tiempos de espera estimados.'
+                      }
+                    </p>
+                  </div>
+
+                  {/* Insurance Coverage Section */}
+                  <div className="mb-8 p-6 bg-gray-50 rounded-lg border border-gray-200">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center">
+                        <span className="text-blue-600 text-xs font-bold">1</span>
+                      </div>
+                      <h4 className="text-lg font-semibold text-gray-900">
+                        {language === 'en' ? 'Insurance Coverage' : 'Cobertura de Seguro'}
+                      </h4>
+                    </div>
+                    <p className="text-sm text-blue-700 mb-4">
+                      {language === 'en' 
+                        ? 'Select your insurance type to see personalized cost estimates'
+                        : 'Seleccione su tipo de seguro para ver estimaciones de costo personalizadas'
+                      }
+                    </p>
+                    <Select value={selectedInsurance} onValueChange={setSelectedInsurance}>
+                      <SelectTrigger className="w-full bg-white">
+                        <SelectValue placeholder={
+                          language === 'en' ? 'Select your insurance type...' : 'Seleccione su tipo de seguro...'
+                        } />
+                      </SelectTrigger>
+                      <SelectContent>
+                        {insuranceOptions.map((option) => (
+                          <SelectItem key={option.value} value={option.value}>
+                            {option.label}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                  </div>
+
+                  {/* Symptom Selection Section */}
+                  <div className="mb-8 p-6 bg-gray-50 rounded-lg border border-gray-200">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center gap-3">
+                        <div className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center">
+                          <span className="text-blue-600 text-xs font-bold">2</span>
+                        </div>
+                        <h4 className="text-lg font-semibold text-gray-900">
+                          {language === 'en' ? 'Select Your Symptoms' : 'Seleccione sus Síntomas'}
+                        </h4>
+                      </div>
+                      {selectedSymptoms.length > 0 && (
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={clearAllSymptoms}
+                          className="text-gray-600 hover:text-gray-900"
+                        >
+                          {language === 'en' ? 'Reset' : 'Reiniciar'}
+                        </Button>
+                      )}
+                    </div>
+
+                    {/* Search symptoms input */}
+                    <div className="relative mb-6">
+                      <MagnifyingGlass className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                      <input
+                        type="text"
+                        placeholder={language === 'en' ? 'Search symptoms...' : 'Buscar síntomas...'}
+                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      />
+                    </div>
+
+                    {/* Selected Symptoms */}
+                    {selectedSymptoms.length > 0 && (
+                      <div className="mb-6">
+                        <div className="flex items-center justify-between mb-3">
+                          <h5 className="font-medium text-gray-900">
+                            {language === 'en' ? `Selected Symptoms (${selectedSymptoms.length})` : `Síntomas Seleccionados (${selectedSymptoms.length})`}
+                          </h5>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={clearAllSymptoms}
+                            className="text-gray-600 hover:text-gray-900 text-sm"
+                          >
+                            <X className="h-4 w-4 mr-1" />
+                            {language === 'en' ? 'Clear All' : 'Limpiar Todo'}
+                          </Button>
+                        </div>
+                        <div className="flex flex-wrap gap-2">
+                          {selectedSymptoms.map((symptomId) => {
+                            const allSymptoms = symptomCategories.flatMap(cat => cat.symptoms)
+                            const symptom = allSymptoms.find(s => s.id === symptomId)
+                            if (!symptom) return null
+                            
+                            return (
+                              <div
+                                key={symptomId}
+                                className="flex items-center gap-2 bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm"
+                              >
+                                <AlertTriangle className="h-3 w-3" />
+                                <span>{symptom.name}</span>
+                                <span className="font-semibold">Level {symptom.acuityLevel}</span>
+                                <button
+                                  onClick={() => handleSymptomToggle(symptomId)}
+                                  className="ml-1 hover:bg-red-200 rounded-full p-0.5"
+                                >
+                                  <X className="h-3 w-3" />
+                                </button>
+                              </div>
+                            )
+                          })}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Assessment Button */}
+                    {selectedSymptoms.length > 0 && (
+                      <Button
+                        onClick={performAssessment}
+                        className="bg-blue-600 hover:bg-blue-700 text-white w-full py-3 mb-6"
+                      >
+                        <MagnifyingGlass className="h-4 w-4 mr-2" />
+                        {language === 'en' ? 'Get Acuity Assessment & Wait Time' : 'Obtener Evaluación de Acuidad y Tiempo de Espera'}
+                      </Button>
+                    )}
+                  </div>
+
+                  {/* Assessment Result */}
+                  {showAssessmentResult && selectedSymptoms.length > 0 && (
+                    <div className="mb-8 p-6 bg-blue-50 border border-blue-200 rounded-lg">
+                      <div className="flex items-center gap-3 mb-4">
+                        <CheckCircle className="h-6 w-6 text-blue-600" />
+                        <h4 className="text-lg font-semibold text-blue-900">
+                          {language === 'en' ? 'Assessment Result' : 'Resultado de Evaluación'}
+                        </h4>
+                      </div>
+                      {(() => {
+                        const result = getAssessmentResult()
+                        if (!result) return null
+
+                        return (
+                          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div className="bg-white p-4 rounded-lg border">
+                              <div className="text-sm text-gray-600 mb-1">
+                                {language === 'en' ? 'Acuity Level' : 'Nivel de Acuidad'}
+                              </div>
+                              <div className="text-2xl font-bold text-red-600">
+                                Level {result.acuityLevel}
+                              </div>
+                              <div className="text-sm text-gray-700">
+                                {result.acuityLevel === 1 ? (language === 'en' ? 'Critical' : 'Crítico') :
+                                 result.acuityLevel === 2 ? (language === 'en' ? 'Urgent' : 'Urgente') :
+                                 result.acuityLevel === 3 ? (language === 'en' ? 'Less Urgent' : 'Menos Urgente') :
+                                 result.acuityLevel === 4 ? (language === 'en' ? 'Non-Urgent' : 'No Urgente') :
+                                 (language === 'en' ? 'Low Acuity' : 'Baja Acuidad')}
+                              </div>
                             </div>
-                            <span className="text-lg">{item.title}</span>
+                            <div className="bg-white p-4 rounded-lg border">
+                              <div className="text-sm text-gray-600 mb-1">
+                                {language === 'en' ? 'Estimated Wait Time' : 'Tiempo de Espera Estimado'}
+                              </div>
+                              <div className="text-2xl font-bold text-orange-600">
+                                {result.waitTime}m
+                              </div>
+                              <div className="text-sm text-gray-700">
+                                {language === 'en' ? 'Harbor-UCLA ED' : 'DE Harbor-UCLA'}
+                              </div>
+                            </div>
+                            <div className="bg-white p-4 rounded-lg border">
+                              <div className="text-sm text-gray-600 mb-1">
+                                {language === 'en' ? 'Recommended Care' : 'Atención Recomendada'}
+                              </div>
+                              <div className="text-lg font-semibold text-green-600">
+                                {result.recommendation}
+                              </div>
+                              {result.acuityLevel <= 2 && (
+                                <div className="text-xs text-red-600 font-medium mt-1">
+                                  {language === 'en' ? 'Call 911 if severe' : 'Llame al 911 si es severo'}
+                                </div>
+                              )}
+                            </div>
                           </div>
-                        </CardTitle>
-                      </CardHeader>
-                      <CardContent className="space-y-4">
-                        <p className="text-sm text-muted-foreground">{item.description}</p>
-                        
-                        {getUrgencyBadge(item.urgency)}
+                        )
+                      })()}
+                    </div>
+                  )}
 
-                        <div>
-                          <h4 className="font-medium text-sm mb-2">{t[language].commonSymptoms}</h4>
-                          <ul className="text-sm text-muted-foreground space-y-1">
-                            {item.symptoms.map((symptom, index) => (
-                              <li key={index} className="flex items-center gap-2">
-                                <span className="w-1 h-1 bg-muted-foreground rounded-full"></span>
-                                {symptom}
-                              </li>
-                            ))}
-                          </ul>
+                  {/* Symptom Categories */}
+                  <div className="space-y-6">
+                    {symptomCategories.map((category) => (
+                      <div key={category.name}>
+                        <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                          <span className="text-sm bg-red-100 text-red-800 px-2 py-1 rounded">
+                            {category.symptoms.length} {language === 'en' ? 'symptoms' : 'síntomas'}
+                          </span>
+                          {category.name}
+                        </h4>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                          {category.symptoms.map((symptom) => {
+                            const isSelected = selectedSymptoms.includes(symptom.id)
+                            const isThoughtsOfHarm = symptom.id === 'thoughts-harm'
+                            
+                            return (
+                              <div
+                                key={symptom.id}
+                                onClick={() => handleSymptomToggle(symptom.id)}
+                                className={`p-4 rounded-lg border cursor-pointer transition-all hover:shadow-md ${
+                                  isSelected 
+                                    ? 'bg-red-50 border-red-300 ring-2 ring-red-200' 
+                                    : 'bg-white border-gray-200 hover:border-gray-300'
+                                }`}
+                              >
+                                <div className="flex items-start justify-between mb-3">
+                                  <div className="flex items-center gap-3">
+                                    {isThoughtsOfHarm ? (
+                                      <AlertTriangle className="h-5 w-5 text-red-600 flex-shrink-0" />
+                                    ) : symptom.category === 'cardiac' ? (
+                                      <Heart className="h-5 w-5 text-red-600 flex-shrink-0" />
+                                    ) : symptom.category === 'respiratory' ? (
+                                      <div className="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                                      </div>
+                                    ) : symptom.category === 'neurological' ? (
+                                      <div className="w-5 h-5 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
+                                      </div>
+                                    ) : symptom.category === 'trauma' ? (
+                                      <FirstAid className="h-5 w-5 text-red-600 flex-shrink-0" />
+                                    ) : (
+                                      <div className="w-5 h-5 bg-gray-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                        <div className="w-2 h-2 bg-gray-600 rounded-full"></div>
+                                      </div>
+                                    )}
+                                    {isSelected && (
+                                      <CheckCircle className="h-5 w-5 text-red-600" />
+                                    )}
+                                  </div>
+                                  <div className="text-xs font-semibold text-gray-600">
+                                    {language === 'en' ? `Acuity Level ${symptom.acuityLevel}` : `Nivel de Acuidad ${symptom.acuityLevel}`}
+                                  </div>
+                                </div>
+                                <div className="text-sm font-medium text-gray-900 leading-tight">
+                                  {symptom.name}
+                                </div>
+                              </div>
+                            )
+                          })}
                         </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
 
-                        <div>
-                          <h4 className="font-medium text-sm mb-2">{t[language].recommendations}</h4>
-                          <ul className="text-sm text-muted-foreground space-y-1">
-                            {item.recommendations.map((rec, index) => (
-                              <li key={index} className="flex items-center gap-2">
-                                <span className="w-1 h-1 bg-muted-foreground rounded-full"></span>
-                                {rec}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
+                {/* Traditional Care Guide Cards - kept for reference */}
+                <div className="bg-gray-50 rounded-xl p-6">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                    {language === 'en' ? 'Quick Reference Guide' : 'Guía de Referencia Rápida'}
+                  </h3>
+                  <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+                    {careGuideItems.map((item) => (
+                      <Card key={item.id} className="hover:shadow-md transition-shadow">
+                        <CardHeader>
+                          <CardTitle className="flex items-center justify-between">
+                            <div className="flex items-center gap-3">
+                              <div className={`p-2 rounded-lg ${
+                                item.urgency === 'emergency' ? 'bg-red-100 text-red-600' :
+                                item.urgency === 'urgent' ? 'bg-yellow-100 text-yellow-600' :
+                                'bg-green-100 text-green-600'
+                              }`}>
+                                {item.icon}
+                              </div>
+                              <span className="text-lg">{item.title}</span>
+                            </div>
+                          </CardTitle>
+                        </CardHeader>
+                        <CardContent className="space-y-4">
+                          <p className="text-sm text-muted-foreground">{item.description}</p>
+                          
+                          {getUrgencyBadge(item.urgency)}
+
+                          <div>
+                            <h4 className="font-medium text-sm mb-2">{t[language].commonSymptoms}</h4>
+                            <ul className="text-sm text-muted-foreground space-y-1">
+                              {item.symptoms.map((symptom, index) => (
+                                <li key={index} className="flex items-center gap-2">
+                                  <span className="w-1 h-1 bg-muted-foreground rounded-full"></span>
+                                  {symptom}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+
+                          <div>
+                            <h4 className="font-medium text-sm mb-2">{t[language].recommendations}</h4>
+                            <ul className="text-sm text-muted-foreground space-y-1">
+                              {item.recommendations.map((rec, index) => (
+                                <li key={index} className="flex items-center gap-2">
+                                  <span className="w-1 h-1 bg-muted-foreground rounded-full"></span>
+                                  {rec}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    ))}
+                  </div>
                 </div>
               </div>
             )}
