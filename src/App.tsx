@@ -2678,10 +2678,7 @@ function App() {
                   <div className="space-y-6">
                     {symptomCategories.map((category) => (
                       <div key={category.name}>
-                        <h4 className="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                          <span className="text-sm bg-red-100 text-red-800 px-2 py-1 rounded">
-                            {category.symptoms.length} {language === 'en' ? 'symptoms' : 'síntomas'}
-                          </span>
+                        <h4 className="text-lg font-semibold text-gray-900 mb-4">
                           {category.name}
                         </h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
