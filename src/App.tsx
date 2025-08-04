@@ -6,7 +6,7 @@ import { Badge } from '@/components/ui/badge'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { MapPin, Clock, RefreshCw, AlertTriangle, Heart, FirstAid, Phone, Thermometer, Pill, Eye, Plus, Globe, Info, X, Building } from '@phosphor-icons/react'
+import { MapPin, Clock, RefreshCw, AlertTriangle, Heart, FirstAid, Phone, Thermometer, Pill, Eye, Plus, Globe, Info, X, Building, CaretDown, CaretUp } from '@phosphor-icons/react'
 import qrCodeImage from '@/assets/images/qr-code.png'
 
 interface Hospital {
@@ -45,6 +45,7 @@ function App() {
   const [language, setLanguage] = useState<'en' | 'es'>('en')
   const [viewMode, setViewMode] = useState<'overview' | 'detailed'>('overview')
   const [sortBy, setSortBy] = useState('wait-time')
+  const [facilityInfoExpanded, setFacilityInfoExpanded] = useState(true)
 
   // Translation object
   const t = {
@@ -232,7 +233,27 @@ function App() {
       serviciosEspecializadosDisponibles: 'Servicios Especializados Disponibles',
       centroDeTrauma: 'Centro de Trauma',
       atencionCardiaca: 'Atención Cardíaca',
-      additionalInfoPanel: 'Panel de información adicional'
+      additionalInfoPanel: 'Panel de información adicional',
+      facilityInformation: 'Información de la Instalación',
+      level1TraumaCenter: 'Centro de Trauma Nivel 1',
+      traumaCenterDescription: 'Centro de trauma mayor Nivel 1 sirviendo el área de South Bay y Harbor con servicios de emergencia integrales.',
+      contactInformation: 'Información de Contacto',
+      operatingHours: 'Horarios de Operación',
+      open24_7: 'Abierto 24/7 para Atención de Emergencia',
+      mainLine: 'Línea Principal',
+      officialWebsite: 'Sitio Web Oficial',
+      nedocs: 'NEDOCS',
+      severelyOvercrowded: 'Severamente saturado',
+      facilityInformation: 'Facility Information',
+      level1TraumaCenter: 'Level 1 Trauma Center',
+      traumaCenterDescription: 'Major Level 1 trauma center serving South Bay and Harbor area with comprehensive emergency services.',
+      contactInformation: 'Contact Information',
+      operatingHours: 'Operating Hours',
+      open24_7: 'Open 24/7 for Emergency Care',
+      mainLine: 'Main Line',
+      officialWebsite: 'Official Website',
+      nedocs: 'NEDOCS',
+      severelyOvercrowded: 'Severely overcrowded'
     }
   }
 
@@ -926,22 +947,104 @@ function App() {
                         <div className="bg-red-600 text-white px-3 py-2 rounded font-bold text-sm">
                           {t[language].harborShort}
                         </div>
+                        <div>
+                          <div className="flex items-center gap-2 mb-1">
+                            <span className="text-gray-600 text-sm">Census = 46</span>
+                          </div>
+                          <h3 className="font-semibold text-gray-900 mb-1">
+                            {t[language].harborUCLAMedicalCenter}
+                          </h3>
+                          <div className="flex items-center gap-2 text-sm text-gray-600">
+                            <MapPin className="h-3 w-3" />
+                            <span>18.4 {language === 'en' ? 'miles' : 'millas'}</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="text-right flex flex-col items-end gap-2">
                         <div className="flex items-center gap-2">
                           <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                          <div>
-                            <h3 className="font-semibold text-gray-900 mb-1">
-                              {t[language].harborUCLAMedicalCenter}
-                            </h3>
-                            <div className="flex items-center gap-2 text-sm text-gray-600">
-                              <MapPin className="h-3 w-3" />
-                              <span>18.4 {language === 'en' ? 'miles' : 'millas'}</span>
+                          <span className="font-semibold text-green-600">{t[language].open}</span>
+                        </div>
+                        <div className="bg-orange-100 text-orange-800 px-3 py-1 rounded text-sm font-medium">
+                          {t[language].nedocs} 165 ({t[language].severelyOvercrowded})
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Facility Information Section */}
+                    <div className="mb-6">
+                      <button 
+                        onClick={() => setFacilityInfoExpanded(!facilityInfoExpanded)}
+                        className="flex items-center justify-between w-full p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+                      >
+                        <div className="flex items-center gap-3">
+                          <Building className="h-5 w-5 text-blue-600" />
+                          <span className="font-semibold text-gray-900">{t[language].facilityInformation}</span>
+                        </div>
+                        {facilityInfoExpanded ? <CaretUp className="h-4 w-4" /> : <CaretDown className="h-4 w-4" />}
+                      </button>
+                      
+                      {facilityInfoExpanded && (
+                        <div className="mt-4 p-4 border border-gray-200 rounded-lg">
+                          <div className="flex items-start gap-3 mb-4">
+                            <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                              <Plus className="h-4 w-4 text-blue-600" />
+                            </div>
+                            <div>
+                              <h4 className="font-semibold text-blue-900 mb-1">{t[language].level1TraumaCenter}</h4>
+                              <p className="text-sm text-gray-600">{t[language].traumaCenterDescription}</p>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Two Column Layout for Contact and Operating Hours */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                      {/* Contact Information */}
+                      <div>
+                        <h4 className="font-semibold text-gray-900 mb-4">{t[language].contactInformation}</h4>
+                        <div className="space-y-4">
+                          <div className="flex items-start gap-3">
+                            <MapPin className="h-4 w-4 text-gray-500 mt-1 flex-shrink-0" />
+                            <div>
+                              <div className="font-medium text-gray-900">1000 W Carson St, Torrance, CA 90509</div>
+                              <div className="text-sm text-gray-600">Torrance, CA 90509</div>
+                            </div>
+                          </div>
+                          <div className="flex items-start gap-3">
+                            <Phone className="h-4 w-4 text-gray-500 mt-1 flex-shrink-0" />
+                            <div>
+                              <div className="font-medium text-gray-900">(310) 222-2345</div>
+                              <div className="text-sm text-gray-600">{t[language].mainLine}</div>
+                            </div>
+                          </div>
+                          <div className="flex items-start gap-3">
+                            <Globe className="h-4 w-4 text-gray-500 mt-1 flex-shrink-0" />
+                            <div>
+                              <a 
+                                href="https://dhs.lacounty.gov/harbor-ucla-medical-center/" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="font-medium text-blue-600 hover:text-blue-800"
+                              >
+                                dhs.lacounty.gov/harbor-ucla-medical-center/
+                              </a>
+                              <div className="text-sm text-gray-600">{t[language].officialWebsite}</div>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div className="text-right">
-                        <div className="text-sm text-gray-600 mb-1">{t[language].status}</div>
-                        <div className="font-semibold text-green-600">{t[language].open}</div>
+
+                      {/* Operating Hours */}
+                      <div>
+                        <h4 className="font-semibold text-gray-900 mb-4">{t[language].operatingHours}</h4>
+                        <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                          <div className="flex items-center gap-2">
+                            <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                            <span className="font-medium text-green-900">{t[language].open24_7}</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
 
