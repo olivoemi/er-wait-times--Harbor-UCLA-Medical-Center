@@ -3471,10 +3471,12 @@ function App() {
                             {language === 'en' ? 'Availability' : 'Disponibilidad'}
                           </span>
                         </div>
+                        <div className="text-lg font-bold text-gray-900">
+                          {language === 'en' ? 'Scheduled appointments' : 'Citas programadas'}
                         </div>
                       </div>
-                        </div>
-                      </div>
+                    </div>
+
                     {/* Best For Section */}
                     <div className="mb-6">
                       <div className="flex items-center gap-2 mb-4">
@@ -3605,20 +3607,15 @@ function App() {
 
                     {/* Action Buttons */}
                     <div className="flex gap-3">
+                      <Button className="bg-green-600 hover:bg-green-700 text-white flex-1">
                         <FirstAid className="h-4 w-4 mr-2" />
-                    </div>anguage === 'en' ? 'Access Patient Portal' : 'Acceder al Portal del Paciente'}
-
+                        {language === 'en' ? 'Access Patient Portal' : 'Acceder al Portal del Paciente'}
+                      </Button>
                       <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50">
                         <Phone className="h-4 w-4 mr-2" />
                         {language === 'en' ? 'Call for Info' : 'Llamar para Información'}
                       </Button>
                     </div>
-                  </div>
-                </div>
-              </div>
-            )}
-
-            {careGuideSection === 'prepare' && (
                   </div>
                 </div>
               </div>
@@ -3648,7 +3645,7 @@ function App() {
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
-                            </h5>
+                      <div className="space-y-4">
                         <div className="flex items-start gap-3 p-3 bg-blue-50 rounded-lg">
                           <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
                           <div>
@@ -3705,6 +3702,12 @@ function App() {
                     </CardHeader>
                     <CardContent>
                       <div className="space-y-4">
+                        <div className="flex items-start gap-3 p-3 bg-green-50 rounded-lg">
+                          <div className="w-2 h-2 bg-green-500 rounded-full mt-2"></div>
+                          <div>
+                            <h5 className="font-semibold text-green-900">
+                              {language === 'en' ? 'Triage Assessment' : 'Evaluación de Triaje'}
+                            </h5>
                             <p className="text-sm text-green-800">
                               {language === 'en' 
                                 ? 'Initial evaluation to determine priority level'
