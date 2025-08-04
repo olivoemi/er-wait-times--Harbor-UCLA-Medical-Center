@@ -596,7 +596,12 @@ function App() {
                   ))}
                 </div>
                 {/* Right side - QR Code and Information */}
-                <div className="bg-gray-50 rounded-lg p-6 flex flex-col items-center justify-center space-y-4">
+                <div className="bg-gray-50 rounded-lg p-6 flex flex-col items-center justify-center space-y-6">
+                  {/* Title */}
+                  <h3 className="text-lg font-semibold text-gray-900 text-center">
+                    {language === 'en' ? 'Harbor QR Code' : 'Código QR de Harbor'}
+                  </h3>
+                  
                   {/* QR Code */}
                   <a 
                     href="https://youtu.be/86z2k4zEOlw" 
@@ -613,11 +618,11 @@ function App() {
                     />
                   </a>
                   
-                  {/* Explanatory text */}
-                  <p className="text-sm text-gray-600 text-center max-w-48">
+                  {/* Descriptive text */}
+                  <p className="text-sm text-gray-600 text-center max-w-56 leading-relaxed">
                     {language === 'en' 
-                      ? 'Please review for a better understanding of your ED visit'
-                      : 'Por favor revise para una mejor comprensión de su visita al DE'
+                      ? 'Scan this QR code for quick access to Harbor facility information'
+                      : 'Escanee este código QR para acceso rápido a la información de la instalación Harbor'
                     }
                   </p>
                 </div>
