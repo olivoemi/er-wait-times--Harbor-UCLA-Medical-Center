@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input'
 import { Badge } from '@/components/ui/badge'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { MapPin, Clock, RefreshCw, Search, AlertTriangle, Heart, FirstAid, Phone, Thermometer, Pill, Eye, Plus, Globe } from '@phosphor-icons/react'
+import { MapPin, Clock, RefreshCw, Search, AlertTriangle, Heart, FirstAid, Phone, Thermometer, Pill, Eye, Plus, Globe, Info, X } from '@phosphor-icons/react'
 
 interface Hospital {
   id: string
@@ -53,6 +53,48 @@ function App() {
       emergency: '911',
       language: 'English',
       emergencyLabel: 'Emergency:',
+      emergencyDepartments: 'Emergency Departments',
+      realTimeWaitTimes: 'Real-time wait times by condition severity for 1 ED',
+      live: 'Live',
+      timeAgo: '1m ago',
+      refreshButton: 'Refresh',
+      emergencyDepartmentDemo: 'Emergency Department Demo',
+      demoDescription: 'Demo showing Harbor-UCLA Medical Center emergency department with acuity-based wait times.',
+      demoTime: '8/4/2025, 1:30:10 PM',
+      howSystemWorks: 'How Our Wait Time System Works',
+      systemDescription: 'Each facility shows estimated wait times for all 5 acuity levels based on current patient queue, staffing levels, and facility efficiency. Higher acuity conditions (Level 1-2) are seen immediately, while lower acuity conditions may have longer wait times depending on facility capacity.',
+      conditionSeverityLevels: 'Emergency Condition Severity Levels',
+      acuityDescription: 'Understanding the 5 acuity levels helps you know what to expect when visiting an emergency department.',
+      level1Critical: 'Level 1 - Critical',
+      level2Urgent: 'Level 2 - Urgent',
+      level3LessUrgent: 'Level 3 - Less Urgent',
+      level4NonUrgent: 'Level 4 - Non-Urgent',
+      level5LowAcuity: 'Level 5 - Low Acuity',
+      cardiacArrest: 'Cardiac arrest',
+      severeBreathing: 'Severe breathing difficulty',
+      majorTrauma: 'Major trauma',
+      strokeSymptoms: 'Stroke symptoms',
+      chestPain: 'Chest pain',
+      severeAbdominal: 'Severe abdominal pain',
+      highFeverConfusion: 'High fever with confusion',
+      moderateBleeding: 'Moderate bleeding',
+      moderatePain: 'Moderate pain',
+      minorFractures: 'Minor fractures',
+      persistentFever: 'Persistent fever',
+      vomitingDiarrhea: 'Vomiting/diarrhea',
+      minorCuts: 'Minor cuts',
+      mildHeadache: 'Mild headache',
+      coldFluSymptoms: 'Cold/flu symptoms',
+      minorSprains: 'Minor sprains',
+      minorSkinConditions: 'Minor skin conditions',
+      prescriptionRefills: 'Prescription refills',
+      routineConcerns: 'Routine concerns',
+      minorEyeIrritation: 'Minor eye irritation',
+      highestPriority: 'Highest Priority',
+      highPriority: 'High Priority',
+      mediumPriority: 'Medium Priority',
+      lowPriority: 'Low Priority',
+      lowestPriority: 'Lowest Priority',
       locationDenied: 'Location access denied. Showing all hospitals.',
       searchPlaceholder: 'Search hospitals by name or address...',
       refresh: 'Refresh',
@@ -88,6 +130,48 @@ function App() {
       emergency: '911',
       language: 'Español',
       emergencyLabel: 'Emergencia:',
+      emergencyDepartments: 'Departamentos de Emergencia',
+      realTimeWaitTimes: 'Tiempos de espera en tiempo real por severidad de condición para 1 DE',
+      live: 'En Vivo',
+      timeAgo: 'hace 1m',
+      refreshButton: 'Actualizar',
+      emergencyDepartmentDemo: 'Demo del Departamento de Emergencias',
+      demoDescription: 'Demo mostrando el departamento de emergencias de Harbor-UCLA Medical Center con tiempos de espera basados en acuidad.',
+      demoTime: '8/4/2025, 1:30:10 PM',
+      howSystemWorks: 'Cómo Funciona Nuestro Sistema de Tiempos de Espera',
+      systemDescription: 'Cada instalación muestra tiempos de espera estimados para los 5 niveles de acuidad basados en la cola de pacientes actual, niveles de personal y eficiencia de la instalación. Las condiciones de alta acuidad (Nivel 1-2) se ven inmediatamente, mientras que las condiciones de menor acuidad pueden tener tiempos de espera más largos dependiendo de la capacidad de la instalación.',
+      conditionSeverityLevels: 'Niveles de Severidad de Condiciones de Emergencia',
+      acuityDescription: 'Entender los 5 niveles de acuidad te ayuda a saber qué esperar al visitar un departamento de emergencias.',
+      level1Critical: 'Nivel 1 - Crítico',
+      level2Urgent: 'Nivel 2 - Urgente',
+      level3LessUrgent: 'Nivel 3 - Menos Urgente',
+      level4NonUrgent: 'Nivel 4 - No Urgente',
+      level5LowAcuity: 'Nivel 5 - Baja Acuidad',
+      cardiacArrest: 'Paro cardíaco',
+      severeBreathing: 'Dificultad respiratoria severa',
+      majorTrauma: 'Trauma mayor',
+      strokeSymptoms: 'Síntomas de derrame cerebral',
+      chestPain: 'Dolor de pecho',
+      severeAbdominal: 'Dolor abdominal severo',
+      highFeverConfusion: 'Fiebre alta con confusión',
+      moderateBleeding: 'Sangrado moderado',
+      moderatePain: 'Dolor moderado',
+      minorFractures: 'Fracturas menores',
+      persistentFever: 'Fiebre persistente',
+      vomitingDiarrhea: 'Vómitos/diarrea',
+      minorCuts: 'Cortes menores',
+      mildHeadache: 'Dolor de cabeza leve',
+      coldFluSymptoms: 'Síntomas de resfriado/gripe',
+      minorSprains: 'Esguinces menores',
+      minorSkinConditions: 'Condiciones de piel menores',
+      prescriptionRefills: 'Reposición de recetas',
+      routineConcerns: 'Preocupaciones rutinarias',
+      minorEyeIrritation: 'Irritación de ojos menor',
+      highestPriority: 'Prioridad Más Alta',
+      highPriority: 'Alta Prioridad',
+      mediumPriority: 'Prioridad Media',
+      lowPriority: 'Baja Prioridad',
+      lowestPriority: 'Prioridad Más Baja',
       locationDenied: 'Acceso a ubicación denegado. Mostrando todos los hospitales.',
       searchPlaceholder: 'Buscar hospitales por nombre o dirección...',
       refresh: 'Actualizar',
@@ -325,6 +409,193 @@ function App() {
 
           {/* Wait Times Tab */}
           <TabsContent value="wait-times" className="space-y-6">
+            {/* Emergency Departments Header */}
+            <div className="space-y-6">
+              {/* Title and Status */}
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div>
+                  <h1 className="text-3xl font-bold text-gray-900 mb-2">
+                    {t[language].emergencyDepartments}
+                  </h1>
+                  <p className="text-gray-600">
+                    {t[language].realTimeWaitTimes}
+                  </p>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                    <span className="text-sm text-gray-600">{t[language].live}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Clock className="h-4 w-4 text-gray-400" />
+                    <span className="text-sm text-gray-600">{t[language].timeAgo}</span>
+                  </div>
+                  <Button 
+                    onClick={refreshData} 
+                    disabled={isLoading}
+                    variant="outline"
+                    size="sm"
+                    className="flex items-center gap-2"
+                  >
+                    <RefreshCw className={`h-4 w-4 ${isLoading ? 'animate-spin' : ''}`} />
+                    {t[language].refreshButton}
+                  </Button>
+                </div>
+              </div>
+
+              {/* Demo Section */}
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <div className="flex items-start justify-between">
+                  <div className="flex items-start gap-3">
+                    <div className="bg-blue-100 text-blue-600 p-2 rounded-lg">
+                      <Info className="h-5 w-5" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-blue-900 mb-1">
+                        {t[language].emergencyDepartmentDemo}
+                      </h3>
+                      <p className="text-blue-700 text-sm mb-2">
+                        {t[language].demoDescription}
+                      </p>
+                      <p className="text-blue-600 text-xs">
+                        {t[language].demoTime}
+                      </p>
+                    </div>
+                  </div>
+                  <Button variant="ghost" size="sm" className="text-blue-600 hover:text-blue-700">
+                    <X className="h-4 w-4" />
+                  </Button>
+                </div>
+              </div>
+
+              {/* How System Works */}
+              <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                <div className="flex items-start gap-3">
+                  <div className="bg-gray-100 text-gray-600 p-2 rounded-lg">
+                    <Info className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900 mb-2">
+                      {t[language].howSystemWorks}
+                    </h3>
+                    <p className="text-gray-700 text-sm">
+                      {t[language].systemDescription}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Emergency Condition Severity Levels */}
+              <div className="space-y-4">
+                <div>
+                  <h2 className="text-xl font-semibold text-gray-900 mb-2">
+                    {t[language].conditionSeverityLevels}
+                  </h2>
+                  <p className="text-gray-600 text-sm">
+                    {t[language].acuityDescription}
+                  </p>
+                </div>
+
+                {/* Acuity Level Cards */}
+                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+                  {/* Level 1 - Critical */}
+                  <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                      <h3 className="font-semibold text-red-900 text-sm">
+                        {t[language].level1Critical}
+                      </h3>
+                    </div>
+                    <ul className="space-y-1 text-xs text-red-800">
+                      <li>• {t[language].cardiacArrest}</li>
+                      <li>• {t[language].severeBreathing}</li>
+                      <li>• {t[language].majorTrauma}</li>
+                      <li>• {t[language].strokeSymptoms}</li>
+                    </ul>
+                    <div className="mt-3 text-xs font-medium text-red-900">
+                      {t[language].highestPriority}
+                    </div>
+                  </div>
+
+                  {/* Level 2 - Urgent */}
+                  <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
+                      <h3 className="font-semibold text-orange-900 text-sm">
+                        {t[language].level2Urgent}
+                      </h3>
+                    </div>
+                    <ul className="space-y-1 text-xs text-orange-800">
+                      <li>• {t[language].chestPain}</li>
+                      <li>• {t[language].severeAbdominal}</li>
+                      <li>• {t[language].highFeverConfusion}</li>
+                      <li>• {t[language].moderateBleeding}</li>
+                    </ul>
+                    <div className="mt-3 text-xs font-medium text-orange-900">
+                      {t[language].highPriority}
+                    </div>
+                  </div>
+
+                  {/* Level 3 - Less Urgent */}
+                  <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                      <h3 className="font-semibold text-yellow-900 text-sm">
+                        {t[language].level3LessUrgent}
+                      </h3>
+                    </div>
+                    <ul className="space-y-1 text-xs text-yellow-800">
+                      <li>• {t[language].moderatePain}</li>
+                      <li>• {t[language].minorFractures}</li>
+                      <li>• {t[language].persistentFever}</li>
+                      <li>• {t[language].vomitingDiarrhea}</li>
+                    </ul>
+                    <div className="mt-3 text-xs font-medium text-yellow-900">
+                      {t[language].mediumPriority}
+                    </div>
+                  </div>
+
+                  {/* Level 4 - Non-Urgent */}
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                      <h3 className="font-semibold text-blue-900 text-sm">
+                        {t[language].level4NonUrgent}
+                      </h3>
+                    </div>
+                    <ul className="space-y-1 text-xs text-blue-800">
+                      <li>• {t[language].minorCuts}</li>
+                      <li>• {t[language].mildHeadache}</li>
+                      <li>• {t[language].coldFluSymptoms}</li>
+                      <li>• {t[language].minorSprains}</li>
+                    </ul>
+                    <div className="mt-3 text-xs font-medium text-blue-900">
+                      {t[language].lowPriority}
+                    </div>
+                  </div>
+
+                  {/* Level 5 - Low Acuity */}
+                  <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                    <div className="flex items-center gap-2 mb-3">
+                      <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                      <h3 className="font-semibold text-green-900 text-sm">
+                        {t[language].level5LowAcuity}
+                      </h3>
+                    </div>
+                    <ul className="space-y-1 text-xs text-green-800">
+                      <li>• {t[language].minorSkinConditions}</li>
+                      <li>• {t[language].prescriptionRefills}</li>
+                      <li>• {t[language].routineConcerns}</li>
+                      <li>• {t[language].minorEyeIrritation}</li>
+                    </ul>
+                    <div className="mt-3 text-xs font-medium text-green-900">
+                      {t[language].lowestPriority}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {/* Location Alert */}
             {locationError && (
               <Alert>
