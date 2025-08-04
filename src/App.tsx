@@ -3431,8 +3431,8 @@ function App() {
                         </h4>
                         <p className="text-gray-600 text-sm">
                           {language === 'en' 
-                            ? 'For routine care and chronic condition management'
-                            : 'Para atención rutinaria y manejo de condiciones crónicas'
+                            ? 'Routine care and non-urgent health concerns'
+                            : 'Atención rutinaria y problemas de salud no urgentes'
                           }
                         </p>
                       </div>
@@ -3441,36 +3441,38 @@ function App() {
 
                   <div className="p-6">
                     {/* Stats Row */}
-                    <div className="grid grid-cols-3 gap-8 mb-6">
-                      <div className="text-center">
-                        <div className="flex items-center justify-center gap-2 mb-2">
-                          <Clock className="h-4 w-4 text-green-600" />
+                    <div className="grid grid-cols-3 gap-6 mb-6">
+                      <div className="text-left">
+                        <div className="flex items-center gap-2 mb-2">
+                          <Clock className="h-4 w-4 text-blue-600" />
                           <span className="text-sm font-medium text-gray-600">
                             {language === 'en' ? 'Wait Time' : 'Tiempo de Espera'}
                           </span>
                         </div>
-                        <div className="text-2xl font-bold text-green-600 mb-1">{language === 'en' ? '1-2 weeks' : '1-2 semanas'}</div>
+                        <div className="text-lg font-bold text-gray-900">
+                          {language === 'en' ? 'Same day to 1 week' : 'Mismo día a 1 semana'}
+                        </div>
                       </div>
                       
-                      <div className="text-center">
-                        <div className="flex items-center justify-center gap-2 mb-2">
+                      <div className="text-left">
+                        <div className="flex items-center gap-2 mb-2">
                           <Building className="h-4 w-4 text-green-600" />
-                          <span className="text-sm font-medium text-gray-600">
+                          <span className="text-xs font-medium text-gray-500 leading-tight">
                             {language === 'en' ? 'Your expected cost without insurance or if your deductible hasn\'t been met yet' : 'Su costo esperado sin seguro o si su deducible aún no se ha cumplido'}
                           </span>
                         </div>
-                        <div className="text-2xl font-bold text-green-600 mb-1">$50-$150</div>
+                        <div className="text-lg font-bold text-gray-900">$200-$400</div>
                       </div>
                       
-                      <div className="text-center">
-                        <div className="flex items-center justify-center gap-2 mb-2">
+                      <div className="text-left">
+                        <div className="flex items-center gap-2 mb-2">
                           <MapPin className="h-4 w-4 text-purple-600" />
                           <span className="text-sm font-medium text-gray-600">
                             {language === 'en' ? 'Availability' : 'Disponibilidad'}
                           </span>
                         </div>
-                        <div className="text-lg font-bold text-green-600">
-                          {language === 'en' ? 'Business hours, M-F' : 'Horario comercial, L-V'}
+                        <div className="text-lg font-bold text-gray-900">
+                          {language === 'en' ? 'Mon-Fri business hours' : 'Horario comercial Lun-Vie'}
                         </div>
                       </div>
                     </div>
@@ -3487,50 +3489,132 @@ function App() {
                         <ul className="space-y-2 text-sm text-gray-700">
                           <li className="flex items-center gap-2">
                             <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                            {language === 'en' ? 'Annual checkups' : 'Exámenes anuales'}
-                          </li>
-                          <li className="flex items-center gap-2">
-                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                            {language === 'en' ? 'Prescription management' : 'Manejo de recetas'}
+                            {language === 'en' ? 'Annual check-ups' : 'Exámenes anuales'}
                           </li>
                           <li className="flex items-center gap-2">
                             <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
                             {language === 'en' ? 'Preventive care' : 'Atención preventiva'}
                           </li>
+                          <li className="flex items-center gap-2">
+                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                            {language === 'en' ? 'Medication management' : 'Manejo de medicamentos'}
+                          </li>
                         </ul>
                         <ul className="space-y-2 text-sm text-gray-700">
                           <li className="flex items-center gap-2">
                             <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                            {language === 'en' ? 'Chronic disease management' : 'Manejo de enfermedades crónicas'}
+                            {language === 'en' ? 'Chronic condition management' : 'Manejo de condiciones crónicas'}
                           </li>
                           <li className="flex items-center gap-2">
                             <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                            {language === 'en' ? 'Health screenings' : 'Exámenes de salud'}
+                            {language === 'en' ? 'Routine screenings' : 'Exámenes de rutina'}
                           </li>
                           <li className="flex items-center gap-2">
                             <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                            {language === 'en' ? 'Immunizations' : 'Inmunizaciones'}
+                            {language === 'en' ? 'Health maintenance' : 'Mantenimiento de salud'}
                           </li>
                         </ul>
                       </div>
                     </div>
 
-                    {/* Nearby Locations */}
-                    <div>
+                    {/* Available Services */}
+                    <div className="mb-6">
                       <div className="flex items-center gap-2 mb-4">
-                        <MapPin className="h-5 w-5 text-green-600" />
                         <h5 className="font-semibold text-gray-900">
-                          {language === 'en' ? 'Nearby Locations' : 'Ubicaciones Cercanas'}
+                          {language === 'en' ? 'Available Services' : 'Servicios Disponibles'}
                         </h5>
                       </div>
-                      <div className="bg-gray-50 rounded-lg p-4 text-center">
-                        <p className="text-gray-600 text-sm">
-                          {language === 'en' 
-                            ? 'Enable location services or enter your zip code to see nearby primary care providers'
-                            : 'Habilite los servicios de ubicación o ingrese su código postal para ver proveedores de atención primaria cercanos'
-                          }
-                        </p>
+                      <div className="space-y-4">
+                        {/* Same-Day Appointments */}
+                        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                          <div className="flex items-center justify-between">
+                            <div>
+                              <h6 className="font-semibold text-blue-900 mb-1">
+                                {language === 'en' ? 'Same-Day Appointments' : 'Citas el Mismo Día'}
+                              </h6>
+                              <p className="text-sm text-blue-700 mb-2">
+                                {language === 'en' ? 'Available for urgent but non-emergency concerns' : 'Disponible para problemas urgentes pero no de emergencia'}
+                              </p>
+                              <div className="text-xs text-blue-600 mb-2">
+                                {language === 'en' ? 'Mon-Fri: 8:00 AM - 5:00 PM' : 'Lun-Vie: 8:00 AM - 5:00 PM'}
+                              </div>
+                              <div className="flex items-center gap-1 text-xs text-orange-600">
+                                <Info className="h-3 w-3" />
+                                {language === 'en' ? 'Book via: Call or LA County DHS health portal' : 'Reservar vía: Llamada o portal de salud de LA County DHS'}
+                              </div>
+                            </div>
+                            <div className="text-right">
+                              <div className="text-sm font-bold text-blue-900">
+                                {language === 'en' ? 'Same day' : 'Mismo día'}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Routine Appointments */}
+                        <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                          <div className="flex items-center justify-between">
+                            <div>
+                              <h6 className="font-semibold text-green-900 mb-1">
+                                {language === 'en' ? 'Routine Appointments' : 'Citas de Rutina'}
+                              </h6>
+                              <p className="text-sm text-green-700 mb-2">
+                                {language === 'en' ? 'Scheduled visits for ongoing care' : 'Visitas programadas para atención continua'}
+                              </p>
+                              <div className="text-xs text-green-600 mb-2">
+                                {language === 'en' ? 'Mon-Fri: 8:00 AM - 5:00 PM' : 'Lun-Vie: 8:00 AM - 5:00 PM'}
+                              </div>
+                              <div className="flex items-center gap-1 text-xs text-orange-600">
+                                <Info className="h-3 w-3" />
+                                {language === 'en' ? 'Book via: LA County DHS health portal or phone' : 'Reservar vía: Portal de salud de LA County DHS o teléfono'}
+                              </div>
+                            </div>
+                            <div className="text-right">
+                              <div className="text-sm font-bold text-green-900">
+                                {language === 'en' ? '1-7 days' : '1-7 días'}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Preventive Care */}
+                        <div className="bg-purple-50 border border-purple-200 rounded-lg p-4">
+                          <div className="flex items-center justify-between">
+                            <div>
+                              <h6 className="font-semibold text-purple-900 mb-1">
+                                {language === 'en' ? 'Preventive Care' : 'Atención Preventiva'}
+                              </h6>
+                              <p className="text-sm text-purple-700 mb-2">
+                                {language === 'en' ? 'Annual exams, screenings, and vaccinations' : 'Exámenes anuales, evaluaciones y vacunas'}
+                              </p>
+                              <div className="text-xs text-purple-600 mb-2">
+                                {language === 'en' ? 'Mon-Fri: 8:00 AM - 5:00 PM' : 'Lun-Vie: 8:00 AM - 5:00 PM'}
+                              </div>
+                              <div className="flex items-center gap-1 text-xs text-orange-600">
+                                <Info className="h-3 w-3" />
+                                {language === 'en' ? 'Book via: LA County DHS health portal recommended' : 'Reservar vía: Portal de salud de LA County DHS recomendado'}
+                              </div>
+                            </div>
+                            <div className="text-right">
+                              <div className="text-sm font-bold text-purple-900">
+                                {language === 'en' ? '1-4 weeks' : '1-4 semanas'}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
+                    </div>
+
+                    {/* Action Buttons */}
+                    <div className="flex gap-3">
+                      <Button className="bg-blue-600 hover:bg-blue-700 text-white flex-1">
+                        <FirstAid className="h-4 w-4 mr-2" />
+                        {language === 'en' ? 'Access Patient Portal' : 'Acceder al Portal del Paciente'}
+                      </Button>
+                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50">
+                        <Phone className="h-4 w-4 mr-2" />
+                        {language === 'en' ? 'Call for Info' : 'Llamar para Información'}
+                      </Button>
                     </div>
                   </div>
                 </div>
