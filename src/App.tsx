@@ -3316,54 +3316,55 @@ function App() {
                       <div className="flex items-center gap-2 mb-4">
                         <CheckCircle className="h-5 w-5 text-green-600" />
                         <h5 className="font-semibold text-gray-900">
-                        <CheckCircle className="h-5 w-5 text-green-600" />
-                        </h5>
                           {language === 'en' ? 'Best For' : 'Mejor Para'}
+                        </h5>
+                      </div>
                       <div className="grid grid-cols-2 gap-4">
                         <ul className="space-y-2 text-sm text-gray-700">
                           <li className="flex items-center gap-2">
                             <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
                             {language === 'en' ? 'Cold and flu symptoms' : 'Síntomas de resfriado y gripe'}
                           </li>
-                            {language === 'en' ? 'Cold and flu symptoms' : 'Síntomas de resfriado y gripe'}
-                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
                           <li className="flex items-center gap-2">
-                          </li>
+                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
                             {language === 'en' ? 'Mental health support' : 'Apoyo de salud mental'}
-                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                          <li className="flex items-center gap-2">
                           </li>
+                          <li className="flex items-center gap-2">
+                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
                             {language === 'en' ? 'Follow-up appointments' : 'Citas de seguimiento'}
+                          </li>
+                        </ul>
                         <ul className="space-y-2 text-sm text-gray-700">
-                        </ul>
-                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                            {language === 'en' ? 'Skin conditions' : 'Condiciones de la piel'}
-                          </li>
-                            {language === 'en' ? 'Skin conditions' : 'Condiciones de la piel'}
-                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
                           <li className="flex items-center gap-2">
+                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                            {language === 'en' ? 'Skin conditions' : 'Condiciones de la piel'}
                           </li>
+                          <li className="flex items-center gap-2">
+                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
                             {language === 'en' ? 'Prescription refills' : 'Reposición de recetas'}
-                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                          <li className="flex items-center gap-2">
                           </li>
+                          <li className="flex items-center gap-2">
+                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
                             {language === 'en' ? 'General health questions' : 'Preguntas generales de salud'}
-                      </div>
+                          </li>
                         </ul>
+                      </div>
+                    </div>
 
                     {/* Available Services */}
                     <div className="mb-6">
-                        <h5 className="font-semibold text-gray-900">
-                    <div className="mb-6">nibles'}
                       <div className="flex items-center gap-2 mb-4">
-                      </div>
                         <h5 className="font-semibold text-gray-900">
-                        {/* Virtual Urgent Care */}
+                          {language === 'en' ? 'Available Services' : 'Servicios Disponibles'}
                         </h5>
                       </div>
-                            <div>
+                      <div className="space-y-4">
                         {/* Virtual Urgent Care */}
                         <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                          <div className="flex items-center justify-between">
+                            <div>
+                              <h6 className="font-semibold text-blue-900 mb-1">
+                                {language === 'en' ? 'Virtual Urgent Care' : 'Atención Urgente Virtual'}
                               </h6>
                               <p className="text-sm text-blue-700 mb-2">
                                 {language === 'en' ? 'Same-day virtual visits for urgent health concerns' : 'Visitas virtuales el mismo día para problemas de salud urgentes'}
@@ -3404,7 +3405,7 @@ function App() {
 
                     {/* Action Buttons */}
                     <div className="flex gap-3">
-                    </div>n-600 hover:bg-green-700 text-white flex-1">
+                      <Button className="bg-green-600 hover:bg-green-700 text-white flex-1">
                         <Phone className="h-4 w-4 mr-2" />
                         {language === 'en' ? 'Start Virtual Visit' : 'Iniciar Visita Virtual'}
                       </Button>
@@ -3413,10 +3414,6 @@ function App() {
                         {language === 'en' ? 'Call for Info' : 'Llamar para Información'}
                       </Button>
                     </div>
-                  </div>
-                </div>
-
-                {/* Primary Care Centers */}
                   </div>
                 </div>
 
@@ -3466,6 +3463,10 @@ function App() {
                       
                       <div className="text-center">
                         <div className="flex items-center justify-center gap-2 mb-2">
+                          <MapPin className="h-4 w-4 text-purple-600" />
+                          <span className="text-sm font-medium text-gray-600">
+                            {language === 'en' ? 'Availability' : 'Disponibilidad'}
+                          </span>
                         </div>
                         <div className="text-lg font-bold text-green-600">
                           {language === 'en' ? 'Business hours, M-F' : 'Horario comercial, L-V'}
