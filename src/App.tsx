@@ -1006,8 +1006,9 @@ function App() {
                             </div>
                           </div>
                         </div>
+                        <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-xl p-4 border border-yellow-200">
                           <div className="text-center">
-                          <div className="text-center">
+                            <div className="text-xs font-medium text-yellow-700 mb-2">
                               {language === 'en' ? 'Avg. Disposition to Discharge' : 'Prom. Disposición a Alta'}
                             </div>
                             <div className="text-2xl font-bold text-yellow-600 mb-1">21 mins.</div>
@@ -1027,8 +1028,7 @@ function App() {
                           <div className="text-center">
                             <div className="text-xs font-medium text-green-700 mb-2">{t[language].status}</div>
                             <div className="text-xl font-bold text-green-600 mb-1">{t[language].open}</div>
-                            <div className="text-xl font-bold text-green-600 mb-1">{t[language].open}</div>
-                          </div>
+                            <div className="text-xs text-green-600">24/7</div>
                           </div>
                         </div>
                       </div>
@@ -1055,6 +1055,7 @@ function App() {
                             </div>
                           </button>
                           
+                          {facilityInfoExpanded && (
                             <div className="px-6 pb-6">
                               <div className="border-t border-gray-100 pt-6">
                                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
