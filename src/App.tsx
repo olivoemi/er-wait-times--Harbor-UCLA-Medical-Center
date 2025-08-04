@@ -1839,7 +1839,7 @@ function App() {
                               </div>
                             </div>
                           </div>
-                                <li>• {language === 'en' ? 'Urgent care centers' : 'Centros de atención urgente'}</li>
+                          <div className="grid grid-cols-2 gap-4 text-sm">
                             <div>
                               <h6 className="font-semibold text-blue-900 mb-2">
                                 {language === 'en' ? 'Examples:' : 'Ejemplos:'}
