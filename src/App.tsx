@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input'
 import { Badge } from '@/components/ui/badge'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { MapPin, Clock, RefreshCw, Search, AlertTriangle, Heart, FirstAid, Phone, Thermometer, Pill, Eye } from '@phosphor-icons/react'
+import { MapPin, Clock, RefreshCw, Search, AlertTriangle, Heart, FirstAid, Phone, Thermometer, Pill, Eye, Plus, Globe } from '@phosphor-icons/react'
 
 interface Hospital {
   id: string
@@ -42,6 +42,25 @@ function App() {
   const [lastRefresh, setLastRefresh] = useState<Date>(new Date())
   const [locationError, setLocationError] = useState<string>('')
   const [activeTab, setActiveTab] = useState('wait-times')
+  const [language, setLanguage] = useState<'en' | 'es'>('en')
+
+  // Translation object
+  const t = {
+    en: {
+      title: 'ER Wait Times',
+      waitTimes: 'Wait Times',
+      careGuide: 'Care Guide',
+      emergency: '911',
+      language: 'English'
+    },
+    es: {
+      title: 'ER Wait Times',
+      waitTimes: 'Tiempos de Espera',
+      careGuide: 'Guía de Atención',
+      emergency: '911',
+      language: 'Español'
+    }
+  }
 
   // Care guide data
   const careGuideItems: CareGuideItem[] = [
@@ -183,29 +202,70 @@ function App() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-8">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-foreground mb-2">
-            ER Wait Times
-          </h1>
-          <p className="text-lg text-muted-foreground">
-            Find emergency room wait times and get care guidance for medical situations
-          </p>
-        </div>
+      {/* Header */}
+      <header className="bg-white border-b border-gray-200 shadow-sm">
+        <div className="container mx-auto px-4 py-3">
+          <div className="flex items-center justify-between">
+            {/* Logo and Title */}
+            <div className="flex items-center gap-3">
+              <div className="bg-blue-600 text-white p-2 rounded-lg">
+                <Plus className="h-6 w-6" />
+              </div>
+              <h1 className="text-xl font-semibold text-gray-900">
+                {t[language].title}
+              </h1>
+            </div>
 
-        {/* Navigation Tabs */}
+            {/* Right side controls */}
+            <div className="flex items-center gap-4">
+              {/* Language Toggle */}
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setLanguage(language === 'en' ? 'es' : 'en')}
+                className="flex items-center gap-2 bg-blue-600 text-white border-blue-600 hover:bg-blue-700"
+              >
+                <Globe className="h-4 w-4" />
+                {language === 'en' ? 'English' : 'Español'}
+              </Button>
+
+              {/* Emergency Button */}
+              <span className="text-gray-600 text-sm">Emergencia:</span>
+              <Button
+                size="sm"
+                className="bg-red-600 hover:bg-red-700 text-white font-bold px-4"
+              >
+                📞 911
+              </Button>
+            </div>
+          </div>
+
+          {/* Navigation Tabs */}
+          <div className="mt-4">
+            <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+              <TabsList className="bg-transparent h-auto p-0 gap-6">
+                <TabsTrigger 
+                  value="wait-times" 
+                  className="flex items-center gap-2 bg-transparent text-gray-600 hover:text-gray-900 data-[state=active]:bg-transparent data-[state=active]:text-gray-900 data-[state=active]:border-b-2 data-[state=active]:border-blue-600 rounded-none pb-2 font-medium"
+                >
+                  <Clock className="h-4 w-4" />
+                  {t[language].waitTimes}
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="care-guide" 
+                  className="flex items-center gap-2 bg-transparent text-gray-600 hover:text-gray-900 data-[state=active]:bg-transparent data-[state=active]:text-gray-900 data-[state=active]:border-b-2 data-[state=active]:border-blue-600 rounded-none pb-2 font-medium"
+                >
+                  <FirstAid className="h-4 w-4" />
+                  {t[language].careGuide}
+                </TabsTrigger>
+              </TabsList>
+            </Tabs>
+          </div>
+        </div>
+      </header>
+
+      <div className="container mx-auto px-4 py-8">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-2 mb-8">
-            <TabsTrigger value="wait-times" className="flex items-center gap-2">
-              <Clock className="h-4 w-4" />
-              Wait Times
-            </TabsTrigger>
-            <TabsTrigger value="care-guide" className="flex items-center gap-2">
-              <FirstAid className="h-4 w-4" />
-              Care Guide
-            </TabsTrigger>
-          </TabsList>
 
           {/* Wait Times Tab */}
           <TabsContent value="wait-times" className="space-y-6">
@@ -391,8 +451,10 @@ function App() {
             </Card>
           </TabsContent>
         </Tabs>
+      </div>
 
-        {/* Disclaimer */}
+      {/* Disclaimer */}
+      <div className="container mx-auto px-4">
         <div className="mt-12 p-4 bg-muted rounded-lg">
           <p className="text-sm text-muted-foreground text-center">
             <strong>Important:</strong> This information is for reference only and should not replace professional medical judgment. 
