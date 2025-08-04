@@ -3032,16 +3032,223 @@ function App() {
                       <div className="flex items-center gap-2 mb-4">
                         <MapPin className="h-5 w-5 text-blue-600" />
                         <h5 className="font-semibold text-gray-900">
-                          {language === 'en' ? 'Nearby Locations' : 'Ubicaciones Cercanas'}
+                          {language === 'en' ? 'LA County Health Centers' : 'Centros de Salud del Condado de LA'}
                         </h5>
                       </div>
-                      <div className="bg-gray-50 rounded-lg p-4 text-center">
-                        <p className="text-gray-600 text-sm">
-                          {language === 'en' 
-                            ? 'Enable location services or enter your zip code to see nearby urgent care centers'
-                            : 'Habilite los servicios de ubicación o ingrese su código postal para ver centros de atención urgente cercanos'
-                          }
-                        </p>
+                      <div className="space-y-3 max-h-96 overflow-y-auto">
+                        {/* Comprehensive Health Centers */}
+                        <div className="space-y-2">
+                          <h6 className="text-xs font-semibold text-blue-700 uppercase tracking-wide">
+                            {language === 'en' ? 'Comprehensive Health Centers' : 'Centros de Salud Integral'}
+                          </h6>
+                          
+                          {/* Edward R. Roybal */}
+                          <div className="bg-white border border-blue-200 rounded-lg p-3 hover:shadow-md transition-shadow">
+                            <div className="flex items-start justify-between">
+                              <div className="flex-1">
+                                <h6 className="font-semibold text-gray-900 text-sm">Edward R. Roybal Comprehensive Health Center</h6>
+                                <p className="text-xs text-gray-600 mt-1">245 S. Fetterly Ave., Los Angeles, CA 90022</p>
+                                <p className="text-xs text-blue-600 mt-1">(323) 362-1010</p>
+                                <div className="text-xs text-gray-500 mt-2">
+                                  <div>{language === 'en' ? 'Mon-Fri: 7:30 AM - 4:30 PM' : 'Lun-Vie: 7:30 AM - 4:30 PM'}</div>
+                                  <div>{language === 'en' ? 'Sat: 8:00 AM - 4:30 PM' : 'Sáb: 8:00 AM - 4:30 PM'}</div>
+                                </div>
+                              </div>
+                              <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
+                            </div>
+                          </div>
+
+                          {/* El Monte */}
+                          <div className="bg-white border border-blue-200 rounded-lg p-3 hover:shadow-md transition-shadow">
+                            <div className="flex items-start justify-between">
+                              <div className="flex-1">
+                                <h6 className="font-semibold text-gray-900 text-sm">El Monte Comprehensive Health Center</h6>
+                                <p className="text-xs text-gray-600 mt-1">10953 Ramona Blvd, El Monte, CA 91731</p>
+                                <p className="text-xs text-blue-600 mt-1">(626) 434-2500</p>
+                                <div className="text-xs text-gray-500 mt-2">
+                                  <div>{language === 'en' ? 'Mon-Sat: 8:00 AM - 4:30 PM' : 'Lun-Sáb: 8:00 AM - 4:30 PM'}</div>
+                                </div>
+                              </div>
+                              <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
+                            </div>
+                          </div>
+
+                          {/* H. Claude Hudson */}
+                          <div className="bg-white border border-blue-200 rounded-lg p-3 hover:shadow-md transition-shadow">
+                            <div className="flex items-start justify-between">
+                              <div className="flex-1">
+                                <h6 className="font-semibold text-gray-900 text-sm">H. Claude Hudson Comprehensive Health Center</h6>
+                                <p className="text-xs text-gray-600 mt-1">2829 South Grand Ave., Los Angeles, CA 90007</p>
+                                <p className="text-xs text-blue-600 mt-1">(213) 699-7000</p>
+                                <div className="text-xs text-gray-500 mt-2">
+                                  <div>{language === 'en' ? 'Mon-Fri: 7:30 AM - 11:00 PM' : 'Lun-Vie: 7:30 AM - 11:00 PM'}</div>
+                                  <div>{language === 'en' ? 'Sat-Sun: 8:00 AM - 11:00 PM' : 'Sáb-Dom: 8:00 AM - 11:00 PM'}</div>
+                                </div>
+                              </div>
+                              <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
+                            </div>
+                          </div>
+
+                          {/* High Desert */}
+                          <div className="bg-white border border-blue-200 rounded-lg p-3 hover:shadow-md transition-shadow">
+                            <div className="flex items-start justify-between">
+                              <div className="flex-1">
+                                <h6 className="font-semibold text-gray-900 text-sm">High Desert Regional Health Center</h6>
+                                <p className="text-xs text-gray-600 mt-1">335 East Avenue I, Lancaster, CA 93535</p>
+                                <p className="text-xs text-blue-600 mt-1">(661) 471-4000</p>
+                                <div className="text-xs text-gray-500 mt-2">
+                                  <div>{language === 'en' ? 'Daily: 8:00 AM - 10:30 PM' : 'Diario: 8:00 AM - 10:30 PM'}</div>
+                                </div>
+                              </div>
+                              <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
+                            </div>
+                          </div>
+
+                          {/* Hubert Humphrey */}
+                          <div className="bg-white border border-blue-200 rounded-lg p-3 hover:shadow-md transition-shadow">
+                            <div className="flex items-start justify-between">
+                              <div className="flex-1">
+                                <h6 className="font-semibold text-gray-900 text-sm">Hubert Humphrey Comprehensive Health Center</h6>
+                                <p className="text-xs text-gray-600 mt-1">5850 So. Main St., Los Angeles, CA 90003</p>
+                                <p className="text-xs text-blue-600 mt-1">(323) 897-6000</p>
+                                <div className="text-xs text-gray-500 mt-2">
+                                  <div>{language === 'en' ? 'Mon-Fri: 8:00 AM - 10:00 PM' : 'Lun-Vie: 8:00 AM - 10:00 PM'}</div>
+                                  <div>{language === 'en' ? 'Sat-Sun: 8:00 AM - 6:30 PM' : 'Sáb-Dom: 8:00 AM - 6:30 PM'}</div>
+                                </div>
+                              </div>
+                              <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
+                            </div>
+                          </div>
+
+                          {/* Long Beach */}
+                          <div className="bg-white border border-blue-200 rounded-lg p-3 hover:shadow-md transition-shadow">
+                            <div className="flex items-start justify-between">
+                              <div className="flex-1">
+                                <h6 className="font-semibold text-gray-900 text-sm">Long Beach Comprehensive Health Center</h6>
+                                <p className="text-xs text-gray-600 mt-1">1333 Chestnut Ave., Long Beach, CA 90813</p>
+                                <p className="text-xs text-blue-600 mt-1">(562) 753-2300</p>
+                                <div className="text-xs text-gray-500 mt-2">
+                                  <div>{language === 'en' ? 'Mon-Fri: 7:30 AM - 7:30 PM' : 'Lun-Vie: 7:30 AM - 7:30 PM'}</div>
+                                  <div>{language === 'en' ? 'Sat: 8:00 AM - 4:30 PM' : 'Sáb: 8:00 AM - 4:30 PM'}</div>
+                                </div>
+                              </div>
+                              <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
+                            </div>
+                          </div>
+
+                          {/* Martin Luther King Jr. */}
+                          <div className="bg-white border border-blue-200 rounded-lg p-3 hover:shadow-md transition-shadow">
+                            <div className="flex items-start justify-between">
+                              <div className="flex-1">
+                                <h6 className="font-semibold text-gray-900 text-sm">Martin Luther King, Jr. Outpatient Center</h6>
+                                <p className="text-xs text-gray-600 mt-1">12021 S Wilmington Ave, Los Angeles, CA 90059</p>
+                                <p className="text-xs text-gray-600 mt-1">First Floor, Suite 1D</p>
+                                <p className="text-xs text-blue-600 mt-1">(424) 338-1000</p>
+                                <div className="text-xs text-gray-500 mt-2">
+                                  <div>{language === 'en' ? 'Daily: 7:30 AM - 11:00 PM' : 'Diario: 7:30 AM - 11:00 PM'}</div>
+                                </div>
+                              </div>
+                              <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
+                            </div>
+                          </div>
+
+                          {/* Mid-Valley */}
+                          <div className="bg-white border border-blue-200 rounded-lg p-3 hover:shadow-md transition-shadow">
+                            <div className="flex items-start justify-between">
+                              <div className="flex-1">
+                                <h6 className="font-semibold text-gray-900 text-sm">Mid-Valley Comprehensive Health Center</h6>
+                                <p className="text-xs text-gray-600 mt-1">7515 Van Nuys Blvd., Van Nuys, CA 91405</p>
+                                <p className="text-xs text-blue-600 mt-1">(818) 627-3000</p>
+                                <div className="text-xs text-gray-500 mt-2">
+                                  <div>{language === 'en' ? 'Mon-Fri: 8:00 AM - 9:00 PM' : 'Lun-Vie: 8:00 AM - 9:00 PM'}</div>
+                                  <div>{language === 'en' ? 'Sat-Sun: 8:00 AM - 3:00 PM' : 'Sáb-Dom: 8:00 AM - 3:00 PM'}</div>
+                                </div>
+                              </div>
+                              <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
+                            </div>
+                          </div>
+
+                          {/* South Valley */}
+                          <div className="bg-white border border-blue-200 rounded-lg p-3 hover:shadow-md transition-shadow">
+                            <div className="flex items-start justify-between">
+                              <div className="flex-1">
+                                <h6 className="font-semibold text-gray-900 text-sm">South Valley Health Center</h6>
+                                <p className="text-xs text-gray-600 mt-1">38350 40th St. East, Palmdale, CA 93552</p>
+                                <p className="text-xs text-blue-600 mt-1">(661) 225-3001</p>
+                                <div className="text-xs text-gray-500 mt-2">
+                                  <div>{language === 'en' ? 'Daily: 8:00 AM - 10:30 PM' : 'Diario: 8:00 AM - 10:30 PM'}</div>
+                                </div>
+                              </div>
+                              <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Medical Centers with UCC */}
+                        <div className="space-y-2 pt-4 border-t border-gray-200">
+                          <h6 className="text-xs font-semibold text-red-700 uppercase tracking-wide flex items-center gap-2">
+                            {language === 'en' ? 'Medical Centers (24/7 Emergency Available)' : 'Centros Médicos (Emergencia 24/7 Disponible)'}
+                            <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                          </h6>
+                          
+                          {/* Harbor-UCLA UCC */}
+                          <div className="bg-red-50 border border-red-200 rounded-lg p-3 hover:shadow-md transition-shadow">
+                            <div className="flex items-start justify-between">
+                              <div className="flex-1">
+                                <h6 className="font-semibold text-gray-900 text-sm">Harbor-UCLA Med Center (UCC)</h6>
+                                <p className="text-xs text-gray-600 mt-1">1000 W. Carson St., Torrance, CA 90509</p>
+                                <p className="text-xs text-blue-600 mt-1">(424) 306-4110</p>
+                                <div className="text-xs text-gray-500 mt-2">
+                                  <div>{language === 'en' ? 'Mon-Fri: 8:00 AM - 9:00 PM' : 'Lun-Vie: 8:00 AM - 9:00 PM'}</div>
+                                  <div>{language === 'en' ? 'Sat: 8:00 AM - 3:00 PM' : 'Sáb: 8:00 AM - 3:00 PM'}</div>
+                                </div>
+                                <div className="bg-red-100 text-red-800 px-2 py-1 rounded text-xs font-medium mt-2 inline-block">
+                                  {language === 'en' ? 'Emergency Room 24/7' : 'Sala de Emergencias 24/7'}
+                                </div>
+                              </div>
+                              <div className="w-2 h-2 bg-red-500 rounded-full mt-2"></div>
+                            </div>
+                          </div>
+
+                          {/* LA General UCC */}
+                          <div className="bg-red-50 border border-red-200 rounded-lg p-3 hover:shadow-md transition-shadow">
+                            <div className="flex items-start justify-between">
+                              <div className="flex-1">
+                                <h6 className="font-semibold text-gray-900 text-sm">LA General Medical Center (UCC)</h6>
+                                <p className="text-xs text-gray-600 mt-1">1100 N State Street, Tower A2B (second floor)</p>
+                                <p className="text-xs text-gray-600 mt-1">Los Angeles, CA 90033</p>
+                                <p className="text-xs text-blue-600 mt-1">(323) 409-3753</p>
+                                <div className="text-xs text-gray-500 mt-2">
+                                  <div>{language === 'en' ? 'Mon-Sat: 8:00 AM - 7:00 PM' : 'Lun-Sáb: 8:00 AM - 7:00 PM'}</div>
+                                </div>
+                                <div className="bg-red-100 text-red-800 px-2 py-1 rounded text-xs font-medium mt-2 inline-block">
+                                  {language === 'en' ? 'Emergency Room 24/7' : 'Sala de Emergencias 24/7'}
+                                </div>
+                              </div>
+                              <div className="w-2 h-2 bg-red-500 rounded-full mt-2"></div>
+                            </div>
+                          </div>
+
+                          {/* Olive View UCC */}
+                          <div className="bg-red-50 border border-red-200 rounded-lg p-3 hover:shadow-md transition-shadow">
+                            <div className="flex items-start justify-between">
+                              <div className="flex-1">
+                                <h6 className="font-semibold text-gray-900 text-sm">Olive View Medical Center (UCC)</h6>
+                                <p className="text-xs text-gray-600 mt-1">14445 Olive View Drive, Sylmar, CA 91342</p>
+                                <p className="text-xs text-blue-600 mt-1">(747) 210-3127</p>
+                                <div className="text-xs text-gray-500 mt-2">
+                                  <div>{language === 'en' ? 'Mon-Fri: 8:00 AM - 8:00 PM' : 'Lun-Vie: 8:00 AM - 8:00 PM'}</div>
+                                  <div>{language === 'en' ? 'Sat: 8:00 AM - 4:30 PM' : 'Sáb: 8:00 AM - 4:30 PM'}</div>
+                                  <div>{language === 'en' ? 'Holidays: 8:00 AM - 8:00 PM' : 'Días Festivos: 8:00 AM - 8:00 PM'}</div>
+                                </div>
+                                <div className="bg-red-100 text-red-800 px-2 py-1 rounded text-xs font-medium mt-2 inline-block">
+                                  {language === 'en' ? 'Emergency Room 24/7' : 'Sala de Emergencias 24/7'}
+                                </div>
+                              </div>
+                              <div className="w-2 h-2 bg-red-500 rounded-full mt-2"></div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
