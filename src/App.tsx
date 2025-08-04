@@ -2036,7 +2036,7 @@ function App() {
                               </h6>
                               <ul className="space-y-1 text-blue-800">
                                 <li>• {t[language].minorCuts}</li>
-                                <li>��� {t[language].mildHeadache}</li>
+                                <li>����� {t[language].mildHeadache}</li>
                                 <li>• {t[language].coldFluSymptoms}</li>
                               </ul>
                             </div>
@@ -2334,26 +2334,11 @@ function App() {
                             return (
                               <div
                                 key={symptomId}
-                                className={`flex items-center gap-2 px-3 py-1 rounded-full text-sm ${
-                                  symptom.acuityLevel === 1 ? 'bg-red-100 text-red-800' :
-                                  symptom.acuityLevel === 2 ? 'bg-orange-100 text-orange-800' :
-                                  symptom.acuityLevel === 3 ? 'bg-yellow-100 text-yellow-800' :
-                                  symptom.acuityLevel === 4 ? 'bg-blue-100 text-blue-800' : 'bg-green-100 text-green-800'
-                                }`}
+                                className="flex items-center gap-2 bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm"
                               >
-                                <AlertTriangle className={`h-3 w-3 ${
-                                  symptom.acuityLevel === 1 ? 'text-red-600' :
-                                  symptom.acuityLevel === 2 ? 'text-orange-600' :
-                                  symptom.acuityLevel === 3 ? 'text-yellow-600' :
-                                  symptom.acuityLevel === 4 ? 'text-blue-600' : 'text-green-600'
-                                }`} />
+                                <AlertTriangle className="h-3 w-3" />
                                 <span>{symptom.name}</span>
-                                <span className={`font-semibold ${
-                                  symptom.acuityLevel === 1 ? 'text-red-900' :
-                                  symptom.acuityLevel === 2 ? 'text-orange-900' :
-                                  symptom.acuityLevel === 3 ? 'text-yellow-900' :
-                                  symptom.acuityLevel === 4 ? 'text-blue-900' : 'text-green-900'
-                                }`}>Level {symptom.acuityLevel}</span>
+                                <span className="font-semibold">Level {symptom.acuityLevel}</span>
                                 <button
                                   onClick={() => handleSymptomToggle(symptomId)}
                                   className="ml-1 hover:bg-red-200 rounded-full p-0.5"
@@ -2691,26 +2676,11 @@ function App() {
 
                   {/* Symptom Categories */}
                   <div className="space-y-6">
-                    {symptomCategories.map((category, categoryIndex) => {
-                      // Define colors for category headers
-                      const getCategoryColors = (index: number) => {
-                        const colorMap = {
-                          0: 'text-red-900 border-red-200', // Level 1
-                          1: 'text-orange-900 border-orange-200', // Level 2
-                          2: 'text-yellow-900 border-yellow-200', // Level 3
-                          3: 'text-blue-900 border-blue-200', // Level 4
-                          4: 'text-green-900 border-green-200', // Level 5
-                        }
-                        return colorMap[index as keyof typeof colorMap] || 'text-gray-900 border-gray-200'
-                      }
-
-                      const categoryColors = getCategoryColors(categoryIndex)
-
-                      return (
-                        <div key={category.name}>
-                          <h4 className={`text-lg font-semibold mb-4 pb-2 border-b ${categoryColors}`}>
-                            {category.name}
-                          </h4>
+                    {symptomCategories.map((category) => (
+                      <div key={category.name}>
+                        <h4 className="text-lg font-semibold text-gray-900 mb-4">
+                          {category.name}
+                        </h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                           {category.symptoms.map((symptom) => {
                             const isSelected = selectedSymptoms.includes(symptom.id)
@@ -2765,25 +2735,22 @@ function App() {
                                   <div className="flex items-center gap-3">
                                     {getSymptomIcon(symptom.id, symptom.category)}
                                     {isSelected && (
-                                      <CheckCircle className={`h-5 w-5 ${symptom.acuityLevel === 1 ? 'text-red-600' : 
-                                        symptom.acuityLevel === 2 ? 'text-orange-600' :
-                                        symptom.acuityLevel === 3 ? 'text-yellow-600' :
-                                        symptom.acuityLevel === 4 ? 'text-blue-600' : 'text-green-600'}`} />
+                                      <CheckCircle className="h-5 w-5 text-red-600" />
                                     )}
                                   </div>
-                                  <div className={`text-xs font-semibold px-2 py-1 rounded-full ${colors.badge}`}>
-                                    {language === 'en' ? `Level ${symptom.acuityLevel}` : `Nivel ${symptom.acuityLevel}`}
+                                  <div className="text-xs font-semibold text-gray-600">
+                                    {language === 'en' ? `Acuity Level ${symptom.acuityLevel}` : `Nivel de Acuidad ${symptom.acuityLevel}`}
                                   </div>
                                 </div>
-                                <div className={`text-sm font-medium leading-tight ${colors.text}`}>
+                                <div className="text-sm font-medium text-gray-900 leading-tight">
                                   {symptom.name}
                                 </div>
                               </div>
                             )
                           })}
                         </div>
-                      )
-                    })}
+                      </div>
+                    ))}
                   </div>
                 </div>
 
