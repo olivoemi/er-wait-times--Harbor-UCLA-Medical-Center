@@ -480,7 +480,7 @@ function App() {
               </div>
 
               {/* Emergency Condition Severity Levels */}
-              <div className="space-y-4">
+              <div className="space-y-6">
                 <div>
                   <h3 className="text-xl font-bold text-gray-900 mb-2">{t[language].conditionSeverityLevels}</h3>
                   <p className="text-gray-600">{t[language].acuityDescription}</p>
@@ -489,87 +489,242 @@ function App() {
                 {/* Acuity Level Cards */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
                   {/* Level 1 - Critical */}
-                  <Card className="bg-red-50 border-red-200">
-                    <CardContent className="p-4">
-                      <div className="flex items-center gap-2 mb-3">
-                        <div className="w-4 h-4 bg-red-500 rounded-full"></div>
-                        <h4 className="font-semibold text-red-900">{t[language].level1Critical}</h4>
+                  <Card className="bg-red-50 border-red-200 hover:shadow-md transition-shadow">
+                    <CardContent className="p-5">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
+                          <span className="text-white text-xs font-bold">1</span>
+                        </div>
+                        <h4 className="font-bold text-red-900 text-sm">{t[language].level1Critical}</h4>
                       </div>
-                      <ul className="space-y-1 text-sm text-red-800 mb-3">
-                        <li>• {t[language].cardiacArrest}</li>
-                        <li>• {t[language].severeBreathing}</li>
-                        <li>• {t[language].majorTrauma}</li>
-                        <li>• {t[language].strokeSymptoms}</li>
-                      </ul>
-                      <div className="text-xs font-medium text-red-900">{t[language].highestPriority}</div>
+                      
+                      <div className="mb-4">
+                        <p className="text-xs text-red-700 mb-3 leading-relaxed">
+                          {language === 'en' 
+                            ? 'Life-threatening conditions requiring immediate medical intervention'
+                            : 'Condiciones que amenazan la vida que requieren intervención médica inmediata'
+                          }
+                        </p>
+                      </div>
+
+                      <div className="mb-4">
+                        <h5 className="text-xs font-semibold text-red-900 mb-2">
+                          {language === 'en' ? 'Common Examples:' : 'Ejemplos Comunes:'}
+                        </h5>
+                        <ul className="space-y-1 text-xs text-red-800">
+                          <li>• {t[language].cardiacArrest}</li>
+                          <li>• {t[language].severeBreathing}</li>
+                          <li>• {t[language].majorTrauma}</li>
+                          <li>• {t[language].strokeSymptoms}</li>
+                        </ul>
+                      </div>
+
+                      <div className="mb-3">
+                        <h5 className="text-xs font-semibold text-red-900 mb-2">
+                          {language === 'en' ? 'What to Expect:' : 'Qué Esperar:'}
+                        </h5>
+                        <ul className="space-y-1 text-xs text-red-700">
+                          <li>• {language === 'en' ? 'Seen immediately' : 'Atendido inmediatamente'}</li>
+                          <li>• {language === 'en' ? 'Multiple medical staff' : 'Múltiple personal médico'}</li>
+                          <li>• {language === 'en' ? 'May require surgery' : 'Puede requerir cirugía'}</li>
+                        </ul>
+                      </div>
+
+                      <div className="bg-red-600 text-white text-center py-2 px-3 rounded-lg">
+                        <div className="text-xs font-black tracking-wide">{t[language].highestPriority}</div>
+                      </div>
                     </CardContent>
                   </Card>
 
                   {/* Level 2 - Urgent */}
-                  <Card className="bg-orange-50 border-orange-200">
-                    <CardContent className="p-4">
-                      <div className="flex items-center gap-2 mb-3">
-                        <div className="w-4 h-4 bg-orange-500 rounded-full"></div>
-                        <h4 className="font-semibold text-orange-900">{t[language].level2Urgent}</h4>
+                  <Card className="bg-orange-50 border-orange-200 hover:shadow-md transition-shadow">
+                    <CardContent className="p-5">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center">
+                          <span className="text-white text-xs font-bold">2</span>
+                        </div>
+                        <h4 className="font-bold text-orange-900 text-sm">{t[language].level2Urgent}</h4>
                       </div>
-                      <ul className="space-y-1 text-sm text-orange-800 mb-3">
-                        <li>• {t[language].chestPain}</li>
-                        <li>• {t[language].severeAbdominal}</li>
-                        <li>• {t[language].highFeverConfusion}</li>
-                        <li>• {t[language].moderateBleeding}</li>
-                      </ul>
-                      <div className="text-xs font-medium text-orange-900">{t[language].highPriority}</div>
+                      
+                      <div className="mb-4">
+                        <p className="text-xs text-orange-700 mb-3 leading-relaxed">
+                          {language === 'en' 
+                            ? 'Serious conditions that need prompt medical attention'
+                            : 'Condiciones serias que necesitan atención médica pronta'
+                          }
+                        </p>
+                      </div>
+
+                      <div className="mb-4">
+                        <h5 className="text-xs font-semibold text-orange-900 mb-2">
+                          {language === 'en' ? 'Common Examples:' : 'Ejemplos Comunes:'}
+                        </h5>
+                        <ul className="space-y-1 text-xs text-orange-800">
+                          <li>• {t[language].chestPain}</li>
+                          <li>• {t[language].severeAbdominal}</li>
+                          <li>• {t[language].highFeverConfusion}</li>
+                          <li>• {t[language].moderateBleeding}</li>
+                        </ul>
+                      </div>
+
+                      <div className="mb-3">
+                        <h5 className="text-xs font-semibold text-orange-900 mb-2">
+                          {language === 'en' ? 'What to Expect:' : 'Qué Esperar:'}
+                        </h5>
+                        <ul className="space-y-1 text-xs text-orange-700">
+                          <li>• {language === 'en' ? 'Seen within 15 minutes' : 'Atendido en 15 minutos'}</li>
+                          <li>• {language === 'en' ? 'Urgent diagnostic tests' : 'Pruebas diagnósticas urgentes'}</li>
+                          <li>• {language === 'en' ? 'Possible admission' : 'Posible admisión'}</li>
+                        </ul>
+                      </div>
+
+                      <div className="bg-orange-600 text-white text-center py-2 px-3 rounded-lg">
+                        <div className="text-xs font-black tracking-wide">{t[language].highPriority}</div>
+                      </div>
                     </CardContent>
                   </Card>
 
                   {/* Level 3 - Less Urgent */}
-                  <Card className="bg-yellow-50 border-yellow-200">
-                    <CardContent className="p-4">
-                      <div className="flex items-center gap-2 mb-3">
-                        <div className="w-4 h-4 bg-yellow-500 rounded-full"></div>
-                        <h4 className="font-semibold text-yellow-900">{t[language].level3LessUrgent}</h4>
+                  <Card className="bg-yellow-50 border-yellow-200 hover:shadow-md transition-shadow">
+                    <CardContent className="p-5">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center">
+                          <span className="text-white text-xs font-bold">3</span>
+                        </div>
+                        <h4 className="font-bold text-yellow-900 text-sm">{t[language].level3LessUrgent}</h4>
                       </div>
-                      <ul className="space-y-1 text-sm text-yellow-800 mb-3">
-                        <li>• {t[language].moderatePain}</li>
-                        <li>• {t[language].minorFractures}</li>
-                        <li>• {t[language].persistentFever}</li>
-                        <li>• {t[language].vomitingDiarrhea}</li>
-                      </ul>
-                      <div className="text-xs font-medium text-yellow-900">{t[language].mediumPriority}</div>
+                      
+                      <div className="mb-4">
+                        <p className="text-xs text-yellow-700 mb-3 leading-relaxed">
+                          {language === 'en' 
+                            ? 'Conditions that require medical care but can wait if needed'
+                            : 'Condiciones que requieren atención médica pero pueden esperar si es necesario'
+                          }
+                        </p>
+                      </div>
+
+                      <div className="mb-4">
+                        <h5 className="text-xs font-semibold text-yellow-900 mb-2">
+                          {language === 'en' ? 'Common Examples:' : 'Ejemplos Comunes:'}
+                        </h5>
+                        <ul className="space-y-1 text-xs text-yellow-800">
+                          <li>• {t[language].moderatePain}</li>
+                          <li>• {t[language].minorFractures}</li>
+                          <li>• {t[language].persistentFever}</li>
+                          <li>• {t[language].vomitingDiarrhea}</li>
+                        </ul>
+                      </div>
+
+                      <div className="mb-3">
+                        <h5 className="text-xs font-semibold text-yellow-900 mb-2">
+                          {language === 'en' ? 'What to Expect:' : 'Qué Esperar:'}
+                        </h5>
+                        <ul className="space-y-1 text-xs text-yellow-700">
+                          <li>• {language === 'en' ? 'Wait time varies' : 'Tiempo de espera varía'}</li>
+                          <li>• {language === 'en' ? 'Standard evaluation' : 'Evaluación estándar'}</li>
+                          <li>• {language === 'en' ? 'Treatment plan provided' : 'Plan de tratamiento provisto'}</li>
+                        </ul>
+                      </div>
+
+                      <div className="bg-yellow-600 text-white text-center py-2 px-3 rounded-lg">
+                        <div className="text-xs font-black tracking-wide">{t[language].mediumPriority}</div>
+                      </div>
                     </CardContent>
                   </Card>
 
                   {/* Level 4 - Non-Urgent */}
-                  <Card className="bg-blue-50 border-blue-200">
-                    <CardContent className="p-4">
-                      <div className="flex items-center gap-2 mb-3">
-                        <div className="w-4 h-4 bg-blue-500 rounded-full"></div>
-                        <h4 className="font-semibold text-blue-900">{t[language].level4NonUrgent}</h4>
+                  <Card className="bg-blue-50 border-blue-200 hover:shadow-md transition-shadow">
+                    <CardContent className="p-5">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
+                          <span className="text-white text-xs font-bold">4</span>
+                        </div>
+                        <h4 className="font-bold text-blue-900 text-sm">{t[language].level4NonUrgent}</h4>
                       </div>
-                      <ul className="space-y-1 text-sm text-blue-800 mb-3">
-                        <li>• {t[language].minorCuts}</li>
-                        <li>• {t[language].mildHeadache}</li>
-                        <li>• {t[language].coldFluSymptoms}</li>
-                        <li>• {t[language].minorSprains}</li>
-                      </ul>
-                      <div className="text-xs font-medium text-blue-900">{t[language].lowPriority}</div>
+                      
+                      <div className="mb-4">
+                        <p className="text-xs text-blue-700 mb-3 leading-relaxed">
+                          {language === 'en' 
+                            ? 'Minor conditions that should be treated but are not urgent'
+                            : 'Condiciones menores que deben tratarse pero no son urgentes'
+                          }
+                        </p>
+                      </div>
+
+                      <div className="mb-4">
+                        <h5 className="text-xs font-semibold text-blue-900 mb-2">
+                          {language === 'en' ? 'Common Examples:' : 'Ejemplos Comunes:'}
+                        </h5>
+                        <ul className="space-y-1 text-xs text-blue-800">
+                          <li>• {t[language].minorCuts}</li>
+                          <li>• {t[language].mildHeadache}</li>
+                          <li>• {t[language].coldFluSymptoms}</li>
+                          <li>• {t[language].minorSprains}</li>
+                        </ul>
+                      </div>
+
+                      <div className="mb-3">
+                        <h5 className="text-xs font-semibold text-blue-900 mb-2">
+                          {language === 'en' ? 'What to Expect:' : 'Qué Esperar:'}
+                        </h5>
+                        <ul className="space-y-1 text-xs text-blue-700">
+                          <li>• {language === 'en' ? 'Longer wait times' : 'Tiempos de espera más largos'}</li>
+                          <li>• {language === 'en' ? 'Basic examination' : 'Examen básico'}</li>
+                          <li>• {language === 'en' ? 'Consider urgent care' : 'Considerar atención urgente'}</li>
+                        </ul>
+                      </div>
+
+                      <div className="bg-blue-600 text-white text-center py-2 px-3 rounded-lg">
+                        <div className="text-xs font-black tracking-wide">{t[language].lowPriority}</div>
+                      </div>
                     </CardContent>
                   </Card>
 
                   {/* Level 5 - Low Acuity */}
-                  <Card className="bg-green-50 border-green-200">
-                    <CardContent className="p-4">
-                      <div className="flex items-center gap-2 mb-3">
-                        <div className="w-4 h-4 bg-green-500 rounded-full"></div>
-                        <h4 className="font-semibold text-green-900">{t[language].level5LowAcuity}</h4>
+                  <Card className="bg-green-50 border-green-200 hover:shadow-md transition-shadow">
+                    <CardContent className="p-5">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                          <span className="text-white text-xs font-bold">5</span>
+                        </div>
+                        <h4 className="font-bold text-green-900 text-sm">{t[language].level5LowAcuity}</h4>
                       </div>
-                      <ul className="space-y-1 text-sm text-green-800 mb-3">
-                        <li>• {t[language].minorSkinConditions}</li>
-                        <li>• {t[language].prescriptionRefills}</li>
-                        <li>• {t[language].routineConcerns}</li>
-                        <li>• {t[language].minorEyeIrritation}</li>
-                      </ul>
-                      <div className="text-xs font-medium text-green-900">{t[language].lowestPriority}</div>
+                      
+                      <div className="mb-4">
+                        <p className="text-xs text-green-700 mb-3 leading-relaxed">
+                          {language === 'en' 
+                            ? 'Minor issues that could be addressed elsewhere'
+                            : 'Problemas menores que podrían ser atendidos en otro lugar'
+                          }
+                        </p>
+                      </div>
+
+                      <div className="mb-4">
+                        <h5 className="text-xs font-semibold text-green-900 mb-2">
+                          {language === 'en' ? 'Common Examples:' : 'Ejemplos Comunes:'}
+                        </h5>
+                        <ul className="space-y-1 text-xs text-green-800">
+                          <li>• {t[language].minorSkinConditions}</li>
+                          <li>• {t[language].prescriptionRefills}</li>
+                          <li>• {t[language].routineConcerns}</li>
+                          <li>• {t[language].minorEyeIrritation}</li>
+                        </ul>
+                      </div>
+
+                      <div className="mb-3">
+                        <h5 className="text-xs font-semibold text-green-900 mb-2">
+                          {language === 'en' ? 'What to Expect:' : 'Qué Esperar:'}
+                        </h5>
+                        <ul className="space-y-1 text-xs text-green-700">
+                          <li>• {language === 'en' ? 'Longest wait times' : 'Tiempos de espera más largos'}</li>
+                          <li>• {language === 'en' ? 'Simple treatment' : 'Tratamiento simple'}</li>
+                          <li>• {language === 'en' ? 'Try clinic first' : 'Pruebe clínica primero'}</li>
+                        </ul>
+                      </div>
+
+                      <div className="bg-green-600 text-white text-center py-2 px-3 rounded-lg">
+                        <div className="text-xs font-black tracking-wide">{t[language].lowestPriority}</div>
+                      </div>
                     </CardContent>
                   </Card>
                 </div>
