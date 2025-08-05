@@ -3616,31 +3616,31 @@ function App() {
                                 {language === 'en' ? 'Urgent Care facilities' : 'Instalaciones de Atención Urgente'}
                               </span>
                             </div>
-                          <div className="space-y-2">
+                          </div>
                           <div className="space-y-2">
                             <div className="flex items-center gap-2 text-green-800">
                               <CheckCircle className="h-4 w-4" />
                               <span className="text-sm">
                                 {language === 'en' ? 'Telehealth appointments' : 'Citas de telemedicina'}
                               </span>
-                            </div>p-2 text-green-800">
+                            </div>
                             <div className="flex items-center gap-2 text-green-800">
                               <CheckCircle className="h-4 w-4" />
-                              <span className="text-sm">lud'}
+                              <span className="text-sm">
                                 {language === 'en' ? 'All other healthcare services' : 'Todos los demás servicios de salud'}
                               </span>
                             </div>
+                          </div>
                         </div>
-                        </h5>
-                        <div className="space-y-3">
-<div className="flex items-start gap-3">
-                      {/* Patient Rights Section */}1">
-                      <div>="h-4 w-4 text-blue-600" />
+                      </div>
+
+                      {/* Patient Rights Section */}
+                      <div>
                         <h5 className="text-lg font-semibold text-gray-900 mb-4">
                           {language === 'en' ? 'Your Rights as a Patient' : 'Sus Derechos como Paciente'}
                         </h5>
-                        <div className="space-y-3"> to pay or immigration status'
-                          <div className="flex items-start gap-3"> estatus migratorio'
+                        <div className="space-y-3">
+                          <div className="flex items-start gap-3">
                             <div className="bg-blue-100 p-1 rounded-full mt-1">
                               <Building className="h-4 w-4 text-blue-600" />
                             </div>
@@ -3650,7 +3650,7 @@ function App() {
                                 : 'Tiene derecho a recibir atención médica de emergencia independientemente de su capacidad de pago o estatus migratorio'
                               }
                             </span>
-                                : 'Su información médica está protegida por las leyes federales de privacidad (HIPAA)'
+                          </div>
                           <div className="flex items-start gap-3">
                             <div className="bg-blue-100 p-1 rounded-full mt-1">
                               <FirstAid className="h-4 w-4 text-blue-600" />
@@ -3660,8 +3660,8 @@ function App() {
                                 ? 'Your medical information is protected by federal privacy laws (HIPAA)'
                                 : 'Su información médica está protegida por las leyes federales de privacidad (HIPAA)'
                               }
-                            </span>eing'
-                                : 'Puede buscar atención con confianza: nuestro enfoque está en su salud y bienestar'
+                            </span>
+                          </div>
                           <div className="flex items-start gap-3">
                             <div className="bg-green-100 p-1 rounded-full mt-1">
                               <Heart className="h-4 w-4 text-green-600" />
@@ -3672,7 +3672,22 @@ function App() {
                                 : 'Puede buscar atención con confianza: nuestro enfoque está en su salud y bienestar'
                               }
                             </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Essential Items to Bring */}
+                <div className="bg-white border border-gray-300 rounded-lg p-6 shadow-sm">
                   <div className="flex items-start gap-4">
+                    <div className="bg-blue-100 p-2 rounded-full">
+                      <CheckCircle className="h-6 w-6 text-blue-600" />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-lg font-semibold text-gray-900 mb-3">
+                        {language === 'en' ? 'Essential Items to Bring' : 'Elementos Esenciales para Traer'}
                       </h4>
                       <p className="text-gray-700 mb-4 text-sm">
                         {language === 'en' 
