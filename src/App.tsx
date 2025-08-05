@@ -4154,7 +4154,7 @@ function App() {
                     <div className="flex gap-3">
                       <Button 
                         className="bg-blue-600 hover:bg-blue-700 text-white flex-1"
-                        onClick={() => window.open('tel:(424) 306-4000', '_self')}
+                        onClick={() => window.open('https://dhs.lacounty.gov/our-services/urgent-care-services/', '_blank')}
                       >
                         <FirstAid className="h-4 w-4 mr-2" />
                         {language === 'en' ? 'Find Urgent Care' : 'Buscar Atención Urgente'}
