@@ -2310,9 +2310,8 @@ function App() {
                                 </span>
                               </div>
                               <div className="flex items-center gap-6 text-sm">
-                                <div className="text-right">
                                   <div className="text-xs text-gray-600 mb-1">
-                                    {language === 'en' ? 'Queue' : 'Cola'}
+                                  <div className="text-xs text-gray-600 mb-1">
                                   </div>
                                   <div className="font-semibold text-gray-900">13</div>
                                 </div>
@@ -2325,21 +2324,20 @@ function App() {
                               </div>
                             </div>
 
-                            {/* Level 5 */}
-                            <div className="bg-green-50 border border-green-200 rounded-lg p-4 flex items-center justify-between">
-                              <div className="flex items-center gap-3">
+l 5 */}
+                            {/* Level 5 */}en-50 border border-green-200 rounded-lg p-4 flex items-center justify-between">
                                 <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                                 <span className="font-semibold text-green-900">
-                                  {language === 'en' ? 'Level 5: Fast Track' : 'Nivel 5: Vía Rápida'}
-                                </span>
+                                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                                <span className="font-semibold text-green-900">
                               </div>
                               <div className="flex items-center gap-6 text-sm">
                                 <div className="text-right">
                                   <div className="text-xs text-gray-600 mb-1">
                                     {language === 'en' ? 'Queue' : 'Cola'}
-                                  </div>
+                                  <div className="text-xs text-gray-600 mb-1">
                                   <div className="font-semibold text-gray-900">3</div>
-                                </div>
+                                  </div>
                                 <div className="text-right">
                                   <div className="text-xs text-gray-600 mb-1">
                                     {language === 'en' ? 'Est. Wait' : 'Tiempo Est.'}
@@ -2351,9 +2349,8 @@ function App() {
                           </div>
                           {/* Wait Times by Acuity Level Over Time */}
                           <div className="mb-6">
-                            <div className="flex items-center justify-between mb-4">
                               <h5 className="text-lg font-semibold text-gray-900">
-                                {language === 'en' ? 'Wait Times by Acuity Level Over Time' : 'Tiempos de Espera por Nivel de Acuidad en el Tiempo'}
+                          <div className="mb-6">
                               </h5>
                               <div className="flex gap-2">
                                 <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs px-3 py-1">
