@@ -2189,47 +2189,43 @@ function App() {
                             </div>
                           </div>
 
-                          {/* Peak times summary with better spacing */}
-                          <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mt-6">
-                            <div className="bg-red-50 border border-red-200 rounded-lg p-3 text-center">
-                              <div className="font-bold text-red-900 text-sm mb-1">L1</div>
                               <div className="text-xs text-red-700 font-medium">
                                 {language === 'en' ? 'Peak: 70 min' : 'Pico: 70 min'}
                               </div>
                             </div>
-                            <div className="bg-orange-50 border border-orange-200 rounded-lg p-3 text-center">
-                              <div className="font-bold text-orange-900 text-sm mb-1">L2</div>
+                              <div className="text-xs text-red-700 font-medium">
+                                {language === 'en' ? 'Peak: 70 min' : 'Pico: 70 min'}
+                              </div>
+                            </div>
+                              </div>
+                            </div>
                               <div className="text-xs text-orange-700 font-medium">
                                 {language === 'en' ? 'Peak: 70 min' : 'Pico: 70 min'}
                               </div>
                             </div>
-                            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 text-center">
-                              <div className="font-bold text-yellow-900 text-sm mb-1">L3</div>
+                              </div>
+                            </div>
                               <div className="text-xs text-yellow-700 font-medium">
                                 {language === 'en' ? 'Peak: 220 min' : 'Pico: 220 min'}
                               </div>
                             </div>
-                            <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 text-center">
-                              <div className="font-bold text-blue-900 text-sm mb-1">L4</div>
+                              </div>
+                            </div>
                               <div className="text-xs text-blue-700 font-medium">
                                 {language === 'en' ? 'Peak: 240 min' : 'Pico: 240 min'}
                               </div>
                             </div>
-                            <div className="bg-green-50 border border-green-200 rounded-lg p-3 text-center">
-                              <div className="font-bold text-green-900 text-sm mb-1">L5</div>
+                              </div>
+                            </div>
                               <div className="text-xs text-green-700 font-medium">
                                 {language === 'en' ? 'Peak: 190 min' : 'Pico: 190 min'}
                               </div>
                             </div>
                           </div>
-                        </div>
-                        
-                        {/* Wait Times by Condition Severity - Summary Table */}
-                        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6 mb-8">
                           <div className="flex items-center gap-3 mb-6">
                             <div className="bg-orange-100 p-3 rounded-lg">
                               <Clock className="h-6 w-6 text-orange-600" />
-                            </div>
+                          <div className="flex items-center gap-3 mb-6">
                             <h4 className="text-xl font-semibold text-gray-900">{t[language].waitTimesByConditionSeverity}</h4>
                           </div>
 
