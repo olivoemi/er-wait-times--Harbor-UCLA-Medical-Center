@@ -1249,13 +1249,15 @@ function App() {
                         </div>
 
                         <div className="mb-4">
+                          <h5 className="text-xs font-semibold text-yellow-900 mb-2">
+                            {language === 'en' ? 'What to Expect:' : 'Qué Esperar:'}
                           </h5>
                           <ul className="space-y-1 text-xs text-yellow-700">
-                          </h5>
                             <li>• {language === 'en' ? 'Treatment plan provided' : 'Plan de tratamiento provisto'}</li>
                             <li>• {language === 'en' ? 'Standard evaluation' : 'Evaluación estándar'}</li>
                             <li>• {language === 'en' ? 'Treatment plan provided' : 'Plan de tratamiento provisto'}</li>
-                      </div>
+                          </ul>
+                        </div>
 
                       <div className="bg-yellow-600 text-white text-center py-2 px-3 rounded-lg mt-auto">
                         <div className="text-xs font-black tracking-wide">{t[language].mediumPriority}</div>
@@ -1280,24 +1282,23 @@ function App() {
                             : 'Condiciones estables incluyendo lesiones menores y quejas comunes'
                           }
                         </p>
-                            ? 'Stable conditions including minor injuries and common complaints'
-                            : 'Condiciones estables incluyendo lesiones menores y quejas comunes'
+
+                        <div className="mb-4">
                           <h5 className="text-xs font-semibold text-blue-900 mb-2">
                             {language === 'en' ? 'Common Examples:' : 'Ejemplos Comunes:'}
                           </h5>
-                        <div className="mb-4">
-                          <h5 className="text-xs font-semibold text-blue-900 mb-2">
-                            <li>• {language === 'en' ? 'Lacerations' : 'Laceraciones'}</li>
-                            <li>• {language === 'en' ? 'Sprains and simple fractures' : 'Esguinces y fracturas simples'}</li>
-                          </ul>
+                          <ul className="space-y-1 text-xs text-blue-800">
                             <li>• {language === 'en' ? 'Cold/flu symptoms' : 'Síntomas de resfriado/gripe'}</li>
                             <li>• {language === 'en' ? 'Lacerations' : 'Laceraciones'}</li>
                             <li>• {language === 'en' ? 'Sprains and simple fractures' : 'Esguinces y fracturas simples'}</li>
-                            {language === 'en' ? 'What to Expect:' : 'Qué Esperar:'}
+                          </ul>
                         </div>
 
                         <div className="mb-4">
                           <h5 className="text-xs font-semibold text-blue-900 mb-2">
+                            {language === 'en' ? 'What to Expect:' : 'Qué Esperar:'}
+                          </h5>
+                          <ul className="space-y-1 text-xs text-blue-700">
                             <li>• {language === 'en' ? 'Consider urgent care' : 'Considerar atención urgente'}</li>
                           </ul>
                         </div>
@@ -1327,24 +1328,24 @@ function App() {
                           }
                         </p>
 
-                            ? 'Primary care complaints and routine health needs'
-                            : 'Quejas de atención primaria y necesidades de salud rutinarias'
+                        <div className="mb-4">
+                          <h5 className="text-xs font-semibold text-green-900 mb-2">
                             {language === 'en' ? 'Common Examples:' : 'Ejemplos Comunes:'}
                           </h5>
                           <ul className="space-y-1 text-xs text-green-800">
-                        <div className="mb-4">
-                          <h5 className="text-xs font-semibold text-green-900 mb-2">
-                            <li>• {language === 'en' ? 'Non-emergent specialty referrals' : 'Referencias especializadas no urgentes'}</li>
-                          </ul>
-                        </div>
                             <li>• {language === 'en' ? 'Primary care complaints' : 'Quejas de atención primaria'}</li>
                             <li>• {language === 'en' ? 'Medication refills' : 'Reposición de medicamentos'}</li>
                             <li>• {language === 'en' ? 'Non-emergent specialty referrals' : 'Referencias especializadas no urgentes'}</li>
-                          </h5>
+                          </ul>
                         </div>
-i>
+
                         <div className="mb-4">
                           <h5 className="text-xs font-semibold text-green-900 mb-2">
+                            {language === 'en' ? 'What to Expect:' : 'Qué Esperar:'}
+                          </h5>
+                          <ul className="space-y-1 text-xs text-green-700">
+                            <li>• {language === 'en' ? 'Fast track processing' : 'Procesamiento de vía rápida'}</li>
+                            <li>• {language === 'en' ? 'Minimal resources needed' : 'Recursos mínimos necesarios'}</li>
                           </ul>
                         </div>
                       </div>
