@@ -3566,32 +3566,27 @@ function App() {
                                 1: {
                                   bg: isSelected ? 'bg-red-50' : 'bg-white',
                                   border: isSelected ? 'border-red-300 ring-2 ring-red-200' : 'border-red-200 hover:border-red-300',
-                                  text: 'text-red-900',
-                                  badge: 'bg-red-500 text-white'
+                                  text: 'text-red-900'
                                 },
                                 2: {
                                   bg: isSelected ? 'bg-orange-50' : 'bg-white',
                                   border: isSelected ? 'border-orange-300 ring-2 ring-orange-200' : 'border-orange-200 hover:border-orange-300',
-                                  text: 'text-orange-900',
-                                  badge: 'bg-orange-500 text-white'
+                                  text: 'text-orange-900'
                                 },
                                 3: {
                                   bg: isSelected ? 'bg-yellow-50' : 'bg-white',
                                   border: isSelected ? 'border-yellow-300 ring-2 ring-yellow-200' : 'border-yellow-200 hover:border-yellow-300',
-                                  text: 'text-yellow-900',
-                                  badge: 'bg-yellow-500 text-white'
+                                  text: 'text-yellow-900'
                                 },
                                 4: {
                                   bg: isSelected ? 'bg-blue-50' : 'bg-white',
                                   border: isSelected ? 'border-blue-300 ring-2 ring-blue-200' : 'border-blue-200 hover:border-blue-300',
-                                  text: 'text-blue-900',
-                                  badge: 'bg-blue-500 text-white'
+                                  text: 'text-blue-900'
                                 },
                                 5: {
                                   bg: isSelected ? 'bg-green-50' : 'bg-white',
                                   border: isSelected ? 'border-green-300 ring-2 ring-green-200' : 'border-green-200 hover:border-green-300',
-                                  text: 'text-green-900',
-                                  badge: 'bg-green-500 text-white'
+                                  text: 'text-green-900'
                                 }
                               }
                               
@@ -3609,13 +3604,10 @@ function App() {
                                 <div className="flex items-start gap-3">
                                   {getSymptomIcon(symptom.id, symptom.category)}
                                   <div className="flex-1 min-w-0">
-                                    <div className="flex items-start justify-between mb-2">
+                                    <div className="mb-2">
                                       <h6 className={`font-medium text-sm ${colors.text} leading-tight`}>
                                         {symptom.name}
                                       </h6>
-                                      <div className={`px-2 py-1 rounded text-xs font-bold ml-2 flex-shrink-0 ${colors.badge}`}>
-                                        L{symptom.acuityLevel}
-                                      </div>
                                     </div>
                                     {isSelected && (
                                       <div className="mt-2">
