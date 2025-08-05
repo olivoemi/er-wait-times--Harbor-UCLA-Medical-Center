@@ -3783,8 +3783,6 @@ function App() {
         </Tabs>
 
         {/* Disclaimer */}
-        <div className="mt-12 p-4 bg-muted rounded-lg">
-          <p className="text-sm text-muted-foreground text-center">
             <strong>{t[language].important}</strong> {t[language].disclaimer}
           </p>
         </div>
