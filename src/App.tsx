@@ -2108,7 +2108,6 @@ function App() {
                               </div>
 
                               {/* Graph lines - SVG for better line drawing */}
-                              {/* Graph lines - SVG for better line drawing */}
                               <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
                                 {/* Level 1 - Red line */}
                                 <polyline
@@ -2120,32 +2119,35 @@ function App() {
                                 {/* Level 2 - Orange line */}
                                 <polyline
                                   fill="none"
+                                  stroke="#F97316"
                                   strokeWidth="2"
-                                  strokeWidth="2"
+                                  points="0,80 12.5,78 25,75 37.5,73 50,70 62.5,72 75,75 87.5,78 100,80"
                                 />
-                                />
+                                {/* Level 3 - Yellow line */}
                                 <polyline
-                                <polyline
-                                  stroke="#EAB308"
-                                  points="0,45 12.5,40 25,35 37.5,30 50,20 62.5,18 75,25 87.5,35 100,40"
-                                  strokeWidth="2"
-                                {/* Level 4 - Blue line */}
-                                />
                                   fill="none"
-                                <polyline
+                                  stroke="#EAB308"
                                   strokeWidth="2"
+                                  points="0,45 12.5,40 25,35 37.5,30 50,20 62.5,18 75,25 87.5,35 100,40"
                                 />
-                                  strokeWidth="2"
+                                {/* Level 4 - Blue line */}
                                 <polyline
+                                  fill="none"
+                                  stroke="#3B82F6"
+                                  strokeWidth="2"
+                                  points="0,25 12.5,22 25,18 37.5,15 50,8 62.5,6 75,12 87.5,20 100,25"
                                 />
+                                {/* Level 5 - Green line */}
+                                <polyline
+                                  fill="none"
                                   stroke="#10B981"
                                   strokeWidth="2"
                                   points="0,35 12.5,30 25,25 37.5,20 50,12 62.5,10 75,15 87.5,25 100,30"
                                 />
-                                  strokeWidth="2"
+                              </svg>
+                              
                               {/* Time axis labels */}
                               <div className="absolute -bottom-6 left-0 w-full flex justify-between text-xs text-gray-600 font-medium">
-                              </svg>
                                 <span>3 AM</span>
                                 <span>6 AM</span>
                                 <span>9 AM</span>
@@ -2155,13 +2157,15 @@ function App() {
                                 <span>9 PM</span>
                               </div>
                             </div>
-
                           </div>
 
                           {/* Legend */}
                           <div className="bg-gray-50 rounded-lg p-4 mt-4">
-               <div className="flex items-center justify-center gap-8 flex-wrap">
+                            <div className="flex items-center justify-center gap-8 flex-wrap">
                               <div className="flex items-center gap-2">
+                                <div className="w-4 h-0.5 bg-red-500"></div>
+                                <span className="text-sm text-gray-700 font-medium">Level 1</span>
+                              </div>
                               <div className="flex items-center gap-2">
                                 <div className="w-4 h-0.5 bg-orange-500"></div>
                                 <span className="text-sm text-gray-700 font-medium">Level 2</span>
@@ -2184,8 +2188,8 @@ function App() {
                           {/* Peak times summary */}
                           <div className="grid grid-cols-5 gap-4 mt-4">
                             <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-center">
-                            </div>
-                          </div>ont-medium">
+                              <div className="font-bold text-red-900 text-base mb-1">L1</div>
+                              <div className="text-xs text-red-700 font-medium">
                                 {language === 'en' ? 'Peak: 70 min' : 'Pico: 70 min'}
                               </div>
                             </div>
@@ -2196,46 +2200,52 @@ function App() {
                               </div>
                             </div>
                             <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-center">
-                              <div className="font-bold text-orange-900 text-base mb-1">L2</div>
-                              <div className="text-xs text-orange-700 font-medium">
-                                {language === 'en' ? 'Peak: 220 min' : 'Pico: 220 min'}
-                              </div>
-                            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-center">
-                            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-center">
-                              <div className="text-xs text-blue-700 font-medium">
+                              <div className="font-bold text-yellow-900 text-base mb-1">L3</div>
                               <div className="text-xs text-yellow-700 font-medium">
                                 {language === 'en' ? 'Peak: 220 min' : 'Pico: 220 min'}
-                            </div>
-                              <div className="font-bold text-green-900 text-base mb-1">L5</div>
-                            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-center">
-                              <div className="font-bold text-blue-900 text-base mb-1">L4</div>
                               </div>
                             </div>
+                            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-center">
+                              <div className="font-bold text-blue-900 text-base mb-1">L4</div>
+                              <div className="text-xs text-blue-700 font-medium">
+                                {language === 'en' ? 'Peak: 240 min' : 'Pico: 240 min'}
                               </div>
                             </div>
                             <div className="bg-green-50 border border-green-200 rounded-lg p-4 text-center">
                               <div className="font-bold text-green-900 text-base mb-1">L5</div>
                               <div className="text-xs text-green-700 font-medium">
                                 {language === 'en' ? 'Peak: 190 min' : 'Pico: 190 min'}
-                        <div className="flex items-center gap-3 mb-6">
-                          <div className="bg-orange-100 p-3 rounded-lg">
-                            <Clock className="h-6 w-6 text-orange-600" />
-                        </div>
-                      </div>
-
-                      {/* Wait Times by Condition Severity - Detailed */}
-                      <div className="mb-8">
-                        <div className="flex items-center gap-3 mb-6">
-                          <div className="flex items-center justify-between mb-3">
-                                <h5 className="font-bold text-red-900">{t[language].level1Critical}</h5>
-                                <p className="text-sm text-red-700">
-                                  {language === 'en' 
-                                    ? 'Life-threatening emergencies requiring immediate intervention'
-                                    : 'Emergencias que amenazan la vida que requieren intervención inmediata'
-                                  }
-                                </p>
                               </div>
                             </div>
+                        </div>
+                        
+                        {/* Wait Times by Condition Severity - Detailed */}
+                        <div className="mb-8">
+                          <div className="flex items-center gap-3 mb-6">
+                            <div className="bg-orange-100 p-3 rounded-lg">
+                              <Clock className="h-6 w-6 text-orange-600" />
+                            </div>
+                            <h4 className="text-xl font-semibold text-gray-900">{t[language].waitTimesByConditionSeverity}</h4>
+                          </div>
+
+                          <div className="space-y-6">
+                            {/* Level 1 - Critical */}
+                            <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                              <div className="flex items-center justify-between mb-3">
+                                <div className="flex items-center gap-3">
+                                  <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
+                                    <span className="text-white text-sm font-bold">1</span>
+                                  </div>
+                                  <div>
+                                    <h5 className="font-bold text-red-900">{t[language].level1Critical}</h5>
+                                    <p className="text-sm text-red-700">
+                                      {language === 'en' 
+                                        ? 'Life-threatening emergencies requiring immediate intervention'
+                                        : 'Emergencias que amenazan la vida que requieren intervención inmediata'
+                                      }
+                                    </p>
+                                  </div>
+                                </div>
                             <div className="text-right">
                               <div className="text-2xl font-bold text-green-600">&lt;15m</div>
                               <div className="text-sm text-gray-600">
