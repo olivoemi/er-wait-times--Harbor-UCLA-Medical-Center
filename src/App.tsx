@@ -1822,51 +1822,52 @@ function App() {
                             </div>
                           </div>
 
-                          {/* Simple Wait Times Chart */}
-                          <div className="bg-white rounded-lg border border-gray-200 p-4 mb-6">
-                            <h5 className="font-semibold text-gray-900 mb-4 text-center">
-                              {language === 'en' ? 'Current Wait Times' : 'Tiempos de Espera Actuales'}
-                            </h5>
-                            
-                            <div className="space-y-3">
-                              <div className="flex items-center justify-between p-3 bg-red-50 rounded">
-                                <div className="flex items-center gap-2">
-                                  <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                                  <span className="text-sm font-medium">Level 1</span>
-                                </div>
-                                <span className="font-bold text-green-600">&lt; 15 min</span>
-                              </div>
-                              <div className="flex items-center justify-between p-3 bg-orange-50 rounded">
-                                <div className="flex items-center gap-2">
-                                  <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
-                                  <span className="text-sm font-medium">Level 2</span>
-                                </div>
-                                <span className="font-bold text-green-600">&lt; 15 min</span>
-                              </div>
-                              <div className="flex items-center justify-between p-3 bg-yellow-50 rounded">
-                                <div className="flex items-center gap-2">
-                                  <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                                  <span className="text-sm font-medium">Level 3</span>
-                                </div>
-                                <span className="font-bold text-red-600">693 min</span>
-                              </div>
-                              <div className="flex items-center justify-between p-3 bg-blue-50 rounded">
-                                <div className="flex items-center gap-2">
-                                  <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                                  <span className="text-sm font-medium">Level 4</span>
-                                </div>
-                                <span className="font-bold text-red-600">1020 min</span>
-                              </div>
-                              <div className="flex items-center justify-between p-3 bg-green-50 rounded">
-                                <div className="flex items-center gap-2">
-                                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                                  <span className="text-sm font-medium">Level 5</span>
-                                </div>
-                                <span className="font-bold text-red-600">943 min</span>
-                              </div>
+                        </div>
+
+                      {/* Simple Wait Times Chart - moved to bottom */}
+                      <div className="bg-white rounded-lg border border-gray-200 p-4">
+                        <h5 className="font-semibold text-gray-900 mb-4 text-center">
+                          {language === 'en' ? 'Current Wait Times' : 'Tiempos de Espera Actuales'}
+                        </h5>
+                        
+                        <div className="space-y-3">
+                          <div className="flex items-center justify-between p-3 bg-red-50 rounded">
+                            <div className="flex items-center gap-2">
+                              <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                              <span className="text-sm font-medium">Level 1</span>
                             </div>
+                            <span className="font-bold text-green-600">&lt; 15 min</span>
+                          </div>
+                          <div className="flex items-center justify-between p-3 bg-orange-50 rounded">
+                            <div className="flex items-center gap-2">
+                              <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
+                              <span className="text-sm font-medium">Level 2</span>
+                            </div>
+                            <span className="font-bold text-green-600">&lt; 15 min</span>
+                          </div>
+                          <div className="flex items-center justify-between p-3 bg-yellow-50 rounded">
+                            <div className="flex items-center gap-2">
+                              <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                              <span className="text-sm font-medium">Level 3</span>
+                            </div>
+                            <span className="font-bold text-red-600">693 min</span>
+                          </div>
+                          <div className="flex items-center justify-between p-3 bg-blue-50 rounded">
+                            <div className="flex items-center gap-2">
+                              <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                              <span className="text-sm font-medium">Level 4</span>
+                            </div>
+                            <span className="font-bold text-red-600">1020 min</span>
+                          </div>
+                          <div className="flex items-center justify-between p-3 bg-green-50 rounded">
+                            <div className="flex items-center gap-2">
+                              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                              <span className="text-sm font-medium">Level 5</span>
+                            </div>
+                            <span className="font-bold text-red-600">943 min</span>
                           </div>
                         </div>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
