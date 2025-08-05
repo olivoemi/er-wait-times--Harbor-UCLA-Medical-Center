@@ -75,6 +75,7 @@ function App() {
   }>>([])
   const [isCalculatingProximity, setIsCalculatingProximity] = useState(false)
   const [careOptionsInsurance, setCareOptionsInsurance] = useState('')
+  const [showAllUrgentCare, setShowAllUrgentCare] = useState(false)
 
   // Translation object
   const t = {
@@ -3984,6 +3985,83 @@ function App() {
                           </div>
                         </div>
                       </div>
+                    </div>
+
+                    {/* Urgent Care Locations */}
+                    <div className="mb-6">
+                      <div className="flex items-center justify-between mb-4">
+                        <h5 className="font-semibold text-gray-900">
+                          {language === 'en' ? 'Nearby Urgent Care Centers' : 'Centros de Atención Urgente Cercanos'}
+                        </h5>
+                        {urgentCareData.length > 3 && (
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => setShowAllUrgentCare(!showAllUrgentCare)}
+                            className="text-blue-600 hover:text-blue-800 text-sm"
+                          >
+                            {showAllUrgentCare 
+                              ? (language === 'en' ? 'Show Less' : 'Mostrar Menos')
+                              : (language === 'en' ? `Show All (${urgentCareData.length})` : `Mostrar Todos (${urgentCareData.length})`)
+                            }
+                            {showAllUrgentCare ? <CaretUp className="h-4 w-4 ml-1" /> : <CaretDown className="h-4 w-4 ml-1" />}
+                          </Button>
+                        )}
+                      </div>
+                      
+                      <div className="space-y-3 max-h-96 overflow-y-auto">
+                        {(showAllUrgentCare ? urgentCareData : urgentCareData.slice(0, 3)).map((location, index) => (
+                          <div key={location.id} className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-sm transition-shadow">
+                            <div className="flex items-start justify-between mb-2">
+                              <div className="flex-1 min-w-0">
+                                <h6 className="font-semibold text-gray-900 text-sm mb-1 leading-tight break-words">
+                                  {location.name}
+                                  {location.isER && <span className="text-xs text-red-600 ml-2">*ER Available</span>}
+                                </h6>
+                                <p className="text-xs text-gray-600 mb-2 break-words">
+                                  {location.address}
+                                </p>
+                                <div className="flex items-center gap-4 text-xs text-gray-500">
+                                  <span className="flex items-center gap-1">
+                                    <Phone className="h-3 w-3" />
+                                    {location.phone}
+                                  </span>
+                                  {location.distance && (
+                                    <span className="flex items-center gap-1">
+                                      <MapPin className="h-3 w-3" />
+                                      {location.distance.toFixed(1)} {language === 'en' ? 'miles' : 'millas'}
+                                    </span>
+                                  )}
+                                </div>
+                              </div>
+                            </div>
+                            
+                            <div className="border-t border-gray-100 pt-2 mt-2">
+                              <div className="text-xs text-gray-600">
+                                <span className="font-medium text-gray-700">
+                                  {language === 'en' ? 'Hours:' : 'Horarios:'}
+                                </span>
+                                <div className="mt-1">
+                                  {location.hours.map((hour, hourIndex) => (
+                                    <div key={hourIndex} className="break-words">{hour}</div>
+                                  ))}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                      
+                      {!showAllUrgentCare && urgentCareData.length > 3 && (
+                        <div className="text-center mt-3">
+                          <p className="text-xs text-gray-500">
+                            {language === 'en' 
+                              ? `Showing 3 of ${urgentCareData.length} locations. Click "Show All" to see more.`
+                              : `Mostrando 3 de ${urgentCareData.length} ubicaciones. Haga clic en "Mostrar Todos" para ver más.`
+                            }
+                          </p>
+                        </div>
+                      )}
                     </div>
 
                     {/* Action Buttons */}
