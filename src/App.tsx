@@ -1503,7 +1503,7 @@ function App() {
                           <h4 className="font-semibold text-gray-900 mb-3 text-center">
                             {language === 'en' ? 'Top 5 Specialized Services Available' : 'Top 5 Servicios Especializados Disponibles'}
                           </h4>
-                          <div className="space-y-2">
+                          <div className="space-y-2 mb-4">
                             <div className="flex items-center justify-between p-3 bg-red-50 rounded-lg border border-red-200">
                               <div className="flex items-center gap-3">
                                 <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
@@ -1559,6 +1559,27 @@ function App() {
                               </div>
                               <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
                             </div>
+                          </div>
+
+                          {/* Directions and Call Buttons */}
+                          <div className="flex gap-2">
+                            <Button 
+                              className="bg-blue-600 hover:bg-blue-700 text-white flex-1 flex items-center justify-center gap-2"
+                              onClick={() => {
+                                const encodedAddress = encodeURIComponent('1000 W Carson St, Torrance, CA 90509')
+                                window.open(`https://www.google.com/maps/dir/?api=1&destination=${encodedAddress}`, '_blank')
+                              }}
+                            >
+                              <MapPin className="h-4 w-4" />
+                              {language === 'en' ? 'Directions' : 'Direcciones'}
+                            </Button>
+                            <Button 
+                              className="bg-green-600 hover:bg-green-700 text-white flex-1 flex items-center justify-center gap-2"
+                              onClick={() => window.open('tel:(424) 306-5001', '_self')}
+                            >
+                              <Phone className="h-4 w-4" />
+                              {language === 'en' ? 'Call' : 'Llamar'}
+                            </Button>
                           </div>
                         </div>
                       </CardContent>
