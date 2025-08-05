@@ -3474,10 +3474,65 @@ function App() {
                                   text: 'text-green-900',
                                   badge: 'bg-green-500 text-white'
                                 }
-                        {language === 'en' 
-                          ? 'The information provided on this page is for educational purposes only and should not be used as a substitute for professional medical advice, diagnosis, or treatment. Always consult with a qualified healthcare provider about any health concerns or before making any decisions related to your health or treatment.'
-                          : 'La información proporcionada en esta página es solo para fines educativos y no debe usarse como sustituto del consejo médico profesional, diagnóstico o tratamiento. Siempre consulte con un proveedor de atención médica calificado sobre cualquier preocupación de salud o antes de tomar cualquier decisión relacionada con su salud o tratamiento.'
-                        }
+                              }
+                              
+                              return colorMap[level] || colorMap[5]
+                            }
+                            
+                            const colors = getAcuityColors(symptom.acuityLevel, isSelected)
+                            
+                            return (
+                              <button
+                                key={symptom.id}
+                                onClick={() => handleSymptomToggle(symptom.id)}
+                                className={`w-full text-left p-4 rounded-lg border transition-all duration-200 hover:shadow-sm ${colors.bg} ${colors.border}`}
+                              >
+                                <div className="flex items-start gap-3">
+                                  {getSymptomIcon(symptom.id, symptom.category)}
+                                  <div className="flex-1 min-w-0">
+                                    <div className="flex items-start justify-between mb-2">
+                                      <h6 className={`font-medium text-sm ${colors.text} leading-tight`}>
+                                        {symptom.name}
+                                      </h6>
+                                      <div className={`px-2 py-1 rounded text-xs font-bold ml-2 flex-shrink-0 ${colors.badge}`}>
+                                        L{symptom.acuityLevel}
+                                      </div>
+                                    </div>
+                                    {isSelected && (
+                                      <div className="mt-2">
+                                        <CheckCircle className="h-4 w-4 text-green-600" />
+                                      </div>
+                                    )}
+                                    {isThoughtsOfHarm && (
+                                      <div className="mt-2 text-xs text-red-600 font-medium">
+                                        {language === 'en' ? 'Immediate help needed' : 'Ayuda inmediata necesaria'}
+                                      </div>
+                                    )}
+                                  </div>
+                                </div>
+                              </button>
+                            )
+                          })}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Medical Disclaimer */}
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                  <div className="flex items-start gap-3 mb-4">
+                    <Info className="h-5 w-5 text-blue-600 mt-1 flex-shrink-0" />
+                    <h3 className="text-lg font-semibold text-blue-900">
+                      {language === 'en' ? 'Medical Disclaimer' : 'Descargo de Responsabilidad Médica'}
+                    </h3>
+                  </div>
+                  <div className="space-y-3 text-sm text-blue-800">
+                    <p>
+                      {language === 'en' 
+                        ? 'The information provided on this page is for educational purposes only and should not be used as a substitute for professional medical advice, diagnosis, or treatment. Always consult with a qualified healthcare provider about any health concerns or before making any decisions related to your health or treatment.'
+                        : 'La información proporcionada en esta página es solo para fines educativos y no debe usarse como sustituto del consejo médico profesional, diagnóstico o tratamiento. Siempre consulte con un proveedor de atención médica calificado sobre cualquier preocupación de salud o antes de tomar cualquier decisión relacionada con su salud o tratamiento.'
+                      }
                       </p>
                       <p className="font-medium">
                         {language === 'en' 
