@@ -1633,14 +1633,13 @@ function App() {
                           </div>
                           <div>
                             <h3 className="text-3xl font-bold mb-3">
-                              <a 
-                                href="https://dhs.lacounty.gov/harbor-ucla-medical-center/" 
-                                target="_blank" 
-                                rel="noopener noreferrer"
-                                className="text-gray-900 hover:text-blue-600 transition-colors cursor-pointer"
+                              <Button
+                                variant="ghost"
+                                className="text-gray-900 hover:text-blue-600 text-3xl font-bold p-0 h-auto hover:bg-transparent"
+                                onClick={() => window.open('https://dhs.lacounty.gov/harbor-ucla-medical-center/', '_blank')}
                               >
                                 {t[language].harborUCLAMedicalCenter}
-                              </a>
+                              </Button>
                             </h3>
                             <div className="flex items-center gap-6 text-base text-gray-600">
                               <div className="flex items-center gap-2">
@@ -1787,21 +1786,20 @@ function App() {
                               <div className="flex items-start gap-3">
                                 <Phone className="h-4 w-4 text-gray-500 mt-1 flex-shrink-0" />
                                 <div>
-                                  <div className="font-medium text-gray-900">(310) 222-2345</div>
+                                  <div className="font-medium text-gray-900">(424) 306-5001</div>
                                   <div className="text-gray-600 text-sm">{t[language].mainLine}</div>
                                 </div>
                               </div>
                               <div className="flex items-start gap-3">
                                 <Globe className="h-4 w-4 text-gray-500 mt-1 flex-shrink-0" />
                                 <div>
-                                  <a 
-                                    href="https://dhs.lacounty.gov/harbor-ucla-medical-center/" 
-                                    target="_blank" 
-                                    rel="noopener noreferrer"
-                                    className="font-medium text-blue-600 hover:text-blue-800 underline"
+                                  <Button
+                                    variant="ghost"
+                                    className="font-medium text-blue-600 hover:text-blue-800 underline p-0 h-auto hover:bg-transparent"
+                                    onClick={() => window.open('https://dhs.lacounty.gov/harbor-ucla-medical-center/', '_blank')}
                                   >
                                     {t[language].officialWebsite}
-                                  </a>
+                                  </Button>
                                   <div className="text-gray-600 text-sm">
                                     {language === 'en' ? 'Harbor-UCLA Medical Center' : 'Centro Médico Harbor-UCLA'}
                                   </div>
