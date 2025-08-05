@@ -2723,8 +2723,60 @@ function App() {
                                 </div>
                               </div>
 
+                              {/* Personalized Cost Estimate */}
+                              <div className="bg-white rounded-lg p-4 mb-6 border border-gray-200">
+                                <div className="flex items-center gap-2 mb-4">
+                                  <div className="w-5 h-5 bg-blue-600 rounded flex items-center justify-center">
+                                    <span className="text-white text-xs font-bold">$</span>
+                                  </div>
+                                  <span className="font-medium text-gray-900">
+                                    {language === 'en' ? 'Personalized Cost Estimate' : 'Estimación de Costo Personalizada'}
+                                  </span>
+                                </div>
+                                
+                                <div className="text-center mb-4">
+                                  <div className="text-3xl font-bold text-blue-600 mb-1">
+                                    $2,500-$4,000+
+                                  </div>
+                                  <div className="text-sm text-gray-600">
+                                    {language === 'en' ? 'Expected cost range' : 'Rango de costo esperado'}
+                                  </div>
+                                </div>
+
+                                <div className="bg-green-50 border border-green-200 rounded-lg p-3 mb-4">
+                                  <div className="flex items-center gap-2 text-green-800 text-sm">
+                                    <CheckCircle className="h-4 w-4" />
+                                    <span className="font-medium">
+                                      {language === 'en' ? 'Costs adapted to your plan' : 'Costos adaptados a su plan'}
+                                    </span>
+                                    <span className="text-green-600 text-xs ml-2">
+                                      {language === 'en' ? 'Updated 8/1/2025' : 'Actualizado 8/1/2025'}
+                                    </span>
+                                  </div>
+                                </div>
+
+                                <div className="grid grid-cols-2 gap-3">
+                                  <div className="bg-red-50 border border-red-200 rounded-lg p-3 text-center">
+                                    <div className="text-sm font-medium text-red-900 mb-1">
+                                      {language === 'en' ? 'Compare to ER visit:' : 'Comparar con visita a ER:'}
+                                    </div>
+                                    <div className="text-lg font-bold text-red-600">
+                                      $2,500-4,000+
+                                    </div>
+                                  </div>
+                                  <div className="bg-green-50 border border-green-200 rounded-lg p-3 text-center">
+                                    <div className="text-sm font-medium text-green-900 mb-1">
+                                      {language === 'en' ? 'Your potential savings:' : 'Sus ahorros potenciales:'}
+                                    </div>
+                                    <div className="text-lg font-bold text-green-600">
+                                      {language === 'en' ? 'Same cost' : 'Mismo costo'}
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
                               {/* Wait Time Info */}
-                              <div className="bg-white rounded-lg p-4 mb-6 border border-red-200">
+                              <div className="bg-white rounded-lg p-4 mb-6 border border-gray-200">
                                 <div className="flex items-center gap-2 mb-3">
                                   <Clock className="h-5 w-5 text-gray-600" />
                                   <span className="font-medium text-gray-900">
@@ -2789,6 +2841,58 @@ function App() {
                                 </div>
                               </div>
 
+                              {/* Personalized Cost Estimate */}
+                              <div className="bg-white rounded-lg p-4 mb-6 border border-gray-200">
+                                <div className="flex items-center gap-2 mb-4">
+                                  <div className="w-5 h-5 bg-blue-600 rounded flex items-center justify-center">
+                                    <span className="text-white text-xs font-bold">$</span>
+                                  </div>
+                                  <span className="font-medium text-gray-900">
+                                    {language === 'en' ? 'Personalized Cost Estimate' : 'Estimación de Costo Personalizada'}
+                                  </span>
+                                </div>
+                                
+                                <div className="text-center mb-4">
+                                  <div className="text-3xl font-bold text-blue-600 mb-1">
+                                    $2,200-$3,800
+                                  </div>
+                                  <div className="text-sm text-gray-600">
+                                    {language === 'en' ? 'Expected cost range' : 'Rango de costo esperado'}
+                                  </div>
+                                </div>
+
+                                <div className="bg-green-50 border border-green-200 rounded-lg p-3 mb-4">
+                                  <div className="flex items-center gap-2 text-green-800 text-sm">
+                                    <CheckCircle className="h-4 w-4" />
+                                    <span className="font-medium">
+                                      {language === 'en' ? 'Costs adapted to your plan' : 'Costos adaptados a su plan'}
+                                    </span>
+                                    <span className="text-green-600 text-xs ml-2">
+                                      {language === 'en' ? 'Updated 8/1/2025' : 'Actualizado 8/1/2025'}
+                                    </span>
+                                  </div>
+                                </div>
+
+                                <div className="grid grid-cols-2 gap-3">
+                                  <div className="bg-red-50 border border-red-200 rounded-lg p-3 text-center">
+                                    <div className="text-sm font-medium text-red-900 mb-1">
+                                      {language === 'en' ? 'Compare to ER visit:' : 'Comparar con visita a ER:'}
+                                    </div>
+                                    <div className="text-lg font-bold text-red-600">
+                                      $2,200-3,800
+                                    </div>
+                                  </div>
+                                  <div className="bg-green-50 border border-green-200 rounded-lg p-3 text-center">
+                                    <div className="text-sm font-medium text-green-900 mb-1">
+                                      {language === 'en' ? 'Your potential savings:' : 'Sus ahorros potenciales:'}
+                                    </div>
+                                    <div className="text-lg font-bold text-green-600">
+                                      {language === 'en' ? 'Same cost' : 'Mismo costo'}
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
                               <div className="bg-white rounded-lg p-4 mb-6 border border-orange-200">
                                 <div className="grid grid-cols-3 gap-6 text-center">
                                   <div>
@@ -2847,6 +2951,58 @@ function App() {
                                 </div>
                               </div>
 
+                              {/* Personalized Cost Estimate */}
+                              <div className="bg-white rounded-lg p-4 mb-6 border border-gray-200">
+                                <div className="flex items-center gap-2 mb-4">
+                                  <div className="w-5 h-5 bg-blue-600 rounded flex items-center justify-center">
+                                    <span className="text-white text-xs font-bold">$</span>
+                                  </div>
+                                  <span className="font-medium text-gray-900">
+                                    {language === 'en' ? 'Personalized Cost Estimate' : 'Estimación de Costo Personalizada'}
+                                  </span>
+                                </div>
+                                
+                                <div className="text-center mb-4">
+                                  <div className="text-3xl font-bold text-blue-600 mb-1">
+                                    $30-$100
+                                  </div>
+                                  <div className="text-sm text-gray-600">
+                                    {language === 'en' ? 'Expected cost range' : 'Rango de costo esperado'}
+                                  </div>
+                                </div>
+
+                                <div className="bg-green-50 border border-green-200 rounded-lg p-3 mb-4">
+                                  <div className="flex items-center gap-2 text-green-800 text-sm">
+                                    <CheckCircle className="h-4 w-4" />
+                                    <span className="font-medium">
+                                      {language === 'en' ? 'Costs adapted to your plan' : 'Costos adaptados a su plan'}
+                                    </span>
+                                    <span className="text-green-600 text-xs ml-2">
+                                      {language === 'en' ? 'Updated 8/1/2025' : 'Actualizado 8/1/2025'}
+                                    </span>
+                                  </div>
+                                </div>
+
+                                <div className="grid grid-cols-2 gap-3">
+                                  <div className="bg-red-50 border border-red-200 rounded-lg p-3 text-center">
+                                    <div className="text-sm font-medium text-red-900 mb-1">
+                                      {language === 'en' ? 'Compare to ER visit:' : 'Comparar con visita a ER:'}
+                                    </div>
+                                    <div className="text-lg font-bold text-red-600">
+                                      $1,500-3,000+
+                                    </div>
+                                  </div>
+                                  <div className="bg-green-50 border border-green-200 rounded-lg p-3 text-center">
+                                    <div className="text-sm font-medium text-green-900 mb-1">
+                                      {language === 'en' ? 'Your potential savings:' : 'Sus ahorros potenciales:'}
+                                    </div>
+                                    <div className="text-lg font-bold text-green-600">
+                                      {language === 'en' ? 'Up to $2,950' : 'Hasta $2,950'}
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
                               <div className="bg-white rounded-lg p-4 mb-6 border border-yellow-200">
                                 <div className="grid grid-cols-3 gap-6 text-center">
                                   <div>
@@ -2860,6 +3016,16 @@ function App() {
                                   <div>
                                     <div className="text-3xl font-bold text-blue-600">88%</div>
                                     <div className="text-sm text-gray-600">{language === 'en' ? 'Confidence' : 'Confianza'}</div>
+                                  </div>
+                                </div>
+
+                                {/* Long wait time notice */}
+                                <div className="mt-4 bg-red-50 border border-red-200 rounded-lg p-3">
+                                  <div className="flex items-start gap-2">
+                                    <AlertTriangle className="h-4 w-4 text-red-600 mt-0.5 flex-shrink-0" />
+                                    <span className="text-red-800 text-sm font-medium">
+                                      {language === 'en' ? 'Long wait time - consider visiting during off-peak hours or other facilities' : 'Tiempo de espera largo - considere visitar durante horas de menor demanda u otras instalaciones'}
+                                    </span>
                                   </div>
                                 </div>
                               </div>
@@ -2902,6 +3068,58 @@ function App() {
                                       : 'Sus síntomas son más adecuados para una visita de atención primaria o consulta de telemedicina, que será más rápida y rentable.'
                                     }
                                   </p>
+                                </div>
+                              </div>
+
+                              {/* Personalized Cost Estimate */}
+                              <div className="bg-white rounded-lg p-4 mb-6 border border-gray-200">
+                                <div className="flex items-center gap-2 mb-4">
+                                  <div className="w-5 h-5 bg-blue-600 rounded flex items-center justify-center">
+                                    <span className="text-white text-xs font-bold">$</span>
+                                  </div>
+                                  <span className="font-medium text-gray-900">
+                                    {language === 'en' ? 'Personalized Cost Estimate' : 'Estimación de Costo Personalizada'}
+                                  </span>
+                                </div>
+                                
+                                <div className="text-center mb-4">
+                                  <div className="text-3xl font-bold text-blue-600 mb-1">
+                                    $25-$75
+                                  </div>
+                                  <div className="text-sm text-gray-600">
+                                    {language === 'en' ? 'Expected cost range' : 'Rango de costo esperado'}
+                                  </div>
+                                </div>
+
+                                <div className="bg-green-50 border border-green-200 rounded-lg p-3 mb-4">
+                                  <div className="flex items-center gap-2 text-green-800 text-sm">
+                                    <CheckCircle className="h-4 w-4" />
+                                    <span className="font-medium">
+                                      {language === 'en' ? 'Costs adapted to your plan' : 'Costos adaptados a su plan'}
+                                    </span>
+                                    <span className="text-green-600 text-xs ml-2">
+                                      {language === 'en' ? 'Updated 8/1/2025' : 'Actualizado 8/1/2025'}
+                                    </span>
+                                  </div>
+                                </div>
+
+                                <div className="grid grid-cols-2 gap-3">
+                                  <div className="bg-red-50 border border-red-200 rounded-lg p-3 text-center">
+                                    <div className="text-sm font-medium text-red-900 mb-1">
+                                      {language === 'en' ? 'Compare to ER visit:' : 'Comparar con visita a ER:'}
+                                    </div>
+                                    <div className="text-lg font-bold text-red-600">
+                                      $1,200-2,500+
+                                    </div>
+                                  </div>
+                                  <div className="bg-green-50 border border-green-200 rounded-lg p-3 text-center">
+                                    <div className="text-sm font-medium text-green-900 mb-1">
+                                      {language === 'en' ? 'Your potential savings:' : 'Sus ahorros potenciales:'}
+                                    </div>
+                                    <div className="text-lg font-bold text-green-600">
+                                      {language === 'en' ? 'Up to $2,475' : 'Hasta $2,475'}
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
 
@@ -2960,6 +3178,58 @@ function App() {
                                       : 'Sus síntomas probablemente pueden ser atendidos a través de telemedicina, una clínica de farmacia, o programando una cita de rutina de atención primaria.'
                                     }
                                   </p>
+                                </div>
+                              </div>
+
+                              {/* Personalized Cost Estimate */}
+                              <div className="bg-white rounded-lg p-4 mb-6 border border-gray-200">
+                                <div className="flex items-center gap-2 mb-4">
+                                  <div className="w-5 h-5 bg-blue-600 rounded flex items-center justify-center">
+                                    <span className="text-white text-xs font-bold">$</span>
+                                  </div>
+                                  <span className="font-medium text-gray-900">
+                                    {language === 'en' ? 'Personalized Cost Estimate' : 'Estimación de Costo Personalizada'}
+                                  </span>
+                                </div>
+                                
+                                <div className="text-center mb-4">
+                                  <div className="text-3xl font-bold text-blue-600 mb-1">
+                                    $15-$50
+                                  </div>
+                                  <div className="text-sm text-gray-600">
+                                    {language === 'en' ? 'Expected cost range' : 'Rango de costo esperado'}
+                                  </div>
+                                </div>
+
+                                <div className="bg-green-50 border border-green-200 rounded-lg p-3 mb-4">
+                                  <div className="flex items-center gap-2 text-green-800 text-sm">
+                                    <CheckCircle className="h-4 w-4" />
+                                    <span className="font-medium">
+                                      {language === 'en' ? 'Costs adapted to your plan' : 'Costos adaptados a su plan'}
+                                    </span>
+                                    <span className="text-green-600 text-xs ml-2">
+                                      {language === 'en' ? 'Updated 8/1/2025' : 'Actualizado 8/1/2025'}
+                                    </span>
+                                  </div>
+                                </div>
+
+                                <div className="grid grid-cols-2 gap-3">
+                                  <div className="bg-red-50 border border-red-200 rounded-lg p-3 text-center">
+                                    <div className="text-sm font-medium text-red-900 mb-1">
+                                      {language === 'en' ? 'Compare to ER visit:' : 'Comparar con visita a ER:'}
+                                    </div>
+                                    <div className="text-lg font-bold text-red-600">
+                                      $800-2,000+
+                                    </div>
+                                  </div>
+                                  <div className="bg-green-50 border border-green-200 rounded-lg p-3 text-center">
+                                    <div className="text-sm font-medium text-green-900 mb-1">
+                                      {language === 'en' ? 'Your potential savings:' : 'Sus ahorros potenciales:'}
+                                    </div>
+                                    <div className="text-lg font-bold text-green-600">
+                                      {language === 'en' ? 'Up to $1,985' : 'Hasta $1,985'}
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
 
