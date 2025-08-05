@@ -4103,7 +4103,7 @@ function App() {
                         onClick={() => window.open('tel:(424) 306-4000', '_self')}
                       >
                         {language === 'en' ? 'Contact Harbor for General Information' : 'Contactar Harbor para Información General'}
-                        {language === 'en' ? 'Contact Harbor for General Information' : 'Contactar Harbor para Información General'}
+                      </Button>
                     </div>
                   </div>
                 </div>
