@@ -8,6 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { MapPin, Clock, RefreshCw, AlertTriangle, Heart, FirstAid, Phone, Thermometer, Pill, Eye, Plus, Globe, Info, X, Building, CaretDown, CaretUp, MagnifyingGlass, CheckCircle, Brain, Lungs, Drop, Bandage, Siren, Pulse, Tooth, Activity } from '@phosphor-icons/react'
 import qrCodeImage from '@/assets/images/qr-code.png'
+import harborUCLALogo from '@/assets/images/harbor-ucla-logo.svg'
 
 interface Hospital {
   id: string
@@ -1409,9 +1410,13 @@ function App() {
                         {/* Hospital Header */}
                         <div className="flex items-start justify-between mb-6">
                           <div className="flex items-start gap-4">
-                            {/* Harbor Logo */}
-                            <div className="bg-red-600 text-white px-3 py-2 rounded font-bold text-sm">
-                              {t[language].harborShort}
+                            {/* Harbor-UCLA Logo */}
+                            <div className="flex-shrink-0">
+                              <img 
+                                src={harborUCLALogo} 
+                                alt="Harbor-UCLA Medical Center Logo" 
+                                className="w-16 h-16 object-contain"
+                              />
                             </div>
                             <div className="flex items-center gap-2">
                               <div className="w-2 h-2 bg-green-500 rounded-full"></div>

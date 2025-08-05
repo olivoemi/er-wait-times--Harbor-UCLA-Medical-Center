@@ -1,0 +1,16 @@
+<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Hexagonal background -->
+  <polygon points="25,15 75,15 90,43 75,71 25,71 10,43" fill="#B8D4E8" stroke="none"/>
+  
+  <!-- Inner blue circle -->
+  <circle cx="50" cy="43" r="22" fill="#0066CC"/>
+  
+  <!-- WiFi-like curved lines in white -->
+  <path d="M38 43 Q44 37, 50 43 Q56 37, 62 43" stroke="white" stroke-width="2" fill="none"/>
+  <path d="M41 46 Q45.5 42, 50 46 Q54.5 42, 59 46" stroke="white" stroke-width="2" fill="none"/>
+  <path d="M44 49 Q47 47, 50 49 Q53 47, 56 49" stroke="white" stroke-width="2" fill="none"/>
+  
+  <!-- Text -->
+  <text x="50" y="82" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#0066CC">Harbor-UCLA</text>
+  <text x="50" y="94" text-anchor="middle" font-family="Arial, sans-serif" font-size="6" fill="#0066CC">MEDICAL CENTER</text>
+</svg>
