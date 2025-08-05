@@ -1605,8 +1605,7 @@ function App() {
                         />
                       </div>
                       
-                      {/* Pulse animation */}
-                      <div className="absolute inset-0 w-20 h-20 bg-red-600 rounded-full animate-ping opacity-20"></div>
+                      {/* Pulse animation removed */}
                     </div>
                     
                     {/* Hover overlay */}
