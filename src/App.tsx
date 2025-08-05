@@ -3543,7 +3543,6 @@ function App() {
                     </div>
                   </div>
                 </div>
-              </div>
             )}
 
             {careGuideSection === 'options' && (
