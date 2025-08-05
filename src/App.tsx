@@ -752,66 +752,52 @@ function App() {
     {
       name: 'Level 1 - Immediate (Life-Threatening)',
       symptoms: [
-        { id: 'thoughts-harm', name: 'Thoughts of Harming Yourself or Others', acuityLevel: 1, category: 'mental-health' },
-        { id: 'severe-chest-pain', name: 'Severe Chest Pain', acuityLevel: 1, category: 'cardiac' },
-        { id: 'severe-breathing', name: 'Severe Difficulty Breathing', acuityLevel: 1, category: 'respiratory' },
-        { id: 'severe-bleeding', name: 'Severe Bleeding (Uncontrollable)', acuityLevel: 1, category: 'trauma' },
-        { id: 'stroke-signs', name: 'Signs of Stroke (FAST symptoms)', acuityLevel: 1, category: 'neurological' },
-        { id: 'active-seizure', name: 'Active Seizure', acuityLevel: 1, category: 'neurological' },
-        { id: 'vomiting-blood', name: 'Vomiting Blood', acuityLevel: 1, category: 'gastrointestinal' },
-        { id: 'loss-consciousness', name: 'Loss of Consciousness', acuityLevel: 1, category: 'neurological' },
-        { id: 'cardiac-arrest', name: 'Cardiac Arrest Symptoms', acuityLevel: 1, category: 'cardiac' }
+        { id: 'cardiac-arrest', name: 'Cardiac Arrest', acuityLevel: 1, category: 'cardiac' },
+        { id: 'heart-attack', name: 'Heart Attack', acuityLevel: 1, category: 'cardiac' },
+        { id: 'major-trauma', name: 'Major Trauma', acuityLevel: 1, category: 'trauma' },
+        { id: 'severe-stroke', name: 'Severe Stroke Symptoms', acuityLevel: 1, category: 'neurological' },
+        { id: 'thoughts-harm', name: 'Thoughts of Harming Yourself or Others', acuityLevel: 1, category: 'mental-health' }
       ]
     },
     {
       name: 'Level 2 - Emergent (High Priority)',
       symptoms: [
-        { id: 'chest-pain-moderate', name: 'Chest Pain (Moderate)', acuityLevel: 2, category: 'cardiac' },
-        { id: 'breathing-difficulty', name: 'Breathing Difficulty', acuityLevel: 2, category: 'respiratory' },
+        { id: 'unstable-vitals', name: 'Unstable Vital Signs', acuityLevel: 2, category: 'general' },
+        { id: 'severe-chest-pain', name: 'Severe Chest Pain', acuityLevel: 2, category: 'cardiac' },
         { id: 'severe-abdominal-pain', name: 'Severe Abdominal Pain', acuityLevel: 2, category: 'gastrointestinal' },
-        { id: 'high-fever-confusion', name: 'High Fever with Confusion', acuityLevel: 2, category: 'general' },
-        { id: 'severe-headache', name: 'Severe Headache', acuityLevel: 2, category: 'neurological' },
-        { id: 'head-injury', name: 'Head Injury', acuityLevel: 2, category: 'trauma' },
-        { id: 'moderate-bleeding', name: 'Moderate Bleeding', acuityLevel: 2, category: 'trauma' },
-        { id: 'allergic-reaction-severe', name: 'Severe Allergic Reaction', acuityLevel: 2, category: 'allergic' }
+        { id: 'altered-mental-status', name: 'Altered Mental Status', acuityLevel: 2, category: 'neurological' },
+        { id: 'severe-infection', name: 'Severe Infection', acuityLevel: 2, category: 'general' },
+        { id: 'loss-vision', name: 'Loss of Vision', acuityLevel: 2, category: 'trauma' },
+        { id: 'high-decompensation-risk', name: 'Condition with High Risk of Decompensation', acuityLevel: 2, category: 'general' }
       ]
     },
     {
       name: 'Level 3 - Urgent (Less Urgent)',
       symptoms: [
-        { id: 'moderate-pain', name: 'Moderate Pain', acuityLevel: 3, category: 'general' },
-        { id: 'minor-fractures', name: 'Minor Fractures', acuityLevel: 3, category: 'trauma' },
-        { id: 'persistent-fever', name: 'Persistent Fever', acuityLevel: 3, category: 'general' },
-        { id: 'vomiting-diarrhea', name: 'Vomiting/Diarrhea', acuityLevel: 3, category: 'gastrointestinal' },
-        { id: 'eye-injury', name: 'Eye Injury', acuityLevel: 3, category: 'trauma' },
-        { id: 'animal-bite', name: 'Animal Bite', acuityLevel: 3, category: 'trauma' },
-        { id: 'burns-minor', name: 'Minor Burns', acuityLevel: 3, category: 'trauma' },
-        { id: 'dehydration', name: 'Dehydration', acuityLevel: 3, category: 'general' }
+        { id: 'fever', name: 'Fever', acuityLevel: 3, category: 'general' },
+        { id: 'headache', name: 'Headache', acuityLevel: 3, category: 'neurological' },
+        { id: 'chest-pain', name: 'Chest Pain', acuityLevel: 3, category: 'cardiac' },
+        { id: 'abdominal-pain', name: 'Abdominal Pain', acuityLevel: 3, category: 'gastrointestinal' },
+        { id: 'complex-fractures', name: 'Complex Fractures', acuityLevel: 3, category: 'trauma' },
+        { id: 'syncope-fainting', name: 'Syncope/Fainting', acuityLevel: 3, category: 'neurological' },
+        { id: 'severe-headache', name: 'Severe Headache', acuityLevel: 3, category: 'neurological' },
+        { id: 'seizure', name: 'Seizure', acuityLevel: 3, category: 'neurological' }
       ]
     },
     {
       name: 'Level 4 - Semi-Urgent (Non-Urgent)',
       symptoms: [
-        { id: 'minor-cuts', name: 'Minor Cuts and Scrapes', acuityLevel: 4, category: 'trauma' },
-        { id: 'mild-headache', name: 'Mild Headache', acuityLevel: 4, category: 'neurological' },
-        { id: 'cold-flu-symptoms', name: 'Cold or Flu Symptoms', acuityLevel: 4, category: 'respiratory' },
-        { id: 'minor-sprains', name: 'Minor Sprains or Strains', acuityLevel: 4, category: 'musculoskeletal' },
-        { id: 'minor-allergic', name: 'Minor Allergic Reactions', acuityLevel: 4, category: 'allergic' },
-        { id: 'back-pain-nonsevere', name: 'Non-Severe Back Pain', acuityLevel: 4, category: 'musculoskeletal' },
-        { id: 'extreme-fatigue', name: 'Extreme Fatigue', acuityLevel: 4, category: 'general' },
-        { id: 'joint-pain', name: 'Joint Pain', acuityLevel: 4, category: 'musculoskeletal' }
+        { id: 'cold-flu-symptoms', name: 'Cold/Flu Symptoms', acuityLevel: 4, category: 'respiratory' },
+        { id: 'lacerations', name: 'Lacerations', acuityLevel: 4, category: 'trauma' },
+        { id: 'sprains-simple-fractures', name: 'Sprains and Simple Fractures', acuityLevel: 4, category: 'musculoskeletal' }
       ]
     },
     {
       name: 'Level 5 - Fast Track (Minimal Resources)',
       symptoms: [
-        { id: 'minor-skin-conditions', name: 'Minor Skin Conditions', acuityLevel: 5, category: 'dermatological' },
-        { id: 'prescription-refills', name: 'Prescription Refills (Non-Emergency)', acuityLevel: 5, category: 'general' },
-        { id: 'routine-checkup', name: 'Routine Check-up Needs', acuityLevel: 5, category: 'general' },
-        { id: 'minor-eye-irritation', name: 'Minor Eye or Ear Irritation', acuityLevel: 5, category: 'general' },
-        { id: 'wound-dressing', name: 'Simple Wound Dressing Changes', acuityLevel: 5, category: 'general' },
-        { id: 'blood-pressure-check', name: 'Blood Pressure Checks', acuityLevel: 5, category: 'general' },
-        { id: 'minor-dental', name: 'Minor Dental Issues', acuityLevel: 5, category: 'dental' }
+        { id: 'primary-care-complaints', name: 'Primary Care Complaints', acuityLevel: 5, category: 'general' },
+        { id: 'medication-refills', name: 'Medication Refills', acuityLevel: 5, category: 'general' },
+        { id: 'non-emergent-referrals', name: 'Non-Emergent Specialty Referrals', acuityLevel: 5, category: 'general' }
       ]
     }
   ]
@@ -1146,8 +1132,8 @@ function App() {
                       <div className="mb-4 flex-1">
                         <p className="text-xs text-red-700 mb-4 leading-relaxed">
                           {language === 'en' 
-                            ? 'Life-threatening conditions requiring immediate medical intervention'
-                            : 'Condiciones que amenazan la vida que requieren intervención médica inmediata'
+                            ? 'Life-threatening conditions requiring immediate medical intervention - seen within 24 hours'
+                            : 'Condiciones que amenazan la vida que requieren intervención médica inmediata - atendidas en 24 horas'
                           }
                         </p>
 
@@ -1156,10 +1142,10 @@ function App() {
                             {language === 'en' ? 'Common Examples:' : 'Ejemplos Comunes:'}
                           </h5>
                           <ul className="space-y-1 text-xs text-red-800">
-                            <li>• {t[language].cardiacArrest}</li>
-                            <li>• {t[language].severeBreathing}</li>
-                            <li>• {t[language].majorTrauma}</li>
-                            <li>• {t[language].strokeSymptoms}</li>
+                            <li>• {language === 'en' ? 'Cardiac arrest' : 'Paro cardíaco'}</li>
+                            <li>• {language === 'en' ? 'Heart attack' : 'Ataque cardíaco'}</li>
+                            <li>• {language === 'en' ? 'Major trauma' : 'Trauma mayor'}</li>
+                            <li>• {language === 'en' ? 'Severe stroke symptoms' : 'Síntomas severos de derrame cerebral'}</li>
                           </ul>
                         </div>
 
@@ -1194,8 +1180,8 @@ function App() {
                       <div className="mb-4 flex-1">
                         <p className="text-xs text-orange-700 mb-4 leading-relaxed">
                           {language === 'en' 
-                            ? 'Serious conditions that need prompt medical attention'
-                            : 'Condiciones serias que necesitan atención médica pronta'
+                            ? 'Serious conditions with unstable vital signs requiring prompt medical attention'
+                            : 'Condiciones serias con signos vitales inestables que necesitan atención médica pronta'
                           }
                         </p>
 
@@ -1204,10 +1190,12 @@ function App() {
                             {language === 'en' ? 'Common Examples:' : 'Ejemplos Comunes:'}
                           </h5>
                           <ul className="space-y-1 text-xs text-orange-800">
-                            <li>• {t[language].chestPain}</li>
-                            <li>• {t[language].severeAbdominal}</li>
-                            <li>• {t[language].highFeverConfusion}</li>
-                            <li>• {t[language].moderateBleeding}</li>
+                            <li>• {language === 'en' ? 'Unstable vital signs' : 'Signos vitales inestables'}</li>
+                            <li>• {language === 'en' ? 'Severe chest pain' : 'Dolor de pecho severo'}</li>
+                            <li>• {language === 'en' ? 'Severe abdominal pain' : 'Dolor abdominal severo'}</li>
+                            <li>• {language === 'en' ? 'Altered mental status' : 'Estado mental alterado'}</li>
+                            <li>• {language === 'en' ? 'Severe infection' : 'Infección severa'}</li>
+                            <li>• {language === 'en' ? 'Loss of vision' : 'Pérdida de visión'}</li>
                           </ul>
                         </div>
 
@@ -1242,8 +1230,8 @@ function App() {
                       <div className="mb-4 flex-1">
                         <p className="text-xs text-yellow-700 mb-4 leading-relaxed">
                           {language === 'en' 
-                            ? 'Conditions that require medical care but can wait if needed'
-                            : 'Condiciones que requieren atención médica pero pueden esperar si es necesario'
+                            ? 'Stable vital signs requiring blood work, imaging, and/or specialty consultation'
+                            : 'Signos vitales estables que requieren análisis de sangre, imágenes y/o consulta especializada'
                           }
                         </p>
 
@@ -1252,10 +1240,13 @@ function App() {
                             {language === 'en' ? 'Common Examples:' : 'Ejemplos Comunes:'}
                           </h5>
                           <ul className="space-y-1 text-xs text-yellow-800">
-                            <li>• {t[language].moderatePain}</li>
-                            <li>• {t[language].minorFractures}</li>
-                            <li>• {t[language].persistentFever}</li>
-                            <li>• {t[language].vomitingDiarrhea}</li>
+                            <li>• {language === 'en' ? 'Fever' : 'Fiebre'}</li>
+                            <li>• {language === 'en' ? 'Headache' : 'Dolor de cabeza'}</li>
+                            <li>• {language === 'en' ? 'Chest pain' : 'Dolor de pecho'}</li>
+                            <li>• {language === 'en' ? 'Abdominal pain' : 'Dolor abdominal'}</li>
+                            <li>• {language === 'en' ? 'Complex fractures' : 'Fracturas complejas'}</li>
+                            <li>• {language === 'en' ? 'Syncope/fainting' : 'Síncope/desmayo'}</li>
+                            <li>• {language === 'en' ? 'Seizure' : 'Convulsión'}</li>
                           </ul>
                         </div>
 
@@ -1290,8 +1281,8 @@ function App() {
                       <div className="mb-4 flex-1">
                         <p className="text-xs text-blue-700 mb-4 leading-relaxed">
                           {language === 'en' 
-                            ? 'Minor conditions that should be treated but are not urgent'
-                            : 'Condiciones menores que deben tratarse pero no son urgentes'
+                            ? 'Stable conditions including minor injuries and common complaints'
+                            : 'Condiciones estables incluyendo lesiones menores y quejas comunes'
                           }
                         </p>
 
@@ -1300,10 +1291,9 @@ function App() {
                             {language === 'en' ? 'Common Examples:' : 'Ejemplos Comunes:'}
                           </h5>
                           <ul className="space-y-1 text-xs text-blue-800">
-                            <li>• {t[language].minorCuts}</li>
-                            <li>• {t[language].mildHeadache}</li>
-                            <li>• {t[language].coldFluSymptoms}</li>
-                            <li>• {t[language].minorSprains}</li>
+                            <li>• {language === 'en' ? 'Cold/flu symptoms' : 'Síntomas de resfriado/gripe'}</li>
+                            <li>• {language === 'en' ? 'Lacerations' : 'Laceraciones'}</li>
+                            <li>• {language === 'en' ? 'Sprains and simple fractures' : 'Esguinces y fracturas simples'}</li>
                           </ul>
                         </div>
 
@@ -1338,8 +1328,8 @@ function App() {
                       <div className="mb-4 flex-1">
                         <p className="text-xs text-green-700 mb-4 leading-relaxed">
                           {language === 'en' 
-                            ? 'Minor issues that could be addressed elsewhere'
-                            : 'Problemas menores que podrían ser atendidos en otro lugar'
+                            ? 'Primary care complaints and routine health needs'
+                            : 'Quejas de atención primaria y necesidades de salud rutinarias'
                           }
                         </p>
 
@@ -1348,10 +1338,9 @@ function App() {
                             {language === 'en' ? 'Common Examples:' : 'Ejemplos Comunes:'}
                           </h5>
                           <ul className="space-y-1 text-xs text-green-800">
-                            <li>• {t[language].minorSkinConditions}</li>
-                            <li>• {t[language].prescriptionRefills}</li>
-                            <li>• {t[language].routineConcerns}</li>
-                            <li>• {t[language].minorEyeIrritation}</li>
+                            <li>• {language === 'en' ? 'Primary care complaints' : 'Quejas de atención primaria'}</li>
+                            <li>• {language === 'en' ? 'Medication refills' : 'Reposición de medicamentos'}</li>
+                            <li>• {language === 'en' ? 'Non-emergent specialty referrals' : 'Referencias especializadas no urgentes'}</li>
                           </ul>
                         </div>
 
@@ -3286,8 +3275,8 @@ function App() {
                         </h4>
                         <p className="text-gray-600 text-sm">
                           {language === 'en' 
-                            ? 'For conditions that are not life-threatening but need same-day care'
-                            : 'Para condiciones que no amenazan la vida que necesitan atención el mismo día'
+                            ? 'For urgent minor complaints and non-emergency care needs'
+                            : 'Para quejas menores urgentes y necesidades de atención no urgente'
                           }
                         </p>
                       </div>
@@ -3342,7 +3331,7 @@ function App() {
                       </div>
                     </div>
 
-                    {/* Best For Section */}
+                    {/* Best For Section - Urgent Care */}
                     <div className="mb-6">
                       <div className="flex items-center gap-2 mb-4">
                         <CheckCircle className="h-5 w-5 text-green-600" />
@@ -3350,35 +3339,83 @@ function App() {
                           {language === 'en' ? 'Best For' : 'Mejor Para'}
                         </h5>
                       </div>
-                      <div className="grid grid-cols-2 gap-4">
-                        <ul className="space-y-2 text-sm text-gray-700">
-                          <li className="flex items-center gap-2">
-                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                            {language === 'en' ? 'Cold and flu symptoms' : 'Síntomas de resfriado y gripe'}
-                          </li>
-                          <li className="flex items-center gap-2">
-                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                            {language === 'en' ? 'Mental health support' : 'Apoyo de salud mental'}
-                          </li>
-                          <li className="flex items-center gap-2">
-                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                            {language === 'en' ? 'Follow-up appointments' : 'Citas de seguimiento'}
-                          </li>
-                        </ul>
-                        <ul className="space-y-2 text-sm text-gray-700">
-                          <li className="flex items-center gap-2">
-                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                            {language === 'en' ? 'Skin conditions' : 'Condiciones de la piel'}
-                          </li>
-                          <li className="flex items-center gap-2">
-                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                            {language === 'en' ? 'Prescription refills' : 'Reposición de recetas'}
-                          </li>
-                          <li className="flex items-center gap-2">
-                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                            {language === 'en' ? 'General health questions' : 'Preguntas generales de salud'}
-                          </li>
-                        </ul>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="space-y-2">
+                          <ul className="space-y-2 text-sm text-gray-700">
+                            <li className="flex items-center gap-2">
+                              <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                              {language === 'en' ? 'Urgent minor complaints' : 'Quejas menores urgentes'}
+                            </li>
+                            <li className="flex items-center gap-2">
+                              <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                              {language === 'en' ? 'Medication refills' : 'Reposición de medicamentos'}
+                            </li>
+                            <li className="flex items-center gap-2">
+                              <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                              {language === 'en' ? 'Non-emergent specialty referrals' : 'Referencias especializadas no urgentes'}
+                            </li>
+                            <li className="flex items-center gap-2">
+                              <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                              {language === 'en' ? 'Cold and flu symptoms' : 'Síntomas de resfriado y gripe'}
+                            </li>
+                            <li className="flex items-center gap-2">
+                              <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                              {language === 'en' ? 'Back pain' : 'Dolor de espalda'}
+                            </li>
+                            <li className="flex items-center gap-2">
+                              <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                              {language === 'en' ? 'Sprains/strains/minor fractures' : 'Esguinces/torceduras/fracturas menores'}
+                            </li>
+                            <li className="flex items-center gap-2">
+                              <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                              {language === 'en' ? 'Minor burns' : 'Quemaduras menores'}
+                            </li>
+                            <li className="flex items-center gap-2">
+                              <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                              {language === 'en' ? 'Simple lacerations' : 'Laceraciones simples'}
+                            </li>
+                            <li className="flex items-center gap-2">
+                              <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                              {language === 'en' ? 'Abscesses' : 'Abscesos'}
+                            </li>
+                          </ul>
+                        </div>
+                        <div className="space-y-2">
+                          <ul className="space-y-2 text-sm text-gray-700">
+                            <li className="flex items-center gap-2">
+                              <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                              {language === 'en' ? 'Nausea/vomiting/diarrhea' : 'Náuseas/vómitos/diarrea'}
+                            </li>
+                            <li className="flex items-center gap-2">
+                              <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                              {language === 'en' ? 'Mild headache' : 'Dolor de cabeza leve'}
+                            </li>
+                            <li className="flex items-center gap-2">
+                              <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                              {language === 'en' ? 'Rash' : 'Sarpullido'}
+                            </li>
+                            <li className="flex items-center gap-2">
+                              <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                              {language === 'en' ? 'UTI' : 'Infección urinaria'}
+                            </li>
+                            <li className="flex items-center gap-2">
+                              <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                              {language === 'en' ? 'STD check' : 'Examen de ETS'}
+                            </li>
+                            <li className="flex items-center gap-2">
+                              <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                              {language === 'en' ? 'Annual physical' : 'Examen físico anual'}
+                            </li>
+                            <li className="flex items-center gap-2">
+                              <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                              {language === 'en' ? 'Preventive care and health screenings' : 'Atención preventiva y exámenes de salud'}
+                            </li>
+                            <li className="flex items-center gap-2">
+                              <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                              {language === 'en' ? 'Vaccinations' : 'Vacunas'}
+                            </li>
+                          </ul>
+                        </div>
                       </div>
                     </div>
 
