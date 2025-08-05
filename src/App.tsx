@@ -827,10 +827,49 @@ function App() {
     const selectedSymptomObjects = allSymptoms.filter(symptom => selectedSymptoms.includes(symptom.id))
     const highestAcuity = Math.min(...selectedSymptomObjects.map(s => s.acuityLevel))
 
+    // Get specific care recommendations based on symptoms for levels 4 and 5
+    const getCareRecommendation = (acuityLevel: number, symptoms: string[]) => {
+      if (acuityLevel <= 2) return 'Emergency Department'
+      if (acuityLevel === 3) return 'Emergency Department or Urgent Care'
+      
+      // For levels 4 and 5, provide specific recommendations based on symptoms
+      const telehealthSuitable = [
+        'cold-flu-symptoms', 'mild-headache', 'minor-allergic', 'extreme-fatigue',
+        'prescription-refills', 'routine-checkup', 'minor-skin-conditions',
+        'minor-eye-irritation', 'blood-pressure-check', 'minor-dental'
+      ]
+      
+      const primaryCareSuitable = [
+        'joint-pain', 'back-pain-nonsevere', 'wound-dressing', 'routine-checkup',
+        'prescription-refills', 'blood-pressure-check', 'minor-dental'
+      ]
+      
+      const urgentCareSuitable = [
+        'minor-cuts', 'minor-sprains', 'burns-minor', 'animal-bite'
+      ]
+      
+      const telehealthCount = symptoms.filter(s => telehealthSuitable.includes(s)).length
+      const primaryCareCount = symptoms.filter(s => primaryCareSuitable.includes(s)).length
+      const urgentCareCount = symptoms.filter(s => urgentCareSuitable.includes(s)).length
+      
+      // Determine best recommendation based on symptom types
+      if (urgentCareCount > 0) {
+        return acuityLevel === 4 ? 'Urgent Care (preferred) or Primary Care' : 'Urgent Care or Primary Care'
+      } else if (telehealthCount > 0 && primaryCareCount > 0) {
+        return 'Telehealth or Primary Care'
+      } else if (telehealthCount > 0) {
+        return acuityLevel === 4 ? 'Telehealth (preferred) or Primary Care' : 'Telehealth or Primary Care'
+      } else if (primaryCareCount > 0) {
+        return 'Primary Care (preferred) or Telehealth'
+      } else {
+        return acuityLevel === 4 ? 'Primary Care or Telehealth' : 'Telehealth or Primary Care'
+      }
+    }
+
     return {
       acuityLevel: highestAcuity,
       waitTime: highestAcuity === 1 ? '<15' : highestAcuity === 2 ? '<15' : highestAcuity === 3 ? '693' : highestAcuity === 4 ? '1020' : '943',
-      recommendation: highestAcuity <= 2 ? 'Emergency Department' : highestAcuity === 3 ? 'Emergency Department or Urgent Care' : 'Urgent Care or Primary Care'
+      recommendation: getCareRecommendation(highestAcuity, selectedSymptoms)
     }
   }
 
@@ -3098,6 +3137,11 @@ function App() {
 
                         // Level 4 - Primary Care or Telehealth
                         if (result.acuityLevel === 4) {
+                          const recommendation = result.recommendation
+                          const isUrgentCarePreferred = recommendation.includes('Urgent Care (preferred)')
+                          const isTelehealthPreferred = recommendation.includes('Telehealth (preferred)')
+                          const isPrimaryPreferred = recommendation.includes('Primary Care (preferred)')
+                          
                           return (
                             <div className="bg-blue-50 border-l-4 border-blue-500 rounded-lg p-6">
                               <div className="flex items-start gap-4 mb-6">
@@ -3109,15 +3153,37 @@ function App() {
                                     {language === 'en' ? 'Acuity Level 4 - Non-Urgent' : 'Nivel de Acuidad 4 - No Urgente'}
                                   </h3>
                                   <div className="flex items-center gap-2 mb-3">
-                                    <Building className="h-5 w-5 text-blue-600" />
+                                    {isUrgentCarePreferred ? <FirstAid className="h-5 w-5 text-blue-600" /> : 
+                                     isTelehealthPreferred ? <Phone className="h-5 w-5 text-blue-600" /> : 
+                                     <Building className="h-5 w-5 text-blue-600" />}
                                     <span className="text-lg font-bold text-blue-900">
-                                      {language === 'en' ? 'Primary Care or Telehealth Recommended' : 'Se Recomienda Atención Primaria o Telemedicina'}
+                                      {language === 'en' ? recommendation : 
+                                       recommendation.replace('Urgent Care', 'Atención Urgente')
+                                                    .replace('Primary Care', 'Atención Primaria')
+                                                    .replace('Telehealth', 'Telemedicina')
+                                                    .replace('preferred', 'preferida')
+                                                    .replace(' or ', ' o ')
+                                      }
                                     </span>
                                   </div>
                                   <p className="text-blue-800 leading-relaxed">
-                                    {language === 'en' 
-                                      ? 'Your symptoms are better suited for a primary care visit or telehealth consultation, which will be faster and more cost-effective.'
-                                      : 'Sus síntomas son más adecuados para una visita de atención primaria o consulta de telemedicina, que será más rápida y rentable.'
+                                    {language === 'en' ? 
+                                      (isUrgentCarePreferred ? 
+                                        'Your symptoms involve minor injuries that are best treated in person at an urgent care center, though primary care is also an option.' :
+                                        isTelehealthPreferred ?
+                                        'Your symptoms can be effectively addressed through a virtual consultation, with primary care as an alternative.' :
+                                        isPrimaryPreferred ?
+                                        'Your symptoms are well-suited for an in-person primary care visit, with telehealth as a convenient alternative.' :
+                                        'Your symptoms can be addressed through either telehealth consultation or a primary care visit, depending on your preference.'
+                                      ) :
+                                      (isUrgentCarePreferred ? 
+                                        'Sus síntomas involucran lesiones menores que se tratan mejor en persona en un centro de atención urgente, aunque la atención primaria también es una opción.' :
+                                        isTelehealthPreferred ?
+                                        'Sus síntomas pueden ser atendidos eficazmente a través de una consulta virtual, con atención primaria como alternativa.' :
+                                        isPrimaryPreferred ?
+                                        'Sus síntomas son adecuados para una visita de atención primaria en persona, con telemedicina como alternativa conveniente.' :
+                                        'Sus síntomas pueden ser atendidos a través de consulta de telemedicina o una visita de atención primaria, dependiendo de su preferencia.'
+                                      )
                                     }
                                   </p>
                                 </div>
@@ -3136,7 +3202,9 @@ function App() {
                                 
                                 <div className="text-center mb-4">
                                   <div className="text-3xl font-bold text-blue-600 mb-1">
-                                    {getCostEstimate('primary', selectedInsurance)}
+                                    {isUrgentCarePreferred ? getCostEstimate('urgent', selectedInsurance) : 
+                                     isTelehealthPreferred ? getCostEstimate('telehealth', selectedInsurance) :
+                                     getCostEstimate('primary', selectedInsurance)}
                                   </div>
                                   <div className="text-sm text-gray-600">
                                     {language === 'en' ? 'Expected cost range' : 'Rango de costo esperado'}
@@ -3166,10 +3234,17 @@ function App() {
                                   </div>
                                   <div className="bg-green-50 border border-green-200 rounded-lg p-3 text-center">
                                     <div className="text-sm font-medium text-green-900 mb-1">
-                                      {language === 'en' ? 'Primary care cost:' : 'Costo atención primaria:'}
+                                      {language === 'en' ? 
+                                        (isUrgentCarePreferred ? 'Urgent care cost:' : 
+                                         isTelehealthPreferred ? 'Telehealth cost:' : 'Primary care cost:') : 
+                                        (isUrgentCarePreferred ? 'Costo atención urgente:' : 
+                                         isTelehealthPreferred ? 'Costo telemedicina:' : 'Costo atención primaria:')
+                                      }
                                     </div>
                                     <div className="text-lg font-bold text-green-600">
-                                      {getCostEstimate('primary', selectedInsurance)}
+                                      {isUrgentCarePreferred ? getCostEstimate('urgent', selectedInsurance) : 
+                                       isTelehealthPreferred ? getCostEstimate('telehealth', selectedInsurance) :
+                                       getCostEstimate('primary', selectedInsurance)}
                                     </div>
                                   </div>
                                 </div>
@@ -3194,20 +3269,32 @@ function App() {
 
                               <div className="flex gap-4">
                                 <Button className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3">
-                                  <Phone className="h-4 w-4 mr-2" />
-                                  {language === 'en' ? 'Start Telehealth' : 'Iniciar Telemedicina'}
+                                  {isUrgentCarePreferred ? <Clock className="h-4 w-4 mr-2" /> : <Phone className="h-4 w-4 mr-2" />}
+                                  {language === 'en' ? 
+                                    (isUrgentCarePreferred ? 'Find Urgent Care' :
+                                     isTelehealthPreferred ? 'Start Telehealth' : 'Start Telehealth') : 
+                                    (isUrgentCarePreferred ? 'Buscar Atención Urgente' :
+                                     isTelehealthPreferred ? 'Iniciar Telemedicina' : 'Iniciar Telemedicina')
+                                  }
                                 </Button>
                                 <Button variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50">
                                   <Building className="h-4 w-4 mr-2" />
-                                  {language === 'en' ? 'Find Primary Care' : 'Buscar Atención Primaria'}
+                                  {language === 'en' ? 
+                                    (isUrgentCarePreferred ? 'Schedule Primary Care' : 'Find Primary Care') : 
+                                    (isUrgentCarePreferred ? 'Programar Atención Primaria' : 'Buscar Atención Primaria')
+                                  }
                                 </Button>
                               </div>
                             </div>
                           )
                         }
 
-                        // Level 5 - Primary Care or Telehealth
+                        // Level 5 - Telehealth or Primary Care
                         if (result.acuityLevel === 5) {
+                          const recommendation = result.recommendation
+                          const isTelehealthPreferred = recommendation.includes('Telehealth (preferred)') || recommendation.startsWith('Telehealth or')
+                          const isPrimaryPreferred = recommendation.includes('Primary Care (preferred)')
+                          
                           return (
                             <div className="bg-green-50 border-l-4 border-green-500 rounded-lg p-6">
                               <div className="flex items-start gap-4 mb-6">
@@ -3219,15 +3306,30 @@ function App() {
                                     {language === 'en' ? 'Acuity Level 5 - Low Acuity' : 'Nivel de Acuidad 5 - Baja Acuidad'}
                                   </h3>
                                   <div className="flex items-center gap-2 mb-3">
-                                    <Phone className="h-5 w-5 text-green-600" />
+                                    {isTelehealthPreferred ? <Phone className="h-5 w-5 text-green-600" /> : <Building className="h-5 w-5 text-green-600" />}
                                     <span className="text-lg font-bold text-green-900">
-                                      {language === 'en' ? 'Telehealth or Routine Care Recommended' : 'Se Recomienda Telemedicina o Atención Rutinaria'}
+                                      {language === 'en' ? recommendation : 
+                                       recommendation.replace('Primary Care', 'Atención Primaria')
+                                                    .replace('Telehealth', 'Telemedicina')
+                                                    .replace('preferred', 'preferida')
+                                                    .replace(' or ', ' o ')
+                                      }
                                     </span>
                                   </div>
                                   <p className="text-green-800 leading-relaxed">
-                                    {language === 'en' 
-                                      ? 'Your symptoms can likely be addressed through telehealth, a pharmacy clinic, or by scheduling a routine primary care appointment.'
-                                      : 'Sus síntomas probablemente pueden ser atendidos a través de telemedicina, una clínica de farmacia, o programando una cita de rutina de atención primaria.'
+                                    {language === 'en' ? 
+                                      (isTelehealthPreferred ?
+                                        'Your symptoms are ideal for telehealth consultation and can be effectively addressed through virtual care, with primary care as an alternative option.' :
+                                        isPrimaryPreferred ?
+                                        'Your symptoms are best handled through a scheduled primary care visit, though telehealth consultation may also be suitable.' :
+                                        'Your symptoms can likely be addressed through telehealth, a pharmacy clinic, or by scheduling a routine primary care appointment.'
+                                      ) :
+                                      (isTelehealthPreferred ?
+                                        'Sus síntomas son ideales para consulta de telemedicina y pueden ser atendidos eficazmente a través de atención virtual, con atención primaria como opción alternativa.' :
+                                        isPrimaryPreferred ?
+                                        'Sus síntomas se manejan mejor a través de una visita programada de atención primaria, aunque la consulta de telemedicina también puede ser adecuada.' :
+                                        'Sus síntomas probablemente pueden ser atendidos a través de telemedicina, una clínica de farmacia, o programando una cita de rutina de atención primaria.'
+                                      )
                                     }
                                   </p>
                                 </div>
@@ -3246,7 +3348,7 @@ function App() {
                                 
                                 <div className="text-center mb-4">
                                   <div className="text-3xl font-bold text-blue-600 mb-1">
-                                    {getCostEstimate('telehealth', selectedInsurance)}
+                                    {isTelehealthPreferred ? getCostEstimate('telehealth', selectedInsurance) : getCostEstimate('primary', selectedInsurance)}
                                   </div>
                                   <div className="text-sm text-gray-600">
                                     {language === 'en' ? 'Expected cost range' : 'Rango de costo esperado'}
@@ -3276,10 +3378,13 @@ function App() {
                                   </div>
                                   <div className="bg-green-50 border border-green-200 rounded-lg p-3 text-center">
                                     <div className="text-sm font-medium text-green-900 mb-1">
-                                      {language === 'en' ? 'Telehealth cost:' : 'Costo telemedicina:'}
+                                      {language === 'en' ? 
+                                        (isTelehealthPreferred ? 'Telehealth cost:' : 'Primary care cost:') : 
+                                        (isTelehealthPreferred ? 'Costo telemedicina:' : 'Costo atención primaria:')
+                                      }
                                     </div>
                                     <div className="text-lg font-bold text-green-600">
-                                      {getCostEstimate('telehealth', selectedInsurance)}
+                                      {isTelehealthPreferred ? getCostEstimate('telehealth', selectedInsurance) : getCostEstimate('primary', selectedInsurance)}
                                     </div>
                                   </div>
                                 </div>
@@ -3309,7 +3414,10 @@ function App() {
                                 </Button>
                                 <Button variant="outline" className="border-green-300 text-green-700 hover:bg-green-50">
                                   <Building className="h-4 w-4 mr-2" />
-                                  {language === 'en' ? 'Schedule Primary Care' : 'Programar Atención Primaria'}
+                                  {language === 'en' ? 
+                                    (isTelehealthPreferred ? 'Schedule Primary Care' : 'Find Primary Care') : 
+                                    (isTelehealthPreferred ? 'Programar Atención Primaria' : 'Buscar Atención Primaria')
+                                  }
                                 </Button>
                               </div>
                             </div>
