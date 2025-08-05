@@ -1396,16 +1396,6 @@ function App() {
                   {t[language].detailed}
                 </Button>
               </div>
-
-              {/* Sort Dropdown */}
-              <Select value={sortBy} onValueChange={setSortBy}>
-                <SelectTrigger className="w-48">
-                  <SelectValue placeholder={t[language].sortByWaitTime} />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="wait-time">{t[language].sortByWaitTime}</SelectItem>
-                </SelectContent>
-              </Select>
             </div>
 
             {/* Harbor-UCLA Medical Center Card */}
