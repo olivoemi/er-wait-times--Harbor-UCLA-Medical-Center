@@ -4328,11 +4328,18 @@ function App() {
 
                     {/* Action Buttons */}
                     <div className="flex gap-3">
-                      <Button className="bg-purple-600 hover:bg-purple-700 text-white flex-1">
+                      <Button 
+                        className="bg-purple-600 hover:bg-purple-700 text-white flex-1"
+                        onClick={() => window.open('https://dhs.lacounty.gov/patient-information/get-coverage/e-visits-for-online-care/', '_blank')}
+                      >
                         <Phone className="h-4 w-4 mr-2" />
-                        {language === 'en' ? 'Start Virtual Visit' : 'Iniciar Visita Virtual'}
+                        {language === 'en' ? 'Find a Telehealth Appointment' : 'Encontrar una Cita de Telesalud'}
                       </Button>
-                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50">
+                      <Button 
+                        variant="outline" 
+                        className="border-gray-300 text-gray-700 hover:bg-gray-50"
+                        onClick={() => window.open('tel:(424) 306-4000', '_self')}
+                      >
                         <Phone className="h-4 w-4 mr-2" />
                         {language === 'en' ? 'Call for Info' : 'Llamar para Información'}
                       </Button>
@@ -4543,7 +4550,11 @@ function App() {
                         <FirstAid className="h-4 w-4 mr-2" />
                         {language === 'en' ? 'Schedule Appointment' : 'Programar Cita'}
                       </Button>
-                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50">
+                      <Button 
+                        variant="outline" 
+                        className="border-gray-300 text-gray-700 hover:bg-gray-50"
+                        onClick={() => window.open('tel:(424) 306-4000', '_self')}
+                      >
                         <Phone className="h-4 w-4 mr-2" />
                         {language === 'en' ? 'Call for Info' : 'Llamar para Información'}
                       </Button>
