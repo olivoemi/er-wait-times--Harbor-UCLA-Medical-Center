@@ -1590,7 +1590,7 @@ function App() {
                   
                   {/* QR Code */}
                   <a 
-                    href="https://youtu.be/86z2k4zEOlw" 
+                    href="https://m.youtube.com/watch?v=86z2k4zEOlw" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer"
