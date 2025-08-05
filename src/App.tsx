@@ -3169,56 +3169,38 @@ function App() {
                             <div className="text-green-700 text-xs mt-1">
                               {language === 'en' ? 'Urgent care centers are now sorted by distance from your location' : 'Los centros de atención urgente ahora están ordenados por distancia desde su ubicación'}
                             </div>
-                      >
-                        <div className={`w-4 h-4 border rounded flex items-center justify-center ${
-                          locationEnabled || userLocation !== null 
-                    )}bg-green-600' 
-                            : 'border-blue-600'
-                        }`}>
-                          {(locationEnabled || userLocation !== null) && (
-                            <CheckCircle className="w-3 h-3 text-white" />
-                          )}
+                          </div>
                         </div>
-                        {(locationEnabled || userLocation !== null) 
-                          ? (language === 'en' ? 'Location Enabled - Sorting by Distance' : 'Ubicación Habilitada - Ordenando por Distancia')
-                          : (language === 'en' ? 'Enable Location for Distance Sorting' : 'Habilitar Ubicación para Ordenar por Distancia')
-                        }
-                      </button>
-                    </div>
+                      </div>
+                    )}
 
                     {/* Location Warning */}
                     {!locationEnabled && !userLocation && (
                       <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 mb-4">
                         <div className="flex items-start gap-3">
                           <AlertTriangle className="h-5 w-5 text-orange-600 mt-0.5 flex-shrink-0" />
-                              value={manualZipCode}
-                              onChange={(e) => setManualZipCode(e.target.value)}
+                          <div>
+                            <div className="font-medium text-orange-900 text-sm">
                               {language === 'en' ? 'Location unavailable' : 'Ubicación no disponible'}
                             </div>
-                              maxLength={5}
+                            <div className="text-orange-700 text-xs mt-1">
                               {language === 'en' ? 'Enable location or enter zip code below for distance-based sorting' : 'Habilite la ubicación o ingrese el código postal a continuación para ordenar por distancia'}
-                            </div>
-                          </div>
-                              onClick={handleZipCodeClassify}
-                              disabled={!manualZipCode.trim() || isCalculatingProximity}
-                    )}
-
-                              {isCalculatingProximity ? (
-                                <>
-                                  <RefreshCw className="h-4 w-4 mr-1 animate-spin" />
-                                  {language === 'en' ? 'Loading...' : 'Cargando...'}
-                                </>
-                              ) : (
-                                <>
-                                  <MagnifyingGlass className="h-4 w-4 mr-1" />
-                                  {language === 'en' ? 'Classify by Zip Code' : 'Clasificar por Código Postal'}
-                                </>
-                              )}
                             </div>
                           </div>
                         </div>
                       </div>
                     )}
+
+                      {isCalculatingProximity && (
+                        <div className="flex items-center justify-center py-8">
+                          <div className="flex items-center gap-3">
+                            <RefreshCw className="h-5 w-5 text-blue-600 animate-spin" />
+                            <span className="text-sm text-gray-600">
+                              {language === 'en' ? 'Calculating distances...' : 'Calculando distancias...'}
+                            </span>
+                          </div>
+                        </div>
+                      )}
 
                     {/* Manual Location Entry */}
                     <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
@@ -3358,19 +3340,174 @@ function App() {
                         </div>
                         <div className="text-lg font-bold text-purple-600">
                           {language === 'en' ? '7 days a week, extended hours' : '7 días a la semana, horario extendido'}
-                      <div className="flex items-center justify-between mb-4">
-                        <div className="flex items-center gap-2">
-                          <MapPin className="h-5 w-5 text-blue-600" />
-                          <h5 className="font-semibold text-gray-900">
-                            {language === 'en' ? 'LA County Health Centers' : 'Centros de Salud del Condado de LA'}
-                          </h5>
                         </div>
-                        {(userLocation || manualZipCode) && (
-                          <div className="text-xs text-gray-500">
-                            {language === 'en' ? 'Sorted by distance' : 'Ordenado por distancia'}
+                      </div>
+                    </div>
+
+                    {/* Best For Section */}
+                    <div className="mb-6">
+                      <div className="flex items-center gap-2 mb-4">
+                        <CheckCircle className="h-5 w-5 text-green-600" />
+                        <h5 className="font-semibold text-gray-900">
+                          {language === 'en' ? 'Best For' : 'Mejor Para'}
+                        </h5>
+                      </div>
+                      <div className="grid grid-cols-2 gap-4">
                         <ul className="space-y-2 text-sm text-gray-700">
-                        )}<li className="flex items-center gap-2">
-                      </div>unded-full"></div>
+                          <li className="flex items-center gap-2">
+                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                            {language === 'en' ? 'Cold and flu symptoms' : 'Síntomas de resfriado y gripe'}
+                          </li>
+                          <li className="flex items-center gap-2">
+                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                            {language === 'en' ? 'Mental health support' : 'Apoyo de salud mental'}
+                          </li>
+                          <li className="flex items-center gap-2">
+                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                            {language === 'en' ? 'Follow-up appointments' : 'Citas de seguimiento'}
+                          </li>
+                        </ul>
+                        <ul className="space-y-2 text-sm text-gray-700">
+                          <li className="flex items-center gap-2">
+                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                            {language === 'en' ? 'Skin conditions' : 'Condiciones de la piel'}
+                          </li>
+                          <li className="flex items-center gap-2">
+                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                            {language === 'en' ? 'Prescription refills' : 'Reposición de recetas'}
+                          </li>
+                          <li className="flex items-center gap-2">
+                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                            {language === 'en' ? 'General health questions' : 'Preguntas generales de salud'}
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    {/* Available Services */}
+                    <div className="mb-6">
+                      <div className="flex items-center gap-2 mb-4">
+                        <h5 className="font-semibold text-gray-900">
+                          {language === 'en' ? 'Available Services' : 'Servicios Disponibles'}
+                        </h5>
+                      </div>
+                      <div className="space-y-4">
+                        {/* Virtual Urgent Care */}
+                        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                          <div className="flex items-center justify-between">
+                            <div>
+                              <h6 className="font-semibold text-blue-900 mb-1">
+                                {language === 'en' ? 'Virtual Urgent Care' : 'Atención Urgente Virtual'}
+                              </h6>
+                              <p className="text-sm text-blue-700 mb-2">
+                                {language === 'en' ? 'Same-day virtual visits for urgent health concerns' : 'Visitas virtuales el mismo día para problemas de salud urgentes'}
+                              </p>
+                              <div className="text-xs text-blue-600">
+                                {language === 'en' ? 'Daily: 7:00 AM - 11:00 PM' : 'Diario: 7:00 AM - 11:00 PM'}
+                              </div>
+                            </div>
+                            <div className="text-right">
+                              <div className="text-sm font-bold text-blue-900">10 min</div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Video Visits */}
+                        <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                          <div className="flex items-center justify-between">
+                            <div>
+                              <h6 className="font-semibold text-green-900 mb-1">
+                                {language === 'en' ? 'Video Visits' : 'Visitas por Video'}
+                              </h6>
+                              <p className="text-sm text-green-700 mb-2">
+                                {language === 'en' ? 'Scheduled appointments with your regular provider' : 'Citas programadas con su proveedor habitual'}
+                              </p>
+                              <div className="text-xs text-green-600">
+                                {language === 'en' ? 'Mon-Fri: 8:00 AM - 5:00 PM' : 'Lun-Vie: 8:00 AM - 5:00 PM'}
+                              </div>
+                            </div>
+                            <div className="text-right">
+                              <div className="text-sm font-bold text-green-900">
+                                {language === 'en' ? 'Scheduled' : 'Programado'}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Action Buttons */}
+                    <div className="flex gap-3">
+                      <Button className="bg-green-600 hover:bg-green-700 text-white flex-1">
+                        <Phone className="h-4 w-4 mr-2" />
+                        {language === 'en' ? 'Start Virtual Visit' : 'Iniciar Visita Virtual'}
+                      </Button>
+                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50">
+                        <Phone className="h-4 w-4 mr-2" />
+                        {language === 'en' ? 'Call for Info' : 'Llamar para Información'}
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Primary Care Centers */}
+                <div className="bg-white rounded-lg border border-gray-200 shadow-sm">
+                  <div className="p-6 border-b border-gray-200">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                        <FirstAid className="h-6 w-6 text-green-600" />
+                      </div>
+                      <div>
+                        <h4 className="text-xl font-bold text-gray-900">
+                          {language === 'en' ? 'Primary Care' : 'Atención Primaria'}
+                        </h4>
+                        <p className="text-gray-600 text-sm">
+                          {language === 'en' 
+                            ? 'Routine care and non-urgent health concerns'
+                            : 'Atención rutinaria y problemas de salud no urgentes'
+                          }
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="p-6">
+                    {/* Stats Row */}
+                    <div className="grid grid-cols-3 gap-6 mb-6">
+                      <div className="text-left">
+                        <div className="flex items-center gap-2 mb-2">
+                          <Clock className="h-4 w-4 text-blue-600" />
+                          <span className="text-sm font-medium text-gray-600">
+                            {language === 'en' ? 'Wait Time' : 'Tiempo de Espera'}
+                          </span>
+                        </div>
+                        <div className="text-lg font-bold text-gray-900">
+                          {language === 'en' ? 'Same day to 1 week' : 'Mismo día a 1 semana'}
+                        </div>
+                      </div>
+                      
+                      <div className="text-left">
+                        <div className="flex items-center gap-2 mb-2">
+                          <Building className="h-4 w-4 text-green-600" />
+                          <span className="text-xs font-medium text-gray-500 leading-tight">
+                            {language === 'en' ? 'Your expected cost without insurance or if your deductible hasn\\'t been met yet' : 'Su costo esperado sin seguro o si su deducible aún no se ha cumplido'}
+                          </span>
+                        </div>
+                        <div className="text-lg font-bold text-gray-900">$200-$400</div>
+                      </div>
+                      
+                      <div className="text-left">
+                        <div className="flex items-center gap-2 mb-2">
+                          <MapPin className="h-4 w-4 text-purple-600" />
+                          <span className="text-sm font-medium text-gray-600">
+                            {language === 'en' ? 'Availability' : 'Disponibilidad'}
+                          </span>
+                        </div>
+                        <div className="text-lg font-bold text-gray-900">
+                          {language === 'en' ? 'Scheduled appointments' : 'Citas programadas'}
+                        </div>
+                      </div>
+                    </div>
                       
                       {isCalculatingProximity && (
                         <div className="flex items-center justify-center py-8">
@@ -3382,7 +3519,6 @@ function App() {
                     </div>
                         </div>
                       )}
-                      
                       <div className="space-y-3 max-h-96 overflow-y-auto">
                         {/* Comprehensive Health Centers */}
                         <div className="space-y-2">
@@ -3412,36 +3548,29 @@ function App() {
                                   {location.distance && (
                                     <div className="mt-2 text-xs font-medium text-green-600">
                                       {location.distance.toFixed(1)} {language === 'en' ? 'miles away' : 'millas de distancia'}
-                                    </div>nters' : 'Centros de Salud Integral y Centros Médicos'}
+                                    </div>
                                   )}
-                                      <span className="bg-red-100 text-red-800 text-xs px-2 py-0.5 rounded-full font-medium">
+                                </div>
                                 <div className="flex flex-col items-center gap-2">
                                   <div className={`w-2 h-2 rounded-full mt-2 ${location.isER ? 'bg-red-500' : 'bg-blue-500'}`}></div>
                                   {location.distance && (
                                     <div className="text-xs text-gray-500 text-center">
-                                      #{urgentCareLocations.indexOf(location) + 1}ion.address}</p>
-                                    </div>phone}</p>
-                                  )}
+                                      #{urgentCareLocations.indexOf(location) + 1}
+                                    </div>
                                   )}
                                 </div>
-                                  <div className={`w-2 h-2 rounded-full mt-2 ${location.isER ? 'bg-red-500' : 'bg-blue-500'}`}></div>
+                              </div>
+                            </div>
                           ))}
-                                    <div className="text-xs text-gray-500 text-center">
+                          
                           {urgentCareLocations.some(loc => loc.isER) && (
                             <div className="mt-2 text-xs text-red-600 bg-red-50 p-2 rounded border border-red-200">
                               {language === 'en' 
                                 ? '* Emergency Room services available at these facilities 24/7' 
                                 : '* Servicios de Sala de Emergencias disponibles en estas instalaciones 24/7'
                               }
-                              }
+                            </div>
                           )}
-                      <div className="text-left">
-                          <span className="text-sm font-medium text-gray-600">
-                            {language === 'en' ? 'Wait Time' : 'Tiempo de Espera'}
-                          </span>
-                        </div>
-                        <div className="text-lg font-bold text-gray-900">
-                          {language === 'en' ? '5-15 minutes' : '5-15 minutos'}
                         </div>
                       </div>
                       
