@@ -3481,7 +3481,7 @@ function App() {
                         <div className="flex items-center gap-2 mb-2">
                           <Building className="h-4 w-4 text-green-600" />
                           <span className="text-xs font-medium text-gray-500 leading-tight">
-                            {language === 'en' ? 'Your expected cost without insurance or if your deductible hasn\\'t been met yet' : 'Su costo esperado sin seguro o si su deducible aún no se ha cumplido'}
+                            {language === 'en' ? 'Your expected cost without insurance or if your deductible hasn\'t been met yet' : 'Su costo esperado sin seguro o si su deducible aún no se ha cumplido'}
                           </span>
                         </div>
                         <div className="text-lg font-bold text-gray-900">$200-$400</div>
