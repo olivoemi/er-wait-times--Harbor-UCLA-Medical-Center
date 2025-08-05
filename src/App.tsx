@@ -6,8 +6,8 @@ import { Badge } from '@/components/ui/badge'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { MapPin, Clock, RefreshCw, AlertTriangle, Heart, FirstAid, Phone, Thermometer, Pill, Eye, Plus, Globe, Info, X, Building, CaretDown, CaretUp, MagnifyingGlass, CheckCircle, Brain, Lungs, Drop, Bandage, Siren, Pulse, Tooth, Activity } from '@phosphor-icons/react'
-import qrCodeImage from '@/assets/images/qr-code.png'
+import { MapPin, Clock, RefreshCw, AlertTriangle, Heart, FirstAid, Phone, Thermometer, Pill, Eye, Plus, Globe, Info, X, Building, CaretDown, CaretUp, MagnifyingGlass, CheckCircle, Brain, Lungs, Drop, Bandage, Siren, Pulse, Tooth, Activity, Play } from '@phosphor-icons/react'
+// Removed QR code image import as we're using a play button instead
 import harborUCLALogo from '@/assets/images/harbor-ucla-logo.svg'
 
 interface Hospital {
@@ -1581,36 +1581,51 @@ function App() {
                     </Card>
                   ))}
                 </div>
-                {/* Right side - QR Code and Information */}
+                {/* Right side - Video Play Button and Information */}
                 <div className="bg-gray-50 rounded-lg p-6 flex flex-col items-center justify-center space-y-6">
                   {/* Title */}
                   <h3 className="text-lg font-semibold text-gray-900 text-center">
-                    {language === 'en' ? 'Harbor QR Code' : 'Código QR de Harbor'}
+                    {language === 'en' ? 'Harbor Video Information' : 'Información en Video de Harbor'}
                   </h3>
                   
-                  {/* QR Code */}
+                  {/* Play Button */}
                   <a 
                     href="https://m.youtube.com/watch?v=86z2k4zEOlw" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow cursor-pointer"
+                    className="group relative bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer border-2 border-gray-200 hover:border-blue-300"
                   >
-                    <img 
-                      src={qrCodeImage} 
-                      alt="QR Code for ED visit information" 
-                      width="120" 
-                      height="120" 
-                      className="block"
-                    />
+                    <div className="relative flex items-center justify-center">
+                      {/* Background circle */}
+                      <div className="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center group-hover:bg-red-700 transition-colors duration-300 shadow-lg">
+                        {/* Play icon */}
+                        <Play 
+                          className="h-8 w-8 text-white ml-1" 
+                          fill="currentColor"
+                        />
+                      </div>
+                      
+                      {/* Pulse animation */}
+                      <div className="absolute inset-0 w-20 h-20 bg-red-600 rounded-full animate-ping opacity-20"></div>
+                    </div>
+                    
+                    {/* Hover overlay */}
+                    <div className="absolute inset-0 bg-blue-50 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
                   </a>
                   
                   {/* Descriptive text */}
                   <p className="text-sm text-gray-600 text-center max-w-60 leading-relaxed">
                     {language === 'en' 
-                      ? 'Scan this QR code for quick access to Harbor facility information'
-                      : 'Escanee este código QR para acceso rápido a la información de la instalación Harbor'
+                      ? 'Watch our video guide for Harbor facility information and emergency department procedures'
+                      : 'Vea nuestra guía en video para información de las instalaciones de Harbor y procedimientos del departamento de emergencias'
                     }
                   </p>
+                  
+                  {/* Video length indicator */}
+                  <div className="flex items-center gap-2 text-xs text-gray-500">
+                    <Clock className="h-3 w-3" />
+                    <span>{language === 'en' ? 'Educational Video' : 'Video Educativo'}</span>
+                  </div>
                 </div>
               </div>
             ) : (
