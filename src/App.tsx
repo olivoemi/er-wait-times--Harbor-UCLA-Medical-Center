@@ -2075,15 +2075,22 @@ function App() {
                             </div>
                           </div>
 
-                          {/* Enhanced Graph Container */}
-                          <div className="relative bg-white rounded-lg p-6 mb-6 border border-gray-200" style={{ height: '450px' }}>
+                          {/* Graph Container */}
+                          <div className="relative bg-white rounded-lg p-6 mb-6 border border-gray-200" style={{ height: '400px' }}>
+                            {/* Graph Title */}
+                            <div className="text-center mb-4">
+                              <h5 className="text-lg font-semibold text-gray-900">
+                                {language === 'en' ? 'Wait Times by Condition Severity - 24 Hour Trend' : 'Tiempos de Espera por Severidad de Condición - Tendencia de 24 Horas'}
+                              </h5>
+                            </div>
+                            
                             {/* Y-axis label */}
                             <div className="absolute left-2 top-1/2 transform -rotate-90 text-sm text-gray-600 font-medium origin-center">
                               {language === 'en' ? 'Wait Time (min)' : 'Tiempo de Espera (min)'}
                             </div>
                             
                             {/* Graph area */}
-                            <div className="ml-16 mr-8 h-full relative" style={{ height: 'calc(100% - 40px)' }}>
+                            <div className="ml-16 mr-8 h-full relative" style={{ height: 'calc(100% - 80px)' }}>
                               {/* Y-axis grid lines and labels */}
                               <div className="absolute left-0 top-0 h-full border-l-2 border-gray-300">
                                 {[280, 210, 140, 70, 0].map((value, index) => (
@@ -2091,69 +2098,56 @@ function App() {
                                     <span className="absolute -left-12 -mt-2 text-xs text-gray-600 font-medium">{value}</span>
                                   </div>
                                 ))}
-                              </div>
 
-                              {/* Current Time Indicator */}
+
                               <div className="absolute" style={{ left: '75%', top: '0', height: '100%' }}>
-                                <div className="w-0.5 h-full bg-blue-600 opacity-80" style={{ borderLeft: '2px dashed #2563eb' }}></div>
+                                <div className="w-0.5 h-full bg-blue-600"></div>
                                 <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 text-xs text-blue-600 font-bold whitespace-nowrap bg-blue-50 px-2 py-1 rounded">
                                   {language === 'en' ? 'Current Time' : 'Tiempo Actual'}
                                 </div>
                               </div>
 
-                              {/* Enhanced Graph lines - SVG for better line drawing */}
+                              {/* Graph lines - SVG for better line drawing */}
                               <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-                                {/* Level 1 - Red line with dots */}
+                                {/* Level 1 - Red line */}
                                 <polyline
                                   fill="none"
                                   stroke="#EF4444"
-                                  strokeWidth="2.5"
-                                  points="0,88 8,87 16,86 24,86 32,85 40,84 48,83 56,84 64,85 72,86 80,87 88,88 96,89"
+                                  strokeWidth="2"
+                                  points="0,85 12.5,82 25,80 37.5,78 50,75 62.5,77 75,80 87.5,82 100,85"
                                 />
-                                {/* Level 2 - Orange line with dots */}
+                                {/* Level 2 - Orange line */}
                                 <polyline
                                   fill="none"
                                   stroke="#F97316"
-                                  strokeWidth="2.5"
-                                  points="0,85 8,84 16,83 24,83 32,82 40,81 48,80 56,81 64,82 72,83 80,84 88,85 96,86"
+                                  strokeWidth="2"
+                                  points="0,80 12.5,78 25,75 37.5,73 50,70 62.5,72 75,75 87.5,78 100,80"
                                 />
                                 {/* Level 3 - Yellow line */}
                                 <polyline
                                   fill="none"
                                   stroke="#EAB308"
-                                  strokeWidth="2.5"
-                                  points="0,55 8,52 16,48 24,45 32,42 40,38 48,35 56,38 64,42 72,46 80,50 88,54 96,58"
+                                  strokeWidth="2"
+                                  points="0,45 12.5,40 25,35 37.5,30 50,20 62.5,18 75,25 87.5,35 100,40"
                                 />
                                 {/* Level 4 - Blue line */}
                                 <polyline
                                   fill="none"
                                   stroke="#3B82F6"
-                                  strokeWidth="2.5"
-                                  points="0,30 8,28 16,26 24,24 32,22 40,18 48,15 56,18 64,22 72,26 80,28 88,30 96,32"
+                                  strokeWidth="2"
+                                  points="0,25 12.5,22 25,18 37.5,15 50,8 62.5,6 75,12 87.5,20 100,25"
                                 />
                                 {/* Level 5 - Green line */}
                                 <polyline
                                   fill="none"
                                   stroke="#10B981"
-                                  strokeWidth="2.5"
-                                  points="0,40 8,38 16,36 24,34 32,32 40,28 48,25 56,28 64,32 72,36 80,38 88,40 96,42"
+                                  strokeWidth="2"
+                                  points="0,35 12.5,30 25,25 37.5,20 50,12 62.5,10 75,15 87.5,25 100,30"
                                 />
-                                
-                                {/* Data points */}
-                                {[0,8,16,24,32,40,48,56,64,72,80,88,96].map((x, index) => (
-                                  <g key={`points-${index}`}>
-                                    <circle cx={x} cy="88" r="2" fill="#EF4444" />
-                                    <circle cx={x} cy="85" r="2" fill="#F97316" />
-                                    <circle cx={x} cy={55 - index * 2} r="2" fill="#EAB308" />
-                                    <circle cx={x} cy={30 - index * 1.2} r="2" fill="#3B82F6" />
-                                    <circle cx={x} cy={40 - index * 1.5} r="2" fill="#10B981" />
-                                  </g>
-                                ))}
                               </svg>
                               
                               {/* Time axis labels */}
                               <div className="absolute -bottom-6 left-0 w-full flex justify-between text-xs text-gray-600 font-medium">
-                                <span>12 AM</span>
                                 <span>3 AM</span>
                                 <span>6 AM</span>
                                 <span>9 AM</span>
@@ -2166,28 +2160,64 @@ function App() {
                           </div>
 
                           {/* Legend */}
-                          <div className="flex items-center justify-center gap-6 mb-4">
-                            <div className="flex items-center gap-2">
-                              <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                              <span className="text-sm text-gray-700 font-medium">Level 1</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
-                              <span className="text-sm text-gray-700 font-medium">Level 2</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                              <span className="text-sm text-gray-700 font-medium">Level 3</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                              <span className="text-sm text-gray-700 font-medium">Level 4</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                              <span className="text-sm text-gray-700 font-medium">Level 5</span>
+                          <div className="bg-gray-50 rounded-lg p-4 mt-4">
+                            <div className="flex items-center justify-center gap-8 flex-wrap">
+                              <div className="flex items-center gap-2">
+                                <div className="w-4 h-0.5 bg-red-500"></div>
+                                <span className="text-sm text-gray-700 font-medium">Level 1</span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <div className="w-4 h-0.5 bg-orange-500"></div>
+                                <span className="text-sm text-gray-700 font-medium">Level 2</span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <div className="w-4 h-0.5 bg-yellow-500"></div>
+                                <span className="text-sm text-gray-700 font-medium">Level 3</span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <div className="w-4 h-0.5 bg-blue-500"></div>
+                                <span className="text-sm text-gray-700 font-medium">Level 4</span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <div className="w-4 h-0.5 bg-green-500"></div>
+                                <span className="text-sm text-gray-700 font-medium">Level 5</span>
+                              </div>
                             </div>
                           </div>
+
+                          {/* Peak times summary */}
+                          <div className="grid grid-cols-5 gap-4 mt-4">
+                            <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-center">
+                              <div className="font-bold text-red-900 text-base mb-1">L1</div>
+                              <div className="text-xs text-red-700 font-medium">
+                                {language === 'en' ? 'Peak: 70 min' : 'Pico: 70 min'}
+                              </div>
+                            </div>
+                            <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 text-center">
+                              <div className="font-bold text-orange-900 text-base mb-1">L2</div>
+                              <div className="text-xs text-orange-700 font-medium">
+                                {language === 'en' ? 'Peak: 70 min' : 'Pico: 70 min'}
+                              </div>
+                            </div>
+                            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-center">
+                              <div className="font-bold text-yellow-900 text-base mb-1">L3</div>
+                              <div className="text-xs text-yellow-700 font-medium">
+                                {language === 'en' ? 'Peak: 220 min' : 'Pico: 220 min'}
+                              </div>
+                            </div>
+                            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-center">
+                              <div className="font-bold text-blue-900 text-base mb-1">L4</div>
+                              <div className="text-xs text-blue-700 font-medium">
+                                {language === 'en' ? 'Peak: 240 min' : 'Pico: 240 min'}
+                              </div>
+                            </div>
+                            <div className="bg-green-50 border border-green-200 rounded-lg p-4 text-center">
+                              <div className="font-bold text-green-900 text-base mb-1">L5</div>
+                              <div className="text-xs text-green-700 font-medium">
+                                {language === 'en' ? 'Peak: 190 min' : 'Pico: 190 min'}
+                              </div>
+                            </div>
+                        </div>
                         
                         {/* Wait Times by Condition Severity - Summary Table */}
                         <div className="mb-8">
@@ -2248,7 +2278,6 @@ function App() {
                               </div>
                             </div>
 
-                            {/* Level 3 */}
                             <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 flex items-center justify-between">
                               <div className="flex items-center gap-3">
                                 <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
@@ -2256,7 +2285,7 @@ function App() {
                                   {language === 'en' ? 'Level 3: Less Urgent' : 'Nivel 3: Menos Urgente'}
                                 </span>
                               </div>
-                              <div className="flex items-center gap-6 text-sm">
+                              </div>ext-sm">
                                 <div className="text-right">
                                   <div className="text-xs text-gray-600 mb-1">
                                     {language === 'en' ? 'Queue' : 'Cola'}
@@ -2270,10 +2299,9 @@ function App() {
                                   <div className="font-bold text-red-600">693 min</div>
                                 </div>
                               </div>
-                            </div>
+                              </div>
 
-                            {/* Level 4 */}
-                            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 flex items-center justify-between">
+Level 4 */}
                               <div className="flex items-center gap-3">
                                 <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
                                 <span className="font-semibold text-blue-900">
@@ -2281,7 +2309,7 @@ function App() {
                                 </span>
                               </div>
                               <div className="flex items-center gap-6 text-sm">
-                                <div className="text-right">
+                              </div>
                                   <div className="text-xs text-gray-600 mb-1">
                                     {language === 'en' ? 'Queue' : 'Cola'}
                                   </div>
@@ -2295,10 +2323,9 @@ function App() {
                                 </div>
                               </div>
                             </div>
-
+                              </div>
                             {/* Level 5 */}
-                            <div className="bg-green-50 border border-green-200 rounded-lg p-4 flex items-center justify-between">
-                              <div className="flex items-center gap-3">
+ className="bg-green-50 border border-green-200 rounded-lg p-4 flex items-center justify-between">
                                 <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                                 <span className="font-semibold text-green-900">
                                   {language === 'en' ? 'Level 5: Fast Track' : 'Nivel 5: Vía Rápida'}
@@ -2306,7 +2333,7 @@ function App() {
                               </div>
                               <div className="flex items-center gap-6 text-sm">
                                 <div className="text-right">
-                                  <div className="text-xs text-gray-600 mb-1">
+                              </div> mb-1">
                                     {language === 'en' ? 'Queue' : 'Cola'}
                                   </div>
                                   <div className="font-semibold text-gray-900">3</div>
@@ -2320,11 +2347,10 @@ function App() {
                               </div>
                             </div>
                           </div>
-
+                              </div>
                           {/* Wait Times by Acuity Level Over Time */}
                           <div className="mb-6">
-                            <div className="flex items-center justify-between mb-4">
-                              <h5 className="text-lg font-semibold text-gray-900">
+een mb-4">
                                 {language === 'en' ? 'Wait Times by Acuity Level Over Time' : 'Tiempos de Espera por Nivel de Acuidad en el Tiempo'}
                               </h5>
                               <div className="flex gap-2">
@@ -2342,11 +2368,11 @@ function App() {
                           </div>
                         </div>
 
-                        {/* Specialized Services */}
+                            </div>
                         <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
                           <div className="flex items-center gap-3 mb-6">
-                            <div className="bg-red-100 p-3 rounded-lg">
-                              <Heart className="h-6 w-6 text-red-600" />
+<div className="bg-red-100 p-3 rounded-lg">
+                        {/* Specialized Services */}w-6 text-red-600" />
                             </div>
                             <h4 className="text-lg font-semibold text-gray-900">
                               {language === 'en' ? 'Top 5 Specialized Services Available' : 'Top 5 Servicios Especializados Disponibles'}
