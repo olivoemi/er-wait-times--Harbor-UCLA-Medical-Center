@@ -3776,6 +3776,122 @@ function App() {
                     </ul>
                   </div>
                 </div>
+
+                {/* Additional Emergency Resources */}
+                <div className="bg-white border border-gray-300 rounded-lg p-6 shadow-sm">
+                  <div className="flex items-start gap-4">
+                    <div className="bg-red-100 p-2 rounded-full">
+                      <AlertTriangle className="h-6 w-6 text-red-600" />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-lg font-semibold text-gray-900 mb-4">
+                        {language === 'en' ? 'Additional Emergency Resources' : 'Recursos Adicionales de Emergencia'}
+                      </h4>
+                      
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        {/* Emergency Contacts */}
+                        <div>
+                          <h5 className="font-semibold text-gray-900 mb-4">
+                            {language === 'en' ? 'Emergency Contacts' : 'Contactos de Emergencia'}
+                          </h5>
+                          <div className="space-y-3">
+                            <div className="flex items-center justify-between p-3 bg-red-50 rounded-lg border border-red-200">
+                              <div>
+                                <span className="font-medium text-gray-900">{language === 'en' ? 'Emergency Services:' : 'Servicios de Emergencia:'}</span>
+                              </div>
+                              <div className="font-bold text-red-600">911</div>
+                            </div>
+                            <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-200">
+                              <div>
+                                <span className="font-medium text-gray-900">{language === 'en' ? 'Poison Control:' : 'Control de Envenenamiento:'}</span>
+                              </div>
+                              <div className="font-bold text-blue-600">1-800-222-1222</div>
+                            </div>
+                            <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-200">
+                              <div>
+                                <span className="font-medium text-gray-900">{language === 'en' ? 'Red Cross:' : 'Cruz Roja:'}</span>
+                              </div>
+                              <div className="font-bold text-blue-600">1-800-733-2767</div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Useful Apps & Websites */}
+                        <div>
+                          <h5 className="font-semibold text-gray-900 mb-4">
+                            {language === 'en' ? 'Useful Apps & Websites' : 'Aplicaciones y Sitios Web Útiles'}
+                          </h5>
+                          <div className="space-y-3">
+                            <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+                              <Phone className="h-4 w-4 text-red-600" />
+                              <span className="font-medium text-gray-900">{language === 'en' ? 'Red Cross Emergency App' : 'App de Emergencia Cruz Roja'}</span>
+                            </div>
+                            <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+                              <Globe className="h-4 w-4 text-blue-600" />
+                              <span className="font-medium text-gray-900">Ready.gov</span>
+                            </div>
+                            <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+                              <Phone className="h-4 w-4 text-orange-600" />
+                              <span className="font-medium text-gray-900">{language === 'en' ? 'FEMA Mobile App' : 'App Móvil FEMA'}</span>
+                            </div>
+                            <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
+                              <Globe className="h-4 w-4 text-green-600" />
+                              <span className="font-medium text-gray-900">Weather.gov</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Remember Box */}
+                <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                  <div className="flex items-start gap-3">
+                    <Info className="h-5 w-5 text-blue-600 mt-1 flex-shrink-0" />
+                    <div>
+                      <h5 className="font-semibold text-blue-900 mb-2">
+                        {language === 'en' ? 'Remember' : 'Recuerde'}
+                      </h5>
+                      <p className="text-blue-800 text-sm mb-3">
+                        {language === 'en' 
+                          ? "In a true emergency, don't delay care to gather these items. Your safety comes first - these are helpful when possible to bring."
+                          : "En una verdadera emergencia, no retrase la atención para reunir estos elementos. Su seguridad es lo primero: estos son útiles cuando sea posible traerlos."
+                        }
+                      </p>
+                      <p className="text-blue-800 text-sm">
+                        {language === 'en'
+                          ? "Consider keeping copies of important medical documents in an easily accessible location for emergency situations."
+                          : "Considere mantener copias de documentos médicos importantes en un lugar fácilmente accesible para situaciones de emergencia."
+                        }
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Medical Disclaimer */}
+                <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
+                  <div className="flex items-start gap-3">
+                    <Info className="h-5 w-5 text-gray-600 mt-1 flex-shrink-0" />
+                    <div>
+                      <h5 className="font-semibold text-gray-900 mb-2">
+                        {language === 'en' ? 'Medical Disclaimer' : 'Descargo de Responsabilidad Médica'}
+                      </h5>
+                      <p className="text-gray-700 text-sm mb-3">
+                        {language === 'en'
+                          ? "The information provided on this page is for educational purposes only and should not be used as a substitute for professional medical advice, diagnosis, or treatment. Always consult with a qualified healthcare provider about any health concerns or before making any decisions related to your health or treatment."
+                          : "La información proporcionada en esta página es solo para fines educativos y no debe usarse como sustituto del consejo médico profesional, diagnóstico o tratamiento. Siempre consulte con un proveedor de atención médica calificado sobre cualquier preocupación de salud o antes de tomar cualquier decisión relacionada con su salud o tratamiento."
+                        }
+                      </p>
+                      <p className="text-gray-700 text-sm font-medium">
+                        {language === 'en'
+                          ? "In case of a medical emergency, call 911 immediately. This facility is not responsible for any actions taken based on the information provided through this guidance tool."
+                          : "En caso de emergencia médica, llame al 911 inmediatamente. Esta instalación no es responsable de ninguna acción tomada basada en la información proporcionada a través de esta herramienta de orientación."
+                        }
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             )}
           </TabsContent>
