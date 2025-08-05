@@ -1496,7 +1496,7 @@ function App() {
                         {/* Specialized Services */}
                         <div>
                           <h4 className="font-semibold text-gray-900 mb-3 text-center">
-                            {language === 'en' ? 'Top 5 Specialized Services Available' : 'Top 5 Servicios Especializados Disponibles'}
+                            {language === 'en' ? 'Specialized Services Available' : 'Servicios Especializados Disponibles'}
                           </h4>
                           <div className="space-y-2 mb-4">
                             <div className="flex items-center justify-between p-3 bg-red-50 rounded-lg border border-red-200">
