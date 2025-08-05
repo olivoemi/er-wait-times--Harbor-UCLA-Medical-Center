@@ -2076,33 +2076,79 @@ function App() {
                           </div>
 
                           {/* Graph Container */}
-                          <div className="relative bg-gray-50 rounded-lg p-6 mb-6" style={{ height: '300px' }}>
+                          <div className="relative bg-white rounded-lg p-6 mb-6 border border-gray-200" style={{ height: '400px' }}>
+                            {/* Graph Title */}
+                            <div className="text-center mb-4">
+                              <h5 className="text-lg font-semibold text-gray-900">
+                                {language === 'en' ? 'Wait Times by Condition Severity - 24 Hour Trend' : 'Tiempos de Espera por Severidad de Condición - Tendencia de 24 Horas'}
+                              </h5>
+                            </div>
+                            
                             {/* Y-axis label */}
-                            <div className="absolute left-4 top-1/2 transform -rotate-90 text-sm text-gray-600 font-medium origin-center">
+                            <div className="absolute left-2 top-1/2 transform -rotate-90 text-sm text-gray-600 font-medium origin-center">
                               {language === 'en' ? 'Wait Time (min)' : 'Tiempo de Espera (min)'}
                             </div>
                             
                             {/* Graph area */}
-                            <div className="ml-12 mr-4 h-full relative">
+                            <div className="ml-16 mr-8 h-full relative" style={{ height: 'calc(100% - 80px)' }}>
                               {/* Y-axis grid lines and labels */}
-                              <div className="absolute left-0 top-0 h-full border-l border-gray-300">
+                              <div className="absolute left-0 top-0 h-full border-l-2 border-gray-300">
                                 {[280, 210, 140, 70, 0].map((value, index) => (
                                   <div key={value} className="absolute left-0 w-full border-t border-gray-200" style={{ top: `${index * 25}%` }}>
-                                    <span className="absolute -left-8 -mt-2 text-xs text-gray-500">{value}</span>
+                                    <span className="absolute -left-12 -mt-2 text-xs text-gray-600 font-medium">{value}</span>
                                   </div>
                                 ))}
                               </div>
 
-                              {/* Current time indicator */}
-                              <div className="absolute right-1/4 top-0 h-full">
-                                <div className="w-px h-full bg-blue-600 opacity-75"></div>
-                                <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 text-xs text-blue-600 font-medium whitespace-nowrap">
+                              {/* Current time indicator - positioned at 3 PM */}
+                              <div className="absolute" style={{ left: '75%', top: '0', height: '100%' }}>
+                                <div className="w-0.5 h-full bg-blue-600"></div>
+                                <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 text-xs text-blue-600 font-bold whitespace-nowrap bg-blue-50 px-2 py-1 rounded">
                                   {language === 'en' ? 'Current Time' : 'Tiempo Actual'}
                                 </div>
                               </div>
 
+                              {/* Graph lines - SVG for better line drawing */}
+                              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+                                {/* Level 1 - Red line (lowest wait times) */}
+                                <polyline
+                                  fill="none"
+                                  stroke="#EF4444"
+                                  strokeWidth="2"
+                                  points="0,85 12.5,82 25,80 37.5,78 50,75 62.5,77 75,80 87.5,82 100,85"
+                                />
+                                {/* Level 2 - Orange line */}
+                                <polyline
+                                  fill="none"
+                                  stroke="#F97316"
+                                  strokeWidth="2"
+                                  points="0,75 12.5,72 25,70 37.5,68 50,65 62.5,67 75,70 87.5,72 100,75"
+                                />
+                                {/* Level 3 - Yellow line */}
+                                <polyline
+                                  fill="none"
+                                  stroke="#EAB308"
+                                  strokeWidth="2"
+                                  points="0,45 12.5,40 25,35 37.5,30 50,20 62.5,18 75,25 87.5,35 100,40"
+                                />
+                                {/* Level 4 - Blue line */}
+                                <polyline
+                                  fill="none"
+                                  stroke="#3B82F6"
+                                  strokeWidth="2"
+                                  points="0,30 12.5,25 25,20 37.5,15 50,8 62.5,5 75,10 87.5,20 100,25"
+                                />
+                                {/* Level 5 - Green line */}
+                                <polyline
+                                  fill="none"
+                                  stroke="#10B981"
+                                  strokeWidth="2"
+                                  points="0,35 12.5,30 25,25 37.5,20 50,12 62.5,10 75,15 87.5,25 100,30"
+                                />
+                              </svg>
+
                               {/* Time axis labels */}
-                              <div className="absolute -bottom-8 left-0 w-full flex justify-between text-xs text-gray-500">
+                              <div className="absolute -bottom-6 left-0 w-full flex justify-between text-xs text-gray-600 font-medium">
                                 <span>12 AM</span>
                                 <span>3 AM</span>
                                 <span>6 AM</span>
@@ -2112,101 +2158,62 @@ function App() {
                                 <span>6 PM</span>
                                 <span>9 PM</span>
                               </div>
-
-                              {/* Graph lines - SVG for better line drawing */}
-                              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-                                {/* Level 1 - Red line (lowest, near bottom) */}
-                                <polyline
-                                  fill="none"
-                                  stroke="#EF4444"
-                                  strokeWidth="0.5"
-                                  points="0,90 12,88 25,85 37,82 50,80 62,78 75,82 87,85 100,88"
-                                />
-                                {/* Level 2 - Orange line */}
-                                <polyline
-                                  fill="none"
-                                  stroke="#F97316"
-                                  strokeWidth="0.5"
-                                  points="0,85 12,83 25,80 37,75 50,70 62,65 75,68 87,72 100,75"
-                                />
-                                {/* Level 3 - Yellow line */}
-                                <polyline
-                                  fill="none"
-                                  stroke="#EAB308"
-                                  strokeWidth="0.5"
-                                  points="0,70 12,65 25,55 37,45 50,40 62,35 75,30 87,25 100,20"
-                                />
-                                {/* Level 4 - Blue line */}
-                                <polyline
-                                  fill="none"
-                                  stroke="#3B82F6"
-                                  strokeWidth="0.5"
-                                  points="0,45 12,40 25,35 37,25 50,15 62,10 75,8 87,12 100,18"
-                                />
-                                {/* Level 5 - Green line (highest, near top) */}
-                                <polyline
-                                  fill="none"
-                                  stroke="#10B981"
-                                  strokeWidth="0.5"
-                                  points="0,50 12,45 25,40 37,30 50,20 62,15 75,12 87,15 100,22"
-                                />
-                              </svg>
                             </div>
                           </div>
 
                           {/* Legend */}
-                          <div className="flex justify-center gap-6 mb-6">
+                          <div className="flex justify-center gap-8 mb-6 bg-gray-50 rounded-lg p-4">
                             <div className="flex items-center gap-2">
-                              <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                              <span className="text-sm text-gray-700">Level 1</span>
+                              <div className="w-4 h-0.5 bg-red-500"></div>
+                              <span className="text-sm text-gray-700 font-medium">Level 1</span>
                             </div>
                             <div className="flex items-center gap-2">
-                              <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
-                              <span className="text-sm text-gray-700">Level 2</span>
+                              <div className="w-4 h-0.5 bg-orange-500"></div>
+                              <span className="text-sm text-gray-700 font-medium">Level 2</span>
                             </div>
                             <div className="flex items-center gap-2">
-                              <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                              <span className="text-sm text-gray-700">Level 3</span>
+                              <div className="w-4 h-0.5 bg-yellow-500"></div>
+                              <span className="text-sm text-gray-700 font-medium">Level 3</span>
                             </div>
                             <div className="flex items-center gap-2">
-                              <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                              <span className="text-sm text-gray-700">Level 4</span>
+                              <div className="w-4 h-0.5 bg-blue-500"></div>
+                              <span className="text-sm text-gray-700 font-medium">Level 4</span>
                             </div>
                             <div className="flex items-center gap-2">
-                              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                              <span className="text-sm text-gray-700">Level 5</span>
+                              <div className="w-4 h-0.5 bg-green-500"></div>
+                              <span className="text-sm text-gray-700 font-medium">Level 5</span>
                             </div>
                           </div>
 
                           {/* Peak times summary */}
                           <div className="grid grid-cols-5 gap-4">
-                            <div className="bg-red-50 border border-red-200 rounded-lg p-3 text-center">
-                              <div className="font-semibold text-red-900 text-sm">L1</div>
-                              <div className="text-xs text-red-700 mt-1">
+                            <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-center">
+                              <div className="font-bold text-red-900 text-base mb-1">L1</div>
+                              <div className="text-xs text-red-700 font-medium">
                                 {language === 'en' ? 'Peak: 70 min' : 'Pico: 70 min'}
                               </div>
                             </div>
-                            <div className="bg-orange-50 border border-orange-200 rounded-lg p-3 text-center">
-                              <div className="font-semibold text-orange-900 text-sm">L2</div>
-                              <div className="text-xs text-orange-700 mt-1">
+                            <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 text-center">
+                              <div className="font-bold text-orange-900 text-base mb-1">L2</div>
+                              <div className="text-xs text-orange-700 font-medium">
                                 {language === 'en' ? 'Peak: 120 min' : 'Pico: 120 min'}
                               </div>
                             </div>
-                            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 text-center">
-                              <div className="font-semibold text-yellow-900 text-sm">L3</div>
-                              <div className="text-xs text-yellow-700 mt-1">
+                            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-center">
+                              <div className="font-bold text-yellow-900 text-base mb-1">L3</div>
+                              <div className="text-xs text-yellow-700 font-medium">
                                 {language === 'en' ? 'Peak: 220 min' : 'Pico: 220 min'}
                               </div>
                             </div>
-                            <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 text-center">
-                              <div className="font-semibold text-blue-900 text-sm">L4</div>
-                              <div className="text-xs text-blue-700 mt-1">
+                            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-center">
+                              <div className="font-bold text-blue-900 text-base mb-1">L4</div>
+                              <div className="text-xs text-blue-700 font-medium">
                                 {language === 'en' ? 'Peak: 270 min' : 'Pico: 270 min'}
                               </div>
                             </div>
-                            <div className="bg-green-50 border border-green-200 rounded-lg p-3 text-center">
-                              <div className="font-semibold text-green-900 text-sm">L5</div>
-                              <div className="text-xs text-green-700 mt-1">
+                            <div className="bg-green-50 border border-green-200 rounded-lg p-4 text-center">
+                              <div className="font-bold text-green-900 text-base mb-1">L5</div>
+                              <div className="text-xs text-green-700 font-medium">
                                 {language === 'en' ? 'Peak: 190 min' : 'Pico: 190 min'}
                               </div>
                             </div>
