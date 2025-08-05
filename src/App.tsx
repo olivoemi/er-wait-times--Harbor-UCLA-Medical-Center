@@ -3409,6 +3409,7 @@ function App() {
                                   onClick={() => {
                                     setCareGuideSection('options')
                                     setTimeout(() => {
+                                      document.getElementById('telehealth-section')?.scrollIntoView({
                                         behavior: 'smooth',
                                         block: 'start'
                                       })
@@ -3417,9 +3418,9 @@ function App() {
                                 >
                                   {isUrgentCarePreferred ? <FirstAid className="h-4 w-4 mr-2" /> : <Phone className="h-4 w-4 mr-2" />}
                                   {language === 'en' ? 
-                                >
-                                  {isUrgentCarePreferred ? <FirstAid className="h-4 w-4 mr-2" /> : <Phone className="h-4 w-4 mr-2" />}
-                                  {language === 'en' ? 
+                                    (isUrgentCarePreferred ? 'Find Urgent Care' : 
+                                     isTelehealthPreferred ? 'Start Telehealth' : 'Start Telehealth') : 
+                                    (isUrgentCarePreferred ? 'Buscar Atención Urgente' : 
                                      isTelehealthPreferred ? 'Iniciar Telemedicina' : 'Iniciar Telemedicina')
                                   }
                                 </Button>
@@ -3431,27 +3432,30 @@ function App() {
                                     setTimeout(() => {
                                       const targetSection = isUrgentCarePreferred ? 'primary-care-section' : 'primary-care-section'
                                       document.getElementById(targetSection)?.scrollIntoView({ 
-                                    setTimeout(() => {
+                                        behavior: 'smooth',
                                         block: 'start'
                                       })
                                     }, 100)
-                                        block: 'start'
-                                      })
+                                  }}
+                                >
                                   <Building className="h-4 w-4 mr-2" />
                                   {language === 'en' ? 
                                     (isUrgentCarePreferred ? 'Schedule Primary Care' : 'Find Primary Care') : 
                                     (isUrgentCarePreferred ? 'Programar Atención Primaria' : 'Buscar Atención Primaria')
                                   }
                                 </Button>
+                              </div>
+                            </div>
+                          )
+                        }
 
                         // Level 5 - Low Acuity
                         if (result.acuityLevel === 5) {
                           const recommendation = result.recommendation
                           const isTelehealthPreferred = recommendation.includes('Telehealth (preferred)') || recommendation.startsWith('Telehealth or')
-                          )
-                        }
-
-                        // Level 5 - Low Acuity
+                          
+                          return (
+                            <div className="bg-green-50 border-l-4 border-green-500 rounded-lg p-6">
                               <div className="flex items-start gap-4 mb-6">
                                 <div className="bg-green-500 p-2 rounded-lg">
                                   <CheckCircle className="h-6 w-6 text-white" />
@@ -3464,23 +3468,23 @@ function App() {
                                     {isTelehealthPreferred ? <Phone className="h-5 w-5 text-green-600" /> : <Building className="h-5 w-5 text-green-600" />}
                                     <span className="text-lg font-bold text-green-900">
                                       {language === 'en' ? recommendation : 
+                                       recommendation.replace('Urgent Care', 'Atención Urgente')
+                                                    .replace('Primary Care', 'Atención Primaria')
+                                                    .replace('Telehealth', 'Telemedicina')
+                                                    .replace('preferred', 'preferida')
                                                     .replace(' or ', ' o ')
                                       }
                                     </span>
                                   </div>
                                   <p className="text-green-800 leading-relaxed">
                                     {language === 'en' ? 
-                                      {language === 'en' ? recommendation : 
-                                       recommendation.replace('Urgent Care', 'Atención Urgente')
-                                                    .replace('Primary Care', 'Atención Primaria')
-                                                    .replace('Telehealth', 'Telemedicina')
-                                                    .replace('preferred', 'preferida')
+                                      (isTelehealthPreferred ?
+                                        'Your symptoms are ideal for telehealth consultation and can be effectively addressed through virtual care, with primary care as an alternative option.' :
+                                        'Your symptoms are best managed through a scheduled primary care visit, though telehealth consultation may also be suitable.'
                                       ) :
                                       (isTelehealthPreferred ?
                                         'Sus síntomas son ideales para consulta de telemedicina y pueden ser atendidos eficazmente a través de atención virtual, con atención primaria como opción alternativa.' :
-                                        isPrimaryPreferred ?
-                                        'Sus síntomas se manejan mejor a través de una visita programada de atención primaria, aunque la consulta de telemedicina también puede ser adecuada.' :
-                                        'Sus síntomas probablemente pueden ser atendidos a través de telemedicina, una clínica de farmacia, o programando una cita de rutina de atención primaria.'
+                                        'Sus síntomas se manejan mejor a través de una visita programada de atención primaria, aunque la consulta de telemedicina también puede ser adecuada.'
                                       )
                                     }
                                   </p>
@@ -3577,43 +3581,46 @@ function App() {
                                     (isTelehealthPreferred ? 'Start Telehealth' : 'Start Telehealth') : 
                                     (isTelehealthPreferred ? 'Iniciar Telemedicina' : 'Iniciar Telemedicina')
                                   }
+                                </Button>
+                                <Button 
+                                  variant="outline" 
+                                  className="border-green-300 text-green-700 hover:bg-green-50"
                                   onClick={() => {
                                     setCareGuideSection('options')
                                     setTimeout(() => {
                                       document.getElementById('primary-care-section')?.scrollIntoView({ 
                                         behavior: 'smooth',
+                                        block: 'start'
+                                      })
+                                    }, 100)
+                                  }}
                                 >
-                                  <Phone className="h-4 w-4 mr-2" />
+                                  <Building className="h-4 w-4 mr-2" />
                                   {language === 'en' ? 
-                                    (isTelehealthPreferred ? 'Start Telehealth' : 'Start Telehealth') : 
-                                    (isTelehealthPreferred ? 'Iniciar Telemedicina' : 'Iniciar Telemedicina')
+                                    (isTelehealthPreferred ? 'Schedule Primary Care' : 'Find Primary Care') : 
+                                    (isTelehealthPreferred ? 'Programar Atención Primaria' : 'Buscar Atención Primaria')
                                   }
-                                </Button>
-                                <Button 
-                                  variant="outline" 
-                                  className="border-green-300 text-green-700 hover:bg-green-50"
                                 </Button>
                               </div>
                             </div>
                           )
                         }
-                        }
 
                         return null
                       })()}
-                                >
-                                  <Building className="h-4 w-4 mr-2" />
-                                  {language === 'en' ? 
-                                    (isTelehealthPreferred ? 'Schedule Primary Care' : 'Find Primary Care') : 
+                    </div>
+                  )}
+
+                  {/* Symptom Categories */}
                   <div className="space-y-6">
                     {symptomCategories.map((category) => (
                       <div key={category.name}>
                         <h4 className="text-lg font-semibold text-gray-900 mb-4">
-                            </div>
+                          {category.name}
                         </h4>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                        } {category.symptoms.map((symptom) => {
-
+                          {category.symptoms.map((symptom) => {
+                            const isSelected = selectedSymptoms.includes(symptom.id)
                             const isThoughtsOfHarm = symptom.id === 'thoughts-harm'
                             
                             // Define colors based on acuity level
@@ -3628,15 +3635,19 @@ function App() {
                                   bg: isSelected ? 'bg-orange-50' : 'bg-white',
                                   border: isSelected ? 'border-orange-300 ring-2 ring-orange-200' : 'border-orange-200 hover:border-orange-300',
                                   text: 'text-orange-900'
+                                },
+                                3: {
+                                  bg: isSelected ? 'bg-yellow-50' : 'bg-white',
+                                  border: isSelected ? 'border-yellow-300 ring-2 ring-yellow-200' : 'border-yellow-200 hover:border-yellow-300',
                                   text: 'text-yellow-900'
                                 },
                                 4: {
                                   bg: isSelected ? 'bg-blue-50' : 'bg-white',
-                            const getAcuityColors = (level: number, isSelected: boolean) => {
-                              const colorMap = {
-                                1: {
-                                  bg: isSelected ? 'bg-red-50' : 'bg-white',
-                                  border: isSelected ? 'border-red-300 ring-2 ring-red-200' : 'border-red-200 hover:border-red-300',
+                                  border: isSelected ? 'border-blue-300 ring-2 ring-blue-200' : 'border-blue-200 hover:border-blue-300',
+                                  text: 'text-blue-900'
+                                },
+                                5: {
+                                  bg: isSelected ? 'bg-green-50' : 'bg-white',
                                   border: isSelected ? 'border-green-300 ring-2 ring-green-200' : 'border-green-200 hover:border-green-300',
                                   text: 'text-green-900'
                                 }
@@ -3644,20 +3655,21 @@ function App() {
                               
                               return colorMap[level] || colorMap[5]
                             }
-                                3: {
-                                  bg: isSelected ? 'bg-yellow-50' : 'bg-white',
-                                  border: isSelected ? 'border-yellow-300 ring-2 ring-yellow-200' : 'border-yellow-200 hover:border-yellow-300',
-                                  text: 'text-yellow-900'
+                            
+                            const colors = getAcuityColors(symptom.acuityLevel, isSelected)
+                            
+                            return (
                               <button
-                                4: {
-                                  bg: isSelected ? 'bg-blue-50' : 'bg-white',
-                                  border: isSelected ? 'border-blue-300 ring-2 ring-blue-200' : 'border-blue-200 hover:border-blue-300',
-                                  text: 'text-blue-900'
+                                key={symptom.id}
+                                onClick={() => handleSymptomToggle(symptom.id)}
+                                className={`w-full text-left p-4 rounded-lg border transition-all ${colors.bg} ${colors.border} hover:shadow-sm`}
+                              >
                                 <div className="flex items-start gap-3">
+                                  {getSymptomIcon(symptom.id, symptom.category)}
                                   <div className="flex-1 min-w-0">
                                     <div className="mb-2">
                                       <h6 className={`font-medium text-sm ${colors.text} leading-tight`}>
-                                  text: 'text-green-900'
+                                        {symptom.name}
                                       </h6>
                                     </div>
                                     {isSelected && (
