@@ -1565,49 +1565,156 @@ function App() {
                     </Card>
                   ))}
                 </div>
-                {/* Right side - Video Play Button and Information */}
-                <div className="bg-gray-50 rounded-lg p-6 flex flex-col items-center justify-center space-y-6">
-                  {/* Title */}
-                  <h3 className="text-lg font-semibold text-gray-900 text-center">
-                    {language === 'en' ? 'Harbor Video Information' : 'Información en Video de Harbor'}
-                  </h3>
-                  
-                  {/* Play Button */}
-                  <a 
-                    href="https://m.youtube.com/watch?v=86z2k4zEOlw" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="group relative bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer border-2 border-gray-200 hover:border-blue-300"
-                  >
-                    <div className="relative flex items-center justify-center">
-                      {/* Background circle */}
-                      <div className="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center group-hover:bg-red-700 transition-colors duration-300 shadow-lg">
-                        {/* Play icon */}
-                        <Play 
-                          className="h-8 w-8 text-white ml-1" 
-                          fill="currentColor"
-                        />
+                {/* Right side - Video Play Button and ER Process Information */}
+                <div className="space-y-6">
+                  {/* Video Section */}
+                  <div className="bg-gray-50 rounded-lg p-6 flex flex-col items-center justify-center space-y-6">
+                    {/* Title */}
+                    <h3 className="text-lg font-semibold text-gray-900 text-center">
+                      {language === 'en' ? 'Harbor Video Information' : 'Información en Video de Harbor'}
+                    </h3>
+                    
+                    {/* Play Button */}
+                    <a 
+                      href="https://m.youtube.com/watch?v=86z2k4zEOlw" 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="group relative bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer border-2 border-gray-200 hover:border-blue-300"
+                    >
+                      <div className="relative flex items-center justify-center">
+                        {/* Background circle */}
+                        <div className="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center group-hover:bg-red-700 transition-colors duration-300 shadow-lg">
+                          {/* Play icon */}
+                          <Play 
+                            className="h-8 w-8 text-white ml-1" 
+                            fill="currentColor"
+                          />
+                        </div>
                       </div>
                       
-                      {/* Pulse animation removed */}
-                    </div>
+                      {/* Hover overlay */}
+                      <div className="absolute inset-0 bg-blue-50 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+                    </a>
                     
-                    {/* Hover overlay */}
-                    <div className="absolute inset-0 bg-blue-50 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
-                  </a>
-                  
-                  {/* Descriptive text */}
-                  <p className="text-sm text-gray-600 text-center max-w-60 leading-relaxed">
-                    {language === 'en' 
-                      ? 'Watch our video guide for Harbor facility information and emergency department procedures'
-                      : 'Vea nuestra guía en video para información de las instalaciones de Harbor y procedimientos del departamento de emergencias'
-                    }
-                  </p>
-                  
-                  {/* Video length indicator */}
-                  <div className="flex items-center gap-2 text-xs text-gray-500">
-                    <Clock className="h-3 w-3" />
-                    <span>{language === 'en' ? 'Educational Video' : 'Video Educativo'}</span>
+                    {/* Descriptive text */}
+                    <p className="text-sm text-gray-600 text-center max-w-60 leading-relaxed">
+                      {language === 'en' 
+                        ? 'Watch our video guide for Harbor facility information and emergency department procedures'
+                        : 'Vea nuestra guía en video para información de las instalaciones de Harbor y procedimientos del departamento de emergencias'
+                      }
+                    </p>
+                    
+                    {/* Video length indicator */}
+                    <div className="flex items-center gap-2 text-xs text-gray-500">
+                      <Clock className="h-3 w-3" />
+                      <span>{language === 'en' ? 'Educational Video' : 'Video Educativo'}</span>
+                    </div>
+                  </div>
+
+                  {/* ER Process Information */}
+                  <div className="bg-white rounded-lg border border-blue-200 p-6 shadow-sm">
+                    <h3 className="text-lg font-semibold text-blue-900 mb-4 flex items-center gap-2">
+                      <Info className="h-5 w-5 text-blue-600" />
+                      {language === 'en' ? 'Your ER Visit Process' : 'Su Proceso de Visita a ER'}
+                    </h3>
+                    
+                    <div className="space-y-4 text-sm">
+                      {/* Step 1: Check-in */}
+                      <div className="border-l-4 border-blue-500 pl-4">
+                        <h4 className="font-semibold text-blue-900 mb-2">
+                          {language === 'en' ? '1. Check-in' : '1. Registro'}
+                        </h4>
+                        <p className="text-blue-800 mb-2">
+                          {language === 'en' 
+                            ? 'Please have your ID (driver\'s license, insurance card) available'
+                            : 'Tenga disponible su ID (licencia de conducir, tarjeta de seguro)'
+                          }
+                        </p>
+                        <ul className="text-blue-700 space-y-1 text-xs">
+                          <li>• {language === 'en' ? 'Let us know if you have a preferred language other than English' : 'Infórmenos si tiene un idioma preferido que no sea inglés'}</li>
+                          <li>• {language === 'en' ? 'We are trialing GLess, designed to keep updated on your estimated wait time' : 'Estamos probando GLess, diseñado para mantenerlo actualizado sobre su tiempo de espera estimado'}</li>
+                          <li>• {language === 'en' ? 'You will see your First Name & last initial with last 4 digits of phone number' : 'Verá su Primer Nombre e inicial del apellido con los últimos 4 dígitos de su número de teléfono'}</li>
+                          <li>• {language === 'en' ? 'You will start in the "Waiting for Triage" line after registration' : 'Comenzará en la línea "Esperando Triaje" después del registro'}</li>
+                        </ul>
+                      </div>
+
+                      {/* Step 2: Triage */}
+                      <div className="border-l-4 border-orange-500 pl-4">
+                        <h4 className="font-semibold text-orange-900 mb-2">
+                          {language === 'en' ? '2. Triage' : '2. Triaje'}
+                        </h4>
+                        <p className="text-orange-800 mb-2">
+                          {language === 'en' 
+                            ? 'You will be seen by a doctor/nurse practitioner (NP) and nurse who will check your temperature, heart rate, and blood pressure'
+                            : 'Será atendido por un doctor/enfermero especialista (NP) y enfermero que verificarán su temperatura, ritmo cardíaco y presión arterial'
+                          }
+                        </p>
+                        <ul className="text-orange-700 space-y-1 text-xs">
+                          <li>• {language === 'en' ? 'They will determine blood tests, x-rays, and medications necessary to evaluate your concern' : 'Determinarán análisis de sangre, radiografías y medicamentos necesarios para evaluar su preocupación'}</li>
+                          <li>• {language === 'en' ? 'In GLess, you will be moved to ER Critical, ER Adult, or ER FastTrack after triage' : 'En GLess, será trasladado a ER Crítico, ER Adulto o ER FastTrack después del triaje'}</li>
+                        </ul>
+                      </div>
+
+                      {/* Step 3: Registration */}
+                      <div className="border-l-4 border-green-500 pl-4">
+                        <h4 className="font-semibold text-green-900 mb-2">
+                          {language === 'en' ? '3. Registration' : '3. Registro'}
+                        </h4>
+                        <p className="text-green-800 mb-2">
+                          {language === 'en' 
+                            ? 'You will be treated and verify your insurance coverage or help you sign up for emergency coverage if eligible'
+                            : 'Será tratado y verificaremos su cobertura de seguro o lo ayudaremos a inscribirse en cobertura de emergencia si es elegible'
+                          }
+                        </p>
+                        <ul className="text-green-700 space-y-1 text-xs">
+                          <li>• {language === 'en' ? 'We care for EVERYONE EQUALLY regardless of insurance status' : 'Atendemos a TODOS POR IGUAL independientemente del estado del seguro'}</li>
+                        </ul>
+                      </div>
+
+                      {/* Steps 4-7 - Condensed */}
+                      <div className="bg-gray-50 rounded-lg p-4 space-y-3">
+                        <div className="grid grid-cols-1 gap-3">
+                          <div>
+                            <h5 className="font-semibold text-gray-900 text-xs mb-1">
+                              {language === 'en' ? '4. Testing & Treatment' : '4. Pruebas y Tratamiento'}
+                            </h5>
+                            <p className="text-gray-700 text-xs">
+                              {language === 'en' ? 'If ordered by the provider, our nurses will provide medications, obtain labs, and arrange X-ray, ultrasound, or CT' : 'Si lo ordena el proveedor, nuestros enfermeros proporcionarán medicamentos, obtendrán laboratorios y organizarán radiografías, ultrasonidos o CT'}
+                            </p>
+                          </div>
+
+                          <div>
+                            <h5 className="font-semibold text-gray-900 text-xs mb-1">
+                              {language === 'en' ? '5. Care Areas' : '5. Áreas de Atención'}
+                            </h5>
+                            <p className="text-gray-700 text-xs">
+                              {language === 'en' ? 'Multiple ER areas: Trauma, Critical, Adult, Pediatric, and FastTrack for Urgent Care or minor complaints' : 'Múltiples áreas de ER: Trauma, Crítico, Adulto, Pediátrico y FastTrack para Atención Urgente o quejas menores'}
+                            </p>
+                            <p className="text-gray-600 text-xs mt-1">
+                              {language === 'en' ? 'Patients are seen by severity of illness, not arrival order. Sicker patients are placed in a room more quickly.' : 'Los pacientes son atendidos por gravedad de la enfermedad, no por orden de llegada. Los pacientes más enfermos son colocados en una habitación más rápidamente.'}
+                            </p>
+                          </div>
+
+                          <div>
+                            <h5 className="font-semibold text-gray-900 text-xs mb-1">
+                              {language === 'en' ? '6. Review of Results' : '6. Revisión de Resultados'}
+                            </h5>
+                            <p className="text-gray-700 text-xs">
+                              {language === 'en' ? 'Once your workup is completed, you will be seen by a doctor or NP. Additional testing may be required based on initial results.' : 'Una vez completado su estudio, será atendido por un doctor o NP. Pueden requerirse pruebas adicionales según los resultados iniciales.'}
+                            </p>
+                          </div>
+
+                          <div>
+                            <h5 className="font-semibold text-gray-900 text-xs mb-1">
+                              {language === 'en' ? '7. After Your ER Visit' : '7. Después de su Visita a ER'}
+                            </h5>
+                            <p className="text-gray-700 text-xs">
+                              {language === 'en' ? 'Decision options: 1) Discharge you home, 2) Admit to our hospital, or 3) Transfer to a hospital within your health network (if requested by insurance)' : 'Opciones de decisión: 1) Alta a casa, 2) Admisión a nuestro hospital, o 3) Transferencia a un hospital dentro de su red de salud (si lo solicita el seguro)'}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
