@@ -4156,103 +4156,138 @@ function App() {
                 {/* Header Section */}
                 <div className="text-left mb-8">
                   <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                    {language === 'en' ? 'Emergency Room Preparation' : 'Preparación para Sala de Emergencias'}
+                    {language === 'en' ? 'Prepare for Your Emergency Room Visit' : 'Prepárese para su Visita a la Sala de Emergencias'}
                   </h3>
                   <p className="text-gray-600 max-w-4xl">
                     {language === 'en' 
-                      ? 'Get ready for your emergency room visit with essential items to bring and understand what to expect during triage and treatment.'
-                      : 'Prepárese para su visita a la sala de emergencias con elementos esenciales que debe traer y comprenda qué esperar durante el triaje y tratamiento.'
+                      ? 'Quick preparation guide with the most important items to bring and what to expect during your visit.'
+                      : 'Guía rápida de preparación con los elementos más importantes que debe traer y qué esperar durante su visita.'
                     }
                   </p>
                 </div>
 
+                {/* Critical Action Alert - For Life-Threatening Emergencies */}
+                <div className="bg-red-50 border-l-4 border-red-500 rounded-lg p-4">
+                  <div className="flex items-start gap-3">
+                    <AlertTriangle className="h-5 w-5 text-red-600 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-semibold text-red-900 mb-2">
+                        {language === 'en' ? 'Life-Threatening Emergency?' : '¿Emergencia que Amenaza la Vida?'}
+                      </h4>
+                      <p className="text-red-800 text-sm mb-3">
+                        {language === 'en' 
+                          ? "Don't wait to gather items. Go immediately or call 911. Your safety comes first."
+                          : 'No espere a reunir elementos. Vaya inmediatamente o llame al 911. Su seguridad es lo primero.'
+                        }
+                      </p>
+                      <Button className="bg-red-600 hover:bg-red-700 text-white text-sm px-4 py-2">
+                        <Phone className="h-4 w-4 mr-2" />
+                        {language === 'en' ? 'Call 911 Now' : 'Llamar 911 Ahora'}
+                      </Button>
+                    </div>
+                  </div>
+                </div>
 
-
-                {/* Essential Items to Bring */}
-                <div className="bg-white border border-gray-300 rounded-lg p-6 shadow-sm">
+                {/* Essential Items to Bring - Top Priority */}
+                <div className="bg-white border border-blue-200 rounded-lg p-6 shadow-sm">
                   <div className="flex items-start gap-4">
-                    <div className="bg-blue-100 p-2 rounded-full">
+                    <div className="bg-blue-100 p-3 rounded-lg">
                       <CheckCircle className="h-6 w-6 text-blue-600" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="text-lg font-semibold text-gray-900 mb-3">
-                        {language === 'en' ? 'Essential Items to Bring' : 'Elementos Esenciales para Traer'}
+                      <h4 className="text-xl font-semibold text-gray-900 mb-3">
+                        {language === 'en' ? 'Must-Have Items' : 'Elementos Imprescindibles'}
                       </h4>
-                      <p className="text-gray-700 mb-4 text-sm">
+                      <p className="text-gray-700 mb-6 text-sm">
                         {language === 'en' 
-                          ? 'Having these items ready can help medical staff provide faster, more accurate care.'
-                          : 'Tener estos elementos listos puede ayudar al personal médico a brindar atención más rápida y precisa.'
+                          ? 'These 4 items are essential for faster registration and better care:'
+                          : 'Estos 4 elementos son esenciales para un registro más rápido y mejor atención:'
                         }
                       </p>
                       
-                      <div className="space-y-3">
-                        {/* Government-issued photo ID */}
-                        <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
-                          <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        {/* Photo ID */}
+                        <div className="flex items-start gap-3 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                          <div className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">1</div>
                           <div>
-                            <h5 className="font-medium text-gray-900 text-sm">
-                              {language === 'en' ? "Government-issued photo ID (driver's license, passport)" : 'ID con foto emitida por el gobierno (licencia de conducir, pasaporte)'}
+                            <h5 className="font-semibold text-blue-900 text-sm mb-1">
+                              {language === 'en' ? 'Photo ID' : 'ID con Foto'}
                             </h5>
+                            <p className="text-blue-800 text-xs">
+                              {language === 'en' ? "Driver's license, passport, or state ID" : 'Licencia de conducir, pasaporte o ID estatal'}
+                            </p>
                           </div>
                         </div>
 
-                        {/* Insurance cards */}
-                        <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
-                          <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                        {/* Insurance Card */}
+                        <div className="flex items-start gap-3 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                          <div className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">2</div>
                           <div>
-                            <h5 className="font-medium text-gray-900 text-sm">
-                              {language === 'en' ? 'Insurance cards and medical ID cards' : 'Tarjetas de seguro y tarjetas de identificación médica'}
+                            <h5 className="font-semibold text-blue-900 text-sm mb-1">
+                              {language === 'en' ? 'Insurance Card' : 'Tarjeta de Seguro'}
                             </h5>
+                            <p className="text-blue-800 text-xs">
+                              {language === 'en' ? 'Speeds up billing and coverage verification' : 'Acelera la facturación y verificación de cobertura'}
+                            </p>
                           </div>
                         </div>
 
-                        {/* Current prescription medications */}
-                        <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
-                          <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                        {/* Current Medications */}
+                        <div className="flex items-start gap-3 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                          <div className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">3</div>
                           <div>
-                            <h5 className="font-medium text-gray-900 text-sm">
-                              {language === 'en' ? 'Current prescription medications in original bottles' : 'Medicamentos recetados actuales en frascos originales'}
+                            <h5 className="font-semibold text-blue-900 text-sm mb-1">
+                              {language === 'en' ? 'Medication List' : 'Lista de Medicamentos'}
                             </h5>
+                            <p className="text-blue-800 text-xs">
+                              {language === 'en' ? 'All prescriptions, vitamins, and supplements' : 'Todas las recetas, vitaminas y suplementos'}
+                            </p>
                           </div>
                         </div>
 
-                        {/* List of medications */}
-                        <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
-                          <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                        {/* Emergency Contact */}
+                        <div className="flex items-start gap-3 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                          <div className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">4</div>
                           <div>
-                            <h5 className="font-medium text-gray-900 text-sm">
-                              {language === 'en' ? 'List of all medications, vitamins, and supplements with dosages' : 'Lista de todos los medicamentos, vitaminas y suplementos con dosis'}
+                            <h5 className="font-semibold text-blue-900 text-sm mb-1">
+                              {language === 'en' ? 'Emergency Contact' : 'Contacto de Emergencia'}
                             </h5>
+                            <p className="text-blue-800 text-xs">
+                              {language === 'en' ? 'Name and phone number of trusted person' : 'Nombre y teléfono de persona de confianza'}
+                            </p>
                           </div>
                         </div>
+                      </div>
 
-                        {/* Medical history */}
-                        <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
-                          <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
-                          <div>
-                            <h5 className="font-medium text-gray-900 text-sm">
-                              {language === 'en' ? 'Medical history summary including allergies and chronic conditions' : 'Resumen del historial médico incluyendo alergias y condiciones crónicas'}
-                            </h5>
+                      {/* Additional Helpful Items */}
+                      <div className="border-t border-gray-200 pt-4">
+                        <h5 className="font-medium text-gray-900 mb-3 text-sm">
+                          {language === 'en' ? 'Additional Helpful Items:' : 'Elementos Adicionales Útiles:'}
+                        </h5>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                          <div className="flex items-center gap-2">
+                            <CheckCircle className="h-4 w-4 text-green-600" />
+                            <span className="text-sm text-gray-700">
+                              {language === 'en' ? 'Phone charger' : 'Cargador de teléfono'}
+                            </span>
                           </div>
-                        </div>
-
-                        {/* Emergency contacts */}
-                        <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
-                          <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
-                          <div>
-                            <h5 className="font-medium text-gray-900 text-sm">
-                              {language === 'en' ? 'Emergency contact information' : 'Información de contacto de emergencia'}
-                            </h5>
+                          <div className="flex items-center gap-2">
+                            <CheckCircle className="h-4 w-4 text-green-600" />
+                            <span className="text-sm text-gray-700">
+                              {language === 'en' ? 'Small snack & water' : 'Refrigerio y agua'}
+                            </span>
                           </div>
-                        </div>
-
-                        {/* Personal comfort items */}
-                        <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
-                          <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
-                          <div>
-                            <h5 className="font-medium text-gray-900 text-sm">
-                              {language === 'en' ? 'Personal comfort items (phone charger, small snack, water)' : 'Artículos de comodidad personal (cargador de teléfono, refrigerio pequeño, agua)'}
-                            </h5>
+                          <div className="flex items-center gap-2">
+                            <CheckCircle className="h-4 w-4 text-green-600" />
+                            <span className="text-sm text-gray-700">
+                              {language === 'en' ? 'Medical records if available' : 'Registros médicos si están disponibles'}
+                            </span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <CheckCircle className="h-4 w-4 text-green-600" />
+                            <span className="text-sm text-gray-700">
+                              {language === 'en' ? 'Comfortable layers of clothing' : 'Capas cómodas de ropa'}
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -4260,180 +4295,210 @@ function App() {
                   </div>
                 </div>
 
-                {/* What to Expect During Your Visit */}
-                <div className="bg-white border border-gray-300 rounded-lg p-6 shadow-sm">
+                {/* What to Expect - Key Process Steps */}
+                <div className="bg-white border border-orange-200 rounded-lg p-6 shadow-sm">
                   <div className="flex items-start gap-4">
-                    <div className="bg-blue-100 p-2 rounded-full">
-                      <Clock className="h-6 w-6 text-blue-600" />
+                    <div className="bg-orange-100 p-3 rounded-lg">
+                      <Clock className="h-6 w-6 text-orange-600" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="text-lg font-semibold text-gray-900 mb-3">
-                        {language === 'en' ? 'What to Expect During Your Visit' : 'Qué Esperar Durante su Visita'}
+                      <h4 className="text-xl font-semibold text-gray-900 mb-3">
+                        {language === 'en' ? 'What to Expect' : 'Qué Esperar'}
                       </h4>
-                      <p className="text-gray-700 mb-4 text-sm">
+                      <p className="text-gray-700 mb-6 text-sm">
                         {language === 'en' 
-                          ? 'Understanding the emergency room process can help reduce anxiety and ensure smooth care.'
-                          : 'Entender el proceso de la sala de emergencias puede ayudar a reducir la ansiedad y asegurar una atención fluida.'
+                          ? 'Understanding the emergency room process helps reduce anxiety:'
+                          : 'Entender el proceso de la sala de emergencias ayuda a reducir la ansiedad:'
                         }
                       </p>
                       
-                      <div className="space-y-4">
-                        {/* Arrival and Registration */}
-                        <div className="border-l-4 border-blue-500 pl-4">
-                          <h5 className="font-semibold text-gray-900 mb-2">
-                            {language === 'en' ? '1. Arrival and Registration' : '1. Llegada y Registro'}
-                          </h5>
-                          <ul className="space-y-1 text-sm text-gray-700">
-                            <li>• {language === 'en' ? 'Check in at the registration desk' : 'Regístrese en el mostrador de registro'}</li>
-                            <li>• {language === 'en' ? 'Provide identification and insurance information' : 'Proporcione identificación e información del seguro'}</li>
-                            <li>• {language === 'en' ? 'Complete medical history forms' : 'Complete formularios de historial médico'}</li>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {/* Step 1: Registration */}
+                        <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
+                          <div className="flex items-center gap-3 mb-3">
+                            <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">1</div>
+                            <h5 className="font-semibold text-blue-900">
+                              {language === 'en' ? 'Registration' : 'Registro'}
+                            </h5>
+                          </div>
+                          <ul className="space-y-1 text-sm text-blue-800">
+                            <li>• {language === 'en' ? 'Show ID and insurance' : 'Mostrar ID y seguro'}</li>
+                            <li>• {language === 'en' ? 'Brief medical forms' : 'Formularios médicos breves'}</li>
                           </ul>
                         </div>
 
-                        {/* Triage Assessment */}
-                        <div className="border-l-4 border-orange-500 pl-4">
-                          <h5 className="font-semibold text-gray-900 mb-2">
-                            {language === 'en' ? '2. Triage Assessment (Priority Evaluation)' : '2. Evaluación de Triaje (Evaluación de Prioridad)'}
-                          </h5>
-                          <ul className="space-y-1 text-sm text-gray-700">
-                            <li>• {language === 'en' ? 'Nurse evaluates your symptoms and vital signs' : 'La enfermera evalúa sus síntomas y signos vitales'}</li>
-                            <li>• {language === 'en' ? 'Assignment of acuity level (1-5) based on urgency' : 'Asignación de nivel de acuidad (1-5) basado en urgencia'}</li>
-                            <li>• {language === 'en' ? 'More urgent cases are seen first, regardless of arrival time' : 'Los casos más urgentes se ven primero, independientemente de la hora de llegada'}</li>
+                        {/* Step 2: Triage */}
+                        <div className="bg-orange-50 rounded-lg p-4 border border-orange-200">
+                          <div className="flex items-center gap-3 mb-3">
+                            <div className="bg-orange-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">2</div>
+                            <h5 className="font-semibold text-orange-900">
+                              {language === 'en' ? 'Triage (Priority Check)' : 'Triaje (Verificación de Prioridad)'}
+                            </h5>
+                          </div>
+                          <ul className="space-y-1 text-sm text-orange-800">
+                            <li>• {language === 'en' ? 'Nurse checks symptoms' : 'Enfermera verifica síntomas'}</li>
+                            <li>• {language === 'en' ? 'Priority level assigned' : 'Nivel de prioridad asignado'}</li>
                           </ul>
                         </div>
 
-                        {/* Treatment and Care */}
-                        <div className="border-l-4 border-green-500 pl-4">
-                          <h5 className="font-semibold text-gray-900 mb-2">
-                            {language === 'en' ? '3. Treatment and Care' : '3. Tratamiento y Atención'}
-                          </h5>
-                          <ul className="space-y-1 text-sm text-gray-700">
-                            <li>• {language === 'en' ? 'Medical evaluation by physician or nurse practitioner' : 'Evaluación médica por médico o enfermero practicante'}</li>
-                            <li>• {language === 'en' ? 'Diagnostic tests if needed (blood work, imaging, etc.)' : 'Pruebas diagnósticas si es necesario (análisis de sangre, imágenes, etc.)'}</li>
-                            <li>• {language === 'en' ? 'Treatment plan discussion and implementation' : 'Discusión e implementación del plan de tratamiento'}</li>
-                            <li>• {language === 'en' ? 'Specialist consultation if required' : 'Consulta con especialista si es necesario'}</li>
+                        {/* Step 3: Treatment */}
+                        <div className="bg-green-50 rounded-lg p-4 border border-green-200">
+                          <div className="flex items-center gap-3 mb-3">
+                            <div className="bg-green-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">3</div>
+                            <h5 className="font-semibold text-green-900">
+                              {language === 'en' ? 'Medical Evaluation' : 'Evaluación Médica'}
+                            </h5>
+                          </div>
+                          <ul className="space-y-1 text-sm text-green-800">
+                            <li>• {language === 'en' ? 'Doctor examination' : 'Examen médico'}</li>
+                            <li>• {language === 'en' ? 'Tests if needed' : 'Exámenes si es necesario'}</li>
                           </ul>
                         </div>
 
-                        {/* Discharge or Admission */}
-                        <div className="border-l-4 border-purple-500 pl-4">
-                          <h5 className="font-semibold text-gray-900 mb-2">
-                            {language === 'en' ? '4. Discharge or Admission' : '4. Alta o Admisión'}
-                          </h5>
-                          <ul className="space-y-1 text-sm text-gray-700">
-                            <li>• {language === 'en' ? 'Discharge instructions and follow-up care plans' : 'Instrucciones de alta y planes de atención de seguimiento'}</li>
-                            <li>• {language === 'en' ? 'Prescription medications if needed' : 'Medicamentos recetados si es necesario'}</li>
-                            <li>• {language === 'en' ? 'Hospital admission if condition requires ongoing care' : 'Admisión hospitalaria si la condición requiere atención continua'}</li>
+                        {/* Step 4: Discharge */}
+                        <div className="bg-purple-50 rounded-lg p-4 border border-purple-200">
+                          <div className="flex items-center gap-3 mb-3">
+                            <div className="bg-purple-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">4</div>
+                            <h5 className="font-semibold text-purple-900">
+                              {language === 'en' ? 'Discharge or Admission' : 'Alta o Admisión'}
+                            </h5>
+                          </div>
+                          <ul className="space-y-1 text-sm text-purple-800">
+                            <li>• {language === 'en' ? 'Treatment plan' : 'Plan de tratamiento'}</li>
+                            <li>• {language === 'en' ? 'Follow-up instructions' : 'Instrucciones de seguimiento'}</li>
                           </ul>
+                        </div>
+                      </div>
+
+                      {/* Important Note */}
+                      <div className="mt-6 bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                        <div className="flex items-start gap-2">
+                          <Info className="h-4 w-4 text-yellow-600 mt-0.5 flex-shrink-0" />
+                          <p className="text-yellow-800 text-sm">
+                            <strong>{language === 'en' ? 'Remember:' : 'Recuerde:'}</strong> {language === 'en' ? 'More urgent cases are seen first, regardless of arrival time' : 'Los casos más urgentes se ven primero, independientemente de la hora de llegada'}
+                          </p>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Additional Preparation Tips */}
+                {/* Quick Tips - Before You Go & During Your Stay */}
                 <div className="grid gap-6 lg:grid-cols-2">
-                  {/* Before You Leave Home */}
+                  {/* Before You Leave */}
                   <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
                     <div className="flex items-start gap-3 mb-4">
-                      <div className="bg-blue-100 p-2 rounded-full">
+                      <div className="bg-blue-100 p-2 rounded-lg">
                         <Clock className="h-5 w-5 text-blue-600" />
                       </div>
                       <h4 className="text-lg font-semibold text-blue-900">
-                        {language === 'en' ? 'Before You Leave Home' : 'Antes de Salir de Casa'}
+                        {language === 'en' ? 'Before You Leave' : 'Antes de Salir'}
                       </h4>
                     </div>
-                    <ul className="space-y-2 text-sm text-blue-800">
-                      <li>• {language === 'en' ? 'Call ahead if your condition allows' : 'Llame antes si su condición lo permite'}</li>
-                      <li>• {language === 'en' ? 'Arrange reliable transportation or call 911' : 'Organice transporte confiable o llame al 911'}</li>
-                      <li>• {language === 'en' ? 'Secure your home and bring house keys' : 'Asegure su hogar y traiga llaves de casa'}</li>
-                      <li>• {language === 'en' ? 'Dress comfortably and appropriately' : 'Vístase cómoda y apropiadamente'}</li>
+                    <ul className="space-y-3 text-sm text-blue-800">
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                        <span>{language === 'en' ? 'Call ahead if your condition allows' : 'Llame antes si su condición lo permite'}</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                        <span>{language === 'en' ? 'Arrange safe transportation' : 'Organice transporte seguro'}</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                        <span>{language === 'en' ? 'Dress comfortably in layers' : 'Vístase cómodamente en capas'}</span>
+                      </li>
                     </ul>
                   </div>
 
                   {/* During Your Stay */}
                   <div className="bg-green-50 border border-green-200 rounded-lg p-6">
                     <div className="flex items-start gap-3 mb-4">
-                      <div className="bg-green-100 p-2 rounded-full">
+                      <div className="bg-green-100 p-2 rounded-lg">
                         <Heart className="h-5 w-5 text-green-600" />
                       </div>
                       <h4 className="text-lg font-semibold text-green-900">
                         {language === 'en' ? 'During Your Stay' : 'Durante su Estadía'}
                       </h4>
                     </div>
-                    <ul className="space-y-2 text-sm text-green-800">
-                      <li>• {language === 'en' ? 'Be honest and detailed about all symptoms' : 'Sea honesto y detallado sobre todos los síntomas'}</li>
-                      <li>• {language === 'en' ? 'Ask questions if anything is unclear' : 'Haga preguntas si algo no está claro'}</li>
-                      <li>• {language === 'en' ? 'Inform staff of any changes in your condition' : 'Informe al personal de cualquier cambio en su condición'}</li>
-                      <li>• {language === 'en' ? 'Follow all medical instructions carefully' : 'Siga todas las instrucciones médicas cuidadosamente'}</li>
-                      <li>• {language === 'en' ? 'Request interpreter services if needed' : 'Solicite servicios de interpretación si es necesario'}</li>
+                    <ul className="space-y-3 text-sm text-green-800">
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                        <span>{language === 'en' ? 'Be honest about all symptoms' : 'Sea honesto sobre todos los síntomas'}</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                        <span>{language === 'en' ? 'Ask questions if unclear' : 'Haga preguntas si no está claro'}</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                        <span>{language === 'en' ? 'Follow all medical instructions' : 'Siga todas las instrucciones médicas'}</span>
+                      </li>
                     </ul>
                   </div>
                 </div>
 
-                {/* What to Expect */}
-                <div className="bg-white border border-gray-300 rounded-lg p-6 shadow-sm">
+                {/* Expert Resources */}
+                <div className="bg-white border border-purple-200 rounded-lg p-6 shadow-sm">
                   <div className="flex items-start gap-4">
-                    <div className="bg-blue-100 p-2 rounded-full">
-                      <Info className="h-6 w-6 text-blue-600" />
+                    <div className="bg-purple-100 p-3 rounded-lg">
+                      <Phone className="h-6 w-6 text-purple-600" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="text-lg font-semibold text-gray-900 mb-3">
-                        {language === 'en' ? 'What to Expect' : 'Qué Esperar'}
+                      <h4 className="text-xl font-semibold text-gray-900 mb-3">
+                        {language === 'en' ? 'Expert Help & Resources' : 'Ayuda Experta y Recursos'}
                       </h4>
                       <p className="text-gray-600 mb-6 text-sm">
                         {language === 'en' 
-                          ? 'Get expert nursing advice and understand how emergency rooms prioritize patients to set proper expectations.'
-                          : 'Obtenga asesoramiento experto de enfermería y comprenda cómo las salas de emergencia priorizan a los pacientes para establecer expectativas adecuadas.'
+                          ? 'Get professional guidance before or during your visit:'
+                          : 'Obtenga orientación profesional antes o durante su visita:'
                         }
                       </p>
                       
-                      <div className="space-y-4">
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         {/* Nurses Advice Line */}
-                        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-                          <div className="flex items-start gap-4">
-                            <div className="bg-blue-100 p-2 rounded-full">
-                              <Phone className="h-5 w-5 text-blue-600" />
-                            </div>
-                            <div className="flex-1">
-                              <h5 className="text-lg font-semibold text-blue-900 mb-3">
-                                {language === 'en' ? 'Nurses Advice Line' : 'Línea de Consejos de Enfermería'}
-                              </h5>
-                              <p className="text-blue-800 text-sm mb-4 leading-relaxed">
-                                {language === 'en' 
-                                  ? 'Get expert nursing advice and guidance for your health concerns. Our qualified nurses can help you determine the appropriate level of care and answer your healthcare questions.'
-                                  : 'Obtenga asesoramiento experto de enfermería y orientación para sus preocupaciones de salud. Nuestras enfermeras calificadas pueden ayudarle a determinar el nivel apropiado de atención y responder sus preguntas de atención médica.'
-                                }
-                              </p>
-                              <Button className="bg-blue-600 hover:bg-blue-700 text-white">
-                                <Phone className="h-4 w-4 mr-2" />
-                                {language === 'en' ? 'Access Nurses Advice Line' : 'Acceder a Línea de Consejos de Enfermería'}
-                              </Button>
-                            </div>
+                        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                          <div className="flex items-center gap-3 mb-3">
+                            <Phone className="h-5 w-5 text-blue-600" />
+                            <h5 className="font-semibold text-blue-900">
+                              {language === 'en' ? 'Nurses Advice Line' : 'Línea de Consejos de Enfermería'}
+                            </h5>
                           </div>
+                          <p className="text-blue-800 text-sm mb-4">
+                            {language === 'en' 
+                              ? 'Get expert nursing advice for your health concerns'
+                              : 'Obtenga asesoramiento experto de enfermería para sus preocupaciones de salud'
+                            }
+                          </p>
+                          <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white">
+                            <Phone className="h-4 w-4 mr-2" />
+                            {language === 'en' ? 'Call Now' : 'Llamar Ahora'}
+                          </Button>
                         </div>
 
-                        {/* Emergency Department Information */}
-                        <div className="bg-green-50 border border-green-200 rounded-lg p-6">
-                          <div className="flex items-start gap-4">
-                            <div className="bg-green-100 p-2 rounded-full">
-                              <Building className="h-5 w-5 text-green-600" />
-                            </div>
-                            <div className="flex-1">
-                              <h5 className="text-lg font-semibold text-green-900 mb-4">
-                                {language === 'en' ? 'Emergency Department Information' : 'Información del Departamento de Emergencias'}
-                              </h5>
-                              <div className="flex gap-3">
-                                <Button className="bg-green-600 hover:bg-green-700 text-white">
-                                  <Info className="h-4 w-4 mr-2" />
-                                  {language === 'en' ? 'View Emergency Brochure' : 'Ver Folleto de Emergencia'}
-                                </Button>
-                                <Button className="bg-green-600 hover:bg-green-700 text-white">
-                                  <Eye className="h-4 w-4 mr-2" />
-                                  {language === 'en' ? 'Watch Emergency Video' : 'Ver Video de Emergencia'}
-                                </Button>
-                              </div>
-                            </div>
+                        {/* Emergency Information */}
+                        <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                          <div className="flex items-center gap-3 mb-3">
+                            <Info className="h-5 w-5 text-green-600" />
+                            <h5 className="font-semibold text-green-900">
+                              {language === 'en' ? 'ER Information' : 'Información de ER'}
+                            </h5>
+                          </div>
+                          <p className="text-green-800 text-sm mb-4">
+                            {language === 'en' 
+                              ? 'Learn about emergency department processes'
+                              : 'Aprenda sobre los procesos del departamento de emergencias'
+                            }
+                          </p>
+                          <div className="flex gap-2">
+                            <Button size="sm" variant="outline" className="border-green-300 text-green-700">
+                              <Eye className="h-4 w-4 mr-1" />
+                              {language === 'en' ? 'Video' : 'Video'}
+                            </Button>
+                            <Button size="sm" variant="outline" className="border-green-300 text-green-700">
+                              <Info className="h-4 w-4 mr-1" />
+                              {language === 'en' ? 'Guide' : 'Guía'}
+                            </Button>
                           </div>
                         </div>
                       </div>
@@ -4441,67 +4506,34 @@ function App() {
                   </div>
                 </div>
 
-                {/* Additional Emergency Resources */}
-                <div className="bg-white border border-gray-300 rounded-lg p-6 shadow-sm">
+                {/* Emergency Contacts - Quick Reference */}
+                <div className="bg-red-50 border border-red-200 rounded-lg p-6 shadow-sm">
                   <div className="flex items-start gap-4">
-                    <div className="bg-red-100 p-2 rounded-full">
+                    <div className="bg-red-100 p-3 rounded-lg">
                       <AlertTriangle className="h-6 w-6 text-red-600" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="text-lg font-semibold text-gray-900 mb-4">
-                        {language === 'en' ? 'Additional Emergency Resources' : 'Recursos Adicionales de Emergencia'}
+                      <h4 className="text-xl font-semibold text-red-900 mb-4">
+                        {language === 'en' ? 'Emergency Contacts' : 'Contactos de Emergencia'}
                       </h4>
                       
-                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                        {/* Emergency Contacts */}
-                        <div>
-                          <h5 className="font-semibold text-gray-900 mb-4">
-                            {language === 'en' ? 'Emergency Contacts' : 'Contactos de Emergencia'}
-                          </h5>
-                          <div className="space-y-3">
-                            <div className="flex items-center justify-between p-3 bg-red-50 rounded-lg border border-red-200">
-                              <div>
-                                <span className="font-medium text-gray-900">{language === 'en' ? 'Emergency Services:' : 'Servicios de Emergencia:'}</span>
-                              </div>
-                              <div className="font-bold text-red-600">911</div>
-                            </div>
-                            <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-200">
-                              <div>
-                                <span className="font-medium text-gray-900">{language === 'en' ? 'Poison Control:' : 'Control de Envenenamiento:'}</span>
-                              </div>
-                              <div className="font-bold text-blue-600">1-800-222-1222</div>
-                            </div>
-                            <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border border-gray-200">
-                              <div>
-                                <span className="font-medium text-gray-900">{language === 'en' ? 'Red Cross:' : 'Cruz Roja:'}</span>
-                              </div>
-                              <div className="font-bold text-blue-600">1-800-733-2767</div>
-                            </div>
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div className="bg-white border border-red-300 rounded-lg p-4 text-center">
+                          <div className="text-2xl font-bold text-red-600 mb-1">911</div>
+                          <div className="text-sm font-medium text-red-900">
+                            {language === 'en' ? 'Emergency Services' : 'Servicios de Emergencia'}
                           </div>
                         </div>
-
-                        {/* Useful Apps & Websites */}
-                        <div>
-                          <h5 className="font-semibold text-gray-900 mb-4">
-                            {language === 'en' ? 'Useful Apps & Websites' : 'Aplicaciones y Sitios Web Útiles'}
-                          </h5>
-                          <div className="space-y-3">
-                            <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
-                              <Phone className="h-4 w-4 text-red-600" />
-                              <span className="font-medium text-gray-900">{language === 'en' ? 'Red Cross Emergency App' : 'App de Emergencia Cruz Roja'}</span>
-                            </div>
-                            <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
-                              <Globe className="h-4 w-4 text-blue-600" />
-                              <span className="font-medium text-gray-900">Ready.gov</span>
-                            </div>
-                            <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
-                              <Phone className="h-4 w-4 text-orange-600" />
-                              <span className="font-medium text-gray-900">{language === 'en' ? 'FEMA Mobile App' : 'App Móvil FEMA'}</span>
-                            </div>
-                            <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
-                              <Globe className="h-4 w-4 text-green-600" />
-                              <span className="font-medium text-gray-900">Weather.gov</span>
-                            </div>
+                        <div className="bg-white border border-red-300 rounded-lg p-4 text-center">
+                          <div className="text-lg font-bold text-blue-600 mb-1">1-800-222-1222</div>
+                          <div className="text-sm font-medium text-blue-900">
+                            {language === 'en' ? 'Poison Control' : 'Control de Envenenamiento'}
+                          </div>
+                        </div>
+                        <div className="bg-white border border-red-300 rounded-lg p-4 text-center">
+                          <div className="text-lg font-bold text-blue-600 mb-1">1-800-733-2767</div>
+                          <div className="text-sm font-medium text-blue-900">
+                            {language === 'en' ? 'Red Cross' : 'Cruz Roja'}
                           </div>
                         </div>
                       </div>
@@ -4509,148 +4541,105 @@ function App() {
                   </div>
                 </div>
 
-                {/* Safe Healthcare Access for Everyone */}
+                {/* Safe Healthcare Access */}
                 <div className="bg-green-50 border border-green-300 rounded-lg p-6 shadow-sm">
                   <div className="flex items-start gap-4">
-                    <div className="bg-green-100 p-2 rounded-full">
+                    <div className="bg-green-100 p-3 rounded-lg">
                       <CheckCircle className="h-6 w-6 text-green-600" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="text-lg font-semibold text-green-900 mb-3">
-                        {language === 'en' ? 'Safe Healthcare Access for Everyone' : 'Acceso Seguro a la Atención Médica para Todos'}
+                      <h4 className="text-xl font-semibold text-green-900 mb-3">
+                        {language === 'en' ? 'Safe Healthcare for Everyone' : 'Atención Médica Segura para Todos'}
                       </h4>
-                      <p className="text-green-800 text-sm mb-6 leading-relaxed">
+                      <p className="text-green-800 text-sm mb-6">
                         {language === 'en' 
-                          ? 'We are committed to providing care to all patients regardless of immigration status.'
-                          : 'Estamos comprometidos a brindar atención a todos los pacientes independientemente del estado migratorio.'
+                          ? 'We provide care to all patients regardless of immigration status. No immigration questions asked.'
+                          : 'Brindamos atención a todos los pacientes independientemente del estado migratorio. No se hacen preguntas de inmigración.'
                         }
                       </p>
 
-                      {/* Important: No Immigration Questions */}
-                      <div className="bg-white border border-green-300 rounded-lg p-4 mb-6">
-                        <div className="flex items-start gap-3 mb-4">
-                          <Info className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
-                          <h5 className="font-semibold text-green-900">
-                            {language === 'en' ? 'Important: No Immigration Questions' : 'Importante: Sin Preguntas de Inmigración'}
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                        {/* Your Rights */}
+                        <div className="bg-white border border-green-300 rounded-lg p-4">
+                          <h5 className="font-semibold text-green-900 mb-3">
+                            {language === 'en' ? 'Your Rights' : 'Sus Derechos'}
                           </h5>
+                          <ul className="space-y-2 text-sm text-green-800">
+                            <li className="flex items-start gap-2">
+                              <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                              <span>{language === 'en' ? 'Emergency care regardless of ability to pay' : 'Atención de emergencia independientemente de la capacidad de pago'}</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                              <span>{language === 'en' ? 'Medical information protected by HIPAA' : 'Información médica protegida por HIPAA'}</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <CheckCircle className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                              <span>{language === 'en' ? 'Focus on your health and well-being' : 'Enfoque en su salud y bienestar'}</span>
+                            </li>
+                          </ul>
                         </div>
-                        <p className="text-green-800 text-sm mb-4 leading-relaxed">
+
+                        {/* Protected Services */}
+                        <div className="bg-white border border-green-300 rounded-lg p-4">
+                          <h5 className="font-semibold text-green-900 mb-3">
+                            {language === 'en' ? 'Protected Services' : 'Servicios Protegidos'}
+                          </h5>
+                          <ul className="space-y-2 text-sm text-green-800">
+                            <li className="flex items-start gap-2">
+                              <Heart className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                              <span>{language === 'en' ? 'Emergency Room care' : 'Atención de Sala de Emergencias'}</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <Heart className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                              <span>{language === 'en' ? 'Urgent Care facilities' : 'Instalaciones de Atención Urgente'}</span>
+                            </li>
+                            <li className="flex items-start gap-2">
+                              <Heart className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                              <span>{language === 'en' ? 'All healthcare services' : 'Todos los servicios de atención médica'}</span>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Final Reminders */}
+                <div className="grid gap-6 lg:grid-cols-2">
+                  {/* Remember */}
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                    <div className="flex items-start gap-3">
+                      <Info className="h-5 w-5 text-blue-600 mt-1 flex-shrink-0" />
+                      <div>
+                        <h5 className="font-semibold text-blue-900 mb-2">
+                          {language === 'en' ? 'Remember' : 'Recuerde'}
+                        </h5>
+                        <p className="text-blue-800 text-sm">
                           {language === 'en' 
-                            ? 'Our clinical staff will never ask about your immigration status. This applies to all our services including:'
-                            : 'Nuestro personal clínico nunca preguntará sobre su estado migratorio. Esto se aplica a todos nuestros servicios incluyendo:'
+                            ? "In a true emergency, don't delay care to gather items. Your safety comes first."
+                            : 'En una verdadera emergencia, no retrase la atención para reunir elementos. Su seguridad es lo primero.'
                           }
                         </p>
-                        <div className="space-y-2">
-                          <div className="flex items-center gap-2">
-                            <CheckCircle className="h-4 w-4 text-green-600" />
-                            <span className="text-sm text-green-800">
-                              {language === 'en' ? 'Emergency Room (ER) care' : 'Atención de Sala de Emergencias (ER)'}
-                            </span>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <CheckCircle className="h-4 w-4 text-green-600" />
-                            <span className="text-sm text-green-800">
-                              {language === 'en' ? 'Urgent Care facilities' : 'Instalaciones de Atención Urgente'}
-                            </span>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <CheckCircle className="h-4 w-4 text-green-600" />
-                            <span className="text-sm text-green-800">
-                              {language === 'en' ? 'Telehealth appointments' : 'Citas de Telemedicina'}
-                            </span>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <CheckCircle className="h-4 w-4 text-green-600" />
-                            <span className="text-sm text-green-800">
-                              {language === 'en' ? 'All other healthcare services' : 'Todos los demás servicios de atención médica'}
-                            </span>
-                          </div>
-                        </div>
                       </div>
+                    </div>
+                  </div>
 
-                      {/* Your Rights as a Patient */}
-                      <div className="bg-white border border-green-300 rounded-lg p-4">
-                        <h5 className="font-semibold text-green-900 mb-4">
-                          {language === 'en' ? 'Your Rights as a Patient' : 'Sus Derechos como Paciente'}
+                  {/* Medical Disclaimer */}
+                  <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
+                    <div className="flex items-start gap-3">
+                      <Info className="h-5 w-5 text-gray-600 mt-1 flex-shrink-0" />
+                      <div>
+                        <h5 className="font-semibold text-gray-900 mb-2">
+                          {language === 'en' ? 'Medical Disclaimer' : 'Descargo de Responsabilidad'}
                         </h5>
-                        <div className="space-y-3">
-                          <div className="flex items-start gap-3">
-                            <Heart className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
-                            <span className="text-sm text-green-800">
-                              {language === 'en' 
-                                ? 'You have the right to receive emergency medical care regardless of ability to pay or immigration status'
-                                : 'Usted tiene el derecho de recibir atención médica de emergencia independientemente de la capacidad de pago o estado migratorio'
-                              }
-                            </span>
-                          </div>
-                          <div className="flex items-start gap-3">
-                            <Building className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
-                            <span className="text-sm text-green-800">
-                              {language === 'en' 
-                                ? 'Your medical information is protected by federal privacy laws (HIPAA)'
-                                : 'Su información médica está protegida por las leyes federales de privacidad (HIPAA)'
-                              }
-                            </span>
-                          </div>
-                          <div className="flex items-start gap-3">
-                            <Heart className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
-                            <span className="text-sm text-green-800">
-                              {language === 'en' 
-                                ? 'You can seek care with confidence - our focus is on your health and well-being'
-                                : 'Puede buscar atención con confianza - nuestro enfoque está en su salud y bienestar'
-                              }
-                            </span>
-                          </div>
-                        </div>
+                        <p className="text-gray-700 text-sm">
+                          {language === 'en'
+                            ? 'This information is for educational purposes only. For medical emergencies, call 911 immediately.'
+                            : 'Esta información es solo para fines educativos. Para emergencias médicas, llame al 911 inmediatamente.'
+                          }
+                        </p>
                       </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Remember Box */}
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-                  <div className="flex items-start gap-3">
-                    <Info className="h-5 w-5 text-blue-600 mt-1 flex-shrink-0" />
-                    <div>
-                      <h5 className="font-semibold text-blue-900 mb-2">
-                        {language === 'en' ? 'Remember' : 'Recuerde'}
-                      </h5>
-                      <p className="text-blue-800 text-sm mb-3">
-                        {language === 'en' 
-                          ? "In a true emergency, don't delay care to gather these items. Your safety comes first - these are helpful when possible to bring."
-                          : "En una verdadera emergencia, no retrase la atención para reunir estos elementos. Su seguridad es lo primero: estos son útiles cuando sea posible traerlos."
-                        }
-                      </p>
-                      <p className="text-blue-800 text-sm">
-                        {language === 'en'
-                          ? "Consider keeping copies of important medical documents in an easily accessible location for emergency situations."
-                          : "Considere mantener copias de documentos médicos importantes en un lugar fácilmente accesible para situaciones de emergencia."
-                        }
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Medical Disclaimer */}
-                <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
-                  <div className="flex items-start gap-3">
-                    <Info className="h-5 w-5 text-gray-600 mt-1 flex-shrink-0" />
-                    <div>
-                      <h5 className="font-semibold text-gray-900 mb-2">
-                        {language === 'en' ? 'Medical Disclaimer' : 'Descargo de Responsabilidad Médica'}
-                      </h5>
-                      <p className="text-gray-700 text-sm mb-3">
-                        {language === 'en'
-                          ? "The information provided on this page is for educational purposes only and should not be used as a substitute for professional medical advice, diagnosis, or treatment. Always consult with a qualified healthcare provider about any health concerns or before making any decisions related to your health or treatment."
-                          : "La información proporcionada en esta página es solo para fines educativos y no debe usarse como sustituto del consejo médico profesional, diagnóstico o tratamiento. Siempre consulte con un proveedor de atención médica calificado sobre cualquier preocupación de salud o antes de tomar cualquier decisión relacionada con su salud o tratamiento."
-                        }
-                      </p>
-                      <p className="text-gray-700 text-sm font-medium">
-                        {language === 'en'
-                          ? "In case of a medical emergency, call 911 immediately. This facility is not responsible for any actions taken based on the information provided through this guidance tool."
-                          : "En caso de emergencia médica, llame al 911 inmediatamente. Esta instalación no es responsable de ninguna acción tomada basada en la información proporcionada a través de esta herramienta de orientación."
-                        }
-                      </p>
                     </div>
                   </div>
                 </div>
