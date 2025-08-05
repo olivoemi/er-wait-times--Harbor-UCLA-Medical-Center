@@ -4546,7 +4546,10 @@ function App() {
 
                     {/* Action Buttons */}
                     <div className="flex gap-3">
-                      <Button className="bg-orange-600 hover:bg-orange-700 text-white flex-1">
+                      <Button 
+                        className="bg-orange-600 hover:bg-orange-700 text-white flex-1"
+                        onClick={() => window.open('https://dhs.lacounty.gov/lahealthportal/', '_blank')}
+                      >
                         <FirstAid className="h-4 w-4 mr-2" />
                         {language === 'en' ? 'Schedule Appointment' : 'Programar Cita'}
                       </Button>
