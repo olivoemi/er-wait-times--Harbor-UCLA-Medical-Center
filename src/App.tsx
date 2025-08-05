@@ -4044,7 +4044,7 @@ function App() {
                             </div>
                             
                             <div className="border-t border-gray-100 pt-2 mt-2">
-                              <div className="text-xs text-gray-600">
+                              <div className="text-xs text-gray-600 mb-3">
                                 <span className="font-medium text-gray-700">
                                   {language === 'en' ? 'Hours:' : 'Horarios:'}
                                 </span>
@@ -4053,6 +4053,31 @@ function App() {
                                     <div key={hourIndex} className="break-words">{hour}</div>
                                   ))}
                                 </div>
+                              </div>
+                              
+                              {/* Action Buttons */}
+                              <div className="flex gap-2">
+                                <Button
+                                  size="sm"
+                                  variant="outline"
+                                  className="flex-1 text-xs h-8 border-blue-300 text-blue-700 hover:bg-blue-50"
+                                  onClick={() => window.open(`tel:${location.phone}`, '_self')}
+                                >
+                                  <Phone className="h-3 w-3 mr-1" />
+                                  {language === 'en' ? 'Call' : 'Llamar'}
+                                </Button>
+                                <Button
+                                  size="sm"
+                                  variant="outline"
+                                  className="flex-1 text-xs h-8 border-green-300 text-green-700 hover:bg-green-50"
+                                  onClick={() => {
+                                    const encodedAddress = encodeURIComponent(location.address)
+                                    window.open(`https://www.google.com/maps/dir/?api=1&destination=${encodedAddress}`, '_blank')
+                                  }}
+                                >
+                                  <MapPin className="h-3 w-3 mr-1" />
+                                  {language === 'en' ? 'Directions' : 'Direcciones'}
+                                </Button>
                               </div>
                             </div>
                           </div>
