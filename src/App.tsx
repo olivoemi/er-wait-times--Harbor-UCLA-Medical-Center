@@ -1432,8 +1432,8 @@ function App() {
                             </div>
                           </div>
                           <div className="text-right">
-                            <div className="text-sm text-gray-600 mb-1">{t[language].status}</div>
-                            <div className="font-semibold text-green-600">{t[language].open}</div>
+                            <div className="text-sm text-gray-600 mb-1 whitespace-nowrap">{t[language].status}</div>
+                            <div className="font-semibold text-green-600 whitespace-nowrap">{t[language].open}</div>
                           </div>
                         </div>
 
