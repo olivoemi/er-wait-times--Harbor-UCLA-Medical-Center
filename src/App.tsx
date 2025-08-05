@@ -1671,13 +1671,173 @@ function App() {
                         </div>
                       </div>
 
-                      {/* Contact */}
-                      <div className="bg-white border border-gray-200 rounded-lg p-4">
-                        <h4 className="font-semibold text-gray-900 mb-3">{t[language].contactInformation}</h4>
-                        <div className="space-y-2 text-sm">
-                          <div>1000 W Carson St, Torrance, CA 90509</div>
-                          <div>(424) 306-5001</div>
+                      {/* Expandable Facility Information Panel */}
+                      <div className="bg-white border border-gray-200 rounded-lg shadow-sm">
+                        <div 
+                          className="p-4 border-b border-gray-200 cursor-pointer hover:bg-gray-50"
+                          onClick={() => setFacilityInfoExpanded(!facilityInfoExpanded)}
+                        >
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-3">
+                              <Building className="h-5 w-5 text-blue-600" />
+                              <h4 className="font-semibold text-gray-900">{t[language].facilityInformation}</h4>
+                            </div>
+                            {facilityInfoExpanded ? 
+                              <CaretUp className="h-4 w-4 text-gray-600" /> : 
+                              <CaretDown className="h-4 w-4 text-gray-600" />
+                            }
+                          </div>
                         </div>
+
+                        {facilityInfoExpanded && (
+                          <div className="p-6 space-y-6">
+                            {/* Level 1 Trauma Center */}
+                            <div className="space-y-3">
+                              <div className="flex items-center gap-2">
+                                <Siren className="h-5 w-5 text-blue-600" />
+                                <h5 className="font-semibold text-blue-900">{t[language].level1TraumaCenter}</h5>
+                              </div>
+                              <p className="text-gray-700 text-sm leading-relaxed">
+                                {t[language].traumaCenterDescription}
+                              </p>
+                            </div>
+
+                            {/* Contact Information */}
+                            <div className="space-y-4">
+                              <h5 className="font-semibold text-gray-900">{t[language].contactInformation}</h5>
+                              
+                              {/* Address */}
+                              <div className="flex items-start gap-3">
+                                <MapPin className="h-4 w-4 text-gray-600 mt-0.5" />
+                                <div>
+                                  <div className="font-medium text-gray-900">1000 W Carson St, Torrance, CA 90509</div>
+                                  <div className="text-sm text-gray-600">Torrance, CA 90509</div>
+                                </div>
+                              </div>
+
+                              {/* Phone */}
+                              <div className="flex items-center gap-3">
+                                <Phone className="h-4 w-4 text-gray-600" />
+                                <div>
+                                  <div className="font-medium text-gray-900">(310) 222-2345</div>
+                                  <div className="text-sm text-gray-600">{t[language].mainLine}</div>
+                                </div>
+                              </div>
+
+                              {/* Website */}
+                              <div className="flex items-center gap-3">
+                                <Globe className="h-4 w-4 text-gray-600" />
+                                <div>
+                                  <a 
+                                    href="https://dhs.lacounty.gov/harbor-ucla-medical-center/" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    className="text-blue-600 hover:text-blue-800 font-medium"
+                                  >
+                                    dhs.lacounty.gov/harbor-ucla-medical-center/
+                                  </a>
+                                  <div className="text-sm text-gray-600">{t[language].officialWebsite}</div>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Operating Hours */}
+                            <div className="space-y-3">
+                              <h5 className="font-semibold text-gray-900">{t[language].operatingHours}</h5>
+                              <div className="flex items-center gap-2">
+                                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                                <span className="text-green-700 font-medium">{t[language].open24_7}</span>
+                              </div>
+                            </div>
+
+                            {/* Amenities & Services */}
+                            <div className="space-y-4">
+                              <h5 className="font-semibold text-gray-900">
+                                {language === 'en' ? 'Amenities & Services' : 'Comodidades y Servicios'}
+                              </h5>
+                              
+                              <div className="grid grid-cols-2 gap-4">
+                                {/* First Column */}
+                                <div className="space-y-3">
+                                  <div className="flex items-center gap-2">
+                                    <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                                    <span className="text-sm text-gray-700">
+                                      {language === 'en' ? 'Free WiFi' : 'WiFi Gratis'}
+                                    </span>
+                                  </div>
+                                  <div className="flex items-center gap-2">
+                                    <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                                    <span className="text-sm text-gray-700">
+                                      {language === 'en' ? 'Cafeteria' : 'Cafetería'}
+                                    </span>
+                                  </div>
+                                  <div className="flex items-center gap-2">
+                                    <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                                    <span className="text-sm text-gray-700">
+                                      {language === 'en' ? 'Parking Available' : 'Estacionamiento Disponible'}
+                                    </span>
+                                  </div>
+                                  <div className="flex items-center gap-2">
+                                    <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                                    <span className="text-sm text-gray-700">
+                                      {language === 'en' ? 'Chapel/Prayer Room' : 'Capilla/Sala de Oración'}
+                                    </span>
+                                  </div>
+                                </div>
+
+                                {/* Second Column */}
+                                <div className="space-y-3">
+                                  <div className="flex items-center gap-2">
+                                    <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                                    <span className="text-sm text-gray-700">
+                                      {language === 'en' ? 'Wheelchair Accessible' : 'Accesible para Sillas de Ruedas'}
+                                    </span>
+                                  </div>
+                                  <div className="flex items-center gap-2">
+                                    <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                                    <span className="text-sm text-gray-700">
+                                      {language === 'en' ? 'ATM' : 'Cajero Automático'}
+                                    </span>
+                                  </div>
+                                  <div className="flex items-center gap-2">
+                                    <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                                    <span className="text-sm text-gray-700">
+                                      {language === 'en' ? 'Pharmacy' : 'Farmacia'}
+                                    </span>
+                                  </div>
+                                  <div className="flex items-center gap-2">
+                                    <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                                    <span className="text-sm text-gray-700">
+                                      {language === 'en' ? 'Gift Shop' : 'Tienda de Regalos'}
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Emergency Contact */}
+                            <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                              <div className="flex items-start gap-3">
+                                <AlertTriangle className="h-5 w-5 text-red-600 mt-0.5" />
+                                <div>
+                                  <h5 className="font-semibold text-red-900 mb-2">
+                                    {language === 'en' ? 'Life-Threatening Emergency' : 'Emergencia que Amenaza la Vida'}
+                                  </h5>
+                                  <p className="text-red-800 text-sm mb-3">
+                                    {language === 'en' 
+                                      ? 'For immediate life-threatening emergencies, call 911 or go directly to the nearest emergency room.'
+                                      : 'Para emergencias inmediatas que amenazan la vida, llame al 911 o vaya directamente a la sala de emergencias más cercana.'
+                                    }
+                                  </p>
+                                  <div className="flex items-center gap-2">
+                                    <Phone className="h-4 w-4 text-red-600" />
+                                    <span className="font-bold text-red-900 text-lg">911</span>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        )}
                       </div>
 
                         {/* Clean Summary Table Section */}
