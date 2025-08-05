@@ -1230,20 +1230,16 @@ function App() {
                       <div className="mb-4 flex-1">
                         <p className="text-xs text-yellow-700 mb-4 leading-relaxed">
                           {language === 'en' 
-                            ? 'Stable vital signs requiring blood work, imaging, and/or specialty consultation'
-                            : 'Signos vitales estables que requieren análisis de sangre, imágenes y/o consulta especializada'
+                          }
+                        </p>
                           }
                         </p>
 
-                        <div className="mb-4">
-                          <h5 className="text-xs font-semibold text-yellow-900 mb-2">
                             {language === 'en' ? 'Common Examples:' : 'Ejemplos Comunes:'}
                           </h5>
                           <ul className="space-y-1 text-xs text-yellow-800">
                             <li>• {language === 'en' ? 'Fever' : 'Fiebre'}</li>
                             <li>• {language === 'en' ? 'Headache' : 'Dolor de cabeza'}</li>
-                            <li>• {language === 'en' ? 'Chest pain' : 'Dolor de pecho'}</li>
-                            <li>• {language === 'en' ? 'Abdominal pain' : 'Dolor abdominal'}</li>
                             <li>• {language === 'en' ? 'Complex fractures' : 'Fracturas complejas'}</li>
                             <li>• {language === 'en' ? 'Syncope/fainting' : 'Síncope/desmayo'}</li>
                             <li>• {language === 'en' ? 'Seizure' : 'Convulsión'}</li>
@@ -1251,11 +1247,11 @@ function App() {
                         </div>
 
                         <div className="mb-4">
+                          </ul>
+                        </div>
+
+                        <div className="mb-4">
                           <h5 className="text-xs font-semibold text-yellow-900 mb-2">
-                            {language === 'en' ? 'What to Expect:' : 'Qué Esperar:'}
-                          </h5>
-                          <ul className="space-y-1 text-xs text-yellow-700">
-                            <li>• {language === 'en' ? 'Wait time varies' : 'Tiempo de espera varía'}</li>
                             <li>• {language === 'en' ? 'Standard evaluation' : 'Evaluación estándar'}</li>
                             <li>• {language === 'en' ? 'Treatment plan provided' : 'Plan de tratamiento provisto'}</li>
                           </ul>
@@ -1285,25 +1281,24 @@ function App() {
                             : 'Condiciones estables incluyendo lesiones menores y quejas comunes'
                           }
                         </p>
-
-                        <div className="mb-4">
+                            ? 'Stable conditions including minor injuries and common complaints'
+                            : 'Condiciones estables incluyendo lesiones menores y quejas comunes'
                           <h5 className="text-xs font-semibold text-blue-900 mb-2">
                             {language === 'en' ? 'Common Examples:' : 'Ejemplos Comunes:'}
                           </h5>
-                          <ul className="space-y-1 text-xs text-blue-800">
-                            <li>• {language === 'en' ? 'Cold/flu symptoms' : 'Síntomas de resfriado/gripe'}</li>
+                        <div className="mb-4">
+                          <h5 className="text-xs font-semibold text-blue-900 mb-2">
                             <li>• {language === 'en' ? 'Lacerations' : 'Laceraciones'}</li>
                             <li>• {language === 'en' ? 'Sprains and simple fractures' : 'Esguinces y fracturas simples'}</li>
                           </ul>
+                            <li>• {language === 'en' ? 'Cold/flu symptoms' : 'Síntomas de resfriado/gripe'}</li>
+                            <li>• {language === 'en' ? 'Lacerations' : 'Laceraciones'}</li>
+                            <li>• {language === 'en' ? 'Sprains and simple fractures' : 'Esguinces y fracturas simples'}</li>
+                            {language === 'en' ? 'What to Expect:' : 'Qué Esperar:'}
                         </div>
 
                         <div className="mb-4">
                           <h5 className="text-xs font-semibold text-blue-900 mb-2">
-                            {language === 'en' ? 'What to Expect:' : 'Qué Esperar:'}
-                          </h5>
-                          <ul className="space-y-1 text-xs text-blue-700">
-                            <li>• {language === 'en' ? 'Longer wait times' : 'Tiempos de espera más largos'}</li>
-                            <li>• {language === 'en' ? 'Basic examination' : 'Examen básico'}</li>
                             <li>• {language === 'en' ? 'Consider urgent care' : 'Considerar atención urgente'}</li>
                           </ul>
                         </div>
@@ -1333,25 +1328,24 @@ function App() {
                           }
                         </p>
 
-                        <div className="mb-4">
-                          <h5 className="text-xs font-semibold text-green-900 mb-2">
+                            ? 'Primary care complaints and routine health needs'
+                            : 'Quejas de atención primaria y necesidades de salud rutinarias'
                             {language === 'en' ? 'Common Examples:' : 'Ejemplos Comunes:'}
                           </h5>
                           <ul className="space-y-1 text-xs text-green-800">
-                            <li>• {language === 'en' ? 'Primary care complaints' : 'Quejas de atención primaria'}</li>
-                            <li>• {language === 'en' ? 'Medication refills' : 'Reposición de medicamentos'}</li>
+                        <div className="mb-4">
+                          <h5 className="text-xs font-semibold text-green-900 mb-2">
                             <li>• {language === 'en' ? 'Non-emergent specialty referrals' : 'Referencias especializadas no urgentes'}</li>
                           </ul>
                         </div>
-
+                            <li>• {language === 'en' ? 'Primary care complaints' : 'Quejas de atención primaria'}</li>
+                            <li>• {language === 'en' ? 'Medication refills' : 'Reposición de medicamentos'}</li>
+                            <li>• {language === 'en' ? 'Non-emergent specialty referrals' : 'Referencias especializadas no urgentes'}</li>
+                          </h5>
+                        </div>
+i>
                         <div className="mb-4">
                           <h5 className="text-xs font-semibold text-green-900 mb-2">
-                            {language === 'en' ? 'What to Expect:' : 'Qué Esperar:'}
-                          </h5>
-                          <ul className="space-y-1 text-xs text-green-700">
-                            <li>• {language === 'en' ? 'Longest wait times' : 'Tiempos de espera más largos'}</li>
-                            <li>• {language === 'en' ? 'Simple treatment' : 'Tratamiento simple'}</li>
-                            <li>• {language === 'en' ? 'Try clinic first' : 'Pruebe clínica primero'}</li>
                           </ul>
                         </div>
                       </div>
@@ -3275,8 +3269,8 @@ function App() {
                         </h4>
                         <p className="text-gray-600 text-sm">
                           {language === 'en' 
-                            ? 'For urgent minor complaints and non-emergency care needs'
-                            : 'Para quejas menores urgentes y necesidades de atención no urgente'
+                            ? 'For conditions that are not life-threatening but need same-day care'
+                            : 'Para condiciones que no amenazan la vida que necesitan atención el mismo día'
                           }
                         </p>
                       </div>
@@ -3331,7 +3325,7 @@ function App() {
                       </div>
                     </div>
 
-                    {/* Best For Section - Urgent Care */}
+                    {/* Best For Section */}
                     <div className="mb-6">
                       <div className="flex items-center gap-2 mb-4">
                         <CheckCircle className="h-5 w-5 text-green-600" />
@@ -3339,83 +3333,35 @@ function App() {
                           {language === 'en' ? 'Best For' : 'Mejor Para'}
                         </h5>
                       </div>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div className="space-y-2">
-                          <ul className="space-y-2 text-sm text-gray-700">
-                            <li className="flex items-center gap-2">
-                              <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                              {language === 'en' ? 'Urgent minor complaints' : 'Quejas menores urgentes'}
-                            </li>
-                            <li className="flex items-center gap-2">
-                              <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                              {language === 'en' ? 'Medication refills' : 'Reposición de medicamentos'}
-                            </li>
-                            <li className="flex items-center gap-2">
-                              <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                              {language === 'en' ? 'Non-emergent specialty referrals' : 'Referencias especializadas no urgentes'}
-                            </li>
-                            <li className="flex items-center gap-2">
-                              <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                              {language === 'en' ? 'Cold and flu symptoms' : 'Síntomas de resfriado y gripe'}
-                            </li>
-                            <li className="flex items-center gap-2">
-                              <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                              {language === 'en' ? 'Back pain' : 'Dolor de espalda'}
-                            </li>
-                            <li className="flex items-center gap-2">
-                              <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                              {language === 'en' ? 'Sprains/strains/minor fractures' : 'Esguinces/torceduras/fracturas menores'}
-                            </li>
-                            <li className="flex items-center gap-2">
-                              <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                              {language === 'en' ? 'Minor burns' : 'Quemaduras menores'}
-                            </li>
-                            <li className="flex items-center gap-2">
-                              <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                              {language === 'en' ? 'Simple lacerations' : 'Laceraciones simples'}
-                            </li>
-                            <li className="flex items-center gap-2">
-                              <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                              {language === 'en' ? 'Abscesses' : 'Abscesos'}
-                            </li>
-                          </ul>
-                        </div>
-                        <div className="space-y-2">
-                          <ul className="space-y-2 text-sm text-gray-700">
-                            <li className="flex items-center gap-2">
-                              <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                              {language === 'en' ? 'Nausea/vomiting/diarrhea' : 'Náuseas/vómitos/diarrea'}
-                            </li>
-                            <li className="flex items-center gap-2">
-                              <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                              {language === 'en' ? 'Mild headache' : 'Dolor de cabeza leve'}
-                            </li>
-                            <li className="flex items-center gap-2">
-                              <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                              {language === 'en' ? 'Rash' : 'Sarpullido'}
-                            </li>
-                            <li className="flex items-center gap-2">
-                              <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                              {language === 'en' ? 'UTI' : 'Infección urinaria'}
-                            </li>
-                            <li className="flex items-center gap-2">
-                              <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                              {language === 'en' ? 'STD check' : 'Examen de ETS'}
-                            </li>
-                            <li className="flex items-center gap-2">
-                              <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                              {language === 'en' ? 'Annual physical' : 'Examen físico anual'}
-                            </li>
-                            <li className="flex items-center gap-2">
-                              <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                              {language === 'en' ? 'Preventive care and health screenings' : 'Atención preventiva y exámenes de salud'}
-                            </li>
-                            <li className="flex items-center gap-2">
-                              <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
-                              {language === 'en' ? 'Vaccinations' : 'Vacunas'}
-                            </li>
-                          </ul>
-                        </div>
+                      <div className="grid grid-cols-2 gap-4">
+                        <ul className="space-y-2 text-sm text-gray-700">
+                          <li className="flex items-center gap-2">
+                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                            {language === 'en' ? 'Cold and flu symptoms' : 'Síntomas de resfriado y gripe'}
+                          </li>
+                          <li className="flex items-center gap-2">
+                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                            {language === 'en' ? 'Mental health support' : 'Apoyo de salud mental'}
+                          </li>
+                          <li className="flex items-center gap-2">
+                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                            {language === 'en' ? 'Follow-up appointments' : 'Citas de seguimiento'}
+                          </li>
+                        </ul>
+                        <ul className="space-y-2 text-sm text-gray-700">
+                          <li className="flex items-center gap-2">
+                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                            {language === 'en' ? 'Skin conditions' : 'Condiciones de la piel'}
+                          </li>
+                          <li className="flex items-center gap-2">
+                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                            {language === 'en' ? 'Prescription refills' : 'Reposición de recetas'}
+                          </li>
+                          <li className="flex items-center gap-2">
+                            <div className="w-1.5 h-1.5 bg-gray-400 rounded-full"></div>
+                            {language === 'en' ? 'General health questions' : 'Preguntas generales de salud'}
+                          </li>
+                        </ul>
                       </div>
                     </div>
 
