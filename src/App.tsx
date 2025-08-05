@@ -4004,6 +4004,104 @@ function App() {
                   </div>
                 </div>
 
+                {/* Safe Healthcare Access for Everyone */}
+                <div className="bg-green-50 border border-green-300 rounded-lg p-6 shadow-sm">
+                  <div className="flex items-start gap-4">
+                    <div className="bg-green-100 p-2 rounded-full">
+                      <CheckCircle className="h-6 w-6 text-green-600" />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-lg font-semibold text-green-900 mb-3">
+                        {language === 'en' ? 'Safe Healthcare Access for Everyone' : 'Acceso Seguro a la Atención Médica para Todos'}
+                      </h4>
+                      <p className="text-green-800 text-sm mb-6 leading-relaxed">
+                        {language === 'en' 
+                          ? 'We are committed to providing care to all patients regardless of immigration status.'
+                          : 'Estamos comprometidos a brindar atención a todos los pacientes independientemente del estado migratorio.'
+                        }
+                      </p>
+
+                      {/* Important: No Immigration Questions */}
+                      <div className="bg-white border border-green-300 rounded-lg p-4 mb-6">
+                        <div className="flex items-start gap-3 mb-4">
+                          <Info className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                          <h5 className="font-semibold text-green-900">
+                            {language === 'en' ? 'Important: No Immigration Questions' : 'Importante: Sin Preguntas de Inmigración'}
+                          </h5>
+                        </div>
+                        <p className="text-green-800 text-sm mb-4 leading-relaxed">
+                          {language === 'en' 
+                            ? 'Our clinical staff will never ask about your immigration status. This applies to all our services including:'
+                            : 'Nuestro personal clínico nunca preguntará sobre su estado migratorio. Esto se aplica a todos nuestros servicios incluyendo:'
+                          }
+                        </p>
+                        <div className="space-y-2">
+                          <div className="flex items-center gap-2">
+                            <CheckCircle className="h-4 w-4 text-green-600" />
+                            <span className="text-sm text-green-800">
+                              {language === 'en' ? 'Emergency Room (ER) care' : 'Atención de Sala de Emergencias (ER)'}
+                            </span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <CheckCircle className="h-4 w-4 text-green-600" />
+                            <span className="text-sm text-green-800">
+                              {language === 'en' ? 'Urgent Care facilities' : 'Instalaciones de Atención Urgente'}
+                            </span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <CheckCircle className="h-4 w-4 text-green-600" />
+                            <span className="text-sm text-green-800">
+                              {language === 'en' ? 'Telehealth appointments' : 'Citas de Telemedicina'}
+                            </span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <CheckCircle className="h-4 w-4 text-green-600" />
+                            <span className="text-sm text-green-800">
+                              {language === 'en' ? 'All other healthcare services' : 'Todos los demás servicios de atención médica'}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Your Rights as a Patient */}
+                      <div className="bg-white border border-green-300 rounded-lg p-4">
+                        <h5 className="font-semibold text-green-900 mb-4">
+                          {language === 'en' ? 'Your Rights as a Patient' : 'Sus Derechos como Paciente'}
+                        </h5>
+                        <div className="space-y-3">
+                          <div className="flex items-start gap-3">
+                            <Heart className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                            <span className="text-sm text-green-800">
+                              {language === 'en' 
+                                ? 'You have the right to receive emergency medical care regardless of ability to pay or immigration status'
+                                : 'Usted tiene el derecho de recibir atención médica de emergencia independientemente de la capacidad de pago o estado migratorio'
+                              }
+                            </span>
+                          </div>
+                          <div className="flex items-start gap-3">
+                            <Building className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                            <span className="text-sm text-green-800">
+                              {language === 'en' 
+                                ? 'Your medical information is protected by federal privacy laws (HIPAA)'
+                                : 'Su información médica está protegida por las leyes federales de privacidad (HIPAA)'
+                              }
+                            </span>
+                          </div>
+                          <div className="flex items-start gap-3">
+                            <Heart className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                            <span className="text-sm text-green-800">
+                              {language === 'en' 
+                                ? 'You can seek care with confidence - our focus is on your health and well-being'
+                                : 'Puede buscar atención con confianza - nuestro enfoque está en su salud y bienestar'
+                              }
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 {/* Remember Box */}
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
                   <div className="flex items-start gap-3">
