@@ -1993,37 +1993,26 @@ function App() {
                           </div>
 
                           {/* Insurance Information */}
-                          <div className="bg-blue-50 border border-blue-200 rounded-xl shadow-sm p-6">
-                            <div className="flex items-center gap-3 mb-6">
-                              <div className="bg-blue-100 p-3 rounded-lg">
-                                <Building className="h-6 w-6 text-blue-600" />
+                          <div className="bg-blue-50 border border-blue-200 rounded-xl shadow-sm p-4">
+                            <div className="flex items-center gap-3 mb-4">
+                              <div className="bg-blue-100 p-2 rounded-lg">
+                                <Building className="h-5 w-5 text-blue-600" />
                               </div>
-                              <h4 className="text-lg font-semibold text-blue-900">
+                              <h4 className="text-base font-semibold text-blue-900">
                                 {language === 'en' ? 'Insurance Information' : 'Información de Seguro'}
                               </h4>
                             </div>
-                            <div className="space-y-4">
-                              <div>
-                                <h5 className="font-semibold text-blue-800 mb-3">
-                                  {language === 'en' ? 'Accepted Insurance:' : 'Seguros Aceptados:'}
-                                </h5>
-                                <div className="grid grid-cols-1 gap-2">
-                                  {['Medi-Cal', 'Medicare', 'Blue Cross Blue Shield', 'Aetna', 'United Healthcare'].map((insurance) => (
-                                    <div key={insurance} className="flex items-center gap-3 p-3 bg-blue-100 rounded-lg">
-                                      <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                                      <span className="text-sm font-medium text-blue-900">{insurance}</span>
-                                    </div>
-                                  ))}
-                                  <div className="flex items-center gap-3 p-3 bg-blue-100 rounded-lg">
-                                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                                    <span className="text-sm font-medium text-blue-900">
-                                      {language === 'en' ? 'Most major insurance plans' : 'La mayoría de planes de seguro principales'}
-                                    </span>
-                                  </div>
-                                </div>
-                              </div>
-                              <div className="bg-blue-200 border border-blue-400 rounded-lg p-4">
+                            <div className="space-y-3">
+                              <div className="bg-blue-100 rounded-lg p-3">
                                 <p className="text-sm font-medium text-blue-900">
+                                  {language === 'en' 
+                                    ? 'Harbor Medical Center accepts all insurances'
+                                    : 'Harbor Medical Center acepta todos los seguros'
+                                  }
+                                </p>
+                              </div>
+                              <div className="bg-blue-200 border border-blue-400 rounded-lg p-3">
+                                <p className="text-xs font-medium text-blue-900">
                                   {language === 'en' 
                                     ? 'Emergency services are provided regardless of insurance status or ability to pay.'
                                     : 'Los servicios de emergencia se brindan independientemente del estado del seguro o la capacidad de pago.'
