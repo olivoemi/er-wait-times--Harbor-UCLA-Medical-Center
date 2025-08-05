@@ -1680,6 +1680,32 @@ function App() {
                         </div>
                       </div>
 
+                      {/* Additional Metrics */}
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div className="text-center">
+                          <div className="text-sm text-gray-600 mb-2">
+                            {language === 'en' ? 'Avg. Boarding Per Pt' : 'Promedio Embarque Por Pt'}
+                          </div>
+                          <div className="text-2xl font-bold text-gray-900">6:45</div>
+                          <div className="text-xs text-gray-500">(h:mm)</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="text-sm text-gray-600 mb-2">
+                            {language === 'en' ? 'Avg. Arrival to Doc' : 'Promedio Llegada a Doc'}
+                          </div>
+                          <div className="text-2xl font-bold text-orange-500">42 mins.</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="text-sm text-gray-600 mb-2">
+                            {language === 'en' ? 'Avg. Disposition to Discharge' : 'Promedio Disposición a Alta'}
+                          </div>
+                          <div className="text-2xl font-bold text-blue-600">21 mins.</div>
+                          <div className="text-xs text-gray-500">
+                            {language === 'en' ? '(last 4 hours)' : '(últimas 4 horas)'}
+                          </div>
+                        </div>
+                      </div>
+
                       {/* Expandable Facility Information Panel */}
                       <div className="bg-white border border-gray-200 rounded-lg shadow-sm">
                         <div 
