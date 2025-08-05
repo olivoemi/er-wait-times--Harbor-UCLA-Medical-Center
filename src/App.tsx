@@ -1793,90 +1793,311 @@ function App() {
                         </div>
                       </div>
 
-                      {/* Services & Amenities */}
-                      <div>
-                        <h4 className="text-xl font-semibold text-gray-900 mb-6">
-                          {language === 'en' ? 'Services & Patient Resources' : 'Servicios y Recursos para Pacientes'}
-                        </h4>
-                        
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-                          {/* Amenities */}
-                          <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
-                            <div className="flex items-center gap-3 mb-4">
-                              <div className="bg-blue-100 p-2 rounded-lg">
-                                <FirstAid className="h-5 w-5 text-blue-600" />
-                              </div>
-                              <h5 className="text-lg font-semibold text-gray-900">
+                        {/* Amenities and Services */}
+                        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+                          <div className="flex items-center gap-3 mb-6">
+                            <div className="bg-purple-100 p-3 rounded-lg">
+                              <FirstAid className="h-6 w-6 text-purple-600" />
+                            </div>
+                            <h4 className="text-lg font-semibold text-gray-900">
+                              {language === 'en' ? 'Amenities & Services' : 'Servicios y Comodidades'}
+                            </h4>
+                          </div>
+                          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div>
+                              <h5 className="font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
                                 {language === 'en' ? 'Patient Amenities' : 'Comodidades para Pacientes'}
                               </h5>
-                            </div>
-                            <div className="grid grid-cols-2 gap-3">
-                              {[
-                                language === 'en' ? 'Free WiFi' : 'WiFi Gratuito',
-                                language === 'en' ? 'Cafeteria' : 'Cafetería',
-                                language === 'en' ? 'Gift Shop' : 'Tienda de Regalos',
-                                language === 'en' ? 'Parking Available' : 'Estacionamiento Disponible',
-                                language === 'en' ? 'ADA Compliant' : 'Cumple con ADA',
-                                language === 'en' ? 'Interpreter Services' : 'Servicios de Interpretación'
-                              ].map((amenity, index) => (
-                                <div key={index} className="flex items-center gap-2 text-sm text-gray-700">
-                                  <div className="w-2 h-2 bg-blue-500 rounded-full flex-shrink-0"></div>
-                                  <span>{amenity}</span>
+                              <div className="space-y-3">
+                                <div className="flex items-center gap-3 p-3 bg-blue-50 rounded-lg">
+                                  <div className="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
+                                  <span className="text-sm font-medium text-blue-900">
+                                    {language === 'en' ? 'Free WiFi' : 'WiFi Gratuito'}
+                                  </span>
                                 </div>
-                              ))}
+                                <div className="flex items-center gap-3 p-3 bg-blue-50 rounded-lg">
+                                  <div className="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
+                                  <span className="text-sm font-medium text-blue-900">
+                                    {language === 'en' ? 'Cafeteria' : 'Cafetería'}
+                                  </span>
+                                </div>
+                                <div className="flex items-center gap-3 p-3 bg-blue-50 rounded-lg">
+                                  <div className="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
+                                  <span className="text-sm font-medium text-blue-900">
+                                    {language === 'en' ? 'Gift Shop' : 'Tienda de Regalos'}
+                                  </span>
+                                </div>
+                                <div className="flex items-center gap-3 p-3 bg-blue-50 rounded-lg">
+                                  <div className="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
+                                  <span className="text-sm font-medium text-blue-900">
+                                    {language === 'en' ? 'Parking Available' : 'Estacionamiento Disponible'}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                            
+                            <div>
+                              <h5 className="font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                                <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                                {language === 'en' ? 'Support Services' : 'Servicios de Apoyo'}
+                              </h5>
+                              <div className="space-y-3">
+                                <div className="flex items-center gap-3 p-3 bg-purple-50 rounded-lg">
+                                  <div className="w-1.5 h-1.5 bg-purple-500 rounded-full"></div>
+                                  <span className="text-sm font-medium text-purple-900">
+                                    {language === 'en' ? 'Interpreter Services' : 'Servicios de Interpretación'}
+                                  </span>
+                                </div>
+                                <div className="flex items-center gap-3 p-3 bg-purple-50 rounded-lg">
+                                  <div className="w-1.5 h-1.5 bg-purple-500 rounded-full"></div>
+                                  <span className="text-sm font-medium text-purple-900">
+                                    {language === 'en' ? 'Social Services' : 'Servicios Sociales'}
+                                  </span>
+                                </div>
+                                <div className="flex items-center gap-3 p-3 bg-purple-50 rounded-lg">
+                                  <div className="w-1.5 h-1.5 bg-purple-500 rounded-full"></div>
+                                  <span className="text-sm font-medium text-purple-900">
+                                    {language === 'en' ? 'Chaplain Services' : 'Servicios de Capellán'}
+                                  </span>
+                                </div>
+                                <div className="flex items-center gap-3 p-3 bg-purple-50 rounded-lg">
+                                  <div className="w-1.5 h-1.5 bg-purple-500 rounded-full"></div>
+                                  <span className="text-sm font-medium text-purple-900">
+                                    {language === 'en' ? 'Patient Relations' : 'Relaciones con Pacientes'}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                            
+                            <div>
+                              <h5 className="font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                                {language === 'en' ? 'Accessibility' : 'Accesibilidad'}
+                              </h5>
+                              <div className="space-y-3">
+                                <div className="flex items-center gap-3 p-3 bg-green-50 rounded-lg">
+                                  <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                                  <span className="text-sm font-medium text-green-900">
+                                    {language === 'en' ? 'ADA Compliant' : 'Cumple con ADA'}
+                                  </span>
+                                </div>
+                                <div className="flex items-center gap-3 p-3 bg-green-50 rounded-lg">
+                                  <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                                  <span className="text-sm font-medium text-green-900">
+                                    {language === 'en' ? 'Wheelchair Access' : 'Acceso para Sillas de Ruedas'}
+                                  </span>
+                                </div>
+                                <div className="flex items-center gap-3 p-3 bg-green-50 rounded-lg">
+                                  <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                                  <span className="text-sm font-medium text-green-900">
+                                    {language === 'en' ? 'Accessible Restrooms' : 'Baños Accesibles'}
+                                  </span>
+                                </div>
+                                <div className="flex items-center gap-3 p-3 bg-green-50 rounded-lg">
+                                  <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                                  <span className="text-sm font-medium text-green-900">
+                                    {language === 'en' ? 'Hearing Assistance' : 'Asistencia Auditiva'}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Emergency Contact & Insurance Info */}
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                          {/* Emergency Contact */}
+                          <div className="bg-red-50 border border-red-200 rounded-xl shadow-sm p-6">
+                            <div className="flex items-center gap-3 mb-6">
+                              <div className="bg-red-100 p-3 rounded-lg">
+                                <AlertTriangle className="h-6 w-6 text-red-600" />
+                              </div>
+                              <h4 className="text-lg font-semibold text-red-900">
+                                {language === 'en' ? 'Emergency Contact' : 'Contacto de Emergencia'}
+                              </h4>
+                            </div>
+                            <div className="space-y-4">
+                              <div className="flex items-center gap-4 p-4 bg-red-100 rounded-lg border border-red-300">
+                                <div className="bg-red-600 p-2 rounded-lg">
+                                  <Phone className="h-6 w-6 text-white" />
+                                </div>
+                                <div>
+                                  <div className="text-2xl font-bold text-red-900">911</div>
+                                  <div className="text-sm font-medium text-red-700">
+                                    {language === 'en' ? 'Life-threatening emergencies' : 'Emergencias que amenazan la vida'}
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="flex items-center gap-4 p-4 bg-red-100 rounded-lg border border-red-300">
+                                <div className="bg-red-500 p-2 rounded-lg">
+                                  <Phone className="h-6 w-6 text-white" />
+                                </div>
+                                <div>
+                                  <div className="text-lg font-semibold text-red-900">(310) 222-2345</div>
+                                  <div className="text-sm font-medium text-red-700">
+                                    {language === 'en' ? 'Hospital main line' : 'Línea principal del hospital'}
+                                  </div>
+                                </div>
+                              </div>
+                              <div className="bg-red-200 border border-red-400 rounded-lg p-4">
+                                <p className="text-sm font-medium text-red-900">
+                                  {language === 'en' 
+                                    ? 'For life-threatening emergencies, call 911 immediately. Do not drive yourself to the hospital.'
+                                    : 'Para emergencias que amenazan la vida, llame al 911 inmediatamente. No conduzca usted mismo al hospital.'
+                                  }
+                                </p>
+                              </div>
                             </div>
                           </div>
 
-                          {/* Insurance & Emergency */}
-                          <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
-                            <div className="flex items-center gap-3 mb-4">
-                              <div className="bg-green-100 p-2 rounded-lg">
-                                <Building className="h-5 w-5 text-green-600" />
+                          {/* Insurance Information */}
+                          <div className="bg-blue-50 border border-blue-200 rounded-xl shadow-sm p-6">
+                            <div className="flex items-center gap-3 mb-6">
+                              <div className="bg-blue-100 p-3 rounded-lg">
+                                <Building className="h-6 w-6 text-blue-600" />
                               </div>
-                              <h5 className="text-lg font-semibold text-gray-900">
-                                {language === 'en' ? 'Insurance & Emergency' : 'Seguro y Emergencia'}
-                              </h5>
+                              <h4 className="text-lg font-semibold text-blue-900">
+                                {language === 'en' ? 'Insurance Information' : 'Información de Seguro'}
+                              </h4>
                             </div>
-                            <div className="space-y-3">
-                              <div className="bg-green-50 rounded-lg p-3 border border-green-200">
-                                <div className="text-sm font-semibold text-green-900 mb-1">
-                                  {language === 'en' ? 'Emergency Line' : 'Línea de Emergencia'}
+                            <div className="space-y-4">
+                              <div>
+                                <h5 className="font-semibold text-blue-800 mb-3">
+                                  {language === 'en' ? 'Accepted Insurance:' : 'Seguros Aceptados:'}
+                                </h5>
+                                <div className="grid grid-cols-1 gap-2">
+                                  {['Medi-Cal', 'Medicare', 'Blue Cross Blue Shield', 'Aetna', 'United Healthcare'].map((insurance) => (
+                                    <div key={insurance} className="flex items-center gap-3 p-3 bg-blue-100 rounded-lg">
+                                      <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                                      <span className="text-sm font-medium text-blue-900">{insurance}</span>
+                                    </div>
+                                  ))}
+                                  <div className="flex items-center gap-3 p-3 bg-blue-100 rounded-lg">
+                                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                                    <span className="text-sm font-medium text-blue-900">
+                                      {language === 'en' ? 'Most major insurance plans' : 'La mayoría de planes de seguro principales'}
+                                    </span>
+                                  </div>
                                 </div>
-                                <div className="text-lg font-bold text-green-800">911</div>
                               </div>
-                              <div className="bg-blue-50 rounded-lg p-3 border border-blue-200">
-                                <div className="text-sm font-semibold text-blue-900 mb-1">
-                                  {language === 'en' ? 'Hospital Main Line' : 'Línea Principal del Hospital'}
+                              <div className="bg-blue-200 border border-blue-400 rounded-lg p-4">
+                                <p className="text-sm font-medium text-blue-900">
+                                  {language === 'en' 
+                                    ? 'Emergency services are provided regardless of insurance status or ability to pay.'
+                                    : 'Los servicios de emergencia se brindan independientemente del estado del seguro o la capacidad de pago.'
+                                  }
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Patient Resources */}
+                        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+                          <div className="flex items-center gap-3 mb-6">
+                            <div className="bg-indigo-100 p-3 rounded-lg">
+                              <Info className="h-6 w-6 text-indigo-600" />
+                            </div>
+                            <h4 className="text-lg font-semibold text-gray-900">
+                              {language === 'en' ? 'Patient Resources' : 'Recursos para Pacientes'}
+                            </h4>
+                          </div>
+                          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            <div>
+                              <h5 className="font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                                <div className="w-2 h-2 bg-indigo-500 rounded-full"></div>
+                                {language === 'en' ? 'Before Your Visit' : 'Antes de su Visita'}
+                              </h5>
+                              <div className="space-y-3">
+                                {[
+                                  language === 'en' ? 'Bring valid ID and insurance card' : 'Traiga ID válida y tarjeta de seguro',
+                                  language === 'en' ? 'List of current medications' : 'Lista de medicamentos actuales',
+                                  language === 'en' ? 'Emergency contact information' : 'Información de contacto de emergencia',
+                                  language === 'en' ? 'Medical history summary' : 'Resumen de historial médico'
+                                ].map((item, index) => (
+                                  <div key={index} className="flex items-center gap-3 p-3 bg-indigo-50 rounded-lg">
+                                    <div className="w-1.5 h-1.5 bg-indigo-500 rounded-full"></div>
+                                    <span className="text-sm font-medium text-indigo-900">{item}</span>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                            
+                            <div>
+                              <h5 className="font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                                {language === 'en' ? 'During Your Visit' : 'Durante su Visita'}
+                              </h5>
+                              <div className="space-y-3">
+                                {[
+                                  language === 'en' ? 'Check in at registration desk' : 'Registrarse en el mostrador de registro',
+                                  language === 'en' ? 'Triage assessment will prioritize care' : 'La evaluación de triaje priorizará la atención',
+                                  language === 'en' ? 'Family member can accompany you' : 'Un familiar puede acompañarlo',
+                                  language === 'en' ? 'Ask questions about your treatment' : 'Haga preguntas sobre su tratamiento'
+                                ].map((item, index) => (
+                                  <div key={index} className="flex items-center gap-3 p-3 bg-green-50 rounded-lg">
+                                    <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
+                                    <span className="text-sm font-medium text-green-900">{item}</span>
+                                  </div>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                          
+                          <div className="mt-8 pt-6 border-t border-gray-200">
+                            <h5 className="font-semibold text-gray-800 mb-4 flex items-center gap-2">
+                              <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                              {language === 'en' ? 'Additional Resources' : 'Recursos Adicionales'}
+                            </h5>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                              <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg p-4 border border-gray-200">
+                                <div className="font-semibold text-gray-800 mb-2">
+                                  {language === 'en' ? 'Patient Portal' : 'Portal del Paciente'}
                                 </div>
-                                <div className="text-blue-800 font-medium">(310) 222-2345</div>
+                                <a href="#" className="text-blue-600 hover:text-blue-800 font-medium">
+                                  mylaharbor.org
+                                </a>
                               </div>
-                              <div className="text-xs text-gray-600">
-                                {language === 'en' 
-                                  ? 'All major insurance plans accepted • Emergency care regardless of ability to pay'
-                                  : 'Todos los planes principales de seguro aceptados • Atención de emergencia independientemente de la capacidad de pago'
-                                }
+                              <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg p-4 border border-gray-200">
+                                <div className="font-semibold text-gray-800 mb-2">
+                                  {language === 'en' ? 'Financial Assistance' : 'Asistencia Financiera'}
+                                </div>
+                                <div className="text-gray-700 font-medium">(310) 222-1234</div>
+                              </div>
+                              <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg p-4 border border-gray-200">
+                                <div className="font-semibold text-gray-800 mb-2">
+                                  {language === 'en' ? 'Medical Records' : 'Registros Médicos'}
+                                </div>
+                                <div className="text-gray-700 font-medium">(310) 222-5678</div>
                               </div>
                             </div>
                           </div>
                         </div>
                       </div>
 
-                      {/* Wait Times Analysis */}
-                      <div>
-                        <h4 className="text-xl font-semibold text-gray-900 mb-6">{t[language].waitTimesByConditionSeverity}</h4>
-                        
-                        {/* Wait Times Graph */}
-                        <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-6 mb-6">
+                      {/* Wait Times Graph Section */}
+                      <div className="mb-8">
+                        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
                           <div className="flex items-center justify-between mb-6">
-                            <h5 className="text-lg font-semibold text-gray-900">
-                              {language === 'en' ? 'Wait Times by Acuity Level Over Time' : 'Tiempos de Espera por Nivel de Acuidad a lo Largo del Tiempo'}
-                            </h5>
+                            <div className="flex items-center gap-3">
+                              <div className="bg-blue-100 p-3 rounded-lg">
+                                <Clock className="h-6 w-6 text-blue-600" />
+                              </div>
+                              <h4 className="text-xl font-bold text-gray-900">
+                                {language === 'en' ? 'Wait Times by Acuity Level Over Time' : 'Tiempos de Espera por Nivel de Acuidad a lo Largo del Tiempo'}
+                              </h4>
+                            </div>
                             <div className="flex gap-2">
                               <Button variant="default" size="sm" className="bg-blue-600 hover:bg-blue-700 text-white">
                                 {language === 'en' ? 'Today' : 'Hoy'}
                               </Button>
-                              <Button variant="outline" size="sm">{language === 'en' ? 'Yesterday' : 'Ayer'}</Button>
-                              <Button variant="outline" size="sm">{language === 'en' ? 'Week' : 'Semana'}</Button>
+                              <Button variant="outline" size="sm">
+                                {language === 'en' ? 'Yesterday' : 'Ayer'}
+                              </Button>
+                              <Button variant="outline" size="sm">
+                                {language === 'en' ? 'Week' : 'Semana'}
+                              </Button>
                             </div>
                           </div>
 
@@ -1908,110 +2129,436 @@ function App() {
 
                               {/* Time axis labels */}
                               <div className="absolute -bottom-8 left-0 w-full flex justify-between text-xs text-gray-500">
-                                <span>12 AM</span><span>3 AM</span><span>6 AM</span><span>9 AM</span>
-                                <span>12 PM</span><span>3 PM</span><span>6 PM</span><span>9 PM</span>
+                                <span>12 AM</span>
+                                <span>3 AM</span>
+                                <span>6 AM</span>
+                                <span>9 AM</span>
+                                <span>12 PM</span>
+                                <span>3 PM</span>
+                                <span>6 PM</span>
+                                <span>9 PM</span>
                               </div>
 
-                              {/* Graph lines */}
+                              {/* Graph lines - SVG for better line drawing */}
                               <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-                                <polyline fill="none" stroke="#EF4444" strokeWidth="0.5" points="0,90 12,88 25,85 37,82 50,80 62,78 75,82 87,85 100,88" />
-                                <polyline fill="none" stroke="#F97316" strokeWidth="0.5" points="0,85 12,83 25,80 37,75 50,70 62,65 75,68 87,72 100,75" />
-                                <polyline fill="none" stroke="#EAB308" strokeWidth="0.5" points="0,70 12,65 25,55 37,45 50,40 62,35 75,30 87,25 100,20" />
-                                <polyline fill="none" stroke="#3B82F6" strokeWidth="0.5" points="0,45 12,40 25,35 37,25 50,15 62,10 75,8 87,12 100,18" />
-                                <polyline fill="none" stroke="#10B981" strokeWidth="0.5" points="0,50 12,45 25,40 37,30 50,20 62,15 75,12 87,15 100,22" />
+                                {/* Level 1 - Red line (lowest, near bottom) */}
+                                <polyline
+                                  fill="none"
+                                  stroke="#EF4444"
+                                  strokeWidth="0.5"
+                                  points="0,90 12,88 25,85 37,82 50,80 62,78 75,82 87,85 100,88"
+                                />
+                                {/* Level 2 - Orange line */}
+                                <polyline
+                                  fill="none"
+                                  stroke="#F97316"
+                                  strokeWidth="0.5"
+                                  points="0,85 12,83 25,80 37,75 50,70 62,65 75,68 87,72 100,75"
+                                />
+                                {/* Level 3 - Yellow line */}
+                                <polyline
+                                  fill="none"
+                                  stroke="#EAB308"
+                                  strokeWidth="0.5"
+                                  points="0,70 12,65 25,55 37,45 50,40 62,35 75,30 87,25 100,20"
+                                />
+                                {/* Level 4 - Blue line */}
+                                <polyline
+                                  fill="none"
+                                  stroke="#3B82F6"
+                                  strokeWidth="0.5"
+                                  points="0,45 12,40 25,35 37,25 50,15 62,10 75,8 87,12 100,18"
+                                />
+                                {/* Level 5 - Green line (highest, near top) */}
+                                <polyline
+                                  fill="none"
+                                  stroke="#10B981"
+                                  strokeWidth="0.5"
+                                  points="0,50 12,45 25,40 37,30 50,20 62,15 75,12 87,15 100,22"
+                                />
                               </svg>
                             </div>
                           </div>
 
-                          {/* Legend & Stats */}
+                          {/* Legend */}
                           <div className="flex justify-center gap-6 mb-6">
-                            {[
-                              { level: 1, color: 'bg-red-500', peak: '70 min' },
-                              { level: 2, color: 'bg-orange-500', peak: '120 min' },
-                              { level: 3, color: 'bg-yellow-500', peak: '220 min' },
-                              { level: 4, color: 'bg-blue-500', peak: '270 min' },
-                              { level: 5, color: 'bg-green-500', peak: '190 min' }
-                            ].map(item => (
-                              <div key={item.level} className="text-center">
-                                <div className="flex items-center gap-2 mb-1">
-                                  <div className={`w-3 h-3 ${item.color} rounded-full`}></div>
-                                  <span className="text-sm text-gray-700">Level {item.level}</span>
-                                </div>
-                                <div className="text-xs text-gray-500">
-                                  {language === 'en' ? 'Peak: ' : 'Pico: '}{item.peak}
-                                </div>
-                              </div>
-                            ))}
+                            <div className="flex items-center gap-2">
+                              <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                              <span className="text-sm text-gray-700">Level 1</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
+                              <span className="text-sm text-gray-700">Level 2</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                              <span className="text-sm text-gray-700">Level 3</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                              <span className="text-sm text-gray-700">Level 4</span>
+                            </div>
+                            <div className="flex items-center gap-2">
+                              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                              <span className="text-sm text-gray-700">Level 5</span>
+                            </div>
                           </div>
-                        </div>
 
-                        {/* Current Wait Times */}
-                        <div className="space-y-4">
-                          {[
-                            { level: 1, name: t[language].level1Critical, time: '<15m', queue: 3, color: 'red' },
-                            { level: 2, name: t[language].level2Urgent, time: '<15m', queue: 7, color: 'orange' },
-                            { level: 3, name: t[language].level3LessUrgent, time: '693m', queue: 19, color: 'yellow' },
-                            { level: 4, name: t[language].level4NonUrgent, time: '1020m', queue: 13, color: 'blue' },
-                            { level: 5, name: t[language].level5LowAcuity, time: '943m', queue: 3, color: 'green' }
-                          ].map(item => (
-                            <div key={item.level} className={`bg-${item.color}-50 border border-${item.color}-200 rounded-lg p-4`}>
-                              <div className="flex items-center justify-between">
-                                <div className="flex items-center gap-4">
-                                  <div className={`w-10 h-10 bg-${item.color}-500 rounded-full flex items-center justify-center text-white font-bold`}>
-                                    {item.level}
-                                  </div>
-                                  <div>
-                                    <h6 className={`font-semibold text-${item.color}-900`}>{item.name}</h6>
-                                    <p className={`text-sm text-${item.color}-700`}>
-                                      {language === 'en' ? `Queue: ${item.queue} patients` : `Cola: ${item.queue} pacientes`}
-                                    </p>
-                                  </div>
-                                </div>
-                                <div className="text-right">
-                                  <div className={`text-2xl font-bold ${item.time.includes('<') ? 'text-green-600' : 'text-red-600'}`}>
-                                    {item.time}
-                                  </div>
-                                  <div className="text-sm text-gray-600">
-                                    {language === 'en' ? 'Wait Time' : 'Tiempo de Espera'}
-                                  </div>
-                                </div>
+                          {/* Peak times summary */}
+                          <div className="grid grid-cols-5 gap-4">
+                            <div className="bg-red-50 border border-red-200 rounded-lg p-3 text-center">
+                              <div className="font-semibold text-red-900 text-sm">L1</div>
+                              <div className="text-xs text-red-700 mt-1">
+                                {language === 'en' ? 'Peak: 70 min' : 'Pico: 70 min'}
                               </div>
                             </div>
-                          ))}
+                            <div className="bg-orange-50 border border-orange-200 rounded-lg p-3 text-center">
+                              <div className="font-semibold text-orange-900 text-sm">L2</div>
+                              <div className="text-xs text-orange-700 mt-1">
+                                {language === 'en' ? 'Peak: 120 min' : 'Pico: 120 min'}
+                              </div>
+                            </div>
+                            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 text-center">
+                              <div className="font-semibold text-yellow-900 text-sm">L3</div>
+                              <div className="text-xs text-yellow-700 mt-1">
+                                {language === 'en' ? 'Peak: 220 min' : 'Pico: 220 min'}
+                              </div>
+                            </div>
+                            <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 text-center">
+                              <div className="font-semibold text-blue-900 text-sm">L4</div>
+                              <div className="text-xs text-blue-700 mt-1">
+                                {language === 'en' ? 'Peak: 270 min' : 'Pico: 270 min'}
+                              </div>
+                            </div>
+                            <div className="bg-green-50 border border-green-200 rounded-lg p-3 text-center">
+                              <div className="font-semibold text-green-900 text-sm">L5</div>
+                              <div className="text-xs text-green-700 mt-1">
+                                {language === 'en' ? 'Peak: 190 min' : 'Pico: 190 min'}
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
 
-                      {/* Specialized Services */}
-                      <div className="bg-white border border-gray-200 rounded-xl shadow-sm p-6">
+                      {/* Wait Times by Condition Severity - Detailed */}
+                      <div className="mb-8">
                         <div className="flex items-center gap-3 mb-6">
-                          <div className="bg-red-100 p-2 rounded-lg">
-                            <Heart className="h-5 w-5 text-red-600" />
+                          <div className="bg-orange-100 p-3 rounded-lg">
+                            <Clock className="h-6 w-6 text-orange-600" />
                           </div>
-                          <h5 className="text-lg font-semibold text-gray-900">
-                            {language === 'en' ? 'Top 5 Specialized Services Available' : 'Top 5 Servicios Especializados Disponibles'}
-                          </h5>
+                          <h4 className="text-xl font-bold text-gray-900">{t[language].waitTimesByConditionSeverity}</h4>
                         </div>
-                        
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-3">
-                          {[
-                            { icon: Plus, name: language === 'en' ? 'Level 1 Trauma Center' : 'Centro de Trauma Nivel 1', color: 'red' },
-                            { icon: Heart, name: language === 'en' ? 'Cardiac Care' : 'Atención Cardíaca', color: 'pink' },
-                            { icon: Brain, name: language === 'en' ? 'Stroke Care' : 'Atención de Accidentes Cerebrovasculares', color: 'blue' },
-                            { icon: Activity, name: language === 'en' ? 'Critical Care' : 'Cuidados Intensivos', color: 'green' },
-                            { icon: FirstAid, name: language === 'en' ? 'Emergency Surgery' : 'Cirugía de Emergencia', color: 'purple' }
-                          ].map((service, index) => (
-                            <div key={index} className={`flex items-center justify-between p-3 bg-${service.color}-50 rounded-lg border border-${service.color}-200 hover:bg-${service.color}-100 transition-colors`}>
-                              <div className="flex items-center gap-3">
-                                <div className={`w-8 h-8 bg-${service.color}-100 rounded-full flex items-center justify-center`}>
-                                  <service.icon className={`h-4 w-4 text-${service.color}-600`} />
-                                </div>
-                                <span className={`font-medium text-${service.color}-900 text-sm`}>{service.name}</span>
+                      <div className="space-y-4">
+                        {/* Level 1 - Critical */}
+                        <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                          <div className="flex items-center justify-between mb-3">
+                            <div className="flex items-center gap-3">
+                              <div className="w-8 h-8 bg-red-500 rounded-full flex items-center justify-center">
+                                <span className="text-white text-sm font-bold">1</span>
                               </div>
-                              <div className={`w-2 h-2 bg-${service.color}-500 rounded-full`}></div>
+                              <div>
+                                <h5 className="font-bold text-red-900">{t[language].level1Critical}</h5>
+                                <p className="text-sm text-red-700">
+                                  {language === 'en' 
+                                    ? 'Life-threatening emergencies requiring immediate intervention'
+                                    : 'Emergencias que amenazan la vida que requieren intervención inmediata'
+                                  }
+                                </p>
+                              </div>
                             </div>
-                          ))}
+                            <div className="text-right">
+                              <div className="text-2xl font-bold text-green-600">&lt;15m</div>
+                              <div className="text-sm text-gray-600">
+                                {language === 'en' ? 'Queue: 3 patients' : 'Cola: 3 pacientes'}
+                              </div>
+                            </div>
+                          </div>
+                          <div className="grid grid-cols-2 gap-4 text-sm">
+                            <div>
+                              <h6 className="font-semibold text-red-900 mb-2">
+                                {language === 'en' ? 'Examples:' : 'Ejemplos:'}
+                              </h6>
+                              <ul className="space-y-1 text-red-800">
+                                <li>• {t[language].cardiacArrest}</li>
+                                <li>• {t[language].severeBreathing}</li>
+                                <li>• {t[language].majorTrauma}</li>
+                              </ul>
+                            </div>
+                            <div>
+                              <h6 className="font-semibold text-red-900 mb-2">
+                                {language === 'en' ? 'Process:' : 'Proceso:'}
+                              </h6>
+                              <ul className="space-y-1 text-red-800">
+                                <li>• {language === 'en' ? 'Immediate triage bypass' : 'Omisión inmediata de triaje'}</li>
+                                <li>• {language === 'en' ? 'Resuscitation team activated' : 'Equipo de resucitación activado'}</li>
+                                <li>• {language === 'en' ? 'Multiple specialists available' : 'Múltiples especialistas disponibles'}</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Level 2 - Urgent */}
+                        <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                          <div className="flex items-center justify-between mb-3">
+                            <div className="flex items-center gap-3">
+                              <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center">
+                                <span className="text-white text-sm font-bold">2</span>
+                              </div>
+                              <div>
+                                <h5 className="font-bold text-orange-900">{t[language].level2Urgent}</h5>
+                                <p className="text-sm text-orange-700">
+                                  {language === 'en' 
+                                    ? 'High-priority conditions requiring rapid assessment'
+                                    : 'Condiciones de alta prioridad que requieren evaluación rápida'
+                                  }
+                                </p>
+                              </div>
+                            </div>
+                            <div className="text-right">
+                              <div className="text-2xl font-bold text-green-600">&lt;15m</div>
+                              <div className="text-sm text-gray-600">
+                                {language === 'en' ? 'Queue: 7 patients' : 'Cola: 7 pacientes'}
+                              </div>
+                            </div>
+                          </div>
+                          <div className="grid grid-cols-2 gap-4 text-sm">
+                            <div>
+                              <h6 className="font-semibold text-orange-900 mb-2">
+                                {language === 'en' ? 'Examples:' : 'Ejemplos:'}
+                              </h6>
+                              <ul className="space-y-1 text-orange-800">
+                                <li>• {t[language].chestPain}</li>
+                                <li>• {t[language].severeAbdominal}</li>
+                                <li>• {t[language].highFeverConfusion}</li>
+                              </ul>
+                            </div>
+                            <div>
+                              <h6 className="font-semibold text-orange-900 mb-2">
+                                {language === 'en' ? 'Process:' : 'Proceso:'}
+                              </h6>
+                              <ul className="space-y-1 text-orange-800">
+                                <li>• {language === 'en' ? 'Fast-track assessment' : 'Evaluación de vía rápida'}</li>
+                                <li>• {language === 'en' ? 'Priority diagnostic testing' : 'Pruebas diagnósticas prioritarias'}</li>
+                                <li>• {language === 'en' ? 'Specialist consultation available' : 'Consulta especializada disponible'}</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Level 3 - Less Urgent */}
+                        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                          <div className="flex items-center justify-between mb-3">
+                            <div className="flex items-center gap-3">
+                              <div className="w-8 h-8 bg-yellow-500 rounded-full flex items-center justify-center">
+                                <span className="text-white text-sm font-bold">3</span>
+                              </div>
+                              <div>
+                                <h5 className="font-bold text-yellow-900">{t[language].level3LessUrgent}</h5>
+                                <p className="text-sm text-yellow-700">
+                                  {language === 'en' 
+                                    ? 'Stable conditions requiring medical evaluation within hours'
+                                    : 'Condiciones estables que requieren evaluación médica en horas'
+                                  }
+                                </p>
+                              </div>
+                            </div>
+                            <div className="text-right">
+                              <div className="text-2xl font-bold text-orange-600">693m</div>
+                              <div className="text-sm text-gray-600">
+                                {language === 'en' ? 'Queue: 19 patients' : 'Cola: 19 pacientes'}
+                              </div>
+                            </div>
+                          </div>
+                          <div className="grid grid-cols-2 gap-4 text-sm">
+                            <div>
+                              <h6 className="font-semibold text-yellow-900 mb-2">
+                                {language === 'en' ? 'Examples:' : 'Ejemplos:'}
+                              </h6>
+                              <ul className="space-y-1 text-yellow-800">
+                                <li>• {t[language].moderatePain}</li>
+                                <li>• {t[language].minorFractures}</li>
+                                <li>• {t[language].persistentFever}</li>
+                              </ul>
+                            </div>
+                            <div>
+                              <h6 className="font-semibold text-yellow-900 mb-2">
+                                {language === 'en' ? 'Process:' : 'Proceso:'}
+                              </h6>
+                              <ul className="space-y-1 text-yellow-800">
+                                <li>• {language === 'en' ? 'Standard triage protocol' : 'Protocolo de triaje estándar'}</li>
+                                <li>• {language === 'en' ? 'Routine diagnostic workup' : 'Evaluación diagnóstica rutinaria'}</li>
+                                <li>• {language === 'en' ? 'Treatment plan development' : 'Desarrollo de plan de tratamiento'}</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Level 4 - Non-Urgent */}
+                        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                          <div className="flex items-center justify-between mb-3">
+                            <div className="flex items-center gap-3">
+                              <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                                <span className="text-white text-sm font-bold">4</span>
+                              </div>
+                              <div>
+                                <h5 className="font-bold text-blue-900">{t[language].level4NonUrgent}</h5>
+                                <p className="text-sm text-blue-700">
+                                  {language === 'en' 
+                                    ? 'Minor conditions that can wait for available resources'
+                                    : 'Condiciones menores que pueden esperar recursos disponibles'
+                                  }
+                                </p>
+                              </div>
+                            </div>
+                            <div className="text-right">
+                              <div className="text-2xl font-bold text-red-600">1020m</div>
+                              <div className="text-sm text-gray-600">
+                                {language === 'en' ? 'Queue: 13 patients' : 'Cola: 13 pacientes'}
+                              </div>
+                            </div>
+                          </div>
+                          <div className="grid grid-cols-2 gap-4 text-sm">
+                            <div>
+                              <h6 className="font-semibold text-blue-900 mb-2">
+                                {language === 'en' ? 'Examples:' : 'Ejemplos:'}
+                              </h6>
+                              <ul className="space-y-1 text-blue-800">
+                                <li>• {t[language].minorCuts}</li>
+                                <li>• {t[language].mildHeadache}</li>
+                                <li>• {t[language].coldFluSymptoms}</li>
+                              </ul>
+                            </div>
+                            <div>
+                              <h6 className="font-semibold text-blue-900 mb-2">
+                                {language === 'en' ? 'Alternatives:' : 'Alternativas:'}
+                              </h6>
+                              <ul className="space-y-1 text-blue-800">
+                                <li>• {language === 'en' ? 'Urgent care centers' : 'Centros de atención urgente'}</li>
+                                <li>• {language === 'en' ? 'Primary care physician' : 'Médico de atención primaria'}</li>
+                                <li>• {language === 'en' ? 'Retail health clinics' : 'Clínicas de salud minoristas'}</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Level 5 - Low Acuity */}
+                        <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                          <div className="flex items-center justify-between mb-3">
+                            <div className="flex items-center gap-3">
+                              <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                                <span className="text-white text-sm font-bold">5</span>
+                              </div>
+                              <div>
+                                <h5 className="font-bold text-green-900">{t[language].level5LowAcuity}</h5>
+                                <p className="text-sm text-green-700">
+                                  {language === 'en' 
+                                    ? 'Non-urgent issues better suited for primary care settings'
+                                    : 'Problemas no urgentes más adecuados para entornos de atención primaria'
+                                  }
+                                </p>
+                              </div>
+                            </div>
+                            <div className="text-right">
+                              <div className="text-2xl font-bold text-red-600">943m</div>
+                              <div className="text-sm text-gray-600">
+                                {language === 'en' ? 'Queue: 3 patients' : 'Cola: 3 pacientes'}
+                              </div>
+                            </div>
+                          </div>
+                          <div className="grid grid-cols-2 gap-4 text-sm">
+                            <div>
+                              <h6 className="font-semibold text-green-900 mb-2">
+                                {language === 'en' ? 'Examples:' : 'Ejemplos:'}
+                              </h6>
+                              <ul className="space-y-1 text-green-800">
+                                <li>• {t[language].prescriptionRefills}</li>
+                                <li>• {t[language].routineConcerns}</li>
+                                <li>• {t[language].minorSkinConditions}</li>
+                              </ul>
+                            </div>
+                            <div>
+                              <h6 className="font-semibold text-green-900 mb-2">
+                                {language === 'en' ? 'Best Options:' : 'Mejores Opciones:'}
+                              </h6>
+                              <ul className="space-y-1 text-green-800">
+                                <li>• {language === 'en' ? 'Schedule primary care visit' : 'Programar visita de atención primaria'}</li>
+                                <li>• {language === 'en' ? 'Telehealth consultation' : 'Consulta de telemedicina'}</li>
+                                <li>• {language === 'en' ? 'Pharmacy clinic services' : 'Servicios de clínica de farmacia'}</li>
+                              </ul>
+                            </div>
+                          </div>
                         </div>
                       </div>
+                    </div>
+
+                        {/* Specialized Services */}
+                        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
+                          <div className="flex items-center gap-3 mb-6">
+                            <div className="bg-red-100 p-3 rounded-lg">
+                              <Heart className="h-6 w-6 text-red-600" />
+                            </div>
+                            <h4 className="text-lg font-semibold text-gray-900">
+                              {language === 'en' ? 'Top 5 Specialized Services Available' : 'Top 5 Servicios Especializados Disponibles'}
+                            </h4>
+                          </div>
+                          <div className="space-y-4">
+                            <div className="flex items-center justify-between p-4 bg-red-50 rounded-lg border border-red-200 hover:bg-red-100 transition-colors">
+                              <div className="flex items-center gap-4">
+                                <div className="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
+                                  <Plus className="h-5 w-5 text-red-600" />
+                                </div>
+                                <span className="font-semibold text-red-900">
+                                  {language === 'en' ? 'Level 1 Trauma Center' : 'Centro de Trauma Nivel 1'}
+                                </span>
+                              </div>
+                              <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                            </div>
+                            <div className="flex items-center justify-between p-4 bg-pink-50 rounded-lg border border-pink-200 hover:bg-pink-100 transition-colors">
+                              <div className="flex items-center gap-4">
+                                <div className="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center">
+                                  <Heart className="h-5 w-5 text-pink-600" />
+                                </div>
+                                <span className="font-semibold text-pink-900">
+                                  {language === 'en' ? 'Cardiac Care' : 'Atención Cardíaca'}
+                                </span>
+                              </div>
+                              <div className="w-3 h-3 bg-pink-500 rounded-full"></div>
+                            </div>
+                            <div className="flex items-center justify-between p-4 bg-blue-50 rounded-lg border border-blue-200 hover:bg-blue-100 transition-colors">
+                              <div className="flex items-center gap-4">
+                                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                                  <Brain className="h-5 w-5 text-blue-600" />
+                                </div>
+                                <span className="font-semibold text-blue-900">
+                                  {language === 'en' ? 'Stroke Care' : 'Atención de Accidentes Cerebrovasculares'}
+                                </span>
+                              </div>
+                              <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                            </div>
+                            <div className="flex items-center justify-between p-4 bg-green-50 rounded-lg border border-green-200 hover:bg-green-100 transition-colors">
+                              <div className="flex items-center gap-4">
+                                <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                                  <Activity className="h-5 w-5 text-green-600" />
+                                </div>
+                                <span className="font-semibold text-green-900">
+                                  {language === 'en' ? 'Critical Care' : 'Cuidados Intensivos'}
+                                </span>
+                              </div>
+                              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                            </div>
+                            <div className="flex items-center justify-between p-4 bg-purple-50 rounded-lg border border-purple-200 hover:bg-purple-100 transition-colors">
+                              <div className="flex items-center gap-4">
+                                <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
+                                  <FirstAid className="h-5 w-5 text-purple-600" />
+                                </div>
+                                <span className="font-semibold text-purple-900">
+                                  {language === 'en' ? 'Emergency Surgery' : 'Cirugía de Emergencia'}
+                                </span>
+                              </div>
+                              <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
+                            </div>
+                          </div>
+                        </div>
                     </div>
                   </CardContent>
                 </Card>
