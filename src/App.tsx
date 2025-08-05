@@ -1784,6 +1784,22 @@ function App() {
                                   <div className="text-gray-600 text-sm">{t[language].mainLine}</div>
                                 </div>
                               </div>
+                              <div className="flex items-start gap-3">
+                                <Globe className="h-4 w-4 text-gray-500 mt-1 flex-shrink-0" />
+                                <div>
+                                  <a 
+                                    href="https://dhs.lacounty.gov/harbor-ucla-medical-center/" 
+                                    target="_blank" 
+                                    rel="noopener noreferrer"
+                                    className="font-medium text-blue-600 hover:text-blue-800 underline"
+                                  >
+                                    {t[language].officialWebsite}
+                                  </a>
+                                  <div className="text-gray-600 text-sm">
+                                    {language === 'en' ? 'Harbor-UCLA Medical Center' : 'Centro Médico Harbor-UCLA'}
+                                  </div>
+                                </div>
+                              </div>
                             </div>
                           </div>
 
