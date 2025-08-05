@@ -4144,7 +4144,7 @@ function App() {
                             </h5>
                           </div>
                           <ul className="space-y-1 text-sm text-purple-800">
-                            <li>• {language === 'en' ? 'Treatment plan' : 'Plan de tratamiento'}</li>
+                            <li>��� {language === 'en' ? 'Treatment plan' : 'Plan de tratamiento'}</li>
                             <li>• {language === 'en' ? 'Follow-up instructions' : 'Instrucciones de seguimiento'}</li>
                           </ul>
                         </div>
