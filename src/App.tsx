@@ -4096,15 +4096,14 @@ function App() {
                       )}
                     </div>
 
-                    {/* Action Buttons */}
-                    <div className="flex gap-3">
-                      <Button className="bg-blue-600 hover:bg-blue-700 text-white flex-1">
+                    {/* Action Button */}
+                    <div className="flex justify-center">
+                      <Button 
+                        className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3"
+                        onClick={() => window.open('tel:(424) 306-4000', '_self')}
+                      >
                         <Phone className="h-4 w-4 mr-2" />
-                        {language === 'en' ? 'Find Urgent Care' : 'Buscar Atención Urgente'}
-                      </Button>
-                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50">
-                        <Phone className="h-4 w-4 mr-2" />
-                        {language === 'en' ? 'Call for Info' : 'Llamar para Información'}
+                        {language === 'en' ? 'Contact Harbor for General Information' : 'Contactar Harbor para Información General'}
                       </Button>
                     </div>
                   </div>
@@ -4274,15 +4273,14 @@ function App() {
                       </div>
                     </div>
 
-                    {/* Action Buttons */}
-                    <div className="flex gap-3">
-                      <Button className="bg-purple-600 hover:bg-purple-700 text-white flex-1">
+                    {/* Action Button */}
+                    <div className="flex justify-center">
+                      <Button 
+                        className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3"
+                        onClick={() => window.open('tel:(424) 306-4000', '_self')}
+                      >
                         <Phone className="h-4 w-4 mr-2" />
-                        {language === 'en' ? 'Start Virtual Visit' : 'Iniciar Visita Virtual'}
-                      </Button>
-                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50">
-                        <Phone className="h-4 w-4 mr-2" />
-                        {language === 'en' ? 'Call for Info' : 'Llamar para Información'}
+                        {language === 'en' ? 'Contact Harbor for General Information' : 'Contactar Harbor para Información General'}
                       </Button>
                     </div>
                   </div>
@@ -4485,15 +4483,14 @@ function App() {
                       </div>
                     </div>
 
-                    {/* Action Buttons */}
-                    <div className="flex gap-3">
-                      <Button className="bg-orange-600 hover:bg-orange-700 text-white flex-1">
-                        <FirstAid className="h-4 w-4 mr-2" />
-                        {language === 'en' ? 'Schedule Appointment' : 'Programar Cita'}
-                      </Button>
-                      <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50">
+                    {/* Action Button */}
+                    <div className="flex justify-center">
+                      <Button 
+                        className="bg-orange-600 hover:bg-orange-700 text-white px-6 py-3"
+                        onClick={() => window.open('tel:(424) 306-4000', '_self')}
+                      >
                         <Phone className="h-4 w-4 mr-2" />
-                        {language === 'en' ? 'Call for Info' : 'Llamar para Información'}
+                        {language === 'en' ? 'Contact Harbor for General Information' : 'Contactar Harbor para Información General'}
                       </Button>
                     </div>
                   </div>
