@@ -2045,34 +2045,6 @@ function App() {
                             </div>
                           </div>
 
-                        </div>
-                      </div>
-
-                      {/* Wait Times Graph Section */}
-                      <div className="mb-8">
-                        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
-                          <div className="flex items-center justify-between mb-6">
-                            <div className="flex items-center gap-3">
-                              <div className="bg-blue-100 p-3 rounded-lg">
-                                <Clock className="h-6 w-6 text-blue-600" />
-                              </div>
-                              <h4 className="text-xl font-bold text-gray-900">
-                                {language === 'en' ? 'Wait Times by Acuity Level Over Time' : 'Tiempos de Espera por Nivel de Acuidad a lo Largo del Tiempo'}
-                              </h4>
-                            </div>
-                            <div className="flex gap-2">
-                              <Button variant="default" size="sm" className="bg-blue-600 hover:bg-blue-700 text-white">
-                                {language === 'en' ? 'Today' : 'Hoy'}
-                              </Button>
-                              <Button variant="outline" size="sm">
-                                {language === 'en' ? 'Yesterday' : 'Ayer'}
-                              </Button>
-                              <Button variant="outline" size="sm">
-                                {language === 'en' ? 'Week' : 'Semana'}
-                              </Button>
-                            </div>
-                          </div>
-
                           {/* Graph Container */}
                           <div className="relative bg-gray-50 rounded-lg p-6 mb-6" style={{ height: '300px' }}>
                             {/* Y-axis label */}
