@@ -4248,14 +4248,14 @@ function App() {
                         <div className="flex items-start gap-3 p-4 bg-blue-50 rounded-lg border border-blue-200">
                           <div className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">4</div>
                           <div>
-                          <div>
+                            <h5 className="font-semibold text-blue-900 text-sm mb-1">
                               {language === 'en' ? 'Emergency Contact' : 'Contacto de Emergencia'}
                             </h5>
-                            </h5>
+                            <p className="text-blue-800 text-xs">
                               {language === 'en' ? 'Name and phone number of trusted person' : 'Nombre y teléfono de persona de confianza'}
                             </p>
                           </div>
-                          </div>
+                        </div>
                         </div>
 
                       {/* Additional Helpful Items */}
@@ -4267,7 +4267,7 @@ function App() {
                           <div className="flex items-center gap-2">
                             <CheckCircle className="h-4 w-4 text-green-600" />
                             <span className="text-sm text-gray-700">
-                            <span className="text-sm text-gray-700">
+                              {language === 'en' ? 'Medical records if available' : 'Registros médicos si están disponibles'}
                             </span>
                           </div>
                           <div className="flex items-center gap-2">
@@ -4276,19 +4276,19 @@ function App() {
                               {language === 'en' ? 'Small snack & water' : 'Refrigerio y agua'}
                             </span>
                           </div>
-                          </div>enter gap-2">
+                          <div className="flex items-center gap-2">
                             <CheckCircle className="h-4 w-4 text-green-600" />
                             <span className="text-sm text-gray-700">
-                              {language === 'en' ? 'Medical records if available' : 'Registros médicos si están disponibles'}
+                              {language === 'en' ? 'Comfortable clothing' : 'Ropa cómoda'}
                             </span>
                           </div>
                           <div className="flex items-center gap-2">
                             <CheckCircle className="h-4 w-4 text-green-600" />
                             <span className="text-sm text-gray-700">
-                            <span className="text-sm text-gray-700">
+                              {language === 'en' ? 'Phone charger' : 'Cargador de teléfono'}
                             </span>
                           </div>
-                          </div>
+                        </div>
                       </div>
                       </div>
                     </div>
