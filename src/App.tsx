@@ -2036,7 +2036,7 @@ function App() {
                               </h6>
                               <ul className="space-y-1 text-blue-800">
                                 <li>• {t[language].minorCuts}</li>
-                                <li>������������� {t[language].mildHeadache}</li>
+                                <li>��������������� {t[language].mildHeadache}</li>
                                 <li>• {t[language].coldFluSymptoms}</li>
                               </ul>
                             </div>
@@ -3572,7 +3572,6 @@ function App() {
                   </p>
                 </div>
 
-                {/* Safe Healthcare Access Box */}
                 <div className="bg-green-50 border border-green-200 rounded-lg p-6">
                   <div className="flex items-start gap-4">
                     <div className="bg-green-100 p-2 rounded-full">
@@ -3587,12 +3586,12 @@ function App() {
                           ? 'We are committed to providing care to all patients regardless of immigration status.'
                           : 'Estamos comprometidos a brindar atención a todos los pacientes independientemente de su estatus migratorio.'
                         }
-                      </p>
+                        }
                     </div>
-                  </div>
+                    </div>
                 </div>
 
-                {/* Important: No Immigration Questions Box */}
+           {/* Important: No Immigration Questions Box */}
                 <div className="bg-green-50 border border-green-200 rounded-lg p-6">
                   <div className="flex items-start gap-4">
                     <div className="bg-green-100 p-2 rounded-full">
@@ -3616,14 +3615,14 @@ function App() {
                               {language === 'en' ? 'Emergency Room (ER) care' : 'Atención en Sala de Emergencias'}
                             </span>
                           </div>
-                          <div className="flex items-center gap-2 text-green-800">
+                          </div> text-green-800">
                             <CheckCircle className="h-4 w-4" />
                             <span className="text-sm">
                               {language === 'en' ? 'Urgent Care facilities' : 'Instalaciones de Atención Urgente'}
                             </span>
                           </div>
                         </div>
-                        <div className="space-y-2">
+                        </div>
                           <div className="flex items-center gap-2 text-green-800">
                             <CheckCircle className="h-4 w-4" />
                             <span className="text-sm">
@@ -3636,19 +3635,19 @@ function App() {
                               {language === 'en' ? 'All other healthcare services' : 'Todos los demás servicios de salud'}
                             </span>
                           </div>
+                          </div>
                         </div>
-                      </div>
                     </div>
                   </div>
-                </div>
+                  </div>
 
                 {/* Your Rights as a Patient Box */}
-                <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+                {/* Your Rights as a Patient Box */}
                   <div className="flex items-start gap-4">
                     <div className="bg-green-100 p-2 rounded-full">
                       <CheckCircle className="h-6 w-6 text-green-600" />
                     </div>
-                    <div className="flex-1">
+                    </div>
                       <h4 className="text-lg font-semibold text-gray-900 mb-4">
                         {language === 'en' ? 'Your Rights as a Patient' : 'Sus Derechos como Paciente'}
                       </h4>
@@ -3657,14 +3656,14 @@ function App() {
                           <div className="bg-blue-100 p-1 rounded-full mt-1">
                             <Building className="h-4 w-4 text-blue-600" />
                           </div>
-                          <span className="text-green-800 text-sm">
+                          </div>
                             {language === 'en' 
                               ? 'You have the right to receive emergency medical care regardless of ability to pay or immigration status'
                               : 'Tiene derecho a recibir atención médica de emergencia independientemente de su capacidad de pago o estatus migratorio'
                             }
                           </span>
                         </div>
-                        <div className="flex items-start gap-3">
+                        </div>">
                           <div className="bg-blue-100 p-1 rounded-full mt-1">
                             <FirstAid className="h-4 w-4 text-blue-600" />
                           </div>
@@ -3687,18 +3686,18 @@ function App() {
                           </span>
                         </div>
                       </div>
-                    </div>
+                      </div>
+                  </div>
                   </div>
                 </div>
-
-                {/* What to Bring to the ER Box */}
+x */}
                 <div className="bg-white border border-gray-300 rounded-lg p-6 shadow-sm">
                   <div className="flex items-start gap-4">
                     <div className="bg-blue-100 p-2 rounded-full">
                       <Building className="h-6 w-6 text-blue-600" />
                     </div>
+                    </div>
                     <div className="flex-1">
-                      <h4 className="text-lg font-semibold text-gray-900 mb-3">
                         {language === 'en' ? 'What to Bring to the ER' : 'Qué Traer a la Sala de Emergencias'}
                       </h4>
                       <p className="text-gray-700 mb-4 text-sm">
@@ -3713,10 +3712,10 @@ function App() {
                         <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
                           <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
                           <div>
-                            <h5 className="font-medium text-gray-900 text-sm">
+                          <div>
                               {language === 'en' ? "Government-issued photo ID (driver's license, passport)" : 'ID con foto emitida por el gobierno (licencia de conducir, pasaporte)'}
                             </h5>
-                          </div>
+                            </h5>
                         </div>
 
                         {/* Insurance cards */}
@@ -3727,14 +3726,15 @@ function App() {
                               {language === 'en' ? 'Insurance cards and medical ID cards' : 'Tarjetas de seguro y tarjetas de identificación médica'}
                             </h5>
                           </div>
+                          </div>
                         </div>
-
                         {/* Current prescription medications */}
                         <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
                           <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
                           <div>
-                            <h5 className="font-medium text-gray-900 text-sm">
+                          <div>="font-medium text-gray-900 text-sm">
                               {language === 'en' ? 'Current prescription medications in original bottles' : 'Medicamentos recetados actuales en frascos originales'}
+                            </h5>
                             </h5>
                           </div>
                         </div>
@@ -3743,17 +3743,17 @@ function App() {
                         <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
                           <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
                           <div>
-                            <h5 className="font-medium text-gray-900 text-sm">
                               {language === 'en' ? 'List of all medications, vitamins, and supplements with dosages' : 'Lista de todos los medicamentos, vitaminas y suplementos con dosis'}
                             </h5>
+                          </div>
                           </div>
                         </div>
 
                         {/* Medical history */}
                         <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
-                          <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
                           <div>
-                            <h5 className="font-medium text-gray-900 text-sm">
+                          <div>
+                              {language === 'en' ? 'Medical history summary including allergies and chronic conditions' : 'Resumen del historial médico incluyendo alergias y condiciones crónicas'}
                               {language === 'en' ? 'Medical history summary including allergies and chronic conditions' : 'Resumen del historial médico incluyendo alergias y condiciones crónicas'}
                             </h5>
                           </div>
@@ -3764,12 +3764,11 @@ function App() {
                           <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
                           <div>
                             <h5 className="font-medium text-gray-900 text-sm">
-                              {language === 'en' ? 'Emergency contact information (family, friends, healthcare providers)' : 'Información de contacto de emergencia (familia, amigos, proveedores de atención médica)'}
                             </h5>
+                          </div>
                           </div>
                         </div>
 
-                        {/* Comfort items */}
                         <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
                           <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
                           <div>
@@ -3778,6 +3777,7 @@ function App() {
                             </h5>
                           </div>
                         </div>
+                      </div>
                       </div>
                     </div>
                   </div>
@@ -3803,7 +3803,6 @@ function App() {
                       <div className="space-y-4">
                         {/* Arrival and Registration */}
                         <div className="border-l-4 border-blue-500 pl-4">
-                          <h5 className="font-semibold text-gray-900 mb-2">
                             {language === 'en' ? '1. Arrival and Registration' : '1. Llegada y Registro'}
                           </h5>
                           <ul className="space-y-1 text-sm text-gray-700">
@@ -3850,6 +3849,7 @@ function App() {
                           </ul>
                         </div>
                       </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -3860,16 +3860,15 @@ function App() {
                   <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
                     <div className="flex items-start gap-3 mb-4">
                       <div className="bg-blue-100 p-2 rounded-full">
-                        <Info className="h-5 w-5 text-blue-600" />
                       </div>
-                      <h4 className="text-lg font-semibold text-blue-900">
+                      </div>
                         {language === 'en' ? 'Before You Leave Home' : 'Antes de Salir de Casa'}
                       </h4>
+                    </div>
                     </div>
                     <ul className="space-y-2 text-sm text-blue-800">
                       <li>• {language === 'en' ? 'Call ahead if your condition allows' : 'Llame antes si su condición lo permite'}</li>
                       <li>• {language === 'en' ? 'Arrange reliable transportation or call 911' : 'Organice transporte confiable o llame al 911'}</li>
-                      <li>• {language === 'en' ? 'Notify family members of your situation' : 'Notifique a familiares de su situación'}</li>
                       <li>• {language === 'en' ? 'Secure your home and bring house keys' : 'Asegure su hogar y traiga llaves de casa'}</li>
                       <li>• {language === 'en' ? 'Dress comfortably and appropriately' : 'Vístase cómoda y apropiadamente'}</li>
                     </ul>
@@ -3895,7 +3894,25 @@ function App() {
                   </div>
                 </div>
               </div>
+              </div>
             )}
+          </TabsContent>
+        </Tabs>
+      </div>
+
+      {/* Disclaimer */}
+      <div className="container mx-auto px-4">
+        <div className="mt-12 p-4 bg-muted rounded-lg">
+          <p className="text-sm text-muted-foreground text-center">
+            <strong>{t[language].important}</strong> {t[language].disclaimer}
+          </p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default App            )}
           </TabsContent>
         </Tabs>
       </div>
