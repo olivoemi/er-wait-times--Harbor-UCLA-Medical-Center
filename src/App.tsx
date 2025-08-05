@@ -74,6 +74,7 @@ function App() {
     isER?: boolean
   }>>([])
   const [isCalculatingProximity, setIsCalculatingProximity] = useState(false)
+  const [careOptionsInsurance, setCareOptionsInsurance] = useState('')
 
   // Translation object
   const t = {
@@ -3775,7 +3776,7 @@ function App() {
                       </h4>
                     </div>
                     
-                    <Select>
+                    <Select value={careOptionsInsurance} onValueChange={setCareOptionsInsurance}>
                       <SelectTrigger className="w-full">
                         <SelectValue placeholder={
                           language === 'en' ? 'Select your insurance type' : 'Seleccione su tipo de seguro'
@@ -3801,6 +3802,26 @@ function App() {
                         </div>
                       </div>
                     </div>
+
+                    {careOptionsInsurance && (
+                      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+                        <div className="flex items-center gap-2">
+                          <CheckCircle className="h-4 w-4 text-blue-600" />
+                          <div className="text-blue-800 text-sm font-medium">
+                            {language === 'en' 
+                              ? `Cost estimates updated for ${insuranceOptions.find(opt => opt.value === careOptionsInsurance)?.label}`
+                              : `Estimaciones de costo actualizadas para ${insuranceOptions.find(opt => opt.value === careOptionsInsurance)?.label}`
+                            }
+                          </div>
+                        </div>
+                        <div className="text-blue-700 text-xs mt-1">
+                          {language === 'en' 
+                            ? 'All cost ranges below now reflect your insurance coverage'
+                            : 'Todos los rangos de costos a continuación ahora reflejan su cobertura de seguro'
+                          }
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -3849,9 +3870,14 @@ function App() {
                             {language === 'en' ? 'Typical Cost Range' : 'Rango de Costo Típico'}
                           </span>
                         </div>
-                        <div className="text-lg font-bold text-gray-900">$15-$250</div>
+                        <div className="text-lg font-bold text-gray-900">
+                          {careOptionsInsurance ? getCostEstimate('urgent', careOptionsInsurance) : '$15-$250'}
+                        </div>
                         <div className="text-xs text-gray-500">
-                          {language === 'en' ? 'Varies by insurance' : 'Varía por seguro'}
+                          {careOptionsInsurance 
+                            ? (language === 'en' ? `Based on ${insuranceOptions.find(opt => opt.value === careOptionsInsurance)?.label}` : `Basado en ${insuranceOptions.find(opt => opt.value === careOptionsInsurance)?.label}`)
+                            : (language === 'en' ? 'Varies by insurance' : 'Varía por seguro')
+                          }
                         </div>
                       </div>
                       
@@ -4019,9 +4045,14 @@ function App() {
                             {language === 'en' ? 'Typical Cost Range' : 'Rango de Costo Típico'}
                           </span>
                         </div>
-                        <div className="text-lg font-bold text-gray-900">$0-$150</div>
+                        <div className="text-lg font-bold text-gray-900">
+                          {careOptionsInsurance ? getCostEstimate('telehealth', careOptionsInsurance) : '$0-$150'}
+                        </div>
                         <div className="text-xs text-gray-500">
-                          {language === 'en' ? 'Varies by insurance' : 'Varía por seguro'}
+                          {careOptionsInsurance 
+                            ? (language === 'en' ? `Based on ${insuranceOptions.find(opt => opt.value === careOptionsInsurance)?.label}` : `Basado en ${insuranceOptions.find(opt => opt.value === careOptionsInsurance)?.label}`)
+                            : (language === 'en' ? 'Varies by insurance' : 'Varía por seguro')
+                          }
                         </div>
                       </div>
                       
@@ -4192,9 +4223,14 @@ function App() {
                             {language === 'en' ? 'Typical Cost Range' : 'Rango de Costo Típico'}
                           </span>
                         </div>
-                        <div className="text-lg font-bold text-gray-900">$5-$200</div>
+                        <div className="text-lg font-bold text-gray-900">
+                          {careOptionsInsurance ? getCostEstimate('primary', careOptionsInsurance) : '$5-$200'}
+                        </div>
                         <div className="text-xs text-gray-500">
-                          {language === 'en' ? 'Varies by insurance' : 'Varía por seguro'}
+                          {careOptionsInsurance 
+                            ? (language === 'en' ? `Based on ${insuranceOptions.find(opt => opt.value === careOptionsInsurance)?.label}` : `Basado en ${insuranceOptions.find(opt => opt.value === careOptionsInsurance)?.label}`)
+                            : (language === 'en' ? 'Varies by insurance' : 'Varía por seguro')
+                          }
                         </div>
                       </div>
                       
