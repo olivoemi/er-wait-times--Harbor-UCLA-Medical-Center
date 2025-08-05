@@ -1028,7 +1028,7 @@ function App() {
                 variant="outline"
                 size="sm"
                 onClick={() => setLanguage(language === 'en' ? 'es' : 'en')}
-                className="flex items-center gap-2 bg-blue-800 text-white border-blue-800 hover:bg-blue-900 font-medium shadow-sm"
+                className="flex items-center gap-2 text-white border-blue-800 hover:bg-blue-900 font-medium shadow-sm bg-slate-600"
               >
                 <Globe className="h-4 w-4" />
                 {language === 'en' ? 'English' : 'Español'}
@@ -1068,7 +1068,6 @@ function App() {
           </div>
         </div>
       </header>
-
       <div className="container mx-auto px-4 py-8">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
 
@@ -1552,7 +1551,7 @@ function App() {
               </div>
             ) : (
               /* Detailed view - Full width */
-              sortedHospitals.map((hospital) => (
+              (sortedHospitals.map((hospital) => (
                 <Card key={hospital.id} className="overflow-hidden shadow-lg">
                   <CardContent className="p-0">
                     {/* Enhanced Hospital Header with gradient background */}
@@ -2543,7 +2542,7 @@ function App() {
                     </div>
                   </CardContent>
                 </Card>
-              ))
+              )))
             )}
 
             {sortedHospitals.length === 0 && !isLoading && (
@@ -4756,7 +4755,7 @@ function App() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default App
