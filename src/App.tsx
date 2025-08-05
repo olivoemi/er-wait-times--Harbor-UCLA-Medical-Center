@@ -1256,11 +1256,13 @@ function App() {
                             <li>• {language === 'en' ? 'Treatment plan provided' : 'Plan de tratamiento provisto'}</li>
                             <li>• {language === 'en' ? 'Standard evaluation' : 'Evaluación estándar'}</li>
                             <li>• {language === 'en' ? 'Treatment plan provided' : 'Plan de tratamiento provisto'}</li>
+                          </ul>
                         </div>
-                        </div>
-                      <div className="bg-yellow-600 text-white text-center py-2 px-3 rounded-lg mt-auto">
+                      </div>
+
                       <div className="bg-yellow-600 text-white text-center py-2 px-3 rounded-lg mt-auto">
                         <div className="text-xs font-black tracking-wide">{t[language].mediumPriority}</div>
+                      </div>
                     </CardContent>
                   </Card>
 
