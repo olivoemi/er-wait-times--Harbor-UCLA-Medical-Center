@@ -2539,7 +2539,9 @@ function App() {
                             </div>
                           </div>
                         </div>
-                    </CardContent>
+                      </div>
+                    </div>
+                  </CardContent>
                 </Card>
               )))
             )}
