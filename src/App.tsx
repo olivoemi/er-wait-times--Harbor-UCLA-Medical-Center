@@ -62,6 +62,18 @@ function App() {
   const [selectedInsurance, setSelectedInsurance] = useState('')
   const [selectedSymptoms, setSelectedSymptoms] = useState<string[]>([])
   const [showAssessmentResult, setShowAssessmentResult] = useState(false)
+  const [manualZipCode, setManualZipCode] = useState('')
+  const [locationEnabled, setLocationEnabled] = useState(false)
+  const [urgentCareLocations, setUrgentCareLocations] = useState<Array<{
+    id: string
+    name: string
+    address: string
+    phone: string
+    hours: string[]
+    distance?: number
+    isER?: boolean
+  }>>([])
+  const [isCalculatingProximity, setIsCalculatingProximity] = useState(false)
 
   // Translation object
   const t = {
@@ -289,8 +301,367 @@ function App() {
     }
   }
 
+  // Urgent care locations data
+  const urgentCareData = [
+    {
+      id: 'roybal',
+      name: 'Edward R. Roybal Comprehensive Health Center',
+      address: '245 S. Fetterly Ave., Los Angeles, CA 90022',
+      phone: '(323) 362-1010',
+      hours: [
+        language === 'en' ? 'Mon-Fri: 7:30 AM - 4:30 PM' : 'Lun-Vie: 7:30 AM - 4:30 PM',
+        language === 'en' ? 'Sat: 8:00 AM - 4:30 PM' : 'Sáb: 8:00 AM - 4:30 PM'
+      ],
+      lat: 34.0522,
+      lng: -118.1825
+    },
+    {
+      id: 'elmonte',
+      name: 'El Monte Comprehensive Health Center',
+      address: '10953 Ramona Blvd, El Monte, CA 91731',
+      phone: '(626) 434-2500',
+      hours: [
+        language === 'en' ? 'Mon-Sat: 8:00 AM - 4:30 PM' : 'Lun-Sáb: 8:00 AM - 4:30 PM'
+      ],
+      lat: 34.0686,
+      lng: -118.0276
+    },
+    {
+      id: 'hudson',
+      name: 'H. Claude Hudson Comprehensive Health Center',
+      address: '2829 South Grand Ave., Los Angeles, CA 90007',
+      phone: '(213) 699-7000',
+      hours: [
+        language === 'en' ? 'Mon-Fri: 7:30 AM - 11:00 PM' : 'Lun-Vie: 7:30 AM - 11:00 PM',
+        language === 'en' ? 'Sat-Sun: 8:00 AM - 11:00 PM' : 'Sáb-Dom: 8:00 AM - 11:00 PM'
+      ],
+      lat: 34.0259,
+      lng: -118.2637
+    },
+    {
+      id: 'highdesert',
+      name: 'High Desert Regional Health Center',
+      address: '335 East Avenue I, Lancaster, CA 93535',
+      phone: '(661) 471-4000',
+      hours: [
+        language === 'en' ? 'Daily: 8:00 AM - 10:30 PM' : 'Diario: 8:00 AM - 10:30 PM'
+      ],
+      lat: 34.7086,
+      lng: -118.1372
+    },
+    {
+      id: 'humphrey',
+      name: 'Hubert Humphrey Comprehensive Health Center',
+      address: '5850 So. Main St., Los Angeles, CA 90003',
+      phone: '(323) 897-6000',
+      hours: [
+        language === 'en' ? 'Mon-Fri: 8:00 AM - 10:00 PM' : 'Lun-Vie: 8:00 AM - 10:00 PM',
+        language === 'en' ? 'Sat-Sun: 8:00 AM - 6:30 PM' : 'Sáb-Dom: 8:00 AM - 6:30 PM'
+      ],
+      lat: 34.0072,
+      lng: -118.2437
+    },
+    {
+      id: 'longbeach',
+      name: 'Long Beach Comprehensive Health Center',
+      address: '1333 Chestnut Ave., Long Beach, CA 90813',
+      phone: '(562) 753-2300',
+      hours: [
+        language === 'en' ? 'Mon-Fri: 7:30 AM - 7:30 PM' : 'Lun-Vie: 7:30 AM - 7:30 PM',
+        language === 'en' ? 'Sat: 8:00 AM - 4:30 PM' : 'Sáb: 8:00 AM - 4:30 PM'
+      ],
+      lat: 33.7701,
+      lng: -118.1937
+    },
+    {
+      id: 'mlk',
+      name: 'Martin Luther King, Jr. Outpatient Center',
+      address: '12021 S Wilmington Ave, Los Angeles, CA 90059, First Floor, Suite 1D',
+      phone: '(424) 338-1000',
+      hours: [
+        language === 'en' ? 'Daily: 7:30 AM - 11:00 PM' : 'Diario: 7:30 AM - 11:00 PM'
+      ],
+      lat: 33.9259,
+      lng: -118.2437
+    },
+    {
+      id: 'midvalley',
+      name: 'Mid-Valley Comprehensive Health Center',
+      address: '7515 Van Nuys Blvd., Van Nuys, CA 91405',
+      phone: '(818) 627-3000',
+      hours: [
+        language === 'en' ? 'Mon-Fri: 8:00 AM - 9:00 PM' : 'Lun-Vie: 8:00 AM - 9:00 PM',
+        language === 'en' ? 'Sat-Sun: 8:00 AM - 3:00 PM' : 'Sáb-Dom: 8:00 AM - 3:00 PM'
+      ],
+      lat: 34.1936,
+      lng: -118.4492
+    },
+    {
+      id: 'southvalley',
+      name: 'South Valley Health Center',
+      address: '38350 40th St. East, Palmdale, CA 93552',
+      phone: '(661) 225-3001',
+      hours: [
+        language === 'en' ? 'Daily: 8:00 AM - 10:30 PM' : 'Diario: 8:00 AM - 10:30 PM'
+      ],
+      lat: 34.5794,
+      lng: -118.1164
+    },
+    {
+      id: 'harbor',
+      name: 'Harbor –UCLA Med Center (UCC)',
+      address: '1000 W. Carson St., Torrance, CA 90509',
+      phone: '(424) 306-4110',
+      hours: [
+        language === 'en' ? 'Mon-Fri: 8:00 AM - 9:00 PM' : 'Lun-Vie: 8:00 AM - 9:00 PM',
+        language === 'en' ? 'Sat: 8:00 AM - 3:00 PM' : 'Sáb: 8:00 AM - 3:00 PM'
+      ],
+      lat: 33.8303,
+      lng: -118.2934,
+      isER: true
+    },
+    {
+      id: 'lageneral',
+      name: 'LA General Medical Center (UCC)',
+      address: '1100 N State Street, Tower A2B (second floor), Los Angeles, CA 90033',
+      phone: '(323) 409-3753',
+      hours: [
+        language === 'en' ? 'Mon-Sat: 8:00 AM - 7:00 PM' : 'Lun-Sáb: 8:00 AM - 7:00 PM'
+      ],
+      lat: 34.0608,
+      lng: -118.2073,
+      isER: true
+    },
+    {
+      id: 'oliveview',
+      name: 'Olive View Medical Center (UCC)',
+      address: '14445 Olive View Drive, Sylmar, CA 91342',
+      phone: '(747) 210-3127',
+      hours: [
+        language === 'en' ? 'Mon-Fri: 8:00 AM - 8:00 PM' : 'Lun-Vie: 8:00 AM - 8:00 PM',
+        language === 'en' ? 'Sat: 8:00 AM - 4:30 PM' : 'Sáb: 8:00 AM - 4:30 PM',
+        language === 'en' ? 'Holidays: 8:00 AM - 8:00 PM' : 'Días Festivos: 8:00 AM - 8:00 PM',
+        language === 'en' ? 'Major holidays: 8:00 AM - 4:30 PM' : 'Días festivos principales: 8:00 AM - 4:30 PM'
+      ],
+      lat: 34.3031,
+      lng: -118.4231,
+      isER: true
+    }
+  ]
+
+  // Calculate distance between two coordinates using Haversine formula
+  const calculateDistance = (lat1: number, lng1: number, lat2: number, lng2: number): number => {
+    const R = 3959 // Earth's radius in miles
+    const dLat = (lat2 - lat1) * Math.PI / 180
+    const dLng = (lng2 - lng1) * Math.PI / 180
+    const a = 
+      Math.sin(dLat/2) * Math.sin(dLat/2) +
+      Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
+      Math.sin(dLng/2) * Math.sin(dLng/2)
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))
+    return R * c
+  }
+
+  // Get coordinates from zip code (simplified - in real app would use geocoding API)
+  const getCoordinatesFromZip = (zipCode: string): { lat: number, lng: number } | null => {
+    // Simplified mapping of some LA area zip codes to coordinates
+    const zipCoordinates: { [key: string]: { lat: number, lng: number } } = {
+      '90210': { lat: 34.0901, lng: -118.4065 }, // Beverly Hills
+      '90211': { lat: 34.0901, lng: -118.4065 }, // Beverly Hills
+      '90028': { lat: 34.1016, lng: -118.3432 }, // Hollywood
+      '90210': { lat: 34.0901, lng: -118.4065 }, // Beverly Hills
+      '90401': { lat: 34.0195, lng: -118.4912 }, // Santa Monica
+      '90291': { lat: 33.9778, lng: -118.4695 }, // Venice
+      '90405': { lat: 34.0195, lng: -118.4912 }, // Santa Monica
+      '90212': { lat: 34.0901, lng: -118.4065 }, // Beverly Hills
+      '90036': { lat: 34.0669, lng: -118.3370 }, // Hollywood/West Hollywood
+      '90048': { lat: 34.0669, lng: -118.3370 }, // West Hollywood
+      '90067': { lat: 34.0583, lng: -118.4220 }, // Century City
+      '90024': { lat: 34.0612, lng: -118.4421 }, // Westwood
+      '90025': { lat: 34.0412, lng: -118.4437 }, // West LA
+      '90035': { lat: 34.0583, lng: -118.3781 }, // Mid-City
+      '90034': { lat: 34.0301, lng: -118.4037 }, // Palms
+      '90064': { lat: 34.0301, lng: -118.4378 }, // West LA
+      '90066': { lat: 33.9778, lng: -118.4328 }, // Mar Vista
+      '90230': { lat: 33.9425, lng: -118.3964 }, // Culver City
+      '90232': { lat: 33.9425, lng: -118.3964 }, // Culver City
+      '90405': { lat: 34.0195, lng: -118.4912 }, // Santa Monica
+      '90503': { lat: 33.8303, lng: -118.2934 }, // Torrance
+      '90505': { lat: 33.8303, lng: -118.2934 }, // Torrance
+      '90501': { lat: 33.8303, lng: -118.2934 }, // Torrance
+      '90502': { lat: 33.8303, lng: -118.2934 }, // Torrance
+      '90504': { lat: 33.8303, lng: -118.2934 }, // Torrance
+      '90506': { lat: 33.8303, lng: -118.2934 }, // Torrance
+      '90507': { lat: 33.8303, lng: -118.2934 }, // Torrance
+      '90508': { lat: 33.8303, lng: -118.2934 }, // Torrance
+      '90509': { lat: 33.8303, lng: -118.2934 }, // Torrance
+      '90510': { lat: 33.8303, lng: -118.2934 }, // Torrance
+      '90731': { lat: 33.7701, lng: -118.2937 }, // San Pedro
+      '90732': { lat: 33.7701, lng: -118.2937 }, // San Pedro
+      '90744': { lat: 33.7701, lng: -118.2937 }, // San Pedro
+      '90745': { lat: 33.7701, lng: -118.1937 }, // Carson
+      '90746': { lat: 33.7701, lng: -118.1937 }, // Carson
+      '90247': { lat: 33.9259, lng: -118.2437 }, // Gardena
+      '90248': { lat: 33.9259, lng: -118.2437 }, // Gardena
+      '90249': { lat: 33.9259, lng: -118.2437 }, // Gardena
+      '90250': { lat: 33.9259, lng: -118.2437 }, // Hawthorne
+      '91731': { lat: 34.0686, lng: -118.0276 }, // El Monte
+      '91732': { lat: 34.0686, lng: -118.0276 }, // El Monte
+      '91733': { lat: 34.0686, lng: -118.0276 }, // South El Monte
+      '90022': { lat: 34.0522, lng: -118.1825 }, // East LA
+      '90023': { lat: 34.0522, lng: -118.1825 }, // East LA
+      '90033': { lat: 34.0608, lng: -118.2073 }, // Boyle Heights
+      '90063': { lat: 34.0522, lng: -118.1825 }, // East LA
+      '90007': { lat: 34.0259, lng: -118.2637 }, // USC area
+      '90003': { lat: 34.0072, lng: -118.2437 }, // South LA
+      '90059': { lat: 33.9259, lng: -118.2437 }, // Watts
+      '90813': { lat: 33.7701, lng: -118.1937 }, // Long Beach
+      '90814': { lat: 33.7701, lng: -118.1937 }, // Long Beach
+      '90815': { lat: 33.7701, lng: -118.1937 }, // Long Beach
+      '90802': { lat: 33.7701, lng: -118.1937 }, // Long Beach
+      '90803': { lat: 33.7701, lng: -118.1937 }, // Long Beach
+      '90804': { lat: 33.7701, lng: -118.1937 }, // Long Beach
+      '90805': { lat: 33.7701, lng: -118.1937 }, // Long Beach
+      '90806': { lat: 33.7701, lng: -118.1937 }, // Long Beach
+      '90807': { lat: 33.7701, lng: -118.1937 }, // Long Beach
+      '90808': { lat: 33.7701, lng: -118.1937 }, // Long Beach
+      '90810': { lat: 33.7701, lng: -118.1937 }, // Long Beach
+      '90831': { lat: 33.7701, lng: -118.1937 }, // Long Beach
+      '90832': { lat: 33.7701, lng: -118.1937 }, // Long Beach
+      '90833': { lat: 33.7701, lng: -118.1937 }, // Long Beach
+      '90834': { lat: 33.7701, lng: -118.1937 }, // Long Beach
+      '90835': { lat: 33.7701, lng: -118.1937 }, // Long Beach
+      '91405': { lat: 34.1936, lng: -118.4492 }, // Van Nuys
+      '91406': { lat: 34.1936, lng: -118.4492 }, // Van Nuys
+      '91411': { lat: 34.1936, lng: -118.4492 }, // Van Nuys
+      '91316': { lat: 34.1936, lng: -118.4492 }, // Encino
+      '91436': { lat: 34.1936, lng: -118.4492 }, // Encino
+      '93535': { lat: 34.7086, lng: -118.1372 }, // Lancaster
+      '93536': { lat: 34.7086, lng: -118.1372 }, // Lancaster
+      '93551': { lat: 34.7086, lng: -118.1372 }, // Palmdale
+      '93552': { lat: 34.5794, lng: -118.1164 }, // Palmdale
+      '93553': { lat: 34.5794, lng: -118.1164 }, // Palmdale
+      '93591': { lat: 34.5794, lng: -118.1164 }, // Palmdale
+      '91342': { lat: 34.3031, lng: -118.4231 }  // Sylmar
+    }
+    
+    return zipCoordinates[zipCode] || null
+  }
+
+  // Calculate proximity for urgent care centers
+  const calculateProximity = async (referenceLocation: { lat: number, lng: number }) => {
+    setIsCalculatingProximity(true)
+    
+    // Simulate API call delay
+    await new Promise(resolve => setTimeout(resolve, 1000))
+    
+    const locationsWithDistance = urgentCareData.map(location => ({
+      ...location,
+      distance: calculateDistance(
+        referenceLocation.lat,
+        referenceLocation.lng,
+        location.lat,
+        location.lng
+      )
+    }))
+    
+    // Sort by distance
+    locationsWithDistance.sort((a, b) => (a.distance || 0) - (b.distance || 0))
+    
+    setUrgentCareLocations(locationsWithDistance)
+    setIsCalculatingProximity(false)
+  }
+
+  // Handle location enable
+  const handleEnableLocation = () => {
+    if (navigator.geolocation) {
+      setLocationEnabled(true)
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const userLoc = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          }
+          setUserLocation(userLoc)
+          calculateProximity(userLoc)
+          setLocationError('')
+        },
+        (error) => {
+          setLocationError('Location access denied')
+          setLocationEnabled(false)
+        }
+      )
+    }
+  }
+
+  // Handle manual zip code
+  const handleZipCodeClassify = () => {
+    if (manualZipCode.trim()) {
+      const coords = getCoordinatesFromZip(manualZipCode.trim())
+      if (coords) {
+        calculateProximity(coords)
+        setLocationError('')
+      } else {
+        setLocationError('Invalid or unsupported zip code')
+      }
+    }
+  }
+
+  // Initialize urgent care locations on component mount
+  useEffect(() => {
+    // Initialize with default sorting (alphabetical)
+    const sortedLocations = [...urgentCareData].sort((a, b) => a.name.localeCompare(b.name))
+    setUrgentCareLocations(sortedLocations)
+  }, [language])
+
   // Care guide data
   const careGuideItems: CareGuideItem[] = [
+    {
+      id: '1',
+      title: 'Chest Pain',
+      description: 'Experiencing chest pain or pressure that could indicate a heart attack',
+      urgency: 'emergency',
+      symptoms: ['Severe chest pain', 'Pain radiating to arm/jaw', 'Shortness of breath', 'Nausea', 'Sweating'],
+      recommendations: ['Call 911 immediately', 'Chew aspirin if not allergic', 'Stay calm and rest'],
+      icon: <Heart className="h-6 w-6" />
+    },
+    {
+      id: '2',
+      title: 'High Fever',
+      description: 'Fever over 103°F (39.4°C) or fever with severe symptoms',
+      urgency: 'urgent',
+      symptoms: ['Temperature over 103°F', 'Severe headache', 'Difficulty breathing', 'Persistent vomiting'],
+      recommendations: ['Seek medical care within 2-4 hours', 'Stay hydrated', 'Take fever reducer as directed'],
+      icon: <Thermometer className="h-6 w-6" />
+    },
+    {
+      id: '3',
+      title: 'Minor Cuts & Bruises',
+      description: 'Small wounds that can typically be treated at home',
+      urgency: 'non-urgent',
+      symptoms: ['Small cuts', 'Minor bruising', 'Scrapes', 'Light bleeding'],
+      recommendations: ['Clean wound thoroughly', 'Apply pressure to stop bleeding', 'Use bandage', 'Monitor for infection'],
+      icon: <FirstAid className="h-6 w-6" />
+    },
+    {
+      id: '4',
+      title: 'Eye Injury',
+      description: 'Any injury to the eye that affects vision or causes pain',
+      urgency: 'urgent',
+      symptoms: ['Vision changes', 'Eye pain', 'Foreign object in eye', 'Chemical exposure'],
+      recommendations: ['Do not rub eye', 'Flush with clean water if chemical exposure', 'Seek immediate medical care'],
+      icon: <Eye className="h-6 w-6" />
+    },
+    {
+      id: '5',
+      title: 'Medication Overdose',
+      description: 'Suspected overdose of prescription or over-the-counter medication',
+      urgency: 'emergency',
+      symptoms: ['Difficulty breathing', 'Unconsciousness', 'Severe confusion', 'Irregular heartbeat'],
+      recommendations: ['Call 911 or Poison Control: 1-800-222-1222', 'Bring medication container', 'Do not induce vomiting'],
+      icon: <Pill className="h-6 w-6" />
+    }
+  ]
     {
       id: '1',
       title: 'Chest Pain',
@@ -2836,28 +3207,64 @@ function App() {
                     
                     {/* Enable Location Toggle */}
                     <div className="mb-4">
-                      <button className="flex items-center gap-2 text-blue-600 text-sm font-medium hover:text-blue-700">
-                        <div className="w-4 h-4 border border-blue-600 rounded flex items-center justify-center">
-                          <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                      <button 
+                        onClick={handleEnableLocation}
+                        disabled={locationEnabled || userLocation !== null}
+                        className={`flex items-center gap-2 text-sm font-medium hover:text-blue-700 ${
+                          locationEnabled || userLocation !== null 
+                            ? 'text-green-600 cursor-default' 
+                            : 'text-blue-600 cursor-pointer'
+                        }`}
+                      >
+                        <div className={`w-4 h-4 border rounded flex items-center justify-center ${
+                          locationEnabled || userLocation !== null 
+                            ? 'border-green-600 bg-green-600' 
+                            : 'border-blue-600'
+                        }`}>
+                          {(locationEnabled || userLocation !== null) && (
+                            <CheckCircle className="w-3 h-3 text-white" />
+                          )}
                         </div>
-                        {language === 'en' ? 'Enable Location for Distance Sorting' : 'Habilitar Ubicación para Ordenar por Distancia'}
+                        {(locationEnabled || userLocation !== null) 
+                          ? (language === 'en' ? 'Location Enabled - Sorting by Distance' : 'Ubicación Habilitada - Ordenando por Distancia')
+                          : (language === 'en' ? 'Enable Location for Distance Sorting' : 'Habilitar Ubicación para Ordenar por Distancia')
+                        }
                       </button>
                     </div>
 
                     {/* Location Warning */}
-                    <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 mb-4">
-                      <div className="flex items-start gap-3">
-                        <AlertTriangle className="h-5 w-5 text-orange-600 mt-0.5 flex-shrink-0" />
-                        <div>
-                          <div className="font-medium text-orange-900 text-sm">
-                            {language === 'en' ? 'Location unavailable' : 'Ubicación no disponible'}
-                          </div>
-                          <div className="text-orange-700 text-xs mt-1">
-                            {language === 'en' ? 'Location access denied by user' : 'Acceso a ubicación denegado por el usuario'}
+                    {!locationEnabled && !userLocation && (
+                      <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 mb-4">
+                        <div className="flex items-start gap-3">
+                          <AlertTriangle className="h-5 w-5 text-orange-600 mt-0.5 flex-shrink-0" />
+                          <div>
+                            <div className="font-medium text-orange-900 text-sm">
+                              {language === 'en' ? 'Location unavailable' : 'Ubicación no disponible'}
+                            </div>
+                            <div className="text-orange-700 text-xs mt-1">
+                              {language === 'en' ? 'Enable location or enter zip code below for distance-based sorting' : 'Habilite la ubicación o ingrese el código postal a continuación para ordenar por distancia'}
+                            </div>
                           </div>
                         </div>
                       </div>
-                    </div>
+                    )}
+
+                    {/* Location Success */}
+                    {(locationEnabled || userLocation) && (
+                      <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-4">
+                        <div className="flex items-start gap-3">
+                          <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                          <div>
+                            <div className="font-medium text-green-900 text-sm">
+                              {language === 'en' ? 'Location enabled' : 'Ubicación habilitada'}
+                            </div>
+                            <div className="text-green-700 text-xs mt-1">
+                              {language === 'en' ? 'Urgent care centers are now sorted by distance from your location' : 'Los centros de atención urgente ahora están ordenados por distancia desde su ubicación'}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
 
                     {/* Manual Location Entry */}
                     <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
@@ -2876,15 +3283,29 @@ function App() {
                           <div className="flex gap-2">
                             <input 
                               type="text" 
+                              value={manualZipCode}
+                              onChange={(e) => setManualZipCode(e.target.value)}
                               placeholder={language === 'en' ? 'Enter 5-digit zip code' : 'Ingrese código postal de 5 dígitos'}
                               className="flex-1 px-3 py-2 border border-blue-300 rounded-md text-sm bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                              maxLength={5}
                             />
                             <Button 
                               size="sm" 
+                              onClick={handleZipCodeClassify}
+                              disabled={!manualZipCode.trim() || isCalculatingProximity}
                               className="bg-blue-600 hover:bg-blue-700 text-white px-4"
                             >
-                              <MagnifyingGlass className="h-4 w-4 mr-1" />
-                              {language === 'en' ? 'Classify by Zip Code' : 'Clasificar por Código Postal'}
+                              {isCalculatingProximity ? (
+                                <>
+                                  <RefreshCw className="h-4 w-4 mr-1 animate-spin" />
+                                  {language === 'en' ? 'Loading...' : 'Cargando...'}
+                                </>
+                              ) : (
+                                <>
+                                  <MagnifyingGlass className="h-4 w-4 mr-1" />
+                                  {language === 'en' ? 'Classify by Zip Code' : 'Clasificar por Código Postal'}
+                                </>
+                              )}
                             </Button>
                           </div>
                         </div>
@@ -3029,162 +3450,84 @@ function App() {
 
                     {/* Nearby Locations */}
                     <div>
-                      <div className="flex items-center gap-2 mb-4">
-                        <MapPin className="h-5 w-5 text-blue-600" />
-                        <h5 className="font-semibold text-gray-900">
-                          {language === 'en' ? 'LA County Health Centers' : 'Centros de Salud del Condado de LA'}
-                        </h5>
+                      <div className="flex items-center justify-between mb-4">
+                        <div className="flex items-center gap-2">
+                          <MapPin className="h-5 w-5 text-blue-600" />
+                          <h5 className="font-semibold text-gray-900">
+                            {language === 'en' ? 'LA County Health Centers' : 'Centros de Salud del Condado de LA'}
+                          </h5>
+                        </div>
+                        {(userLocation || manualZipCode) && (
+                          <div className="text-xs text-gray-500">
+                            {language === 'en' ? 'Sorted by distance' : 'Ordenado por distancia'}
+                          </div>
+                        )}
                       </div>
+                      
+                      {isCalculatingProximity && (
+                        <div className="flex items-center justify-center py-8">
+                          <div className="flex items-center gap-3">
+                            <RefreshCw className="h-5 w-5 text-blue-600 animate-spin" />
+                            <span className="text-sm text-gray-600">
+                              {language === 'en' ? 'Calculating distances...' : 'Calculando distancias...'}
+                            </span>
+                          </div>
+                        </div>
+                      )}
+                      
                       <div className="space-y-3 max-h-96 overflow-y-auto">
                         {/* Comprehensive Health Centers */}
                         <div className="space-y-2">
                           <h6 className="text-xs font-semibold text-blue-700 uppercase tracking-wide">
-                            {language === 'en' ? 'Comprehensive Health Centers' : 'Centros de Salud Integral'}
+                            {language === 'en' ? 'Comprehensive Health Centers & Medical Centers' : 'Centros de Salud Integral y Centros Médicos'}
                           </h6>
                           
-                          {/* Edward R. Roybal */}
-                          <div className="bg-white border border-blue-200 rounded-lg p-3 hover:shadow-md transition-shadow">
-                            <div className="flex items-start justify-between">
-                              <div className="flex-1">
-                                <h6 className="font-semibold text-gray-900 text-sm">Edward R. Roybal Comprehensive Health Center</h6>
-                                <p className="text-xs text-gray-600 mt-1">245 S. Fetterly Ave., Los Angeles, CA 90022</p>
-                                <p className="text-xs text-blue-600 mt-1">(323) 362-1010</p>
-                                <div className="text-xs text-gray-500 mt-2">
-                                  <div>{language === 'en' ? 'Mon-Fri: 7:30 AM - 4:30 PM' : 'Lun-Vie: 7:30 AM - 4:30 PM'}</div>
-                                  <div>{language === 'en' ? 'Sat: 8:00 AM - 4:30 PM' : 'Sáb: 8:00 AM - 4:30 PM'}</div>
+                          {urgentCareLocations.map((location) => (
+                            <div key={location.id} className="bg-white border border-blue-200 rounded-lg p-3 hover:shadow-md transition-shadow">
+                              <div className="flex items-start justify-between">
+                                <div className="flex-1">
+                                  <div className="flex items-center gap-2 mb-1">
+                                    <h6 className="font-semibold text-gray-900 text-sm">{location.name}</h6>
+                                    {location.isER && (
+                                      <span className="bg-red-100 text-red-800 text-xs px-2 py-0.5 rounded-full font-medium">
+                                        ER 24/7
+                                      </span>
+                                    )}
+                                  </div>
+                                  <p className="text-xs text-gray-600 mt-1">{location.address}</p>
+                                  <p className="text-xs text-blue-600 mt-1">{location.phone}</p>
+                                  <div className="text-xs text-gray-500 mt-2">
+                                    {location.hours.map((hour, index) => (
+                                      <div key={index}>{hour}</div>
+                                    ))}
+                                  </div>
+                                  {location.distance && (
+                                    <div className="mt-2 text-xs font-medium text-green-600">
+                                      {location.distance.toFixed(1)} {language === 'en' ? 'miles away' : 'millas de distancia'}
+                                    </div>
+                                  )}
+                                </div>
+                                <div className="flex flex-col items-center gap-2">
+                                  <div className={`w-2 h-2 rounded-full mt-2 ${location.isER ? 'bg-red-500' : 'bg-blue-500'}`}></div>
+                                  {location.distance && (
+                                    <div className="text-xs text-gray-500 text-center">
+                                      #{urgentCareLocations.indexOf(location) + 1}
+                                    </div>
+                                  )}
                                 </div>
                               </div>
-                              <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
                             </div>
-                          </div>
-
-                          {/* El Monte */}
-                          <div className="bg-white border border-blue-200 rounded-lg p-3 hover:shadow-md transition-shadow">
-                            <div className="flex items-start justify-between">
-                              <div className="flex-1">
-                                <h6 className="font-semibold text-gray-900 text-sm">El Monte Comprehensive Health Center</h6>
-                                <p className="text-xs text-gray-600 mt-1">10953 Ramona Blvd, El Monte, CA 91731</p>
-                                <p className="text-xs text-blue-600 mt-1">(626) 434-2500</p>
-                                <div className="text-xs text-gray-500 mt-2">
-                                  <div>{language === 'en' ? 'Mon-Sat: 8:00 AM - 4:30 PM' : 'Lun-Sáb: 8:00 AM - 4:30 PM'}</div>
-                                </div>
-                              </div>
-                              <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
+                          ))}
+                          
+                          {urgentCareLocations.some(loc => loc.isER) && (
+                            <div className="mt-2 text-xs text-red-600 bg-red-50 p-2 rounded border border-red-200">
+                              {language === 'en' 
+                                ? '* Emergency Room services available at these facilities 24/7' 
+                                : '* Servicios de Sala de Emergencias disponibles en estas instalaciones 24/7'
+                              }
                             </div>
-                          </div>
-
-                          {/* H. Claude Hudson */}
-                          <div className="bg-white border border-blue-200 rounded-lg p-3 hover:shadow-md transition-shadow">
-                            <div className="flex items-start justify-between">
-                              <div className="flex-1">
-                                <h6 className="font-semibold text-gray-900 text-sm">H. Claude Hudson Comprehensive Health Center</h6>
-                                <p className="text-xs text-gray-600 mt-1">2829 South Grand Ave., Los Angeles, CA 90007</p>
-                                <p className="text-xs text-blue-600 mt-1">(213) 699-7000</p>
-                                <div className="text-xs text-gray-500 mt-2">
-                                  <div>{language === 'en' ? 'Mon-Fri: 7:30 AM - 11:00 PM' : 'Lun-Vie: 7:30 AM - 11:00 PM'}</div>
-                                  <div>{language === 'en' ? 'Sat-Sun: 8:00 AM - 11:00 PM' : 'Sáb-Dom: 8:00 AM - 11:00 PM'}</div>
-                                </div>
-                              </div>
-                              <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
-                            </div>
-                          </div>
-
-                          {/* High Desert */}
-                          <div className="bg-white border border-blue-200 rounded-lg p-3 hover:shadow-md transition-shadow">
-                            <div className="flex items-start justify-between">
-                              <div className="flex-1">
-                                <h6 className="font-semibold text-gray-900 text-sm">High Desert Regional Health Center</h6>
-                                <p className="text-xs text-gray-600 mt-1">335 East Avenue I, Lancaster, CA 93535</p>
-                                <p className="text-xs text-blue-600 mt-1">(661) 471-4000</p>
-                                <div className="text-xs text-gray-500 mt-2">
-                                  <div>{language === 'en' ? 'Daily: 8:00 AM - 10:30 PM' : 'Diario: 8:00 AM - 10:30 PM'}</div>
-                                </div>
-                              </div>
-                              <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
-                            </div>
-                          </div>
-
-                          {/* Hubert Humphrey */}
-                          <div className="bg-white border border-blue-200 rounded-lg p-3 hover:shadow-md transition-shadow">
-                            <div className="flex items-start justify-between">
-                              <div className="flex-1">
-                                <h6 className="font-semibold text-gray-900 text-sm">Hubert Humphrey Comprehensive Health Center</h6>
-                                <p className="text-xs text-gray-600 mt-1">5850 So. Main St., Los Angeles, CA 90003</p>
-                                <p className="text-xs text-blue-600 mt-1">(323) 897-6000</p>
-                                <div className="text-xs text-gray-500 mt-2">
-                                  <div>{language === 'en' ? 'Mon-Fri: 8:00 AM - 10:00 PM' : 'Lun-Vie: 8:00 AM - 10:00 PM'}</div>
-                                  <div>{language === 'en' ? 'Sat-Sun: 8:00 AM - 6:30 PM' : 'Sáb-Dom: 8:00 AM - 6:30 PM'}</div>
-                                </div>
-                              </div>
-                              <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
-                            </div>
-                          </div>
-
-                          {/* Long Beach */}
-                          <div className="bg-white border border-blue-200 rounded-lg p-3 hover:shadow-md transition-shadow">
-                            <div className="flex items-start justify-between">
-                              <div className="flex-1">
-                                <h6 className="font-semibold text-gray-900 text-sm">Long Beach Comprehensive Health Center</h6>
-                                <p className="text-xs text-gray-600 mt-1">1333 Chestnut Ave., Long Beach, CA 90813</p>
-                                <p className="text-xs text-blue-600 mt-1">(562) 753-2300</p>
-                                <div className="text-xs text-gray-500 mt-2">
-                                  <div>{language === 'en' ? 'Mon-Fri: 7:30 AM - 7:30 PM' : 'Lun-Vie: 7:30 AM - 7:30 PM'}</div>
-                                  <div>{language === 'en' ? 'Sat: 8:00 AM - 4:30 PM' : 'Sáb: 8:00 AM - 4:30 PM'}</div>
-                                </div>
-                              </div>
-                              <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
-                            </div>
-                          </div>
-
-                          {/* Martin Luther King Jr. */}
-                          <div className="bg-white border border-blue-200 rounded-lg p-3 hover:shadow-md transition-shadow">
-                            <div className="flex items-start justify-between">
-                              <div className="flex-1">
-                                <h6 className="font-semibold text-gray-900 text-sm">Martin Luther King, Jr. Outpatient Center</h6>
-                                <p className="text-xs text-gray-600 mt-1">12021 S Wilmington Ave, Los Angeles, CA 90059</p>
-                                <p className="text-xs text-gray-600 mt-1">First Floor, Suite 1D</p>
-                                <p className="text-xs text-blue-600 mt-1">(424) 338-1000</p>
-                                <div className="text-xs text-gray-500 mt-2">
-                                  <div>{language === 'en' ? 'Daily: 7:30 AM - 11:00 PM' : 'Diario: 7:30 AM - 11:00 PM'}</div>
-                                </div>
-                              </div>
-                              <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
-                            </div>
-                          </div>
-
-                          {/* Mid-Valley */}
-                          <div className="bg-white border border-blue-200 rounded-lg p-3 hover:shadow-md transition-shadow">
-                            <div className="flex items-start justify-between">
-                              <div className="flex-1">
-                                <h6 className="font-semibold text-gray-900 text-sm">Mid-Valley Comprehensive Health Center</h6>
-                                <p className="text-xs text-gray-600 mt-1">7515 Van Nuys Blvd., Van Nuys, CA 91405</p>
-                                <p className="text-xs text-blue-600 mt-1">(818) 627-3000</p>
-                                <div className="text-xs text-gray-500 mt-2">
-                                  <div>{language === 'en' ? 'Mon-Fri: 8:00 AM - 9:00 PM' : 'Lun-Vie: 8:00 AM - 9:00 PM'}</div>
-                                  <div>{language === 'en' ? 'Sat-Sun: 8:00 AM - 3:00 PM' : 'Sáb-Dom: 8:00 AM - 3:00 PM'}</div>
-                                </div>
-                              </div>
-                              <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
-                            </div>
-                          </div>
-
-                          {/* South Valley */}
-                          <div className="bg-white border border-blue-200 rounded-lg p-3 hover:shadow-md transition-shadow">
-                            <div className="flex items-start justify-between">
-                              <div className="flex-1">
-                                <h6 className="font-semibold text-gray-900 text-sm">South Valley Health Center</h6>
-                                <p className="text-xs text-gray-600 mt-1">38350 40th St. East, Palmdale, CA 93552</p>
-                                <p className="text-xs text-blue-600 mt-1">(661) 225-3001</p>
-                                <div className="text-xs text-gray-500 mt-2">
-                                  <div>{language === 'en' ? 'Daily: 8:00 AM - 10:30 PM' : 'Diario: 8:00 AM - 10:30 PM'}</div>
-                                </div>
-                              </div>
-                              <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
-                            </div>
-                          </div>
+                          )}
                         </div>
-
-
                       </div>
                     </div>
                   </div>
