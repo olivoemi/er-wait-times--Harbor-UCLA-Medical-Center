@@ -3474,45 +3474,45 @@ function App() {
                                   text: 'text-green-900',
                                   badge: 'bg-green-500 text-white'
                                 }
-                              }
-                              return colorMap[level as keyof typeof colorMap] || colorMap[5]
-                            }
-
-                            const colors = getAcuityColors(symptom.acuityLevel, isSelected)
-                            
-                            return (
-                              <div
-                                key={symptom.id}
-                                onClick={() => handleSymptomToggle(symptom.id)}
-                                className={`p-4 rounded-lg border cursor-pointer transition-all hover:shadow-md ${colors.bg} ${colors.border}`}
-                              >
-                                <div className="flex items-start justify-between mb-3">
-                                  <div className="flex items-center gap-3">
-                                    {getSymptomIcon(symptom.id, symptom.category)}
-                                    {isSelected && (
-                                      <CheckCircle className="h-5 w-5 text-red-600" />
-                                    )}
-                                  </div>
-                                  <div className="text-xs font-semibold text-gray-600">
-                                    {language === 'en' ? `Acuity Level ${symptom.acuityLevel}` : `Nivel de Acuidad ${symptom.acuityLevel}`}
-                                  </div>
-                                </div>
-                                <div className="text-sm font-medium text-gray-900 leading-tight">
-                                  {symptom.name}
-                                </div>
-                              </div>
-                            )
-                          })}
-                        </div>
-                      </div>
-                    ))}
+                        {language === 'en' 
+                          ? 'The information provided on this page is for educational purposes only and should not be used as a substitute for professional medical advice, diagnosis, or treatment. Always consult with a qualified healthcare provider about any health concerns or before making any decisions related to your health or treatment.'
+                          : 'La información proporcionada en esta página es solo para fines educativos y no debe usarse como sustituto del consejo médico profesional, diagnóstico o tratamiento. Siempre consulte con un proveedor de atención médica calificado sobre cualquier preocupación de salud o antes de tomar cualquier decisión relacionada con su salud o tratamiento.'
+                        }
+                      </p>
+                      <p className="font-medium">
+                        {language === 'en' 
+                          ? 'In case of a medical emergency, call 911 immediately. This facility is not responsible for any actions taken based on the information provided through this guidance tool.'
+                          : 'En caso de emergencia médica, llame al 911 inmediatamente. Esta instalación no es responsable de ninguna acción tomada basada en la información proporcionada a través de esta herramienta de orientación.'
+                        }
+                      </p>
+                    </div>
                   </div>
                 </div>
+              </div>
+            )}
 
-                {/* Disclaimer and Medical Information Boxes */}
-                <div className="grid gap-6 lg:grid-cols-2">
-                  {/* When in Doubt, Seek Immediate Care */}
-                  <div className="bg-red-50 border border-red-200 rounded-lg p-6">
+            {careGuideSection === 'options' && (
+              <div className="space-y-8">
+                {/* Header */}
+                <div className="text-left">
+                  <div className="text-sm text-gray-600 mb-2">
+                    {language === 'en' ? 'Alternative care facilities' : 'Instalaciones de atención alternativa'}
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                    {language === 'en' ? 'Alternative Care Options' : 'Opciones de Atención Alternativa'}
+                  </h3>
+                  <p className="text-gray-600 max-w-4xl">
+                    {language === 'en' 
+                      ? 'Find alternative care options near you with estimated costs and wait times.'
+                      : 'Encuentre opciones de atención alternativa cerca de usted con costos y tiempos de espera estimados.'
+                    }
+                  </p>
+                </div>
+
+                {/* Location Status Messages */}
+                <div>
+                  {!locationEnabled && !userLocation && (
+                    <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 mb-4">
                     <div className="flex items-start gap-3 mb-4">
                       <AlertTriangle className="h-5 w-5 text-red-600 mt-1 flex-shrink-0" />
                       <h3 className="text-lg font-semibold text-red-900">
@@ -4505,7 +4505,7 @@ function App() {
                     <ul className="space-y-3 text-sm text-blue-800">
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
-                        <span>{language === 'en' ? 'Call ahead if your condition allows' : 'Llame antes si su condición lo permite'}</span>
+                        <span>{language === 'en' ? 'Call ahead if your condition allows' : 'Llame antes si su condici��n lo permite'}</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
