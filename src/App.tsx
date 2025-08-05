@@ -578,7 +578,6 @@ function App() {
   const handleEnableLocation = () => {
     if (navigator.geolocation) {
       setLocationEnabled(true)
-      setIsCalculatingProximity(true)
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const userLoc = {
@@ -586,13 +585,12 @@ function App() {
             lng: position.coords.longitude
           }
           setUserLocation(userLoc)
+          calculateProximity(userLoc)
           setLocationError('')
-          setIsCalculatingProximity(false)
         },
         (error) => {
           setLocationError('Location access denied')
           setLocationEnabled(false)
-          setIsCalculatingProximity(false)
         }
       )
     }
@@ -603,7 +601,7 @@ function App() {
     if (manualZipCode.trim()) {
       const coords = getCoordinatesFromZip(manualZipCode.trim())
       if (coords) {
-        setUserLocation(coords) // Set user location to trigger automatic proximity calculation
+        calculateProximity(coords)
         setLocationError('')
       } else {
         setLocationError('Invalid or unsupported zip code')
@@ -3691,21 +3689,13 @@ function App() {
                     <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 mb-4">
                       <div className="flex items-start gap-3">
                         <AlertTriangle className="h-5 w-5 text-orange-600 mt-0.5 flex-shrink-0" />
-                        <div className="flex-1">
+                        <div>
                           <div className="font-medium text-orange-900 text-sm">
                             {language === 'en' ? 'Location unavailable' : 'Ubicación no disponible'}
                           </div>
                           <div className="text-orange-700 text-xs mt-1">
-                            {language === 'en' ? 'Centers are listed alphabetically. Enable location or enter zip code for distance-based sorting.' : 'Los centros están listados alfabéticamente. Habilite la ubicación o ingrese el código postal para ordenar por distancia.'}
+                            {language === 'en' ? 'Enable location or enter zip code below for distance-based sorting' : 'Habilite la ubicación o ingrese el código postal a continuación para ordenar por distancia'}
                           </div>
-                          <Button
-                            onClick={handleEnableLocation}
-                            size="sm"
-                            className="bg-orange-600 hover:bg-orange-700 text-white mt-2"
-                          >
-                            <MapPin className="h-4 w-4 mr-1" />
-                            {language === 'en' ? 'Enable Location' : 'Habilitar Ubicación'}
-                          </Button>
                         </div>
                       </div>
                     </div>
@@ -4008,12 +3998,9 @@ function App() {
                     <div className="mb-6">
                       <div className="flex items-center justify-between mb-4">
                         <h5 className="font-semibold text-gray-900">
-                          {language === 'en' ? 
-                            (userLocation || locationEnabled ? 'Urgent Care Centers (by distance)' : 'Urgent Care Centers (alphabetical)') : 
-                            (userLocation || locationEnabled ? 'Centros de Atención Urgente (por distancia)' : 'Centros de Atención Urgente (alfabético)')
-                          }
+                          {language === 'en' ? 'Nearby Urgent Care Centers' : 'Centros de Atención Urgente Cercanos'}
                         </h5>
-                        {urgentCareLocations.length > 3 && (
+                        {urgentCareData.length > 3 && (
                           <Button
                             variant="ghost"
                             size="sm"
@@ -4022,7 +4009,7 @@ function App() {
                           >
                             {showAllUrgentCare 
                               ? (language === 'en' ? 'Show Less' : 'Mostrar Menos')
-                              : (language === 'en' ? `Show All (${urgentCareLocations.length})` : `Mostrar Todos (${urgentCareLocations.length})`)
+                              : (language === 'en' ? `Show All (${urgentCareData.length})` : `Mostrar Todos (${urgentCareData.length})`)
                             }
                             {showAllUrgentCare ? <CaretUp className="h-4 w-4 ml-1" /> : <CaretDown className="h-4 w-4 ml-1" />}
                           </Button>
@@ -4030,7 +4017,7 @@ function App() {
                       </div>
                       
                       <div className="space-y-3 max-h-96 overflow-y-auto">
-                        {(showAllUrgentCare ? urgentCareLocations : urgentCareLocations.slice(0, 3)).map((location, index) => (
+                        {(showAllUrgentCare ? urgentCareData : urgentCareData.slice(0, 3)).map((location, index) => (
                           <div key={location.id} className="bg-white border border-gray-200 rounded-lg p-4 hover:shadow-sm transition-shadow">
                             <div className="flex items-start justify-between mb-2">
                               <div className="flex-1 min-w-0">
@@ -4072,12 +4059,12 @@ function App() {
                         ))}
                       </div>
                       
-                      {!showAllUrgentCare && urgentCareLocations.length > 3 && (
+                      {!showAllUrgentCare && urgentCareData.length > 3 && (
                         <div className="text-center mt-3">
                           <p className="text-xs text-gray-500">
                             {language === 'en' 
-                              ? `Showing 3 of ${urgentCareLocations.length} locations. Click "Show All" to see more.`
-                              : `Mostrando 3 de ${urgentCareLocations.length} ubicaciones. Haga clic en "Mostrar Todos" para ver más.`
+                              ? `Showing 3 of ${urgentCareData.length} locations. Click "Show All" to see more.`
+                              : `Mostrando 3 de ${urgentCareData.length} ubicaciones. Haga clic en "Mostrar Todos" para ver más.`
                             }
                           </p>
                         </div>
