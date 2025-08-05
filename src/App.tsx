@@ -3623,38 +3623,42 @@ function App() {
 
                   <div className="p-6">
                     {/* Stats Row */}
-                    <div className="grid grid-cols-3 gap-8 mb-6">
-                      <div className="text-center">
-                        <div className="flex items-center justify-center gap-2 mb-2">
+                    <div className="grid grid-cols-3 gap-6 mb-6">
+                      <div className="text-left">
+                        <div className="flex items-center gap-2 mb-2">
                           <Clock className="h-4 w-4 text-blue-600" />
                           <span className="text-sm font-medium text-gray-600">
                             {language === 'en' ? 'Wait Time' : 'Tiempo de Espera'}
                           </span>
                         </div>
-                        <div className="text-2xl font-bold text-blue-600 mb-1">15-45 {language === 'en' ? 'minutes' : 'minutos'}</div>
+                        <div className="text-lg font-bold text-gray-900">
+                          {language === 'en' ? '15-45 minutes' : '15-45 minutos'}
+                        </div>
                       </div>
                       
-                      <div className="text-center">
-                        <div className="flex items-center justify-center gap-2 mb-2">
-                          <Building className="h-4 w-4 text-green-600" />
+                      <div className="text-left">
+                        <div className="flex items-center gap-2 mb-2">
+                          <div className="w-4 h-4 flex items-center justify-center text-blue-600">
+                            <span className="text-sm font-bold">$</span>
+                          </div>
                           <span className="text-sm font-medium text-gray-600">
                             {language === 'en' ? 'Typical Cost Range' : 'Rango de Costo Típico'}
                           </span>
                         </div>
-                        <div className="text-2xl font-bold text-green-600 mb-1">$15-$250</div>
+                        <div className="text-lg font-bold text-gray-900">$15-$250</div>
                         <div className="text-xs text-gray-500">
                           {language === 'en' ? 'Varies by insurance' : 'Varía por seguro'}
                         </div>
                       </div>
                       
-                      <div className="text-center">
-                        <div className="flex items-center justify-center gap-2 mb-2">
-                          <MapPin className="h-4 w-4 text-purple-600" />
+                      <div className="text-left">
+                        <div className="flex items-center gap-2 mb-2">
+                          <MapPin className="h-4 w-4 text-blue-600" />
                           <span className="text-sm font-medium text-gray-600">
                             {language === 'en' ? 'Availability' : 'Disponibilidad'}
                           </span>
                         </div>
-                        <div className="text-lg font-bold text-purple-600">
+                        <div className="text-lg font-bold text-gray-900">
                           {language === 'en' ? '7 days a week, extended hours' : '7 días a la semana, horario extendido'}
                         </div>
                       </div>
@@ -3754,9 +3758,9 @@ function App() {
 
                     {/* Action Buttons */}
                     <div className="flex gap-3">
-                      <Button className="bg-green-600 hover:bg-green-700 text-white flex-1">
+                      <Button className="bg-blue-600 hover:bg-blue-700 text-white flex-1">
                         <Phone className="h-4 w-4 mr-2" />
-                        {language === 'en' ? 'Start Virtual Visit' : 'Iniciar Visita Virtual'}
+                        {language === 'en' ? 'Find Urgent Care' : 'Buscar Atención Urgente'}
                       </Button>
                       <Button variant="outline" className="border-gray-300 text-gray-700 hover:bg-gray-50">
                         <Phone className="h-4 w-4 mr-2" />
@@ -3770,8 +3774,8 @@ function App() {
                 <div className="bg-white rounded-lg border border-gray-200 shadow-sm">
                   <div className="p-6 border-b border-gray-200">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                        <Phone className="h-6 w-6 text-green-600" />
+                      <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                        <Phone className="h-6 w-6 text-purple-600" />
                       </div>
                       <div>
                         <h4 className="text-xl font-bold text-gray-900">
@@ -3792,7 +3796,7 @@ function App() {
                     <div className="grid grid-cols-3 gap-6 mb-6">
                       <div className="text-left">
                         <div className="flex items-center gap-2 mb-2">
-                          <Clock className="h-4 w-4 text-green-600" />
+                          <Clock className="h-4 w-4 text-purple-600" />
                           <span className="text-sm font-medium text-gray-600">
                             {language === 'en' ? 'Wait Time' : 'Tiempo de Espera'}
                           </span>
@@ -3804,19 +3808,22 @@ function App() {
                       
                       <div className="text-left">
                         <div className="flex items-center gap-2 mb-2">
-                          <div className="w-4 h-4 flex items-center justify-center text-green-600">
+                          <div className="w-4 h-4 flex items-center justify-center text-purple-600">
                             <span className="text-sm font-bold">$</span>
                           </div>
                           <span className="text-sm font-medium text-gray-600">
-                            {language === 'en' ? 'Your expected cost without insurance or if your deductible hasn\'t been met yet' : 'Su costo esperado sin seguro o si su deducible aún no se ha cumplido'}
+                            {language === 'en' ? 'Typical Cost Range' : 'Rango de Costo Típico'}
                           </span>
                         </div>
-                        <div className="text-lg font-bold text-gray-900">$50-$150</div>
+                        <div className="text-lg font-bold text-gray-900">$0-$150</div>
+                        <div className="text-xs text-gray-500">
+                          {language === 'en' ? 'Varies by insurance' : 'Varía por seguro'}
+                        </div>
                       </div>
                       
                       <div className="text-left">
                         <div className="flex items-center gap-2 mb-2">
-                          <MapPin className="h-4 w-4 text-green-600" />
+                          <MapPin className="h-4 w-4 text-purple-600" />
                           <span className="text-sm font-medium text-gray-600">
                             {language === 'en' ? 'Availability' : 'Disponibilidad'}
                           </span>
@@ -3924,7 +3931,7 @@ function App() {
 
                     {/* Action Buttons */}
                     <div className="flex gap-3">
-                      <Button className="bg-green-600 hover:bg-green-700 text-white flex-1">
+                      <Button className="bg-purple-600 hover:bg-purple-700 text-white flex-1">
                         <Phone className="h-4 w-4 mr-2" />
                         {language === 'en' ? 'Start Virtual Visit' : 'Iniciar Visita Virtual'}
                       </Button>
@@ -3940,8 +3947,8 @@ function App() {
                 <div className="bg-white rounded-lg border border-gray-200 shadow-sm">
                   <div className="p-6 border-b border-gray-200">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                        <FirstAid className="h-6 w-6 text-green-600" />
+                      <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
+                        <FirstAid className="h-6 w-6 text-orange-600" />
                       </div>
                       <div>
                         <h4 className="text-xl font-bold text-gray-900">
@@ -3962,7 +3969,7 @@ function App() {
                     <div className="grid grid-cols-3 gap-6 mb-6">
                       <div className="text-left">
                         <div className="flex items-center gap-2 mb-2">
-                          <Clock className="h-4 w-4 text-blue-600" />
+                          <Clock className="h-4 w-4 text-orange-600" />
                           <span className="text-sm font-medium text-gray-600">
                             {language === 'en' ? 'Wait Time' : 'Tiempo de Espera'}
                           </span>
@@ -3974,7 +3981,9 @@ function App() {
                       
                       <div className="text-left">
                         <div className="flex items-center gap-2 mb-2">
-                          <Building className="h-4 w-4 text-green-600" />
+                          <div className="w-4 h-4 flex items-center justify-center text-orange-600">
+                            <span className="text-sm font-bold">$</span>
+                          </div>
                           <span className="text-sm font-medium text-gray-600">
                             {language === 'en' ? 'Typical Cost Range' : 'Rango de Costo Típico'}
                           </span>
@@ -3987,7 +3996,7 @@ function App() {
                       
                       <div className="text-left">
                         <div className="flex items-center gap-2 mb-2">
-                          <MapPin className="h-4 w-4 text-purple-600" />
+                          <MapPin className="h-4 w-4 text-orange-600" />
                           <span className="text-sm font-medium text-gray-600">
                             {language === 'en' ? 'Availability' : 'Disponibilidad'}
                           </span>
@@ -4128,7 +4137,7 @@ function App() {
 
                     {/* Action Buttons */}
                     <div className="flex gap-3">
-                      <Button className="bg-green-600 hover:bg-green-700 text-white flex-1">
+                      <Button className="bg-orange-600 hover:bg-orange-700 text-white flex-1">
                         <FirstAid className="h-4 w-4 mr-2" />
                         {language === 'en' ? 'Schedule Appointment' : 'Programar Cita'}
                       </Button>
