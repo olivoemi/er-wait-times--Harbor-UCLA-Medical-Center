@@ -2189,43 +2189,30 @@ function App() {
                             </div>
                           </div>
 
-                              <div className="text-xs text-red-700 font-medium">
-                                {language === 'en' ? 'Peak: 70 min' : 'Pico: 70 min'}
-                              </div>
-                            </div>
-                              <div className="text-xs text-red-700 font-medium">
-                                {language === 'en' ? 'Peak: 70 min' : 'Pico: 70 min'}
-                              </div>
-                            </div>
-                              </div>
-                            </div>
-                              <div className="text-xs text-orange-700 font-medium">
-                                {language === 'en' ? 'Peak: 70 min' : 'Pico: 70 min'}
-                              </div>
-                            </div>
-                              </div>
-                            </div>
-                              <div className="text-xs text-yellow-700 font-medium">
-                                {language === 'en' ? 'Peak: 220 min' : 'Pico: 220 min'}
-                              </div>
-                            </div>
-                              </div>
-                            </div>
-                              <div className="text-xs text-blue-700 font-medium">
-                                {language === 'en' ? 'Peak: 240 min' : 'Pico: 240 min'}
-                              </div>
-                            </div>
-                              </div>
-                            </div>
-                              <div className="text-xs text-green-700 font-medium">
-                                {language === 'en' ? 'Peak: 190 min' : 'Pico: 190 min'}
-                              </div>
-                            </div>
+                        {/* Wait Times by Acuity Level Over Time */}
+                        <div className="border-t border-gray-200 pt-6">
+                          <h5 className="text-lg font-semibold text-gray-900 mb-4">
+                            {language === 'en' ? 'Wait Times by Acuity Level Over Time' : 'Tiempos de Espera por Nivel de Acuidad a lo Largo del Tiempo'}
+                          </h5>
+                          <div className="flex gap-2">
+                            <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs px-3 py-1">
+                              {language === 'en' ? 'Today' : 'Hoy'}
+                            </Button>
+                            <Button size="sm" variant="outline" className="text-xs px-3 py-1">
+                              {language === 'en' ? 'Yesterday' : 'Ayer'}
+                            </Button>
+                            <Button size="sm" variant="outline" className="text-xs px-3 py-1">
+                              {language === 'en' ? 'Week' : 'Semana'}
+                            </Button>
                           </div>
+                        </div>
+
+                        {/* Clean Summary Table Section */}
+                        <div className="border-t border-gray-200 pt-6">
                           <div className="flex items-center gap-3 mb-6">
                             <div className="bg-orange-100 p-3 rounded-lg">
                               <Clock className="h-6 w-6 text-orange-600" />
-                          <div className="flex items-center gap-3 mb-6">
+                            </div>
                             <h4 className="text-xl font-semibold text-gray-900">{t[language].waitTimesByConditionSeverity}</h4>
                           </div>
 
