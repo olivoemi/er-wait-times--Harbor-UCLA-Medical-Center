@@ -2335,74 +2335,7 @@ function App() {
 
 
 
-                        {/* Specialized Services */}
-                        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
-                          <div className="flex items-center gap-3 mb-6">
-                            <div className="bg-red-100 p-3 rounded-lg">
-                              <Plus className="h-6 w-6 text-red-600" />
-                            </div>
-                            <h4 className="text-lg font-semibold text-gray-900">
-                              {language === 'en' ? 'Top 5 Specialized Services Available' : 'Top 5 Servicios Especializados Disponibles'}
-                            </h4>
-                          </div>
-                          <div className="space-y-4">
-                            <div className="flex items-center justify-between p-4 bg-red-50 rounded-lg border border-red-200 hover:bg-red-100 transition-colors">
-                              <div className="flex items-center gap-4">
-                                <div className="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
-                                  <Plus className="h-5 w-5 text-red-600" />
-                                </div>
-                                <span className="font-semibold text-red-900">
-                                  {language === 'en' ? 'Level 1 Trauma Center' : 'Centro de Trauma Nivel 1'}
-                                </span>
-                              </div>
-                              <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                            </div>
-                            <div className="flex items-center justify-between p-4 bg-pink-50 rounded-lg border border-pink-200 hover:bg-pink-100 transition-colors">
-                              <div className="flex items-center gap-4">
-                                <div className="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center">
-                                  <Heart className="h-5 w-5 text-pink-600" />
-                                </div>
-                                <span className="font-semibold text-pink-900">
-                                  {language === 'en' ? 'Cardiac Care' : 'Atención Cardíaca'}
-                                </span>
-                              </div>
-                              <div className="w-3 h-3 bg-pink-500 rounded-full"></div>
-                            </div>
-                            <div className="flex items-center justify-between p-4 bg-blue-50 rounded-lg border border-blue-200 hover:bg-blue-100 transition-colors">
-                              <div className="flex items-center gap-4">
-                                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                                  <Brain className="h-5 w-5 text-blue-600" />
-                                </div>
-                                <span className="font-semibold text-blue-900">
-                                  {language === 'en' ? 'Stroke Care' : 'Atención de Accidentes Cerebrovasculares'}
-                                </span>
-                              </div>
-                              <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                            </div>
-                            <div className="flex items-center justify-between p-4 bg-green-50 rounded-lg border border-green-200 hover:bg-green-100 transition-colors">
-                              <div className="flex items-center gap-4">
-                                <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                                  <Activity className="h-5 w-5 text-green-600" />
-                                </div>
-                                <span className="font-semibold text-green-900">
-                                  {language === 'en' ? 'Critical Care' : 'Cuidados Intensivos'}
-                                </span>
-                              </div>
-                              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                            </div>
-                            <div className="flex items-center justify-between p-4 bg-purple-50 rounded-lg border border-purple-200 hover:bg-purple-100 transition-colors">
-                              <div className="flex items-center gap-4">
-                                <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
-                                  <FirstAid className="h-5 w-5 text-purple-600" />
-                                </div>
-                                <span className="font-semibold text-purple-900">
-                                  {language === 'en' ? 'Emergency Surgery' : 'Cirugía de Emergencia'}
-                                </span>
-                              </div>
-                              <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
-                            </div>
-                          </div>
-                        </div>
+
                       </div>
                     </div>
                   </div>
