@@ -1005,8 +1005,16 @@ function App() {
           <div className="flex items-center justify-between">
             {/* Logo and Title */}
             <div className="flex items-center gap-3">
-              <div className="bg-blue-600 text-white p-2 rounded-lg">
-                <Plus className="h-6 w-6" />
+              <div className="bg-red-600 text-white p-2 rounded-lg shadow-md">
+                <div className="relative w-6 h-6">
+                  {/* Healthcare Cross */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="bg-white w-5 h-1.5 rounded-sm"></div>
+                  </div>
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="bg-white w-1.5 h-5 rounded-sm"></div>
+                  </div>
+                </div>
               </div>
               <h1 className="text-xl font-semibold text-gray-900">
                 {t[language].title}
@@ -1020,20 +1028,22 @@ function App() {
                 variant="outline"
                 size="sm"
                 onClick={() => setLanguage(language === 'en' ? 'es' : 'en')}
-                className="flex items-center gap-2 bg-blue-600 text-white border-blue-600 hover:bg-blue-700"
+                className="flex items-center gap-2 bg-white border-2 border-blue-600 text-blue-600 hover:bg-blue-50 hover:border-blue-700 font-medium px-4 py-2 shadow-sm transition-all duration-200"
               >
                 <Globe className="h-4 w-4" />
-                {language === 'en' ? 'English' : 'Español'}
+                <span className="font-semibold">{language === 'en' ? 'English' : 'Español'}</span>
               </Button>
 
               {/* Emergency Button */}
-              <span className="text-gray-600 text-sm">{t[language].emergencyLabel}</span>
-              <Button
-                size="sm"
-                className="bg-red-600 hover:bg-red-700 text-white font-bold px-4"
-              >
-                📞 911
-              </Button>
+              <div className="flex items-center gap-2">
+                <span className="text-gray-600 text-sm font-medium">{t[language].emergencyLabel}</span>
+                <Button
+                  size="sm"
+                  className="bg-red-600 hover:bg-red-700 text-white font-bold px-4 py-2 shadow-md"
+                >
+                  📞 911
+                </Button>
+              </div>
             </div>
           </div>
 
