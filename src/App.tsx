@@ -2189,23 +2189,7 @@ function App() {
                             </div>
                           </div>
 
-                        {/* Wait Times by Acuity Level Over Time */}
-                        <div className="border-t border-gray-200 pt-6">
-                          <h5 className="text-lg font-semibold text-gray-900 mb-4">
-                            {language === 'en' ? 'Wait Times by Acuity Level Over Time' : 'Tiempos de Espera por Nivel de Acuidad a lo Largo del Tiempo'}
-                          </h5>
-                          <div className="flex gap-2">
-                            <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs px-3 py-1">
-                              {language === 'en' ? 'Today' : 'Hoy'}
-                            </Button>
-                            <Button size="sm" variant="outline" className="text-xs px-3 py-1">
-                              {language === 'en' ? 'Yesterday' : 'Ayer'}
-                            </Button>
-                            <Button size="sm" variant="outline" className="text-xs px-3 py-1">
-                              {language === 'en' ? 'Week' : 'Semana'}
-                            </Button>
-                          </div>
-                        </div>
+
 
                         {/* Clean Summary Table Section */}
                         <div className="border-t border-gray-200 pt-6">
@@ -2349,23 +2333,7 @@ function App() {
                             </div>
                           </div>
 
-                          {/* Wait Times by Acuity Level Over Time */}
-                          <div className="border-t border-gray-200 pt-6">
-                            <h5 className="text-lg font-semibold text-gray-900 mb-4">
-                              {language === 'en' ? 'Wait Times by Acuity Level Over Time' : 'Tiempos de Espera por Nivel de Acuidad a lo Largo del Tiempo'}
-                            </h5>
-                            <div className="flex gap-2">
-                              <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs px-3 py-1">
-                                {language === 'en' ? 'Today' : 'Hoy'}
-                              </Button>
-                              <Button size="sm" variant="outline" className="text-xs px-3 py-1">
-                                {language === 'en' ? 'Yesterday' : 'Ayer'}
-                              </Button>
-                              <Button size="sm" variant="outline" className="text-xs px-3 py-1">
-                                {language === 'en' ? 'Week' : 'Semana'}
-                              </Button>
-                            </div>
-                        </div>
+
 
                         {/* Specialized Services */}
                         <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
