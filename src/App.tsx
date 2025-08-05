@@ -3639,9 +3639,10 @@ function App() {
                         <h5 className="text-lg font-semibold text-gray-900 mb-4">
                           {language === 'en' ? 'Your Rights as a Patient' : 'Sus Derechos como Paciente'}
                         </h5>
+                        <div className="space-y-3">
                           <div className="flex items-start gap-3">
                             <div className="bg-blue-100 p-1 rounded-full mt-1">
-                            <div className="bg-blue-100 p-1 rounded-full mt-1">
+                              <CheckCircle className="h-3 w-3 text-blue-600" />
                             </div>
                             <span className="text-green-800 text-sm">
                               {language === 'en' 
@@ -3650,8 +3651,9 @@ function App() {
                               }
                             </span>
                           </div>
-                            <div className="bg-blue-100 p-1 rounded-full mt-1">
                           <div className="flex items-start gap-3">
+                            <div className="bg-blue-100 p-1 rounded-full mt-1">
+                              <CheckCircle className="h-3 w-3 text-blue-600" />
                             </div>
                             <span className="text-green-800 text-sm">
                               {language === 'en' 
@@ -3660,9 +3662,10 @@ function App() {
                               }
                             </span>
                           </div>
-                            </span>
-                              <Heart className="h-4 w-4 text-green-600" />
                           <div className="flex items-start gap-3">
+                            <div className="bg-blue-100 p-1 rounded-full mt-1">
+                              <Heart className="h-3 w-3 text-green-600" />
+                            </div>
                             <span className="text-green-800 text-sm">
                               {language === 'en' 
                                 ? 'You can seek care with confidence - our focus is on your health and well-being'
@@ -3681,13 +3684,9 @@ function App() {
                     <div className="bg-blue-100 p-2 rounded-full">
                       <CheckCircle className="h-6 w-6 text-blue-600" />
                     </div>
-                  <div className="flex items-start gap-4">
+                    <div className="flex-1">
                       <h4 className="text-lg font-semibold text-gray-900 mb-3">
                         {language === 'en' ? 'Essential Items to Bring' : 'Elementos Esenciales para Traer'}
-                      </h4>
-                      <p className="text-gray-700 mb-4 text-sm">
-                        {language === 'en' 
-                          ? 'Having these items ready can help medical staff provide faster, more accurate care.'
                       </h4>
                       <p className="text-gray-700 mb-4 text-sm">
                         {language === 'en' 
@@ -3704,6 +3703,10 @@ function App() {
                             <h5 className="font-medium text-gray-900 text-sm">
                               {language === 'en' ? "Government-issued photo ID (driver's license, passport)" : 'ID con foto emitida por el gobierno (licencia de conducir, pasaporte)'}
                             </h5>
+                          </div>
+                        </div>
+
+                        {/* Insurance cards */}
                         <div className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
                           <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
                           <div>
