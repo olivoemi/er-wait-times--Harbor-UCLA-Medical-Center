@@ -3801,6 +3801,7 @@ function App() {
                       <div className="space-y-4">
                         {/* Arrival and Registration */}
                         <div className="border-l-4 border-blue-500 pl-4">
+                          <h5 className="font-semibold text-gray-900 mb-2">
                             {language === 'en' ? '1. Arrival and Registration' : '1. Llegada y Registro'}
                           </h5>
                           <ul className="space-y-1 text-sm text-gray-700">
