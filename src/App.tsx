@@ -1823,48 +1823,6 @@ function App() {
                           </div>
 
                         </div>
-
-                      {/* Wait Times by Condition Severity - Bottom Chart */}
-                      <div className="mb-6">
-                        <h4 className="font-semibold text-gray-900 mb-4">{t[language].waitTimesByConditionSeverity}</h4>
-                        <div className="flex gap-4">
-                          {/* L1 */}
-                          <div className="text-center flex-1">
-                            <div className="w-3 h-3 bg-red-500 rounded-full mx-auto mb-2"></div>
-                            <div className="text-xs font-medium text-gray-600 mb-1">L1</div>
-                            <div className="text-xs text-gray-500 mb-1">Q: 3</div>
-                            <div className="text-sm font-bold text-green-600">&lt;15m</div>
-                          </div>
-                          {/* L2 */}
-                          <div className="text-center flex-1">
-                            <div className="w-3 h-3 bg-orange-500 rounded-full mx-auto mb-2"></div>
-                            <div className="text-xs font-medium text-gray-600 mb-1">L2</div>
-                            <div className="text-xs text-gray-500 mb-1">Q: 7</div>
-                            <div className="text-sm font-bold text-green-600">&lt;15m</div>
-                          </div>
-                          {/* L3 */}
-                          <div className="text-center flex-1">
-                            <div className="w-3 h-3 bg-yellow-500 rounded-full mx-auto mb-2"></div>
-                            <div className="text-xs font-medium text-gray-600 mb-1">L3</div>
-                            <div className="text-xs text-gray-500 mb-1">Q: 19</div>
-                            <div className="text-sm font-bold text-orange-600">693m</div>
-                          </div>
-                          {/* L4 */}
-                          <div className="text-center flex-1">
-                            <div className="w-3 h-3 bg-blue-500 rounded-full mx-auto mb-2"></div>
-                            <div className="text-xs font-medium text-gray-600 mb-1">L4</div>
-                            <div className="text-xs text-gray-500 mb-1">Q: 13</div>
-                            <div className="text-sm font-bold text-red-600">1020m</div>
-                          </div>
-                          {/* L5 */}
-                          <div className="text-center flex-1">
-                            <div className="w-3 h-3 bg-green-500 rounded-full mx-auto mb-2"></div>
-                            <div className="text-xs font-medium text-gray-600 mb-1">L5</div>
-                            <div className="text-xs text-gray-500 mb-1">Q: 3</div>
-                            <div className="text-sm font-bold text-red-600">943m</div>
-                          </div>
-                        </div>
-                      </div>
                     </div>
                   </CardContent>
                 </Card>
