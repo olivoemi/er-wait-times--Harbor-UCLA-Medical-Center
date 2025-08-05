@@ -2044,35 +2044,7 @@ function App() {
                               </div>
                             </div>
                           </div>
-                          
-                          <div className="mt-8 pt-6 border-t border-gray-200">
-                            <h5 className="font-semibold text-gray-800 mb-4 flex items-center gap-2">
-                              <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                              {language === 'en' ? 'Additional Resources' : 'Recursos Adicionales'}
-                            </h5>
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                              <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg p-4 border border-gray-200">
-                                <div className="font-semibold text-gray-800 mb-2">
-                                  {language === 'en' ? 'Patient Portal' : 'Portal del Paciente'}
-                                </div>
-                                <a href="#" className="text-blue-600 hover:text-blue-800 font-medium">
-                                  mylaharbor.org
-                                </a>
-                              </div>
-                              <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg p-4 border border-gray-200">
-                                <div className="font-semibold text-gray-800 mb-2">
-                                  {language === 'en' ? 'Financial Assistance' : 'Asistencia Financiera'}
-                                </div>
-                                <div className="text-gray-700 font-medium">(310) 222-1234</div>
-                              </div>
-                              <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg p-4 border border-gray-200">
-                                <div className="font-semibold text-gray-800 mb-2">
-                                  {language === 'en' ? 'Medical Records' : 'Registros Médicos'}
-                                </div>
-                                <div className="text-gray-700 font-medium">(310) 222-5678</div>
-                              </div>
-                            </div>
-                          </div>
+
                         </div>
                       </div>
 
