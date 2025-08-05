@@ -1719,7 +1719,7 @@ function App() {
                               <div className="flex items-center gap-3">
                                 <Phone className="h-4 w-4 text-gray-600" />
                                 <div>
-                                  <div className="font-medium text-gray-900">(310) 222-2345</div>
+                                  <div className="font-medium text-gray-900">(424) 306-5001</div>
                                   <div className="text-sm text-gray-600">{t[language].mainLine}</div>
                                 </div>
                               </div>
@@ -1745,7 +1745,6 @@ function App() {
                             <div className="space-y-3">
                               <h5 className="font-semibold text-gray-900">{t[language].operatingHours}</h5>
                               <div className="flex items-center gap-2">
-                                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                                 <span className="text-green-700 font-medium">{t[language].open24_7}</span>
                               </div>
                             </div>
