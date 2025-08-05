@@ -1434,14 +1434,14 @@ function App() {
                         </div>
 
                         {/* Stats Row */}
-                        <div className="flex gap-8 mb-6">
-                          <div className="text-center">
-                            <div className="text-sm text-gray-600 mb-1">{t[language].avgWaitTime}</div>
+                        <div className="flex gap-8 mb-6 justify-center">
+                          <div className="text-center min-w-0 flex-1">
+                            <div className="text-sm text-gray-600 mb-1 break-words">{t[language].avgWaitTime}</div>
                             <div className="text-3xl font-bold text-orange-500">42</div>
                             <div className="text-sm text-gray-600">{t[language].minutes}</div>
                           </div>
-                          <div className="text-center">
-                            <div className="text-sm text-gray-600 mb-1">{t[language].currentCensus}</div>
+                          <div className="text-center min-w-0 flex-1">
+                            <div className="text-sm text-gray-600 mb-1 break-words">{t[language].currentCensus}</div>
                             <div className="text-3xl font-bold text-gray-700">46</div>
                             <div className="text-sm text-gray-600">{t[language].patients}</div>
                           </div>
@@ -1449,56 +1449,60 @@ function App() {
 
                         {/* Wait Times by Condition Severity */}
                         <div className="mb-6">
-                          <h4 className="font-semibold text-gray-900 mb-4">{t[language].waitTimesByConditionSeverity}</h4>
-                          <div className="flex gap-4">
+                          <h4 className="font-semibold text-gray-900 mb-4 text-center">{t[language].waitTimesByConditionSeverity}</h4>
+                          <div className="flex gap-4 justify-center">
                             {/* L1 */}
-                            <div className="text-center flex-1">
+                            <div className="text-center flex-1 min-w-0">
                               <div className="w-3 h-3 bg-red-500 rounded-full mx-auto mb-2"></div>
                               <div className="text-xs font-medium text-gray-600 mb-1">L1</div>
                               <div className="text-xs text-gray-500 mb-1">Q: 3</div>
-                              <div className="text-sm font-bold text-green-600">&lt;15m</div>
+                              <div className="text-sm font-bold text-green-600 break-words">&lt;15m</div>
                             </div>
                             {/* L2 */}
-                            <div className="text-center flex-1">
+                            <div className="text-center flex-1 min-w-0">
                               <div className="w-3 h-3 bg-orange-500 rounded-full mx-auto mb-2"></div>
                               <div className="text-xs font-medium text-gray-600 mb-1">L2</div>
                               <div className="text-xs text-gray-500 mb-1">Q: 7</div>
-                              <div className="text-sm font-bold text-green-600">&lt;15m</div>
+                              <div className="text-sm font-bold text-green-600 break-words">&lt;15m</div>
                             </div>
                             {/* L3 */}
-                            <div className="text-center flex-1">
+                            <div className="text-center flex-1 min-w-0">
                               <div className="w-3 h-3 bg-yellow-500 rounded-full mx-auto mb-2"></div>
                               <div className="text-xs font-medium text-gray-600 mb-1">L3</div>
                               <div className="text-xs text-gray-500 mb-1">Q: 19</div>
-                              <div className="text-sm font-bold text-orange-600">693m</div>
+                              <div className="text-sm font-bold text-orange-600 break-words">693m</div>
                             </div>
                             {/* L4 */}
-                            <div className="text-center flex-1">
+                            <div className="text-center flex-1 min-w-0">
                               <div className="w-3 h-3 bg-blue-500 rounded-full mx-auto mb-2"></div>
                               <div className="text-xs font-medium text-gray-600 mb-1">L4</div>
                               <div className="text-xs text-gray-500 mb-1">Q: 13</div>
-                              <div className="text-sm font-bold text-red-600">1020m</div>
+                              <div className="text-sm font-bold text-red-600 break-words">1020m</div>
                             </div>
                             {/* L5 */}
-                            <div className="text-center flex-1">
+                            <div className="text-center flex-1 min-w-0">
                               <div className="w-3 h-3 bg-green-500 rounded-full mx-auto mb-2"></div>
                               <div className="text-xs font-medium text-gray-600 mb-1">L5</div>
                               <div className="text-xs text-gray-500 mb-1">Q: 3</div>
-                              <div className="text-sm font-bold text-red-600">943m</div>
+                              <div className="text-sm font-bold text-red-600 break-words">943m</div>
                             </div>
                           </div>
                         </div>
 
                         {/* Specialized Services */}
                         <div>
-                          <h4 className="font-semibold text-gray-900 mb-3">{t[language].serviciosEspecializadosDisponibles}</h4>
+                          <h4 className="font-semibold text-gray-900 mb-3 text-center">
+                            {language === 'en' ? 'Top 5 Specialized Services Available' : 'Top 5 Servicios Especializados Disponibles'}
+                          </h4>
                           <div className="space-y-2">
                             <div className="flex items-center justify-between p-3 bg-red-50 rounded-lg border border-red-200">
                               <div className="flex items-center gap-3">
                                 <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
                                   <Plus className="h-4 w-4 text-red-600" />
                                 </div>
-                                <span className="font-medium text-red-900">{t[language].centroDeTrauma}</span>
+                                <span className="font-medium text-red-900">
+                                  {language === 'en' ? 'Level 1 Trauma Center' : 'Centro de Trauma Nivel 1'}
+                                </span>
                               </div>
                               <div className="w-2 h-2 bg-red-500 rounded-full"></div>
                             </div>
@@ -1507,9 +1511,44 @@ function App() {
                                 <div className="w-8 h-8 bg-pink-100 rounded-full flex items-center justify-center">
                                   <Heart className="h-4 w-4 text-pink-600" />
                                 </div>
-                                <span className="font-medium text-pink-900">{t[language].atencionCardiaca}</span>
+                                <span className="font-medium text-pink-900">
+                                  {language === 'en' ? 'Cardiac Care' : 'Atención Cardíaca'}
+                                </span>
                               </div>
                               <div className="w-2 h-2 bg-pink-500 rounded-full"></div>
+                            </div>
+                            <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg border border-blue-200">
+                              <div className="flex items-center gap-3">
+                                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                                  <Brain className="h-4 w-4 text-blue-600" />
+                                </div>
+                                <span className="font-medium text-blue-900">
+                                  {language === 'en' ? 'Stroke Care' : 'Atención de Accidentes Cerebrovasculares'}
+                                </span>
+                              </div>
+                              <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                            </div>
+                            <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg border border-green-200">
+                              <div className="flex items-center gap-3">
+                                <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                                  <Activity className="h-4 w-4 text-green-600" />
+                                </div>
+                                <span className="font-medium text-green-900">
+                                  {language === 'en' ? 'Critical Care' : 'Cuidados Intensivos'}
+                                </span>
+                              </div>
+                              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                            </div>
+                            <div className="flex items-center justify-between p-3 bg-purple-50 rounded-lg border border-purple-200">
+                              <div className="flex items-center gap-3">
+                                <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                                  <FirstAid className="h-4 w-4 text-purple-600" />
+                                </div>
+                                <span className="font-medium text-purple-900">
+                                  {language === 'en' ? 'Emergency Surgery' : 'Cirugía de Emergencia'}
+                                </span>
+                              </div>
+                              <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
                             </div>
                           </div>
                         </div>
@@ -1520,7 +1559,7 @@ function App() {
                 {/* Right side - QR Code and Information */}
                 <div className="bg-gray-50 rounded-lg p-6 flex flex-col items-center justify-center space-y-6">
                   {/* Title */}
-                  <h3 className="text-lg font-semibold text-gray-900 text-center">
+                  <h3 className="text-lg font-semibold text-gray-900 text-center break-words">
                     {language === 'en' ? 'Harbor QR Code' : 'Código QR de Harbor'}
                   </h3>
                   
@@ -1541,7 +1580,7 @@ function App() {
                   </a>
                   
                   {/* Descriptive text */}
-                  <p className="text-sm text-gray-600 text-center max-w-56 leading-relaxed">
+                  <p className="text-sm text-gray-600 text-center max-w-60 leading-relaxed break-words">
                     {language === 'en' 
                       ? 'Scan this QR code for quick access to Harbor facility information'
                       : 'Escanee este código QR para acceso rápido a la información de la instalación Harbor'
@@ -2516,7 +2555,9 @@ function App() {
                             <div className="bg-red-100 p-3 rounded-lg">
                               <Heart className="h-6 w-6 text-red-600" />
                             </div>
-                            <h4 className="text-lg font-semibold text-gray-900">{t[language].serviciosEspecializadosDisponibles}</h4>
+                            <h4 className="text-lg font-semibold text-gray-900">
+                              {language === 'en' ? 'Top 5 Specialized Services Available' : 'Top 5 Servicios Especializados Disponibles'}
+                            </h4>
                           </div>
                           <div className="space-y-4">
                             <div className="flex items-center justify-between p-4 bg-red-50 rounded-lg border border-red-200 hover:bg-red-100 transition-colors">
@@ -2524,7 +2565,9 @@ function App() {
                                 <div className="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center">
                                   <Plus className="h-5 w-5 text-red-600" />
                                 </div>
-                                <span className="font-semibold text-red-900">{t[language].centroDeTrauma}</span>
+                                <span className="font-semibold text-red-900">
+                                  {language === 'en' ? 'Level 1 Trauma Center' : 'Centro de Trauma Nivel 1'}
+                                </span>
                               </div>
                               <div className="w-3 h-3 bg-red-500 rounded-full"></div>
                             </div>
@@ -2533,9 +2576,44 @@ function App() {
                                 <div className="w-10 h-10 bg-pink-100 rounded-full flex items-center justify-center">
                                   <Heart className="h-5 w-5 text-pink-600" />
                                 </div>
-                                <span className="font-semibold text-pink-900">{t[language].atencionCardiaca}</span>
+                                <span className="font-semibold text-pink-900">
+                                  {language === 'en' ? 'Cardiac Care' : 'Atención Cardíaca'}
+                                </span>
                               </div>
                               <div className="w-3 h-3 bg-pink-500 rounded-full"></div>
+                            </div>
+                            <div className="flex items-center justify-between p-4 bg-blue-50 rounded-lg border border-blue-200 hover:bg-blue-100 transition-colors">
+                              <div className="flex items-center gap-4">
+                                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
+                                  <Brain className="h-5 w-5 text-blue-600" />
+                                </div>
+                                <span className="font-semibold text-blue-900">
+                                  {language === 'en' ? 'Stroke Care' : 'Atención de Accidentes Cerebrovasculares'}
+                                </span>
+                              </div>
+                              <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                            </div>
+                            <div className="flex items-center justify-between p-4 bg-green-50 rounded-lg border border-green-200 hover:bg-green-100 transition-colors">
+                              <div className="flex items-center gap-4">
+                                <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
+                                  <Activity className="h-5 w-5 text-green-600" />
+                                </div>
+                                <span className="font-semibold text-green-900">
+                                  {language === 'en' ? 'Critical Care' : 'Cuidados Intensivos'}
+                                </span>
+                              </div>
+                              <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                            </div>
+                            <div className="flex items-center justify-between p-4 bg-purple-50 rounded-lg border border-purple-200 hover:bg-purple-100 transition-colors">
+                              <div className="flex items-center gap-4">
+                                <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center">
+                                  <FirstAid className="h-5 w-5 text-purple-600" />
+                                </div>
+                                <span className="font-semibold text-purple-900">
+                                  {language === 'en' ? 'Emergency Surgery' : 'Cirugía de Emergencia'}
+                                </span>
+                              </div>
+                              <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
                             </div>
                           </div>
                         </div>
