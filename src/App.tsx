@@ -3141,69 +3141,61 @@ function App() {
                     {language === 'en' ? 'Alternative Care Options' : 'Opciones de Atención Alternativa'}
                   </h3>
                   <p className="text-gray-600 max-w-4xl">
-                    {!locationEnabled && !userLocation && (
-                      <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 mb-4">
-                        <div className="flex items-start gap-3">
-                          <AlertTriangle className="h-5 w-5 text-orange-600 mt-0.5 flex-shrink-0" />
-                          <div>
-                            <div className="font-medium text-orange-900 text-sm">
-                              {language === 'en' ? 'Location unavailable' : 'Ubicación no disponible'}
-                            </div>
-                            <div className="text-orange-700 text-xs mt-1">
-                              {language === 'en' ? 'Enable location or enter zip code below for distance-based sorting' : 'Habilite la ubicación o ingrese el código postal a continuación para ordenar por distancia'}
-                            </div>
-                    <div className="flex items-center gap-3 mb-4">
-                        </div>
-                      </div>
-                    )}
+                    {language === 'en' 
+                      ? 'Find alternative care options near you with estimated costs and wait times.'
+                      : 'Encuentre opciones de atención alternativa cerca de usted con costos y tiempos de espera estimados.'
+                    }
+                  </p>
+                </div>
 
-                    {/* Location Success */}
-                    {(locationEnabled || userLocation) && (
-                      <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-4">
-                        <div className="flex items-start gap-3">
-                          <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
-                          <div>
-                            <div className="font-medium text-green-900 text-sm">
-                              {language === 'en' ? 'Location enabled' : 'Ubicación habilitada'}
-                            </div>
-                            <div className="text-green-700 text-xs mt-1">
-                              {language === 'en' ? 'Urgent care centers are now sorted by distance from your location' : 'Los centros de atención urgente ahora están ordenados por distancia desde su ubicación'}
-                            </div>
+                {/* Location Status Messages */}
+                <div>
+                  {!locationEnabled && !userLocation && (
+                    <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 mb-4">
+                      <div className="flex items-start gap-3">
+                        <AlertTriangle className="h-5 w-5 text-orange-600 mt-0.5 flex-shrink-0" />
+                        <div>
+                          <div className="font-medium text-orange-900 text-sm">
+                            {language === 'en' ? 'Location unavailable' : 'Ubicación no disponible'}
+                          </div>
+                          <div className="text-orange-700 text-xs mt-1">
+                            {language === 'en' ? 'Enable location or enter zip code below for distance-based sorting' : 'Habilite la ubicación o ingrese el código postal a continuación para ordenar por distancia'}
                           </div>
                         </div>
                       </div>
-                    )}
+                    </div>
+                  )}
 
-                    {/* Location Warning */}
-                    {!locationEnabled && !userLocation && (
-                      <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 mb-4">
-                        <div className="flex items-start gap-3">
-                          <AlertTriangle className="h-5 w-5 text-orange-600 mt-0.5 flex-shrink-0" />
-                          <div>
-                            <div className="font-medium text-orange-900 text-sm">
-                              {language === 'en' ? 'Location unavailable' : 'Ubicación no disponible'}
-                            </div>
-                            <div className="text-orange-700 text-xs mt-1">
-                              {language === 'en' ? 'Enable location or enter zip code below for distance-based sorting' : 'Habilite la ubicación o ingrese el código postal a continuación para ordenar por distancia'}
-                            </div>
+                  {/* Location Success */}
+                  {(locationEnabled || userLocation) && (
+                    <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-4">
+                      <div className="flex items-start gap-3">
+                        <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                        <div>
+                          <div className="font-medium text-green-900 text-sm">
+                            {language === 'en' ? 'Location enabled' : 'Ubicación habilitada'}
+                          </div>
+                          <div className="text-green-700 text-xs mt-1">
+                            {language === 'en' ? 'Urgent care centers are now sorted by distance from your location' : 'Los centros de atención urgente ahora están ordenados por distancia desde su ubicación'}
                           </div>
                         </div>
                       </div>
-                    )}
+                    </div>
+                  )}
 
-                      {isCalculatingProximity && (
-                        <div className="flex items-center justify-center py-8">
-                          <div className="flex items-center gap-3">
-                            <RefreshCw className="h-5 w-5 text-blue-600 animate-spin" />
-                            <span className="text-sm text-gray-600">
-                              {language === 'en' ? 'Calculating distances...' : 'Calculando distancias...'}
-                            </span>
-                          </div>
-                        </div>
-                      )}
+                  {isCalculatingProximity && (
+                    <div className="flex items-center justify-center py-8">
+                      <div className="flex items-center gap-3">
+                        <RefreshCw className="h-5 w-5 text-blue-600 animate-spin" />
+                        <span className="text-sm text-gray-600">
+                          {language === 'en' ? 'Calculating distances...' : 'Calculando distancias...'}
+                        </span>
+                      </div>
+                    </div>
+                  )}
 
-                    {/* Manual Location Entry */}
-                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                  {/* Manual Location Entry */}
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
                       <div className="flex items-start gap-3">
                         <MapPin className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
                         <div className="flex-1">
