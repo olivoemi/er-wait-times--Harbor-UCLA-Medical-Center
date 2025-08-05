@@ -2903,9 +2903,13 @@ function App() {
                                   <Phone className="h-4 w-4 mr-2" />
                                   {language === 'en' ? 'Call 911' : 'Llamar 911'}
                                 </Button>
-                                <Button variant="outline" className="border-red-300 text-red-700 hover:bg-red-50">
-                                  <Phone className="h-4 w-4 mr-2" />
-                                  {language === 'en' ? 'Call Harbor Medical Center' : 'Llamar al Centro Médico Harbor'}
+                                <Button 
+                                  variant="outline" 
+                                  className="border-red-300 text-red-700 hover:bg-red-50"
+                                  onClick={() => setCareGuideSection('options')}
+                                >
+                                  <MapPin className="h-4 w-4 mr-2" />
+                                  {language === 'en' ? 'Find Emergency Room' : 'Buscar Sala de Emergencias'}
                                 </Button>
                               </div>
                             </div>
@@ -3009,13 +3013,20 @@ function App() {
                               </div>
 
                               <div className="flex gap-4">
-                                <Button className="bg-orange-600 hover:bg-orange-700 text-white font-bold px-6 py-3">
+                                <Button 
+                                  className="bg-orange-600 hover:bg-orange-700 text-white font-bold px-6 py-3"
+                                  onClick={() => setCareGuideSection('options')}
+                                >
                                   <MapPin className="h-4 w-4 mr-2" />
                                   {language === 'en' ? 'Go to Emergency Room' : 'Ir a Sala de Emergencias'}
                                 </Button>
-                                <Button variant="outline" className="border-orange-300 text-orange-700 hover:bg-orange-50">
+                                <Button 
+                                  variant="outline" 
+                                  className="border-orange-300 text-orange-700 hover:bg-orange-50"
+                                  onClick={() => setCareGuideSection('options')}
+                                >
                                   <Phone className="h-4 w-4 mr-2" />
-                                  {language === 'en' ? 'Call Harbor Medical Center' : 'Llamar al Centro Médico Harbor'}
+                                  {language === 'en' ? 'Find Care Options' : 'Buscar Opciones de Atención'}
                                 </Button>
                               </div>
                             </div>
@@ -3129,11 +3140,18 @@ function App() {
                               </div>
 
                               <div className="flex gap-4">
-                                <Button className="bg-yellow-600 hover:bg-yellow-700 text-white font-bold px-6 py-3">
+                                <Button 
+                                  className="bg-yellow-600 hover:bg-yellow-700 text-white font-bold px-6 py-3"
+                                  onClick={() => setCareGuideSection('options')}
+                                >
                                   <Clock className="h-4 w-4 mr-2" />
                                   {language === 'en' ? 'Find Urgent Care' : 'Buscar Atención Urgente'}
                                 </Button>
-                                <Button variant="outline" className="border-yellow-300 text-yellow-700 hover:bg-yellow-50">
+                                <Button 
+                                  variant="outline" 
+                                  className="border-yellow-300 text-yellow-700 hover:bg-yellow-50"
+                                  onClick={() => setCareGuideSection('options')}
+                                >
                                   <MapPin className="h-4 w-4 mr-2" />
                                   {language === 'en' ? 'Still Go to ER' : 'Aún Ir a ER'}
                                 </Button>
@@ -3275,7 +3293,10 @@ function App() {
                               </div>
 
                               <div className="flex gap-4">
-                                <Button className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3">
+                                <Button 
+                                  className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3"
+                                  onClick={() => setCareGuideSection('options')}
+                                >
                                   {isUrgentCarePreferred ? <Clock className="h-4 w-4 mr-2" /> : <Phone className="h-4 w-4 mr-2" />}
                                   {language === 'en' ? 
                                     (isUrgentCarePreferred ? 'Find Urgent Care' :
@@ -3284,7 +3305,11 @@ function App() {
                                      isTelehealthPreferred ? 'Iniciar Telemedicina' : 'Iniciar Telemedicina')
                                   }
                                 </Button>
-                                <Button variant="outline" className="border-blue-300 text-blue-700 hover:bg-blue-50">
+                                <Button 
+                                  variant="outline" 
+                                  className="border-blue-300 text-blue-700 hover:bg-blue-50"
+                                  onClick={() => setCareGuideSection('options')}
+                                >
                                   <Building className="h-4 w-4 mr-2" />
                                   {language === 'en' ? 
                                     (isUrgentCarePreferred ? 'Schedule Primary Care' : 'Find Primary Care') : 
@@ -3415,11 +3440,18 @@ function App() {
                               </div>
 
                               <div className="flex gap-4">
-                                <Button className="bg-green-600 hover:bg-green-700 text-white font-bold px-6 py-3">
+                                <Button 
+                                  className="bg-green-600 hover:bg-green-700 text-white font-bold px-6 py-3"
+                                  onClick={() => setCareGuideSection('options')}
+                                >
                                   <Phone className="h-4 w-4 mr-2" />
                                   {language === 'en' ? 'Start Telehealth' : 'Iniciar Telemedicina'}
                                 </Button>
-                                <Button variant="outline" className="border-green-300 text-green-700 hover:bg-green-50">
+                                <Button 
+                                  variant="outline" 
+                                  className="border-green-300 text-green-700 hover:bg-green-50"
+                                  onClick={() => setCareGuideSection('options')}
+                                >
                                   <Building className="h-4 w-4 mr-2" />
                                   {language === 'en' ? 
                                     (isTelehealthPreferred ? 'Schedule Primary Care' : 'Find Primary Care') : 
