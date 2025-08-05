@@ -4242,22 +4242,21 @@ function App() {
                             <p className="text-blue-800 text-xs">
                               {language === 'en' ? 'All prescriptions, vitamins, and supplements' : 'Todas las recetas, vitaminas y suplementos'}
                             </p>
-                          </div>
                         </div>
 
-                        {/* Emergency Contact */}
+
                         <div className="flex items-start gap-3 p-4 bg-blue-50 rounded-lg border border-blue-200">
                           <div className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold">4</div>
                           <div>
-                            <h5 className="font-semibold text-blue-900 text-sm mb-1">
+                          <div>
                               {language === 'en' ? 'Emergency Contact' : 'Contacto de Emergencia'}
                             </h5>
-                            <p className="text-blue-800 text-xs">
+                            </h5>
                               {language === 'en' ? 'Name and phone number of trusted person' : 'Nombre y teléfono de persona de confianza'}
                             </p>
                           </div>
+                          </div>
                         </div>
-                      </div>
 
                       {/* Additional Helpful Items */}
                       <div className="border-t border-gray-200 pt-4">
@@ -4268,7 +4267,7 @@ function App() {
                           <div className="flex items-center gap-2">
                             <CheckCircle className="h-4 w-4 text-green-600" />
                             <span className="text-sm text-gray-700">
-                              {language === 'en' ? 'Phone charger' : 'Cargador de teléfono'}
+                            <span className="text-sm text-gray-700">
                             </span>
                           </div>
                           <div className="flex items-center gap-2">
@@ -4277,7 +4276,7 @@ function App() {
                               {language === 'en' ? 'Small snack & water' : 'Refrigerio y agua'}
                             </span>
                           </div>
-                          <div className="flex items-center gap-2">
+                          </div>enter gap-2">
                             <CheckCircle className="h-4 w-4 text-green-600" />
                             <span className="text-sm text-gray-700">
                               {language === 'en' ? 'Medical records if available' : 'Registros médicos si están disponibles'}
@@ -4286,46 +4285,46 @@ function App() {
                           <div className="flex items-center gap-2">
                             <CheckCircle className="h-4 w-4 text-green-600" />
                             <span className="text-sm text-gray-700">
-                              {language === 'en' ? 'Comfortable layers of clothing' : 'Capas cómodas de ropa'}
+                            <span className="text-sm text-gray-700">
                             </span>
                           </div>
-                        </div>
+                          </div>
+                      </div>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                {/* What to Expect - Key Process Steps */}
-                <div className="bg-white border border-orange-200 rounded-lg p-6 shadow-sm">
+                {/* What to Expect During Your Visit */}
+                <div className="bg-white border border-gray-300 rounded-lg p-6 shadow-sm">
                   <div className="flex items-start gap-4">
-                    <div className="bg-orange-100 p-3 rounded-lg">
-                      <Clock className="h-6 w-6 text-orange-600" />
+                    <div className="bg-blue-100 p-2 rounded-full">
+                      <Clock className="h-6 w-6 text-blue-600" />
                     </div>
                     <div className="flex-1">
-                      <h4 className="text-xl font-semibold text-gray-900 mb-3">
-                        {language === 'en' ? 'What to Expect' : 'Qué Esperar'}
+                      <h4 className="text-lg font-semibold text-gray-900 mb-3">
+                        {language === 'en' ? 'What to Expect During Your Visit' : 'Qué Esperar Durante su Visita'}
                       </h4>
-                      <p className="text-gray-700 mb-6 text-sm">
+                      <p className="text-gray-700 mb-4 text-sm">
                         {language === 'en' 
-                          ? 'Understanding the emergency room process helps reduce anxiety:'
-                          : 'Entender el proceso de la sala de emergencias ayuda a reducir la ansiedad:'
+                          ? 'Understanding the emergency room process can help reduce anxiety and ensure smooth care.'
+                          : 'Entender el proceso de la sala de emergencias puede ayudar a reducir la ansiedad y asegurar una atención fluida.'
                         }
                       </p>
                       
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {/* Step 1: Registration */}
-                        <div className="bg-blue-50 rounded-lg p-4 border border-blue-200">
-                          <div className="flex items-center gap-3 mb-3">
-                            <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-sm font-bold">1</div>
-                            <h5 className="font-semibold text-blue-900">
-                              {language === 'en' ? 'Registration' : 'Registro'}
-                            </h5>
-                          </div>
-                          <ul className="space-y-1 text-sm text-blue-800">
-                            <li>• {language === 'en' ? 'Show ID and insurance' : 'Mostrar ID y seguro'}</li>
-                            <li>• {language === 'en' ? 'Brief medical forms' : 'Formularios médicos breves'}</li>
+                      <div className="space-y-4">
+                        {/* Arrival and Registration */}
+                        <div className="border-l-4 border-blue-500 pl-4">
+                          <h5 className="font-semibold text-gray-900 mb-2">
+                            {language === 'en' ? '1. Arrival and Registration' : '1. Llegada y Registro'}
+                          </h5>
+                          <ul className="space-y-1 text-sm text-gray-700">
+                            <li>• {language === 'en' ? 'Check in at the registration desk' : 'Regístrese en el mostrador de registro'}</li>
+                            <li>• {language === 'en' ? 'Provide identification and insurance information' : 'Proporcione identificación e información del seguro'}</li>
+                            <li>• {language === 'en' ? 'Complete medical history forms' : 'Complete formularios de historial médico'}</li>
                           </ul>
                         </div>
+
 
                         {/* Step 2: Triage */}
                         <div className="bg-orange-50 rounded-lg p-4 border border-orange-200">
