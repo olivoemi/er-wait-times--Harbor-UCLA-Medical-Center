@@ -3866,6 +3866,76 @@ function App() {
                   </div>
                 </div>
 
+                {/* What to Expect */}
+                <div className="bg-white border border-gray-300 rounded-lg p-6 shadow-sm">
+                  <div className="flex items-start gap-4">
+                    <div className="bg-blue-100 p-2 rounded-full">
+                      <Info className="h-6 w-6 text-blue-600" />
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-lg font-semibold text-gray-900 mb-3">
+                        {language === 'en' ? 'What to Expect' : 'Qué Esperar'}
+                      </h4>
+                      <p className="text-gray-600 mb-6 text-sm">
+                        {language === 'en' 
+                          ? 'Get expert nursing advice and understand how emergency rooms prioritize patients to set proper expectations.'
+                          : 'Obtenga asesoramiento experto de enfermería y comprenda cómo las salas de emergencia priorizan a los pacientes para establecer expectativas adecuadas.'
+                        }
+                      </p>
+                      
+                      <div className="space-y-4">
+                        {/* Nurses Advice Line */}
+                        <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                          <div className="flex items-start gap-4">
+                            <div className="bg-blue-100 p-2 rounded-full">
+                              <Phone className="h-5 w-5 text-blue-600" />
+                            </div>
+                            <div className="flex-1">
+                              <h5 className="text-lg font-semibold text-blue-900 mb-3">
+                                {language === 'en' ? 'Nurses Advice Line' : 'Línea de Consejos de Enfermería'}
+                              </h5>
+                              <p className="text-blue-800 text-sm mb-4 leading-relaxed">
+                                {language === 'en' 
+                                  ? 'Get expert nursing advice and guidance for your health concerns. Our qualified nurses can help you determine the appropriate level of care and answer your healthcare questions.'
+                                  : 'Obtenga asesoramiento experto de enfermería y orientación para sus preocupaciones de salud. Nuestras enfermeras calificadas pueden ayudarle a determinar el nivel apropiado de atención y responder sus preguntas de atención médica.'
+                                }
+                              </p>
+                              <Button className="bg-blue-600 hover:bg-blue-700 text-white">
+                                <Phone className="h-4 w-4 mr-2" />
+                                {language === 'en' ? 'Access Nurses Advice Line' : 'Acceder a Línea de Consejos de Enfermería'}
+                              </Button>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Emergency Department Information */}
+                        <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+                          <div className="flex items-start gap-4">
+                            <div className="bg-green-100 p-2 rounded-full">
+                              <Building className="h-5 w-5 text-green-600" />
+                            </div>
+                            <div className="flex-1">
+                              <h5 className="text-lg font-semibold text-green-900 mb-4">
+                                {language === 'en' ? 'Emergency Department Information' : 'Información del Departamento de Emergencias'}
+                              </h5>
+                              <div className="flex gap-3">
+                                <Button className="bg-green-600 hover:bg-green-700 text-white">
+                                  <Info className="h-4 w-4 mr-2" />
+                                  {language === 'en' ? 'View Emergency Brochure' : 'Ver Folleto de Emergencia'}
+                                </Button>
+                                <Button className="bg-green-600 hover:bg-green-700 text-white">
+                                  <Eye className="h-4 w-4 mr-2" />
+                                  {language === 'en' ? 'Watch Emergency Video' : 'Ver Video de Emergencia'}
+                                </Button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
                 {/* Additional Emergency Resources */}
                 <div className="bg-white border border-gray-300 rounded-lg p-6 shadow-sm">
                   <div className="flex items-start gap-4">
