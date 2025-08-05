@@ -1632,8 +1632,15 @@ function App() {
                             {t[language].harborShort}
                           </div>
                           <div>
-                            <h3 className="text-3xl font-bold text-gray-900 mb-3">
-                              {t[language].harborUCLAMedicalCenter}
+                            <h3 className="text-3xl font-bold mb-3">
+                              <a 
+                                href="https://dhs.lacounty.gov/harbor-ucla-medical-center/" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="text-gray-900 hover:text-blue-600 transition-colors cursor-pointer"
+                              >
+                                {t[language].harborUCLAMedicalCenter}
+                              </a>
                             </h3>
                             <div className="flex items-center gap-6 text-base text-gray-600">
                               <div className="flex items-center gap-2">
