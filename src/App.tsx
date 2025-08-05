@@ -1793,13 +1793,12 @@ function App() {
                               <div className="flex items-start gap-3">
                                 <Globe className="h-4 w-4 text-gray-500 mt-1 flex-shrink-0" />
                                 <div>
-                                  <Button
-                                    variant="ghost"
-                                    className="font-medium text-blue-600 hover:text-blue-800 underline p-0 h-auto hover:bg-transparent"
+                                  <button
+                                    className="font-medium text-blue-600 hover:text-blue-800 underline hover:underline cursor-pointer bg-transparent border-none p-0"
                                     onClick={() => window.open('https://dhs.lacounty.gov/harbor-ucla-medical-center/', '_blank')}
                                   >
                                     {t[language].officialWebsite}
-                                  </Button>
+                                  </button>
                                   <div className="text-gray-600 text-sm">
                                     {language === 'en' ? 'Harbor-UCLA Medical Center' : 'Centro Médico Harbor-UCLA'}
                                   </div>
