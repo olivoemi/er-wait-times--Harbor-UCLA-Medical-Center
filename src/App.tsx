@@ -2618,6 +2618,7 @@ function App() {
             </div>
 
             {/* Care Guide Content */}
+            <>
             {careGuideSection === 'recommendation' && (
               <div className="space-y-8">
                 {/* Enhanced Acuity-Based Assessment */}
@@ -4738,6 +4739,7 @@ function App() {
                 </div>
               </div>
             )}
+            </>
           </TabsContent>
         </Tabs>
 
