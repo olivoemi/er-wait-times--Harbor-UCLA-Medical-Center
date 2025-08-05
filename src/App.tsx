@@ -2598,24 +2598,6 @@ function App() {
                         ))}
                       </SelectContent>
                     </Select>
-                    
-                    {/* Important Note */}
-                    <div className="mt-4 bg-green-50 border border-green-200 rounded-lg p-4">
-                      <div className="flex items-start gap-2">
-                        <Heart className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
-                        <div className="text-green-800 text-sm">
-                          <div className="font-medium mb-1">
-                            {language === 'en' ? 'Remember: Your Health Comes First' : 'Recuerde: Su Salud es lo Primero'}
-                          </div>
-                          <div className="text-xs">
-                            {language === 'en' 
-                              ? 'Never delay seeking appropriate medical care due to cost concerns. Emergency departments are required by law to provide care regardless of insurance status or ability to pay.'
-                              : 'Nunca retrase buscar atención médica apropiada por preocupaciones de costo. Los departamentos de emergencia están obligados por ley a brindar atención independientemente del estado del seguro o la capacidad de pago.'
-                            }
-                          </div>
-                        </div>
-                      </div>
-                    </div>
                   </div>
 
                   {/* Symptom Selection Section */}
@@ -2868,15 +2850,11 @@ function App() {
                                 </div>
                                 
                                 <div className="text-center mb-4">
-                                  <div className="text-3xl font-bold text-green-600 mb-1">
-                                    {selectedInsurance === 'medicare' ? '$0-$50' : 
-                                     selectedInsurance === 'medicaid' ? '$0' :
-                                     selectedInsurance === 'private' ? '$100-$300' :
-                                     selectedInsurance === 'uninsured' ? '$2,200-$3,800' :
-                                     selectedInsurance === 'covered-ca' ? '$50-$200' : '$0-$300'}
+                                  <div className="text-3xl font-bold text-blue-600 mb-1">
+                                    $2,200-$3,800
                                   </div>
                                   <div className="text-sm text-gray-600">
-                                    {language === 'en' ? 'Your estimated cost with insurance' : 'Su costo estimado con seguro'}
+                                    {language === 'en' ? 'Expected cost range' : 'Rango de costo esperado'}
                                   </div>
                                 </div>
 
@@ -2884,23 +2862,30 @@ function App() {
                                   <div className="flex items-center gap-2 text-green-800 text-sm">
                                     <CheckCircle className="h-4 w-4" />
                                     <span className="font-medium">
-                                      {language === 'en' ? 'Emergency care covered - do not delay treatment' : 'Atención de emergencia cubierta - no retrase el tratamiento'}
+                                      {language === 'en' ? 'Costs adapted to your plan' : 'Costos adaptados a su plan'}
                                     </span>
-                                  </div>
-                                  <div className="text-green-700 text-xs mt-1">
-                                    {language === 'en' ? 'Most insurance plans cover emergency care regardless of network' : 'La mayoría de los planes de seguro cubren atención de emergencia independientemente de la red'}
+                                    <span className="text-green-600 text-xs ml-2">
+                                      {language === 'en' ? 'Updated 8/1/2025' : 'Actualizado 8/1/2025'}
+                                    </span>
                                   </div>
                                 </div>
 
-                                <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
-                                  <div className="text-blue-800 text-sm font-medium mb-2">
-                                    {language === 'en' ? 'Important: Your Health Comes First' : 'Importante: Su Salud es lo Primero'}
+                                <div className="grid grid-cols-2 gap-3">
+                                  <div className="bg-red-50 border border-red-200 rounded-lg p-3 text-center">
+                                    <div className="text-sm font-medium text-red-900 mb-1">
+                                      {language === 'en' ? 'Compare to ER visit:' : 'Comparar con visita a ER:'}
+                                    </div>
+                                    <div className="text-lg font-bold text-red-600">
+                                      $2,200-3,800
+                                    </div>
                                   </div>
-                                  <div className="text-blue-700 text-xs">
-                                    {language === 'en' 
-                                      ? 'Do not delay emergency care due to cost concerns. Emergency departments are required to provide care regardless of ability to pay.'
-                                      : 'No retrase la atención de emergencia por preocupaciones de costo. Los departamentos de emergencia están obligados a brindar atención independientemente de la capacidad de pago.'
-                                    }
+                                  <div className="bg-green-50 border border-green-200 rounded-lg p-3 text-center">
+                                    <div className="text-sm font-medium text-green-900 mb-1">
+                                      {language === 'en' ? 'Your potential savings:' : 'Sus ahorros potenciales:'}
+                                    </div>
+                                    <div className="text-lg font-bold text-green-600">
+                                      {language === 'en' ? 'Same cost' : 'Mismo costo'}
+                                    </div>
                                   </div>
                                 </div>
                               </div>
@@ -2975,15 +2960,11 @@ function App() {
                                 </div>
                                 
                                 <div className="text-center mb-4">
-                                  <div className="text-3xl font-bold text-green-600 mb-1">
-                                    {selectedInsurance === 'medicare' ? '$20-$50' : 
-                                     selectedInsurance === 'medicaid' ? '$0-$10' :
-                                     selectedInsurance === 'private' ? '$30-$75' :
-                                     selectedInsurance === 'uninsured' ? '$150-$300' :
-                                     selectedInsurance === 'covered-ca' ? '$25-$60' : '$20-$75'}
+                                  <div className="text-3xl font-bold text-blue-600 mb-1">
+                                    $30-$100
                                   </div>
                                   <div className="text-sm text-gray-600">
-                                    {language === 'en' ? 'Your estimated cost with insurance' : 'Su costo estimado con seguro'}
+                                    {language === 'en' ? 'Expected cost range' : 'Rango de costo esperado'}
                                   </div>
                                 </div>
 
@@ -2991,25 +2972,21 @@ function App() {
                                   <div className="flex items-center gap-2 text-green-800 text-sm">
                                     <CheckCircle className="h-4 w-4" />
                                     <span className="font-medium">
-                                      {language === 'en' ? 'Urgent care covered by most plans' : 'Atención urgente cubierta por la mayoría de planes'}
+                                      {language === 'en' ? 'Costs adapted to your plan' : 'Costos adaptados a su plan'}
                                     </span>
-                                  </div>
-                                  <div className="text-green-700 text-xs mt-1">
-                                    {language === 'en' ? 'Significant savings compared to ER visit' : 'Ahorros significativos comparado con visita a ER'}
+                                    <span className="text-green-600 text-xs ml-2">
+                                      {language === 'en' ? 'Updated 8/1/2025' : 'Actualizado 8/1/2025'}
+                                    </span>
                                   </div>
                                 </div>
 
                                 <div className="grid grid-cols-2 gap-3">
-                                  <div className="bg-orange-50 border border-orange-200 rounded-lg p-3 text-center">
-                                    <div className="text-sm font-medium text-orange-900 mb-1">
-                                      {language === 'en' ? 'ER cost (same symptoms):' : 'Costo ER (mismos síntomas):'}
+                                  <div className="bg-red-50 border border-red-200 rounded-lg p-3 text-center">
+                                    <div className="text-sm font-medium text-red-900 mb-1">
+                                      {language === 'en' ? 'Compare to ER visit:' : 'Comparar con visita a ER:'}
                                     </div>
-                                    <div className="text-lg font-bold text-orange-600">
-                                      {selectedInsurance === 'medicare' ? '$200-$500' : 
-                                       selectedInsurance === 'medicaid' ? '$0-$50' :
-                                       selectedInsurance === 'private' ? '$300-$800' :
-                                       selectedInsurance === 'uninsured' ? '$1,500-$3,000' :
-                                       selectedInsurance === 'covered-ca' ? '$250-$600' : '$200-$800'}
+                                    <div className="text-lg font-bold text-red-600">
+                                      $1,500-3,000+
                                     </div>
                                   </div>
                                   <div className="bg-green-50 border border-green-200 rounded-lg p-3 text-center">
@@ -3017,11 +2994,7 @@ function App() {
                                       {language === 'en' ? 'Your potential savings:' : 'Sus ahorros potenciales:'}
                                     </div>
                                     <div className="text-lg font-bold text-green-600">
-                                      {selectedInsurance === 'medicare' ? '$150-$450' : 
-                                       selectedInsurance === 'medicaid' ? '$0-$40' :
-                                       selectedInsurance === 'private' ? '$225-$725' :
-                                       selectedInsurance === 'uninsured' ? '$1,200-$2,700' :
-                                       selectedInsurance === 'covered-ca' ? '$190-$540' : '$125-$725'}
+                                      {language === 'en' ? 'Up to $2,950' : 'Hasta $2,950'}
                                     </div>
                                   </div>
                                 </div>
@@ -3107,15 +3080,11 @@ function App() {
                                 </div>
                                 
                                 <div className="text-center mb-4">
-                                  <div className="text-3xl font-bold text-green-600 mb-1">
-                                    {selectedInsurance === 'medicare' ? '$15-$40' : 
-                                     selectedInsurance === 'medicaid' ? '$0-$15' :
-                                     selectedInsurance === 'private' ? '$25-$60' :
-                                     selectedInsurance === 'uninsured' ? '$150-$250' :
-                                     selectedInsurance === 'covered-ca' ? '$20-$50' : '$15-$60'}
+                                  <div className="text-3xl font-bold text-blue-600 mb-1">
+                                    $25-$75
                                   </div>
                                   <div className="text-sm text-gray-600">
-                                    {language === 'en' ? 'Your estimated cost with insurance' : 'Su costo estimado con seguro'}
+                                    {language === 'en' ? 'Expected cost range' : 'Rango de costo esperado'}
                                   </div>
                                 </div>
 
@@ -3123,25 +3092,21 @@ function App() {
                                   <div className="flex items-center gap-2 text-green-800 text-sm">
                                     <CheckCircle className="h-4 w-4" />
                                     <span className="font-medium">
-                                      {language === 'en' ? 'Primary care & telehealth covered' : 'Atención primaria y telemedicina cubiertas'}
+                                      {language === 'en' ? 'Costs adapted to your plan' : 'Costos adaptados a su plan'}
                                     </span>
-                                  </div>
-                                  <div className="text-green-700 text-xs mt-1">
-                                    {language === 'en' ? 'Most appropriate and cost-effective option' : 'Opción más apropiada y rentable'}
+                                    <span className="text-green-600 text-xs ml-2">
+                                      {language === 'en' ? 'Updated 8/1/2025' : 'Actualizado 8/1/2025'}
+                                    </span>
                                   </div>
                                 </div>
 
                                 <div className="grid grid-cols-2 gap-3">
-                                  <div className="bg-orange-50 border border-orange-200 rounded-lg p-3 text-center">
-                                    <div className="text-sm font-medium text-orange-900 mb-1">
-                                      {language === 'en' ? 'ER cost (same symptoms):' : 'Costo ER (mismos síntomas):'}
+                                  <div className="bg-red-50 border border-red-200 rounded-lg p-3 text-center">
+                                    <div className="text-sm font-medium text-red-900 mb-1">
+                                      {language === 'en' ? 'Compare to ER visit:' : 'Comparar con visita a ER:'}
                                     </div>
-                                    <div className="text-lg font-bold text-orange-600">
-                                      {selectedInsurance === 'medicare' ? '$150-$400' : 
-                                       selectedInsurance === 'medicaid' ? '$0-$25' :
-                                       selectedInsurance === 'private' ? '$250-$600' :
-                                       selectedInsurance === 'uninsured' ? '$1,200-$2,500' :
-                                       selectedInsurance === 'covered-ca' ? '$200-$500' : '$150-$600'}
+                                    <div className="text-lg font-bold text-red-600">
+                                      $1,200-2,500+
                                     </div>
                                   </div>
                                   <div className="bg-green-50 border border-green-200 rounded-lg p-3 text-center">
@@ -3149,11 +3114,7 @@ function App() {
                                       {language === 'en' ? 'Your potential savings:' : 'Sus ahorros potenciales:'}
                                     </div>
                                     <div className="text-lg font-bold text-green-600">
-                                      {selectedInsurance === 'medicare' ? '$110-$360' : 
-                                       selectedInsurance === 'medicaid' ? '$0-$10' :
-                                       selectedInsurance === 'private' ? '$190-$540' :
-                                       selectedInsurance === 'uninsured' ? '$950-$2,350' :
-                                       selectedInsurance === 'covered-ca' ? '$150-$450' : '$90-$540'}
+                                      {language === 'en' ? 'Up to $2,475' : 'Hasta $2,475'}
                                     </div>
                                   </div>
                                 </div>
@@ -3229,15 +3190,11 @@ function App() {
                                 </div>
                                 
                                 <div className="text-center mb-4">
-                                  <div className="text-3xl font-bold text-green-600 mb-1">
-                                    {selectedInsurance === 'medicare' ? '$10-$25' : 
-                                     selectedInsurance === 'medicaid' ? '$0-$10' :
-                                     selectedInsurance === 'private' ? '$15-$40' :
-                                     selectedInsurance === 'uninsured' ? '$80-$150' :
-                                     selectedInsurance === 'covered-ca' ? '$15-$35' : '$10-$40'}
+                                  <div className="text-3xl font-bold text-blue-600 mb-1">
+                                    $15-$50
                                   </div>
                                   <div className="text-sm text-gray-600">
-                                    {language === 'en' ? 'Your estimated cost with insurance' : 'Su costo estimado con seguro'}
+                                    {language === 'en' ? 'Expected cost range' : 'Rango de costo esperado'}
                                   </div>
                                 </div>
 
@@ -3245,25 +3202,21 @@ function App() {
                                   <div className="flex items-center gap-2 text-green-800 text-sm">
                                     <CheckCircle className="h-4 w-4" />
                                     <span className="font-medium">
-                                      {language === 'en' ? 'Telehealth & routine care covered' : 'Telemedicina y atención rutinaria cubiertas'}
+                                      {language === 'en' ? 'Costs adapted to your plan' : 'Costos adaptados a su plan'}
                                     </span>
-                                  </div>
-                                  <div className="text-green-700 text-xs mt-1">
-                                    {language === 'en' ? 'Most cost-effective option for non-urgent care' : 'Opción más rentable para atención no urgente'}
+                                    <span className="text-green-600 text-xs ml-2">
+                                      {language === 'en' ? 'Updated 8/1/2025' : 'Actualizado 8/1/2025'}
+                                    </span>
                                   </div>
                                 </div>
 
                                 <div className="grid grid-cols-2 gap-3">
-                                  <div className="bg-orange-50 border border-orange-200 rounded-lg p-3 text-center">
-                                    <div className="text-sm font-medium text-orange-900 mb-1">
-                                      {language === 'en' ? 'ER cost (same symptoms):' : 'Costo ER (mismos síntomas):'}
+                                  <div className="bg-red-50 border border-red-200 rounded-lg p-3 text-center">
+                                    <div className="text-sm font-medium text-red-900 mb-1">
+                                      {language === 'en' ? 'Compare to ER visit:' : 'Comparar con visita a ER:'}
                                     </div>
-                                    <div className="text-lg font-bold text-orange-600">
-                                      {selectedInsurance === 'medicare' ? '$100-$300' : 
-                                       selectedInsurance === 'medicaid' ? '$0-$25' :
-                                       selectedInsurance === 'private' ? '$200-$500' :
-                                       selectedInsurance === 'uninsured' ? '$800-$2,000' :
-                                       selectedInsurance === 'covered-ca' ? '$150-$400' : '$100-$500'}
+                                    <div className="text-lg font-bold text-red-600">
+                                      $800-2,000+
                                     </div>
                                   </div>
                                   <div className="bg-green-50 border border-green-200 rounded-lg p-3 text-center">
@@ -3271,11 +3224,7 @@ function App() {
                                       {language === 'en' ? 'Your potential savings:' : 'Sus ahorros potenciales:'}
                                     </div>
                                     <div className="text-lg font-bold text-green-600">
-                                      {selectedInsurance === 'medicare' ? '$75-$275' : 
-                                       selectedInsurance === 'medicaid' ? '$0-$15' :
-                                       selectedInsurance === 'private' ? '$160-$460' :
-                                       selectedInsurance === 'uninsured' ? '$650-$1,920' :
-                                       selectedInsurance === 'covered-ca' ? '$115-$365' : '$60-$460'}
+                                      {language === 'en' ? 'Up to $1,985' : 'Hasta $1,985'}
                                     </div>
                                   </div>
                                 </div>
