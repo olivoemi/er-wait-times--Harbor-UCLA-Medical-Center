@@ -3196,46 +3196,45 @@ function App() {
 
                   {/* Manual Location Entry */}
                   <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                      <div className="flex items-start gap-3">
-                        <MapPin className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                        <div className="flex-1">
-                          <div className="font-medium text-blue-900 text-sm mb-2">
-                            {language === 'en' ? 'Enter Zip Code for Manual Location' : 'Ingrese Código Postal para Ubicación Manual'}
-                          </div>
-                          <div className="text-blue-700 text-xs mb-3">
-                            {language === 'en' 
-                              ? 'Enter your zip code to classify urgent care centers by proximity to your location.'
-                              : 'Ingrese su código postal para clasificar los centros de atención urgente por proximidad a su ubicación.'
-                            }
-                          </div>
-                          <div className="flex gap-2">
-                            <input 
-                              type="text" 
-                              value={manualZipCode}
-                              onChange={(e) => setManualZipCode(e.target.value)}
-                              placeholder={language === 'en' ? 'Enter 5-digit zip code' : 'Ingrese código postal de 5 dígitos'}
-                              className="flex-1 px-3 py-2 border border-blue-300 rounded-md text-sm bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                              maxLength={5}
-                            />
-                            <Button 
-                              size="sm" 
-                              onClick={handleZipCodeClassify}
-                              disabled={!manualZipCode.trim() || isCalculatingProximity}
-                              className="bg-blue-600 hover:bg-blue-700 text-white px-4"
-                            >
-                              {isCalculatingProximity ? (
-                                <>
-                                  <RefreshCw className="h-4 w-4 mr-1 animate-spin" />
-                                  {language === 'en' ? 'Loading...' : 'Cargando...'}
-                                </>
-                              ) : (
-                                <>
-                                  <MagnifyingGlass className="h-4 w-4 mr-1" />
-                                  {language === 'en' ? 'Classify by Zip Code' : 'Clasificar por Código Postal'}
-                                </>
-                              )}
-                            </Button>
-                          </div>
+                    <div className="flex items-start gap-3">
+                      <MapPin className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                      <div className="flex-1">
+                        <div className="font-medium text-blue-900 text-sm mb-2">
+                          {language === 'en' ? 'Enter Zip Code for Manual Location' : 'Ingrese Código Postal para Ubicación Manual'}
+                        </div>
+                        <div className="text-blue-700 text-xs mb-3">
+                          {language === 'en' 
+                            ? 'Enter your zip code to classify urgent care centers by proximity to your location.'
+                            : 'Ingrese su código postal para clasificar los centros de atención urgente por proximidad a su ubicación.'
+                          }
+                        </div>
+                        <div className="flex gap-2">
+                          <input 
+                            type="text" 
+                            value={manualZipCode}
+                            onChange={(e) => setManualZipCode(e.target.value)}
+                            placeholder={language === 'en' ? 'Enter 5-digit zip code' : 'Ingrese código postal de 5 dígitos'}
+                            className="flex-1 px-3 py-2 border border-blue-300 rounded-md text-sm bg-white focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            maxLength={5}
+                          />
+                          <Button 
+                            size="sm" 
+                            onClick={handleZipCodeClassify}
+                            disabled={!manualZipCode.trim() || isCalculatingProximity}
+                            className="bg-blue-600 hover:bg-blue-700 text-white px-4"
+                          >
+                            {isCalculatingProximity ? (
+                              <>
+                                <RefreshCw className="h-4 w-4 mr-1 animate-spin" />
+                                {language === 'en' ? 'Loading...' : 'Cargando...'}
+                              </>
+                            ) : (
+                              <>
+                                <MagnifyingGlass className="h-4 w-4 mr-1" />
+                                {language === 'en' ? 'Classify by Zip Code' : 'Clasificar por Código Postal'}
+                              </>
+                            )}
+                          </Button>
                         </div>
                       </div>
                     </div>
