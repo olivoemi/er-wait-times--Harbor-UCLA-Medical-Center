@@ -1595,8 +1595,8 @@ function App() {
                   <CardContent className="p-0">
                     {/* Enhanced Hospital Header with gradient background */}
                     <div className="bg-gradient-to-r from-blue-50 to-red-50 border-b border-gray-200 p-6">
-                      <div className="flex items-start justify-between">
-                        <div className="flex items-start gap-4">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-4">
                           {/* Harbor Logo */}
                           <div className="bg-red-600 text-white px-4 py-3 rounded-lg font-bold text-lg shadow-md">
                             {t[language].harborShort}
@@ -1626,6 +1626,7 @@ function App() {
                           </div>
                         </div>
                         <div className="text-right">
+                          <div className="text-sm text-gray-600 mb-1">{t[language].status}</div>
                           <div className="bg-red-100 text-red-800 px-4 py-2 rounded-lg border border-red-200">
                             <div className="text-xs font-medium">{t[language].severelyOvercrowded}</div>
                           </div>
