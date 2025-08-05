@@ -1438,7 +1438,7 @@ function App() {
                         </div>
 
                         {/* Stats Row */}
-                        <div className="flex gap-8 mb-6">
+                        <div className="grid grid-cols-2 gap-4 mb-6">
                           <div className="text-center">
                             <div className="text-sm text-gray-600 mb-1">{t[language].avgWaitTime}</div>
                             <div className="text-3xl font-bold text-orange-500">42</div>
