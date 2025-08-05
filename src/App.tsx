@@ -834,11 +834,45 @@ function App() {
     }
   }
 
+  // Function to get accurate cost ranges based on insurance and care type
+  const getCostEstimate = (careType: 'emergency' | 'urgent' | 'telehealth' | 'primary', insurance: string) => {
+    const costRanges = {
+      emergency: {
+        medicare: '$0-$50',
+        medicaid: '$0-$10',
+        private: '$100-$300',
+        uninsured: '$2,500-$4,000',
+        'covered-ca': '$50-$200'
+      },
+      urgent: {
+        medicare: '$15-$50',
+        medicaid: '$0-$10',
+        private: '$30-$100',
+        uninsured: '$100-$250',
+        'covered-ca': '$40-$80'
+      },
+      telehealth: {
+        medicare: '$0-$50',
+        medicaid: '$0',
+        private: '$0-$75',
+        uninsured: '$40-$150',
+        'covered-ca': '$0-$75'
+      },
+      primary: {
+        medicare: '$0-$30',
+        medicaid: '$0-$5',
+        private: '$20-$100',
+        uninsured: '$80-$200',
+        'covered-ca': '$15-$60'
+      }
+    }
+    
+    return costRanges[careType][insurance as keyof typeof costRanges[careType]] || '$0-$300'
+  }
+
   const performAssessment = () => {
     setShowAssessmentResult(true)
   }
-
-  const getUrgencyBadge = (urgency: string) => {
     switch (urgency) {
       case 'emergency':
         return <Badge className="bg-red-100 text-red-800 hover:bg-red-100">{t[language].emergencyBadge}</Badge>
@@ -2577,6 +2611,11 @@ function App() {
                       <h4 className="text-lg font-semibold text-gray-900">
                         {language === 'en' ? 'Insurance Coverage' : 'Cobertura de Seguro'}
                       </h4>
+                      {selectedInsurance && (
+                        <div className="ml-auto">
+                          <CheckCircle className="h-5 w-5 text-green-600" />
+                        </div>
+                      )}
                     </div>
                     <p className="text-sm text-blue-700 mb-4">
                       {language === 'en' 
@@ -2585,7 +2624,7 @@ function App() {
                       }
                     </p>
                     <Select value={selectedInsurance} onValueChange={setSelectedInsurance}>
-                      <SelectTrigger className="w-full bg-white">
+                      <SelectTrigger className={`w-full bg-white ${!selectedInsurance ? 'border-red-300 ring-1 ring-red-200' : 'border-gray-300'}`}>
                         <SelectValue placeholder={
                           language === 'en' ? 'Select your insurance type...' : 'Seleccione su tipo de seguro...'
                         } />
@@ -2598,6 +2637,14 @@ function App() {
                         ))}
                       </SelectContent>
                     </Select>
+                    {!selectedInsurance && selectedSymptoms.length > 0 && (
+                      <div className="mt-3 flex items-center gap-2 text-red-600 text-sm">
+                        <AlertTriangle className="h-4 w-4" />
+                        <span>
+                          {language === 'en' ? 'Please select your insurance to see cost estimates' : 'Seleccione su seguro para ver estimaciones de costo'}
+                        </span>
+                      </div>
+                    )}
                   </div>
 
                   {/* Symptom Selection Section */}
@@ -2677,20 +2724,30 @@ function App() {
                       </div>
                     )}
 
-                    {/* Assessment Button */}
-                    {selectedSymptoms.length > 0 && (
-                      <Button
-                        onClick={performAssessment}
-                        className="bg-blue-600 hover:bg-blue-700 text-white w-full py-3 mb-6"
-                      >
-                        <MagnifyingGlass className="h-4 w-4 mr-2" />
-                        {language === 'en' ? 'Get Acuity Assessment & Wait Time' : 'Obtener Evaluación de Acuidad y Tiempo de Espera'}
-                      </Button>
-                    )}
+                      {selectedSymptoms.length > 0 && selectedInsurance && (
+                        <Button
+                          onClick={performAssessment}
+                          className="bg-blue-600 hover:bg-blue-700 text-white w-full py-3 mb-6"
+                        >
+                          <MagnifyingGlass className="h-4 w-4 mr-2" />
+                          {language === 'en' ? 'Get Acuity Assessment & Wait Time' : 'Obtener Evaluación de Acuidad y Tiempo de Espera'}
+                        </Button>
+                      )}
+                      
+                      {selectedSymptoms.length > 0 && !selectedInsurance && (
+                        <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 mb-6">
+                          <div className="flex items-center gap-2 text-orange-800">
+                            <AlertTriangle className="h-4 w-4" />
+                            <span className="font-medium text-sm">
+                              {language === 'en' ? 'Select insurance to get cost estimates' : 'Seleccione seguro para obtener estimaciones de costo'}
+                            </span>
+                          </div>
+                        </div>
+                      )}
                   </div>
 
                   {/* Assessment Result */}
-                  {showAssessmentResult && selectedSymptoms.length > 0 && (
+                  {showAssessmentResult && selectedSymptoms.length > 0 && selectedInsurance && (
                     <div className="mb-8">
                       {(() => {
                         const result = getAssessmentResult()
@@ -2736,14 +2793,10 @@ function App() {
                                 
                                 <div className="text-center mb-4">
                                   <div className="text-3xl font-bold text-green-600 mb-1">
-                                    {selectedInsurance === 'medicare' ? '$0-$50' : 
-                                     selectedInsurance === 'medicaid' ? '$0' :
-                                     selectedInsurance === 'private' ? '$100-$300' :
-                                     selectedInsurance === 'uninsured' ? '$2,500-$4,000' :
-                                     selectedInsurance === 'covered-ca' ? '$50-$200' : '$0-$300'}
+                                    {getCostEstimate('emergency', selectedInsurance)}
                                   </div>
                                   <div className="text-sm text-gray-600">
-                                    {language === 'en' ? 'Your estimated cost with insurance' : 'Su costo estimado con seguro'}
+                                    {language === 'en' ? 'Your estimated cost' : 'Su costo estimado'}
                                   </div>
                                 </div>
 
@@ -2851,7 +2904,7 @@ function App() {
                                 
                                 <div className="text-center mb-4">
                                   <div className="text-3xl font-bold text-blue-600 mb-1">
-                                    $2,200-$3,800
+                                    {getCostEstimate('emergency', selectedInsurance)}
                                   </div>
                                   <div className="text-sm text-gray-600">
                                     {language === 'en' ? 'Expected cost range' : 'Rango de costo esperado'}
@@ -2873,18 +2926,18 @@ function App() {
                                 <div className="grid grid-cols-2 gap-3">
                                   <div className="bg-red-50 border border-red-200 rounded-lg p-3 text-center">
                                     <div className="text-sm font-medium text-red-900 mb-1">
-                                      {language === 'en' ? 'Compare to ER visit:' : 'Comparar con visita a ER:'}
+                                      {language === 'en' ? 'ER visit cost:' : 'Costo de visita ER:'}
                                     </div>
                                     <div className="text-lg font-bold text-red-600">
-                                      $2,200-3,800
+                                      {getCostEstimate('emergency', selectedInsurance)}
                                     </div>
                                   </div>
                                   <div className="bg-green-50 border border-green-200 rounded-lg p-3 text-center">
                                     <div className="text-sm font-medium text-green-900 mb-1">
-                                      {language === 'en' ? 'Your potential savings:' : 'Sus ahorros potenciales:'}
+                                      {language === 'en' ? 'Status:' : 'Estado:'}
                                     </div>
                                     <div className="text-lg font-bold text-green-600">
-                                      {language === 'en' ? 'Same cost' : 'Mismo costo'}
+                                      {language === 'en' ? 'Urgent care' : 'Atención urgente'}
                                     </div>
                                   </div>
                                 </div>
@@ -2961,7 +3014,7 @@ function App() {
                                 
                                 <div className="text-center mb-4">
                                   <div className="text-3xl font-bold text-blue-600 mb-1">
-                                    $30-$100
+                                    {getCostEstimate('urgent', selectedInsurance)}
                                   </div>
                                   <div className="text-sm text-gray-600">
                                     {language === 'en' ? 'Expected cost range' : 'Rango de costo esperado'}
@@ -2986,15 +3039,15 @@ function App() {
                                       {language === 'en' ? 'Compare to ER visit:' : 'Comparar con visita a ER:'}
                                     </div>
                                     <div className="text-lg font-bold text-red-600">
-                                      $1,500-3,000+
+                                      {getCostEstimate('emergency', selectedInsurance)}
                                     </div>
                                   </div>
                                   <div className="bg-green-50 border border-green-200 rounded-lg p-3 text-center">
                                     <div className="text-sm font-medium text-green-900 mb-1">
-                                      {language === 'en' ? 'Your potential savings:' : 'Sus ahorros potenciales:'}
+                                      {language === 'en' ? 'Urgent care cost:' : 'Costo atención urgente:'}
                                     </div>
                                     <div className="text-lg font-bold text-green-600">
-                                      {language === 'en' ? 'Up to $2,950' : 'Hasta $2,950'}
+                                      {getCostEstimate('urgent', selectedInsurance)}
                                     </div>
                                   </div>
                                 </div>
@@ -3081,7 +3134,7 @@ function App() {
                                 
                                 <div className="text-center mb-4">
                                   <div className="text-3xl font-bold text-blue-600 mb-1">
-                                    $25-$75
+                                    {getCostEstimate('primary', selectedInsurance)}
                                   </div>
                                   <div className="text-sm text-gray-600">
                                     {language === 'en' ? 'Expected cost range' : 'Rango de costo esperado'}
@@ -3106,15 +3159,15 @@ function App() {
                                       {language === 'en' ? 'Compare to ER visit:' : 'Comparar con visita a ER:'}
                                     </div>
                                     <div className="text-lg font-bold text-red-600">
-                                      $1,200-2,500+
+                                      {getCostEstimate('emergency', selectedInsurance)}
                                     </div>
                                   </div>
                                   <div className="bg-green-50 border border-green-200 rounded-lg p-3 text-center">
                                     <div className="text-sm font-medium text-green-900 mb-1">
-                                      {language === 'en' ? 'Your potential savings:' : 'Sus ahorros potenciales:'}
+                                      {language === 'en' ? 'Primary care cost:' : 'Costo atención primaria:'}
                                     </div>
                                     <div className="text-lg font-bold text-green-600">
-                                      {language === 'en' ? 'Up to $2,475' : 'Hasta $2,475'}
+                                      {getCostEstimate('primary', selectedInsurance)}
                                     </div>
                                   </div>
                                 </div>
@@ -3191,7 +3244,7 @@ function App() {
                                 
                                 <div className="text-center mb-4">
                                   <div className="text-3xl font-bold text-blue-600 mb-1">
-                                    $15-$50
+                                    {getCostEstimate('telehealth', selectedInsurance)}
                                   </div>
                                   <div className="text-sm text-gray-600">
                                     {language === 'en' ? 'Expected cost range' : 'Rango de costo esperado'}
@@ -3216,15 +3269,15 @@ function App() {
                                       {language === 'en' ? 'Compare to ER visit:' : 'Comparar con visita a ER:'}
                                     </div>
                                     <div className="text-lg font-bold text-red-600">
-                                      $800-2,000+
+                                      {getCostEstimate('emergency', selectedInsurance)}
                                     </div>
                                   </div>
                                   <div className="bg-green-50 border border-green-200 rounded-lg p-3 text-center">
                                     <div className="text-sm font-medium text-green-900 mb-1">
-                                      {language === 'en' ? 'Your potential savings:' : 'Sus ahorros potenciales:'}
+                                      {language === 'en' ? 'Telehealth cost:' : 'Costo telemedicina:'}
                                     </div>
                                     <div className="text-lg font-bold text-green-600">
-                                      {language === 'en' ? 'Up to $1,985' : 'Hasta $1,985'}
+                                      {getCostEstimate('telehealth', selectedInsurance)}
                                     </div>
                                   </div>
                                 </div>
@@ -3583,10 +3636,13 @@ function App() {
                         <div className="flex items-center justify-center gap-2 mb-2">
                           <Building className="h-4 w-4 text-green-600" />
                           <span className="text-sm font-medium text-gray-600">
-                            {language === 'en' ? 'Your expected cost without insurance or if your deductible hasn\'t been met yet' : 'Su costo esperado sin seguro o si su deducible aún no se ha cumplido'}
+                            {language === 'en' ? 'Typical Cost Range' : 'Rango de Costo Típico'}
                           </span>
                         </div>
-                        <div className="text-2xl font-bold text-green-600 mb-1">$150-$300</div>
+                        <div className="text-2xl font-bold text-green-600 mb-1">$15-$250</div>
+                        <div className="text-xs text-gray-500">
+                          {language === 'en' ? 'Varies by insurance' : 'Varía por seguro'}
+                        </div>
                       </div>
                       
                       <div className="text-center">
@@ -3749,11 +3805,14 @@ function App() {
                       <div className="text-left">
                         <div className="flex items-center gap-2 mb-2">
                           <Building className="h-4 w-4 text-green-600" />
-                          <span className="text-xs font-medium text-gray-500 leading-tight">
-                            {language === 'en' ? 'Your expected cost without insurance or if your deductible hasn\'t been met yet' : 'Su costo esperado sin seguro o si su deducible aún no se ha cumplido'}
+                          <span className="text-sm font-medium text-gray-600">
+                            {language === 'en' ? 'Typical Cost Range' : 'Rango de Costo Típico'}
                           </span>
                         </div>
-                        <div className="text-lg font-bold text-gray-900">$200-$400</div>
+                        <div className="text-lg font-bold text-gray-900">$5-$200</div>
+                        <div className="text-xs text-gray-500">
+                          {language === 'en' ? 'Varies by insurance' : 'Varía por seguro'}
+                        </div>
                       </div>
                       
                       <div className="text-left">
