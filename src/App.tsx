@@ -3912,7 +3912,7 @@ function App() {
                     {/* Stats Row */}
                     <div className="grid grid-cols-3 gap-6 mb-6">
                       <div className="text-left">
-                        <FirstAid className="h-6 w-6 text-blue-600" />
+                        <div className="flex items-center gap-2 mb-2">
                           <Clock className="h-4 w-4 text-blue-600" />
                           <span className="text-sm font-medium text-gray-600">
                             {language === 'en' ? 'Wait Time' : 'Tiempo de Espera'}
@@ -4187,7 +4187,7 @@ function App() {
                     {/* Stats Row */}
                     <div className="grid grid-cols-3 gap-6 mb-6">
                       <div className="text-left">
-                        <Phone className="h-6 w-6 text-purple-600" />
+                        <div className="flex items-center gap-2 mb-2">
                           <Clock className="h-4 w-4 text-purple-600" />
                           <span className="text-sm font-medium text-gray-600">
                             {language === 'en' ? 'Wait Time' : 'Tiempo de Espera'}
