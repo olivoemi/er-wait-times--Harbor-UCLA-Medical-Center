@@ -2995,12 +2995,9 @@ function App() {
                                   variant="outline" 
                                   className="border-red-300 text-red-700 hover:bg-red-50"
                                   onClick={() => {
-                                    setCareGuideSection('options')
+                                    setActiveTab('wait-times')
                                     setTimeout(() => {
-                                      document.getElementById('emergency-room-section')?.scrollIntoView({ 
-                                        behavior: 'smooth',
-                                        block: 'start'
-                                      })
+                                      window.scrollTo({ top: 0, behavior: 'smooth' })
                                     }, 100)
                                   }}
                                 >
@@ -3109,11 +3106,23 @@ function App() {
                               </div>
 
                               <div className="flex gap-4">
-                                <Button className="bg-orange-600 hover:bg-orange-700 text-white font-bold px-6 py-3">
+                                <Button 
+                                  className="bg-orange-600 hover:bg-orange-700 text-white font-bold px-6 py-3"
+                                  onClick={() => {
+                                    setActiveTab('wait-times')
+                                    setTimeout(() => {
+                                      window.scrollTo({ top: 0, behavior: 'smooth' })
+                                    }, 100)
+                                  }}
+                                >
                                   <MapPin className="h-4 w-4 mr-2" />
                                   {language === 'en' ? 'Go to Emergency Room' : 'Ir a Sala de Emergencias'}
                                 </Button>
-                                <Button variant="outline" className="border-orange-300 text-orange-700 hover:bg-orange-50">
+                                <Button 
+                                  variant="outline" 
+                                  className="border-orange-300 text-orange-700 hover:bg-orange-50"
+                                  onClick={() => window.open('tel:(310) 222-2345', '_self')}
+                                >
                                   <Phone className="h-4 w-4 mr-2" />
                                   {language === 'en' ? 'Call Harbor Medical Center' : 'Llamar al Centro Médico Harbor'}
                                 </Button>
@@ -3231,7 +3240,15 @@ function App() {
                               <div className="flex gap-4">
                                 <Button 
                                   className="bg-yellow-600 hover:bg-yellow-700 text-white font-bold px-6 py-3"
-                                  onClick={() => setCareGuideSection('options')}
+                                  onClick={() => {
+                                    setCareGuideSection('options')
+                                    setTimeout(() => {
+                                      document.getElementById('urgent-care-section')?.scrollIntoView({ 
+                                        behavior: 'smooth',
+                                        block: 'start'
+                                      })
+                                    }, 100)
+                                  }}
                                 >
                                   <Clock className="h-4 w-4 mr-2" />
                                   {language === 'en' ? 'Find Urgent Care' : 'Buscar Atención Urgente'}
@@ -3239,7 +3256,12 @@ function App() {
                                 <Button 
                                   variant="outline" 
                                   className="border-yellow-300 text-yellow-700 hover:bg-yellow-50"
-                                  onClick={() => setCareGuideSection('options')}
+                                  onClick={() => {
+                                    setActiveTab('wait-times')
+                                    setTimeout(() => {
+                                      window.scrollTo({ top: 0, behavior: 'smooth' })
+                                    }, 100)
+                                  }}
                                 >
                                   <MapPin className="h-4 w-4 mr-2" />
                                   {language === 'en' ? 'Still Go to ER' : 'Aún Ir a ER'}
@@ -3384,7 +3406,17 @@ function App() {
                               <div className="flex gap-4">
                                 <Button 
                                   className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-3"
-                                  onClick={() => setCareGuideSection('options')}
+                                  onClick={() => {
+                                    setCareGuideSection('options')
+                                    setTimeout(() => {
+                                      const targetSection = isUrgentCarePreferred ? 'urgent-care-section' : 
+                                                           isTelehealthPreferred ? 'telehealth-section' : 'telehealth-section'
+                                      document.getElementById(targetSection)?.scrollIntoView({ 
+                                        behavior: 'smooth',
+                                        block: 'start'
+                                      })
+                                    }, 100)
+                                  }}
                                 >
                                   {isUrgentCarePreferred ? <Clock className="h-4 w-4 mr-2" /> : <Phone className="h-4 w-4 mr-2" />}
                                   {language === 'en' ? 
@@ -3397,7 +3429,16 @@ function App() {
                                 <Button 
                                   variant="outline" 
                                   className="border-blue-300 text-blue-700 hover:bg-blue-50"
-                                  onClick={() => setCareGuideSection('options')}
+                                  onClick={() => {
+                                    setCareGuideSection('options')
+                                    setTimeout(() => {
+                                      const targetSection = isUrgentCarePreferred ? 'primary-care-section' : 'primary-care-section'
+                                      document.getElementById(targetSection)?.scrollIntoView({ 
+                                        behavior: 'smooth',
+                                        block: 'start'
+                                      })
+                                    }, 100)
+                                  }}
                                 >
                                   <Building className="h-4 w-4 mr-2" />
                                   {language === 'en' ? 
@@ -3531,7 +3572,15 @@ function App() {
                               <div className="flex gap-4">
                                 <Button 
                                   className="bg-green-600 hover:bg-green-700 text-white font-bold px-6 py-3"
-                                  onClick={() => setCareGuideSection('options')}
+                                  onClick={() => {
+                                    setCareGuideSection('options')
+                                    setTimeout(() => {
+                                      document.getElementById('telehealth-section')?.scrollIntoView({ 
+                                        behavior: 'smooth',
+                                        block: 'start'
+                                      })
+                                    }, 100)
+                                  }}
                                 >
                                   <Phone className="h-4 w-4 mr-2" />
                                   {language === 'en' ? 'Start Telehealth' : 'Iniciar Telemedicina'}
@@ -3539,12 +3588,20 @@ function App() {
                                 <Button 
                                   variant="outline" 
                                   className="border-green-300 text-green-700 hover:bg-green-50"
-                                  onClick={() => setCareGuideSection('options')}
+                                  onClick={() => {
+                                    setCareGuideSection('options')
+                                    setTimeout(() => {
+                                      document.getElementById('primary-care-section')?.scrollIntoView({ 
+                                        behavior: 'smooth',
+                                        block: 'start'
+                                      })
+                                    }, 100)
+                                  }}
                                 >
                                   <Building className="h-4 w-4 mr-2" />
                                   {language === 'en' ? 
                                     (isTelehealthPreferred ? 'Schedule Primary Care' : 'Find Primary Care') : 
-                                    (isTelehealthPreferred ? 'Programar Atenci��n Primaria' : 'Buscar Atención Primaria')
+                                    (isTelehealthPreferred ? 'Programar Atención Primaria' : 'Buscar Atención Primaria')
                                   }
                                 </Button>
                               </div>
@@ -3834,7 +3891,7 @@ function App() {
                 </div>
 
                 {/* Urgent Care Centers */}
-                <div className="bg-white rounded-lg border border-gray-200 shadow-sm">
+                <div id="urgent-care-section" className="bg-white rounded-lg border border-gray-200 shadow-sm">
                   <div className="p-6 border-b border-gray-200">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
@@ -4109,7 +4166,7 @@ function App() {
                 </div>
 
                 {/* Telehealth Services */}
-                <div className="bg-white rounded-lg border border-gray-200 shadow-sm">
+                <div id="telehealth-section" className="bg-white rounded-lg border border-gray-200 shadow-sm">
                   <div className="p-6 border-b border-gray-200">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
@@ -4287,7 +4344,7 @@ function App() {
                 </div>
 
                 {/* Primary Care Centers */}
-                <div className="bg-white rounded-lg border border-gray-200 shadow-sm">
+                <div id="primary-care-section" className="bg-white rounded-lg border border-gray-200 shadow-sm">
                   <div className="p-6 border-b border-gray-200">
                     <div className="flex items-center gap-3">
                       <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
