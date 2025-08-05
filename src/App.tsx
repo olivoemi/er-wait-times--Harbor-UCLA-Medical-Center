@@ -2075,34 +2075,38 @@ function App() {
                             </div>
                           </div>
 
-                          {/* Graph Container */}
-                          <div className="relative bg-white rounded-lg p-6 mb-6 border border-gray-200" style={{ height: '400px' }}>
-                            {/* Graph Title */}
-                            <div className="text-center mb-4">
-                              <h5 className="text-lg font-semibold text-gray-900">
-                                {language === 'en' ? 'Wait Times by Condition Severity - 24 Hour Trend' : 'Tiempos de Espera por Severidad de Condición - Tendencia de 24 Horas'}
-                              </h5>
-                            </div>
-                            
+                        </div>
+
+                        {/* Graph Container - Fixed Layout */}
+                        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6 mb-8">
+                          <div className="text-center mb-6">
+                            <h5 className="text-lg font-semibold text-gray-900">
+                              {language === 'en' ? 'Wait Times by Condition Severity - 24 Hour Trend' : 'Tiempos de Espera por Severidad de Condición - Tendencia de 24 Horas'}
+                            </h5>
+                          </div>
+                          
+                          {/* Graph with better spacing */}
+                          <div className="relative bg-gray-50 rounded-lg p-8" style={{ height: '400px' }}>
                             {/* Y-axis label */}
-                            <div className="absolute left-2 top-1/2 transform -rotate-90 text-sm text-gray-600 font-medium origin-center">
+                            <div className="absolute left-4 top-1/2 transform -rotate-90 text-sm text-gray-600 font-medium origin-center">
                               {language === 'en' ? 'Wait Time (min)' : 'Tiempo de Espera (min)'}
                             </div>
                             
-                            {/* Graph area */}
-                            <div className="ml-16 mr-8 h-full relative" style={{ height: 'calc(100% - 80px)' }}>
+                            {/* Graph area with proper margins */}
+                            <div className="ml-20 mr-12 h-full relative" style={{ height: 'calc(100% - 60px)', marginTop: '20px' }}>
                               {/* Y-axis grid lines and labels */}
                               <div className="absolute left-0 top-0 h-full border-l-2 border-gray-300">
                                 {[280, 210, 140, 70, 0].map((value, index) => (
                                   <div key={value} className="absolute left-0 w-full border-t border-gray-200" style={{ top: `${index * 25}%` }}>
-                                    <span className="absolute -left-12 -mt-2 text-xs text-gray-600 font-medium">{value}</span>
+                                    <span className="absolute -left-16 -mt-2 text-xs text-gray-600 font-medium">{value}</span>
                                   </div>
                                 ))}
+                              </div>
 
-
-                              <div className="absolute" style={{ left: '75%', top: '0', height: '100%' }}>
+                              {/* Current time indicator */}
+                              <div className="absolute" style={{ left: '75%', top: '-10px', height: 'calc(100% + 10px)' }}>
                                 <div className="w-0.5 h-full bg-blue-600"></div>
-                                <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 text-xs text-blue-600 font-bold whitespace-nowrap bg-blue-50 px-2 py-1 rounded">
+                                <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 text-xs text-blue-600 font-bold whitespace-nowrap bg-blue-50 px-2 py-1 rounded">
                                   {language === 'en' ? 'Current Time' : 'Tiempo Actual'}
                                 </div>
                               </div>
@@ -2146,8 +2150,8 @@ function App() {
                                 />
                               </svg>
                               
-                              {/* Time axis labels */}
-                              <div className="absolute -bottom-6 left-0 w-full flex justify-between text-xs text-gray-600 font-medium">
+                              {/* Time axis labels with proper spacing */}
+                              <div className="absolute -bottom-8 left-0 w-full flex justify-between text-xs text-gray-600 font-medium">
                                 <span>3 AM</span>
                                 <span>6 AM</span>
                                 <span>9 AM</span>
@@ -2159,68 +2163,69 @@ function App() {
                             </div>
                           </div>
 
-                          {/* Legend */}
-                          <div className="bg-gray-50 rounded-lg p-4 mt-4">
+                          {/* Legend with better spacing */}
+                          <div className="bg-white border border-gray-200 rounded-lg p-4 mt-6">
                             <div className="flex items-center justify-center gap-8 flex-wrap">
                               <div className="flex items-center gap-2">
-                                <div className="w-4 h-0.5 bg-red-500"></div>
+                                <div className="w-4 h-1 bg-red-500 rounded"></div>
                                 <span className="text-sm text-gray-700 font-medium">Level 1</span>
                               </div>
                               <div className="flex items-center gap-2">
-                                <div className="w-4 h-0.5 bg-orange-500"></div>
+                                <div className="w-4 h-1 bg-orange-500 rounded"></div>
                                 <span className="text-sm text-gray-700 font-medium">Level 2</span>
                               </div>
                               <div className="flex items-center gap-2">
-                                <div className="w-4 h-0.5 bg-yellow-500"></div>
+                                <div className="w-4 h-1 bg-yellow-500 rounded"></div>
                                 <span className="text-sm text-gray-700 font-medium">Level 3</span>
                               </div>
                               <div className="flex items-center gap-2">
-                                <div className="w-4 h-0.5 bg-blue-500"></div>
+                                <div className="w-4 h-1 bg-blue-500 rounded"></div>
                                 <span className="text-sm text-gray-700 font-medium">Level 4</span>
                               </div>
                               <div className="flex items-center gap-2">
-                                <div className="w-4 h-0.5 bg-green-500"></div>
+                                <div className="w-4 h-1 bg-green-500 rounded"></div>
                                 <span className="text-sm text-gray-700 font-medium">Level 5</span>
                               </div>
                             </div>
                           </div>
 
-                          {/* Peak times summary */}
-                          <div className="grid grid-cols-5 gap-4 mt-4">
-                            <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-center">
-                              <div className="font-bold text-red-900 text-base mb-1">L1</div>
+                          {/* Peak times summary with better spacing */}
+                          <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mt-6">
+                            <div className="bg-red-50 border border-red-200 rounded-lg p-3 text-center">
+                              <div className="font-bold text-red-900 text-sm mb-1">L1</div>
                               <div className="text-xs text-red-700 font-medium">
                                 {language === 'en' ? 'Peak: 70 min' : 'Pico: 70 min'}
                               </div>
                             </div>
-                            <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 text-center">
-                              <div className="font-bold text-orange-900 text-base mb-1">L2</div>
+                            <div className="bg-orange-50 border border-orange-200 rounded-lg p-3 text-center">
+                              <div className="font-bold text-orange-900 text-sm mb-1">L2</div>
                               <div className="text-xs text-orange-700 font-medium">
                                 {language === 'en' ? 'Peak: 70 min' : 'Pico: 70 min'}
                               </div>
                             </div>
-                            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-center">
-                              <div className="font-bold text-yellow-900 text-base mb-1">L3</div>
+                            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 text-center">
+                              <div className="font-bold text-yellow-900 text-sm mb-1">L3</div>
                               <div className="text-xs text-yellow-700 font-medium">
                                 {language === 'en' ? 'Peak: 220 min' : 'Pico: 220 min'}
                               </div>
                             </div>
-                            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-center">
-                              <div className="font-bold text-blue-900 text-base mb-1">L4</div>
+                            <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 text-center">
+                              <div className="font-bold text-blue-900 text-sm mb-1">L4</div>
                               <div className="text-xs text-blue-700 font-medium">
                                 {language === 'en' ? 'Peak: 240 min' : 'Pico: 240 min'}
                               </div>
                             </div>
-                            <div className="bg-green-50 border border-green-200 rounded-lg p-4 text-center">
-                              <div className="font-bold text-green-900 text-base mb-1">L5</div>
+                            <div className="bg-green-50 border border-green-200 rounded-lg p-3 text-center">
+                              <div className="font-bold text-green-900 text-sm mb-1">L5</div>
                               <div className="text-xs text-green-700 font-medium">
                                 {language === 'en' ? 'Peak: 190 min' : 'Pico: 190 min'}
                               </div>
                             </div>
+                          </div>
                         </div>
                         
                         {/* Wait Times by Condition Severity - Summary Table */}
-                        <div className="mb-8">
+                        <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6 mb-8">
                           <div className="flex items-center gap-3 mb-6">
                             <div className="bg-orange-100 p-3 rounded-lg">
                               <Clock className="h-6 w-6 text-orange-600" />
@@ -2229,144 +2234,154 @@ function App() {
                           </div>
 
                           {/* Clean Summary Table */}
-                          <div className="space-y-2 mb-8">
+                          <div className="space-y-3 mb-8">
                             {/* Level 1 */}
-                            <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-center justify-between">
-                              <div className="flex items-center gap-3">
-                                <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                                <span className="font-semibold text-red-900">
-                                  {language === 'en' ? 'Level 1: Immediate' : 'Nivel 1: Inmediato'}
-                                </span>
-                              </div>
-                              <div className="flex items-center gap-6 text-sm">
-                                <div className="text-right">
-                                  <div className="text-xs text-gray-600 mb-1">
-                                    {language === 'en' ? 'Queue' : 'Cola'}
-                                  </div>
-                                  <div className="font-semibold text-gray-900">3</div>
+                            <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+                              <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-3">
+                                  <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                                  <span className="font-semibold text-red-900">
+                                    {language === 'en' ? 'Level 1: Immediate' : 'Nivel 1: Inmediato'}
+                                  </span>
                                 </div>
-                                <div className="text-right">
-                                  <div className="text-xs text-gray-600 mb-1">
-                                    {language === 'en' ? 'Est. Wait' : 'Tiempo Est.'}
+                                <div className="flex items-center gap-6 text-sm">
+                                  <div className="text-right">
+                                    <div className="text-xs text-gray-600 mb-1">
+                                      {language === 'en' ? 'Queue' : 'Cola'}
+                                    </div>
+                                    <div className="font-semibold text-gray-900">3</div>
                                   </div>
-                                  <div className="font-bold text-green-600">&lt; 15 min</div>
+                                  <div className="text-right">
+                                    <div className="text-xs text-gray-600 mb-1">
+                                      {language === 'en' ? 'Est. Wait' : 'Tiempo Est.'}
+                                    </div>
+                                    <div className="font-bold text-green-600">&lt; 15 min</div>
+                                  </div>
                                 </div>
                               </div>
                             </div>
 
                             {/* Level 2 */}
-                            <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 flex items-center justify-between">
-                              <div className="flex items-center gap-3">
-                                <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
-                                <span className="font-semibold text-orange-900">
-                                  {language === 'en' ? 'Level 2: Urgent' : 'Nivel 2: Urgente'}
-                                </span>
-                              </div>
-                              <div className="flex items-center gap-6 text-sm">
-                                <div className="text-right">
-                                  <div className="text-xs text-gray-600 mb-1">
-                                    {language === 'en' ? 'Queue' : 'Cola'}
-                                  </div>
-                                  <div className="font-semibold text-gray-900">7</div>
+                            <div className="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                              <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-3">
+                                  <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
+                                  <span className="font-semibold text-orange-900">
+                                    {language === 'en' ? 'Level 2: Urgent' : 'Nivel 2: Urgente'}
+                                  </span>
                                 </div>
-                                <div className="text-right">
-                                  <div className="text-xs text-gray-600 mb-1">
-                                    {language === 'en' ? 'Est. Wait' : 'Tiempo Est.'}
+                                <div className="flex items-center gap-6 text-sm">
+                                  <div className="text-right">
+                                    <div className="text-xs text-gray-600 mb-1">
+                                      {language === 'en' ? 'Queue' : 'Cola'}
+                                    </div>
+                                    <div className="font-semibold text-gray-900">7</div>
                                   </div>
-                                  <div className="font-bold text-green-600">&lt; 15 min</div>
+                                  <div className="text-right">
+                                    <div className="text-xs text-gray-600 mb-1">
+                                      {language === 'en' ? 'Est. Wait' : 'Tiempo Est.'}
+                                    </div>
+                                    <div className="font-bold text-green-600">&lt; 15 min</div>
+                                  </div>
                                 </div>
                               </div>
                             </div>
 
-                            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 flex items-center justify-between">
-                              <div className="flex items-center gap-3">
-                                <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                                <span className="font-semibold text-yellow-900">
-                                  {language === 'en' ? 'Level 3: Less Urgent' : 'Nivel 3: Menos Urgente'}
-                                </span>
-                              </div>
-                              <div className="flex items-center gap-6 text-sm">
-                                <div className="text-right">
-                                  <div className="text-xs text-gray-600 mb-1">
-                                    {language === 'en' ? 'Queue' : 'Cola'}
-                                  </div>
-                                  <div className="font-semibold text-gray-900">19</div>
+                            {/* Level 3 */}
+                            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                              <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-3">
+                                  <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                                  <span className="font-semibold text-yellow-900">
+                                    {language === 'en' ? 'Level 3: Less Urgent' : 'Nivel 3: Menos Urgente'}
+                                  </span>
                                 </div>
-                                <div className="text-right">
-                                  <div className="text-xs text-gray-600 mb-1">
-                                    {language === 'en' ? 'Est. Wait' : 'Tiempo Est.'}
+                                <div className="flex items-center gap-6 text-sm">
+                                  <div className="text-right">
+                                    <div className="text-xs text-gray-600 mb-1">
+                                      {language === 'en' ? 'Queue' : 'Cola'}
+                                    </div>
+                                    <div className="font-semibold text-gray-900">19</div>
                                   </div>
-                                  <div className="font-bold text-red-600">693 min</div>
+                                  <div className="text-right">
+                                    <div className="text-xs text-gray-600 mb-1">
+                                      {language === 'en' ? 'Est. Wait' : 'Tiempo Est.'}
+                                    </div>
+                                    <div className="font-bold text-red-600">693 min</div>
+                                  </div>
                                 </div>
                               </div>
                             </div>
 
                             {/* Level 4 */}
-                            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 flex items-center justify-between">
-                              <div className="flex items-center gap-3">
-                                <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                                <span className="font-semibold text-blue-900">
-                                  {language === 'en' ? 'Level 4: Non-Urgent' : 'Nivel 4: No Urgente'}
-                                </span>
-                              </div>
-                              <div className="flex items-center gap-6 text-sm">
-                                <div className="text-right">
-                                  <div className="text-xs text-gray-600 mb-1">
-                                    {language === 'en' ? 'Queue' : 'Cola'}
-                                  </div>
-                                  <div className="font-semibold text-gray-900">13</div>
+                            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                              <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-3">
+                                  <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                                  <span className="font-semibold text-blue-900">
+                                    {language === 'en' ? 'Level 4: Non-Urgent' : 'Nivel 4: No Urgente'}
+                                  </span>
                                 </div>
-                                <div className="text-right">
-                                  <div className="text-xs text-gray-600 mb-1">
-                                    {language === 'en' ? 'Est. Wait' : 'Tiempo Est.'}
+                                <div className="flex items-center gap-6 text-sm">
+                                  <div className="text-right">
+                                    <div className="text-xs text-gray-600 mb-1">
+                                      {language === 'en' ? 'Queue' : 'Cola'}
+                                    </div>
+                                    <div className="font-semibold text-gray-900">13</div>
                                   </div>
-                                  <div className="font-bold text-red-600">1020 min</div>
+                                  <div className="text-right">
+                                    <div className="text-xs text-gray-600 mb-1">
+                                      {language === 'en' ? 'Est. Wait' : 'Tiempo Est.'}
+                                    </div>
+                                    <div className="font-bold text-red-600">1020 min</div>
+                                  </div>
                                 </div>
                               </div>
                             </div>
 
                             {/* Level 5 */}
-                            <div className="bg-green-50 border border-green-200 rounded-lg p-4 flex items-center justify-between">
-                              <div className="flex items-center gap-3">
-                                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                                <span className="font-semibold text-green-900">
-                                  {language === 'en' ? 'Level 5: Fast Track' : 'Nivel 5: Vía Rápida'}
-                                </span>
-                              </div>
-                              <div className="flex items-center gap-6 text-sm">
-                                <div className="text-right">
-                                  <div className="text-xs text-gray-600 mb-1">
-                                    {language === 'en' ? 'Queue' : 'Cola'}
-                                  </div>
-                                  <div className="font-semibold text-gray-900">3</div>
+                            <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                              <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-3">
+                                  <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                                  <span className="font-semibold text-green-900">
+                                    {language === 'en' ? 'Level 5: Fast Track' : 'Nivel 5: Vía Rápida'}
+                                  </span>
                                 </div>
-                                <div className="text-right">
-                                  <div className="text-xs text-gray-600 mb-1">
-                                    {language === 'en' ? 'Est. Wait' : 'Tiempo Est.'}
+                                <div className="flex items-center gap-6 text-sm">
+                                  <div className="text-right">
+                                    <div className="text-xs text-gray-600 mb-1">
+                                      {language === 'en' ? 'Queue' : 'Cola'}
+                                    </div>
+                                    <div className="font-semibold text-gray-900">3</div>
                                   </div>
-                                  <div className="font-bold text-red-600">943 min</div>
+                                  <div className="text-right">
+                                    <div className="text-xs text-gray-600 mb-1">
+                                      {language === 'en' ? 'Est. Wait' : 'Tiempo Est.'}
+                                    </div>
+                                    <div className="font-bold text-red-600">943 min</div>
+                                  </div>
                                 </div>
                               </div>
                             </div>
                           </div>
+
                           {/* Wait Times by Acuity Level Over Time */}
-                          <div className="mb-6">
-                              <h5 className="text-lg font-semibold text-gray-900 mb-4">
-                                {language === 'en' ? 'Wait Times by Acuity Level Over Time' : 'Tiempos de Espera por Nivel de Acuidad a lo Largo del Tiempo'}
-                              </h5>
-                              <div className="flex gap-2">
-                                <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs px-3 py-1">
-                                  {language === 'en' ? 'Today' : 'Hoy'}
-                                </Button>
-                                <Button size="sm" variant="outline" className="text-xs px-3 py-1">
-                                  {language === 'en' ? 'Yesterday' : 'Ayer'}
-                                </Button>
-                                <Button size="sm" variant="outline" className="text-xs px-3 py-1">
-                                  {language === 'en' ? 'Week' : 'Semana'}
-                                </Button>
-                              </div>
+                          <div className="border-t border-gray-200 pt-6">
+                            <h5 className="text-lg font-semibold text-gray-900 mb-4">
+                              {language === 'en' ? 'Wait Times by Acuity Level Over Time' : 'Tiempos de Espera por Nivel de Acuidad a lo Largo del Tiempo'}
+                            </h5>
+                            <div className="flex gap-2">
+                              <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white text-xs px-3 py-1">
+                                {language === 'en' ? 'Today' : 'Hoy'}
+                              </Button>
+                              <Button size="sm" variant="outline" className="text-xs px-3 py-1">
+                                {language === 'en' ? 'Yesterday' : 'Ayer'}
+                              </Button>
+                              <Button size="sm" variant="outline" className="text-xs px-3 py-1">
+                                {language === 'en' ? 'Week' : 'Semana'}
+                              </Button>
                             </div>
-                          </div>
                         </div>
 
                         {/* Specialized Services */}
