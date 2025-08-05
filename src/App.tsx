@@ -4894,7 +4894,11 @@ function App() {
                               : 'Obtenga asesoramiento experto de enfermería para sus preocupaciones de salud'
                             }
                           </p>
-                          <Button size="sm" className="bg-blue-600 hover:bg-blue-700 text-white">
+                          <Button 
+                            size="sm" 
+                            className="bg-blue-600 hover:bg-blue-700 text-white"
+                            onClick={() => window.open('https://dhs.lacounty.gov/patient-information/get-coverage/nurse-advice-line-information/', '_blank')}
+                          >
                             <Phone className="h-4 w-4 mr-2" />
                             {language === 'en' ? 'Call Now' : 'Llamar Ahora'}
                           </Button>
