@@ -873,6 +873,8 @@ function App() {
   const performAssessment = () => {
     setShowAssessmentResult(true)
   }
+
+  const getUrgencyBadge = (urgency: string) => {
     switch (urgency) {
       case 'emergency':
         return <Badge className="bg-red-100 text-red-800 hover:bg-red-100">{t[language].emergencyBadge}</Badge>
