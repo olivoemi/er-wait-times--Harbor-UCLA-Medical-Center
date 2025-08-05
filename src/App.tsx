@@ -4918,21 +4918,15 @@ function App() {
                               : 'Aprenda sobre los procesos del departamento de emergencias'
                             }
                           </p>
-                          <div className="flex gap-2">
-                            <Button 
-                              size="sm" 
-                              variant="outline" 
-                              className="border-green-300 text-green-700"
-                              onClick={() => window.open('https://m.youtube.com/watch?v=86z2k4zEOlw', '_blank')}
-                            >
-                              <Eye className="h-4 w-4 mr-1" />
-                              {language === 'en' ? 'Video' : 'Video'}
-                            </Button>
-                            <Button size="sm" variant="outline" className="border-green-300 text-green-700">
-                              <Info className="h-4 w-4 mr-1" />
-                              {language === 'en' ? 'Guide' : 'Guía'}
-                            </Button>
-                          </div>
+                          <Button 
+                            size="sm" 
+                            variant="outline" 
+                            className="border-green-300 text-green-700 w-full"
+                            onClick={() => window.open('https://m.youtube.com/watch?v=86z2k4zEOlw', '_blank')}
+                          >
+                            <Eye className="h-4 w-4 mr-2" />
+                            {language === 'en' ? 'ER Information Video' : 'Video de Información de ER'}
+                          </Button>
                         </div>
                       </div>
                     </div>
