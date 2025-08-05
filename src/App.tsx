@@ -1623,8 +1623,12 @@ function App() {
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-4">
                           {/* Harbor Logo */}
-                          <div className="bg-red-600 text-white px-4 py-2 rounded font-bold">
-                            {t[language].harborShort}
+                          <div className="flex-shrink-0">
+                            <img 
+                              src={harborUCLALogo} 
+                              alt="Harbor-UCLA Medical Center Logo" 
+                              className="w-12 h-12 object-contain"
+                            />
                           </div>
                           <div>
                             <h3 className="text-2xl font-bold text-gray-900">
