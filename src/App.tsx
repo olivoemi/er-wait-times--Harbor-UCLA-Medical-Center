@@ -2285,7 +2285,7 @@ function App() {
                                   {language === 'en' ? 'Level 3: Less Urgent' : 'Nivel 3: Menos Urgente'}
                                 </span>
                               </div>
-                              </div>ext-sm">
+                              <div className="flex items-center gap-6 text-sm">
                                 <div className="text-right">
                                   <div className="text-xs text-gray-600 mb-1">
                                     {language === 'en' ? 'Queue' : 'Cola'}
@@ -2299,9 +2299,10 @@ function App() {
                                   <div className="font-bold text-red-600">693 min</div>
                                 </div>
                               </div>
-                              </div>
+                            </div>
 
-Level 4 */}
+                            {/* Level 4 */}
+                            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 flex items-center justify-between">
                               <div className="flex items-center gap-3">
                                 <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
                                 <span className="font-semibold text-blue-900">
@@ -2309,7 +2310,7 @@ Level 4 */}
                                 </span>
                               </div>
                               <div className="flex items-center gap-6 text-sm">
-                              </div>
+                                <div className="text-right">
                                   <div className="text-xs text-gray-600 mb-1">
                                     {language === 'en' ? 'Queue' : 'Cola'}
                                   </div>
@@ -2323,9 +2324,10 @@ Level 4 */}
                                 </div>
                               </div>
                             </div>
-                              </div>
+
                             {/* Level 5 */}
- className="bg-green-50 border border-green-200 rounded-lg p-4 flex items-center justify-between">
+                            <div className="bg-green-50 border border-green-200 rounded-lg p-4 flex items-center justify-between">
+                              <div className="flex items-center gap-3">
                                 <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                                 <span className="font-semibold text-green-900">
                                   {language === 'en' ? 'Level 5: Fast Track' : 'Nivel 5: Vía Rápida'}
@@ -2333,7 +2335,7 @@ Level 4 */}
                               </div>
                               <div className="flex items-center gap-6 text-sm">
                                 <div className="text-right">
-                              </div> mb-1">
+                                  <div className="text-xs text-gray-600 mb-1">
                                     {language === 'en' ? 'Queue' : 'Cola'}
                                   </div>
                                   <div className="font-semibold text-gray-900">3</div>
@@ -2347,10 +2349,10 @@ Level 4 */}
                               </div>
                             </div>
                           </div>
-                              </div>
                           {/* Wait Times by Acuity Level Over Time */}
                           <div className="mb-6">
-een mb-4">
+                            <div className="flex items-center justify-between mb-4">
+                              <h5 className="text-lg font-semibold text-gray-900">
                                 {language === 'en' ? 'Wait Times by Acuity Level Over Time' : 'Tiempos de Espera por Nivel de Acuidad en el Tiempo'}
                               </h5>
                               <div className="flex gap-2">
@@ -2368,11 +2370,11 @@ een mb-4">
                           </div>
                         </div>
 
-                            </div>
+                        {/* Specialized Services */}
                         <div className="bg-white rounded-xl border border-gray-200 shadow-sm p-6">
                           <div className="flex items-center gap-3 mb-6">
-<div className="bg-red-100 p-3 rounded-lg">
-                        {/* Specialized Services */}w-6 text-red-600" />
+                            <div className="bg-red-100 p-3 rounded-lg">
+                              <Plus className="h-6 w-6 text-red-600" />
                             </div>
                             <h4 className="text-lg font-semibold text-gray-900">
                               {language === 'en' ? 'Top 5 Specialized Services Available' : 'Top 5 Servicios Especializados Disponibles'}
