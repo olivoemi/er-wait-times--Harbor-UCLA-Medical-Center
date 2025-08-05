@@ -2579,7 +2579,7 @@ function App() {
                   </div>
                 </div>
                 <Button className="bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-3">
-                  📞 {t[language].call911}
+                  ���� {t[language].call911}
                 </Button>
               </div>
             </div>
