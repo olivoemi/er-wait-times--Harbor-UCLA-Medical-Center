@@ -830,54 +830,184 @@ function App() {
   // Symptom categories and symptoms
   const symptomCategories: SymptomCategory[] = [
     {
-      name: 'Level 1 - Immediate (Life-Threatening)',
+      name: language === 'en' ? 'Level 1 - Immediate (Life-Threatening)' : 'Nivel 1 - Inmediato (Que Amenaza la Vida)',
       symptoms: [
-        { id: 'cardiac-arrest', name: 'Cardiac Arrest', acuityLevel: 1, category: 'cardiac' },
-        { id: 'heart-attack', name: 'Heart Attack', acuityLevel: 1, category: 'cardiac' },
-        { id: 'major-trauma', name: 'Major Trauma', acuityLevel: 1, category: 'trauma' },
-        { id: 'severe-stroke', name: 'Severe Stroke Symptoms', acuityLevel: 1, category: 'neurological' },
-        { id: 'thoughts-harm', name: 'Thoughts of Harming Yourself or Others', acuityLevel: 1, category: 'mental-health' }
+        { 
+          id: 'cardiac-arrest', 
+          name: language === 'en' ? 'Cardiac Arrest' : 'Paro Cardíaco', 
+          acuityLevel: 1, 
+          category: 'cardiac' 
+        },
+        { 
+          id: 'heart-attack', 
+          name: language === 'en' ? 'Heart Attack' : 'Ataque Cardíaco', 
+          acuityLevel: 1, 
+          category: 'cardiac' 
+        },
+        { 
+          id: 'major-trauma', 
+          name: language === 'en' ? 'Major Trauma' : 'Trauma Mayor', 
+          acuityLevel: 1, 
+          category: 'trauma' 
+        },
+        { 
+          id: 'severe-stroke', 
+          name: language === 'en' ? 'Severe Stroke Symptoms' : 'Síntomas Severos de Derrame Cerebral', 
+          acuityLevel: 1, 
+          category: 'neurological' 
+        },
+        { 
+          id: 'thoughts-harm', 
+          name: language === 'en' ? 'Thoughts of Harming Yourself or Others' : 'Pensamientos de Lastimarse a Sí Mismo o a Otros', 
+          acuityLevel: 1, 
+          category: 'mental-health' 
+        }
       ]
     },
     {
-      name: 'Level 2 - Emergent (High Priority)',
+      name: language === 'en' ? 'Level 2 - Emergent (High Priority)' : 'Nivel 2 - Emergente (Alta Prioridad)',
       symptoms: [
-        { id: 'unstable-vitals', name: 'Unstable Vital Signs', acuityLevel: 2, category: 'general' },
-        { id: 'severe-chest-pain', name: 'Severe Chest Pain', acuityLevel: 2, category: 'cardiac' },
-        { id: 'severe-abdominal-pain', name: 'Severe Abdominal Pain', acuityLevel: 2, category: 'gastrointestinal' },
-        { id: 'altered-mental-status', name: 'Altered Mental Status', acuityLevel: 2, category: 'neurological' },
-        { id: 'severe-infection', name: 'Severe Infection', acuityLevel: 2, category: 'general' },
-        { id: 'loss-vision', name: 'Loss of Vision', acuityLevel: 2, category: 'trauma' },
-        { id: 'high-decompensation-risk', name: 'Condition with High Risk of Decompensation', acuityLevel: 2, category: 'general' }
+        { 
+          id: 'unstable-vitals', 
+          name: language === 'en' ? 'Unstable Vital Signs' : 'Signos Vitales Inestables', 
+          acuityLevel: 2, 
+          category: 'general' 
+        },
+        { 
+          id: 'severe-chest-pain', 
+          name: language === 'en' ? 'Severe Chest Pain' : 'Dolor de Pecho Severo', 
+          acuityLevel: 2, 
+          category: 'cardiac' 
+        },
+        { 
+          id: 'severe-abdominal-pain', 
+          name: language === 'en' ? 'Severe Abdominal Pain' : 'Dolor Abdominal Severo', 
+          acuityLevel: 2, 
+          category: 'gastrointestinal' 
+        },
+        { 
+          id: 'altered-mental-status', 
+          name: language === 'en' ? 'Altered Mental Status' : 'Estado Mental Alterado', 
+          acuityLevel: 2, 
+          category: 'neurological' 
+        },
+        { 
+          id: 'severe-infection', 
+          name: language === 'en' ? 'Severe Infection' : 'Infección Severa', 
+          acuityLevel: 2, 
+          category: 'general' 
+        },
+        { 
+          id: 'loss-vision', 
+          name: language === 'en' ? 'Loss of Vision' : 'Pérdida de Visión', 
+          acuityLevel: 2, 
+          category: 'trauma' 
+        },
+        { 
+          id: 'high-decompensation-risk', 
+          name: language === 'en' ? 'Condition with High Risk of Decompensation' : 'Condición con Alto Riesgo de Descompensación', 
+          acuityLevel: 2, 
+          category: 'general' 
+        }
       ]
     },
     {
-      name: 'Level 3 - Urgent (Less Urgent)',
+      name: language === 'en' ? 'Level 3 - Urgent (Less Urgent)' : 'Nivel 3 - Urgente (Menos Urgente)',
       symptoms: [
-        { id: 'fever', name: 'Fever', acuityLevel: 3, category: 'general' },
-        { id: 'headache', name: 'Headache', acuityLevel: 3, category: 'neurological' },
-        { id: 'chest-pain', name: 'Chest Pain', acuityLevel: 3, category: 'cardiac' },
-        { id: 'abdominal-pain', name: 'Abdominal Pain', acuityLevel: 3, category: 'gastrointestinal' },
-        { id: 'complex-fractures', name: 'Complex Fractures', acuityLevel: 3, category: 'trauma' },
-        { id: 'syncope-fainting', name: 'Syncope/Fainting', acuityLevel: 3, category: 'neurological' },
-        { id: 'severe-headache', name: 'Severe Headache', acuityLevel: 3, category: 'neurological' },
-        { id: 'seizure', name: 'Seizure', acuityLevel: 3, category: 'neurological' }
+        { 
+          id: 'fever', 
+          name: language === 'en' ? 'Fever' : 'Fiebre', 
+          acuityLevel: 3, 
+          category: 'general' 
+        },
+        { 
+          id: 'headache', 
+          name: language === 'en' ? 'Headache' : 'Dolor de Cabeza', 
+          acuityLevel: 3, 
+          category: 'neurological' 
+        },
+        { 
+          id: 'chest-pain', 
+          name: language === 'en' ? 'Chest Pain' : 'Dolor de Pecho', 
+          acuityLevel: 3, 
+          category: 'cardiac' 
+        },
+        { 
+          id: 'abdominal-pain', 
+          name: language === 'en' ? 'Abdominal Pain' : 'Dolor Abdominal', 
+          acuityLevel: 3, 
+          category: 'gastrointestinal' 
+        },
+        { 
+          id: 'complex-fractures', 
+          name: language === 'en' ? 'Complex Fractures' : 'Fracturas Complejas', 
+          acuityLevel: 3, 
+          category: 'trauma' 
+        },
+        { 
+          id: 'syncope-fainting', 
+          name: language === 'en' ? 'Syncope/Fainting' : 'Síncope/Desmayo', 
+          acuityLevel: 3, 
+          category: 'neurological' 
+        },
+        { 
+          id: 'severe-headache', 
+          name: language === 'en' ? 'Severe Headache' : 'Dolor de Cabeza Severo', 
+          acuityLevel: 3, 
+          category: 'neurological' 
+        },
+        { 
+          id: 'seizure', 
+          name: language === 'en' ? 'Seizure' : 'Convulsión', 
+          acuityLevel: 3, 
+          category: 'neurological' 
+        }
       ]
     },
     {
-      name: 'Level 4 - Semi-Urgent (Non-Urgent)',
+      name: language === 'en' ? 'Level 4 - Semi-Urgent (Non-Urgent)' : 'Nivel 4 - Semi-Urgente (No Urgente)',
       symptoms: [
-        { id: 'cold-flu-symptoms', name: 'Cold/Flu Symptoms', acuityLevel: 4, category: 'respiratory' },
-        { id: 'lacerations', name: 'Lacerations', acuityLevel: 4, category: 'trauma' },
-        { id: 'sprains-simple-fractures', name: 'Sprains and Simple Fractures', acuityLevel: 4, category: 'musculoskeletal' }
+        { 
+          id: 'cold-flu-symptoms', 
+          name: language === 'en' ? 'Cold/Flu Symptoms' : 'Síntomas de Resfriado/Gripe', 
+          acuityLevel: 4, 
+          category: 'respiratory' 
+        },
+        { 
+          id: 'lacerations', 
+          name: language === 'en' ? 'Lacerations' : 'Laceraciones', 
+          acuityLevel: 4, 
+          category: 'trauma' 
+        },
+        { 
+          id: 'sprains-simple-fractures', 
+          name: language === 'en' ? 'Sprains and Simple Fractures' : 'Esguinces y Fracturas Simples', 
+          acuityLevel: 4, 
+          category: 'musculoskeletal' 
+        }
       ]
     },
     {
-      name: 'Level 5 - Fast Track (Minimal Resources)',
+      name: language === 'en' ? 'Level 5 - Fast Track (Minimal Resources)' : 'Nivel 5 - Vía Rápida (Recursos Mínimos)',
       symptoms: [
-        { id: 'primary-care-complaints', name: 'Primary Care Complaints', acuityLevel: 5, category: 'general' },
-        { id: 'medication-refills', name: 'Medication Refills', acuityLevel: 5, category: 'general' },
-        { id: 'non-emergent-referrals', name: 'Non-Emergent Specialty Referrals', acuityLevel: 5, category: 'general' }
+        { 
+          id: 'primary-care-complaints', 
+          name: language === 'en' ? 'Primary Care Complaints' : 'Quejas de Atención Primaria', 
+          acuityLevel: 5, 
+          category: 'general' 
+        },
+        { 
+          id: 'medication-refills', 
+          name: language === 'en' ? 'Medication Refills' : 'Reposición de Medicamentos', 
+          acuityLevel: 5, 
+          category: 'general' 
+        },
+        { 
+          id: 'non-emergent-referrals', 
+          name: language === 'en' ? 'Non-Emergent Specialty Referrals' : 'Referencias de Especialidad No Emergentes', 
+          acuityLevel: 5, 
+          category: 'general' 
+        }
       ]
     }
   ]
