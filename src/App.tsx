@@ -1987,11 +1987,24 @@ function App() {
                         <div className="flex items-center gap-4">
                           {/* Harbor Logo with styled design */}
                           <div className="flex-shrink-0">
-                            <img 
-                              src={harborUCLALogo} 
-                              alt="Harbor-UCLA Medical Center" 
-                              className="h-10 w-auto"
-                            />
+                            <div className="bg-gradient-to-br from-red-500 to-red-700 text-white p-2 rounded-xl shadow-lg border border-red-400 flex items-center justify-center">
+                              <div className="relative w-8 h-8">
+                                {/* Enhanced Healthcare Cross */}
+                                <div className="absolute inset-0 flex items-center justify-center">
+                                  <div className="bg-white w-6 h-2 rounded-full shadow-sm"></div>
+                                </div>
+                                <div className="absolute inset-0 flex items-center justify-center">
+                                  <div className="bg-white w-2 h-6 rounded-full shadow-sm"></div>
+                                </div>
+                                {/* Add subtle glow effect */}
+                                <div className="absolute inset-0 flex items-center justify-center opacity-30">
+                                  <div className="bg-white w-6 h-2 rounded-full blur-sm"></div>
+                                </div>
+                                <div className="absolute inset-0 flex items-center justify-center opacity-30">
+                                  <div className="bg-white w-2 h-6 rounded-full blur-sm"></div>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                           <div>
                             <div className="flex items-center gap-4 text-sm text-gray-600 mt-1">
