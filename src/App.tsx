@@ -756,10 +756,10 @@ function App() {
   // Insurance options
   const insuranceOptions = [
     { value: 'medicare', label: 'Medicare' },
-    { value: 'medicaid', label: 'Medicaid/Medi-Cal' },
-    { value: 'private', label: 'Private Insurance' },
-    { value: 'uninsured', label: 'Uninsured/Self-Pay' },
-    { value: 'covered-ca', label: 'Covered California' }
+    { value: 'medicaid', label: language === 'en' ? 'Medicaid/Medi-Cal' : 'Medicaid/Medi-Cal' },
+    { value: 'private', label: language === 'en' ? 'Private Insurance' : 'Seguro Privado' },
+    { value: 'uninsured', label: language === 'en' ? 'Uninsured/Self-Pay' : 'Sin Seguro/Pago Propio' },
+    { value: 'covered-ca', label: language === 'en' ? 'Covered California' : 'Covered California' }
   ]
 
   // Function to get icon for symptom
@@ -3713,10 +3713,10 @@ function App() {
                       </SelectTrigger>
                       <SelectContent>
                         <SelectItem value="medicare">Medicare</SelectItem>
-                        <SelectItem value="medicaid">Medicaid/Medi-Cal</SelectItem>
-                        <SelectItem value="private">Private Insurance</SelectItem>
-                        <SelectItem value="uninsured">Uninsured/Self-Pay</SelectItem>
-                        <SelectItem value="covered-ca">Covered California</SelectItem>
+                        <SelectItem value="medicaid">{language === 'en' ? 'Medicaid/Medi-Cal' : 'Medicaid/Medi-Cal'}</SelectItem>
+                        <SelectItem value="private">{language === 'en' ? 'Private Insurance' : 'Seguro Privado'}</SelectItem>
+                        <SelectItem value="uninsured">{language === 'en' ? 'Uninsured/Self-Pay' : 'Sin Seguro/Pago Propio'}</SelectItem>
+                        <SelectItem value="covered-ca">{language === 'en' ? 'Covered California' : 'Covered California'}</SelectItem>
                       </SelectContent>
                     </Select>
 
