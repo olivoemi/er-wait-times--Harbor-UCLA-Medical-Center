@@ -7,7 +7,7 @@ import { Badge } from '@/components/ui/badge'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { MapPin, Clock, RefreshCw, AlertTriangle, Heart, FirstAid, Phone, Thermometer, Pill, Eye, Plus, Globe, Info, X, Building, CaretDown, CaretUp, MagnifyingGlass, CheckCircle, Brain, Lungs, Drop, Bandage, Siren, Pulse, Tooth, Activity, Play } from '@phosphor-icons/react'
+import { MapPin, Clock, RefreshCw, AlertTriangle, Heart, FirstAid, Phone, Thermometer, Pill, Eye, Plus, Globe, Info, X, Building, CaretDown, CaretUp, MagnifyingGlass, CheckCircle, Brain, Drop, Bandage, Siren, Pulse, Tooth, Activity, Play } from '@phosphor-icons/react'
 // Removed QR code image import as we're using a play button instead
 import harborUCLALogo from '@/assets/images/harbor-ucla-logo.svg'
 import harborUCLAFullLogo from '@/assets/images/harbor-ucla-logo-full.svg'
@@ -780,9 +780,9 @@ function App() {
       'severe-chest-pain': <Heart className="h-4 w-4 text-red-600" />,
       'chest-pain-moderate': <Heart className="h-4 w-4 text-red-600" />,
       'cardiac-arrest': <Pulse className="h-4 w-4 text-red-600" />,
-      'severe-breathing': <Lungs className="h-4 w-4 text-blue-600" />,
-      'breathing-difficulty': <Lungs className="h-4 w-4 text-blue-600" />,
-      'cold-flu-symptoms': <Lungs className="h-4 w-4 text-blue-600" />,
+      'severe-breathing': <Activity className="h-4 w-4 text-blue-600" />,
+      'breathing-difficulty': <Activity className="h-4 w-4 text-blue-600" />,
+      'cold-flu-symptoms': <Activity className="h-4 w-4 text-blue-600" />,
       'severe-bleeding': <Drop className="h-4 w-4 text-red-600" />,
       'moderate-bleeding': <Drop className="h-4 w-4 text-red-600" />,
       'vomiting-blood': <Drop className="h-4 w-4 text-red-600" />,
@@ -814,7 +814,7 @@ function App() {
       case 'cardiac':
         return <Heart className="h-4 w-4 text-red-600" />
       case 'respiratory':
-        return <Lungs className="h-4 w-4 text-blue-600" />
+        return <Activity className="h-4 w-4 text-blue-600" />
       case 'neurological':
       case 'mental-health':
         return <Brain className="h-4 w-4 text-purple-600" />
