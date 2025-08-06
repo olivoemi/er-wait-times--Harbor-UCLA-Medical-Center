@@ -7,7 +7,7 @@ import { Badge } from '@/components/ui/badge'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { MapPin, Clock, RefreshCw, AlertTriangle, Heart, FirstAid, Phone, Thermometer, Pill, Eye, Plus, Globe, Info, X, Building, CaretDown, CaretUp, MagnifyingGlass, CheckCircle, Brain, Drop, Bandage, Siren, Pulse, Tooth, Activity, Play } from '@phosphor-icons/react'
+import { MapPin, Clock, RefreshCw, AlertTriangle, Heart, FirstAid, Phone, Thermometer, Pill, Eye, Plus, Globe, Info, X, Building, CaretDown, CaretUp, MagnifyingGlass, CheckCircle, Brain, Drop, Siren, Pulse, Tooth, Activity, Play } from '@phosphor-icons/react'
 // Removed QR code image import as we're using a play button instead
 import harborUCLALogo from '@/assets/images/harbor-ucla-logo.svg'
 import harborUCLAFullLogo from '@/assets/images/harbor-ucla-logo-full.svg'
@@ -792,10 +792,10 @@ function App() {
       'severe-headache': <Brain className="h-4 w-4 text-purple-600" />,
       'mild-headache': <Brain className="h-4 w-4 text-purple-600" />,
       'head-injury': <Brain className="h-4 w-4 text-purple-600" />,
-      'minor-cuts': <Bandage className="h-4 w-4 text-orange-600" />,
-      'minor-fractures': <Bandage className="h-4 w-4 text-orange-600" />,
-      'burns-minor': <Bandage className="h-4 w-4 text-orange-600" />,
-      'animal-bite': <Bandage className="h-4 w-4 text-orange-600" />,
+      'minor-cuts': <FirstAid className="h-4 w-4 text-orange-600" />,
+      'minor-fractures': <FirstAid className="h-4 w-4 text-orange-600" />,
+      'burns-minor': <FirstAid className="h-4 w-4 text-orange-600" />,
+      'animal-bite': <FirstAid className="h-4 w-4 text-orange-600" />,
       'eye-injury': <Eye className="h-4 w-4 text-blue-600" />,
       'minor-eye-irritation': <Eye className="h-4 w-4 text-blue-600" />,
       'high-fever-confusion': <Thermometer className="h-4 w-4 text-orange-600" />,
@@ -819,7 +819,7 @@ function App() {
       case 'mental-health':
         return <Brain className="h-4 w-4 text-purple-600" />
       case 'trauma':
-        return <Bandage className="h-4 w-4 text-orange-600" />
+        return <FirstAid className="h-4 w-4 text-orange-600" />
       case 'gastrointestinal':
         return <Activity className="h-4 w-4 text-green-600" />
       case 'general':
@@ -827,7 +827,7 @@ function App() {
       case 'allergic':
         return <AlertTriangle className="h-4 w-4 text-yellow-600" />
       case 'musculoskeletal':
-        return <Bandage className="h-4 w-4 text-orange-600" />
+        return <FirstAid className="h-4 w-4 text-orange-600" />
       case 'dermatological':
         return <Activity className="h-4 w-4 text-green-600" />
       case 'dental':
