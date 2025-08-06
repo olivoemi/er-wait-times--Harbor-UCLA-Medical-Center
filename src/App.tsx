@@ -1671,49 +1671,65 @@ function App() {
                         </ul>
                       </div>
 
-                      {/* Steps 4-7 - Condensed */}
-                      <div className="bg-gray-50 rounded-lg p-4 space-y-3">
-                        <div className="grid grid-cols-1 gap-3">
-                          <div>
-                            <h5 className="font-semibold text-gray-900 text-xs mb-1">
-                              {language === 'en' ? '4. Testing & Treatment' : '4. Pruebas y Tratamiento'}
-                            </h5>
-                            <p className="text-gray-700 text-xs">
-                              {language === 'en' ? 'If ordered by the provider, our nurses will provide medications, obtain labs, and arrange X-ray, ultrasound, or CT' : 'Si lo ordena el proveedor, nuestros enfermeros proporcionarán medicamentos, obtendrán laboratorios y organizarán radiografías, ultrasonidos o CT'}
-                            </p>
-                          </div>
-
-                          <div>
-                            <h5 className="font-semibold text-gray-900 text-xs mb-1">
-                              {language === 'en' ? '5. Care Areas' : '5. Áreas de Atención'}
-                            </h5>
-                            <p className="text-gray-700 text-xs">
-                              {language === 'en' ? 'Multiple ER areas: Trauma, Critical, Adult, Pediatric, and FastTrack for Urgent Care or minor complaints' : 'Múltiples áreas de ER: Trauma, Crítico, Adulto, Pediátrico y FastTrack para Atención Urgente o quejas menores'}
-                            </p>
-                            <p className="text-gray-600 text-xs mt-1">
-                              {language === 'en' ? 'Patients are seen by severity of illness, not arrival order. Sicker patients are placed in a room more quickly.' : 'Los pacientes son atendidos por gravedad de la enfermedad, no por orden de llegada. Los pacientes más enfermos son colocados en una habitación más rápidamente.'}
-                            </p>
-                          </div>
-
-                          <div>
-                            <h5 className="font-semibold text-gray-900 text-xs mb-1">
-                              {language === 'en' ? '6. Review of Results' : '6. Revisión de Resultados'}
-                            </h5>
-                            <p className="text-gray-700 text-xs">
-                              {language === 'en' ? 'Once your workup is completed, you will be seen by a doctor or NP. Additional testing may be required based on initial results.' : 'Una vez completado su estudio, será atendido por un doctor o NP. Pueden requerirse pruebas adicionales según los resultados iniciales.'}
-                            </p>
-                          </div>
-
-                          <div>
-                            <h5 className="font-semibold text-gray-900 text-xs mb-1">
-                              {language === 'en' ? '7. After Your ER Visit' : '7. Después de su Visita a ER'}
-                            </h5>
-                            <p className="text-gray-700 text-xs">
-                              {language === 'en' ? 'Decision options: 1) Discharge you home, 2) Admit to our hospital, or 3) Transfer to a hospital within your health network (if requested by insurance)' : 'Opciones de decisión: 1) Alta a casa, 2) Admisión a nuestro hospital, o 3) Transferencia a un hospital dentro de su red de salud (si lo solicita el seguro)'}
-                            </p>
-                          </div>
+                        {/* Step 4: Testing & Treatment */}
+                        <div className="border-l-4 border-purple-500 pl-4">
+                          <h4 className="font-semibold text-purple-900 mb-2">
+                            {language === 'en' ? '4. Testing & Treatment' : '4. Pruebas y Tratamiento'}
+                          </h4>
+                          <p className="text-purple-800 mb-2">
+                            {language === 'en' ? 'If ordered by the provider, our nurses will provide medications, obtain labs, and arrange X-ray, ultrasound, or CT' : 'Si lo ordena el proveedor, nuestros enfermeros proporcionarán medicamentos, obtendrán laboratorios y organizarán radiografías, ultrasonidos o CT'}
+                          </p>
+                          <ul className="text-purple-700 space-y-1 text-xs">
+                            <li>• {language === 'en' ? 'Medications administered as needed' : 'Medicamentos administrados según sea necesario'}</li>
+                            <li>• {language === 'en' ? 'Blood tests and lab work if required' : 'Análisis de sangre y laboratorio si es necesario'}</li>
+                            <li>• {language === 'en' ? 'Imaging studies (X-ray, ultrasound, CT)' : 'Estudios de imagen (radiografía, ultrasonido, CT)'}</li>
+                          </ul>
                         </div>
-                      </div>
+
+                        {/* Step 5: Care Areas */}
+                        <div className="border-l-4 border-indigo-500 pl-4">
+                          <h4 className="font-semibold text-indigo-900 mb-2">
+                            {language === 'en' ? '5. Care Areas' : '5. Áreas de Atención'}
+                          </h4>
+                          <p className="text-indigo-800 mb-2">
+                            {language === 'en' ? 'Multiple ER areas: Trauma, Critical, Adult, Pediatric, and FastTrack for Urgent Care or minor complaints' : 'Múltiples áreas de ER: Trauma, Crítico, Adulto, Pediátrico y FastTrack para Atención Urgente o quejas menores'}
+                          </p>
+                          <ul className="text-indigo-700 space-y-1 text-xs">
+                            <li>• {language === 'en' ? 'Patients are seen by severity of illness, not arrival order' : 'Los pacientes son atendidos por gravedad de la enfermedad, no por orden de llegada'}</li>
+                            <li>• {language === 'en' ? 'Sicker patients are placed in a room more quickly' : 'Los pacientes más enfermos son colocados en una habitación más rápidamente'}</li>
+                            <li>• {language === 'en' ? 'Specialized areas for different types of care' : 'Áreas especializadas para diferentes tipos de atención'}</li>
+                          </ul>
+                        </div>
+
+                        {/* Step 6: Review of Results */}
+                        <div className="border-l-4 border-teal-500 pl-4">
+                          <h4 className="font-semibold text-teal-900 mb-2">
+                            {language === 'en' ? '6. Review of Results' : '6. Revisión de Resultados'}
+                          </h4>
+                          <p className="text-teal-800 mb-2">
+                            {language === 'en' ? 'Once your workup is completed, you will be seen by a doctor or NP. Additional testing may be required based on initial results.' : 'Una vez completado su estudio, será atendido por un doctor o NP. Pueden requerirse pruebas adicionales según los resultados iniciales.'}
+                          </p>
+                          <ul className="text-teal-700 space-y-1 text-xs">
+                            <li>• {language === 'en' ? 'Doctor reviews all test results with you' : 'El doctor revisa todos los resultados de las pruebas con usted'}</li>
+                            <li>• {language === 'en' ? 'Treatment plan discussed and explained' : 'Plan de tratamiento discutido y explicado'}</li>
+                            <li>• {language === 'en' ? 'Additional tests may be ordered if needed' : 'Se pueden ordenar pruebas adicionales si es necesario'}</li>
+                          </ul>
+                        </div>
+
+                        {/* Step 7: After Your ER Visit */}
+                        <div className="border-l-4 border-gray-500 pl-4">
+                          <h4 className="font-semibold text-gray-900 mb-2">
+                            {language === 'en' ? '7. After Your ER Visit' : '7. Después de su Visita a ER'}
+                          </h4>
+                          <p className="text-gray-800 mb-2">
+                            {language === 'en' ? 'Decision options: 1) Discharge you home, 2) Admit to our hospital, or 3) Transfer to a hospital within your health network (if requested by insurance)' : 'Opciones de decisión: 1) Alta a casa, 2) Admisión a nuestro hospital, o 3) Transferencia a un hospital dentro de su red de salud (si lo solicita el seguro)'}
+                          </p>
+                          <ul className="text-gray-700 space-y-1 text-xs">
+                            <li>• {language === 'en' ? 'Discharge instructions and follow-up care plans' : 'Instrucciones de alta y planes de atención de seguimiento'}</li>
+                            <li>• {language === 'en' ? 'Prescriptions and medication instructions' : 'Recetas e instrucciones de medicamentos'}</li>
+                            <li>• {language === 'en' ? 'When to return or seek additional care' : 'Cuándo regresar o buscar atención adicional'}</li>
+                          </ul>
+                        </div>
                     </div>
                   </div>
                 </div>
