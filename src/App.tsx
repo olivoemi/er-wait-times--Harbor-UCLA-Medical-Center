@@ -172,7 +172,7 @@ function App() {
       open: 'Open',
       harborShort: 'Harbor',
       harborUCLAMedicalCenter: 'Harbor-UCLA Medical Center Emergency Department',
-      avgWaitTime: 'Avg Wait Time',
+      avgWaitTime: 'Avg wait time to triage',
       currentCensus: 'Current Census',
       patients: 'patients',
       waitTimesByConditionSeverity: 'Wait Times by Condition Severity',
@@ -273,7 +273,7 @@ function App() {
       open: 'Abierto',
       harborShort: 'Harbor',
       harborUCLAMedicalCenter: 'Departamento de Emergencias Harbor-UCLA Medical Center',
-      avgWaitTime: 'Tiempo Promedio de Espera',
+      avgWaitTime: 'Tiempo Promedio de Espera al Triaje',
       currentCensus: 'Censo Actual',
       patients: 'pacientes',
       waitTimesByConditionSeverity: 'Tiempos de Espera por Severidad de Condición',
@@ -1425,7 +1425,7 @@ function App() {
                         <div className="grid grid-cols-2 gap-4 mb-6">
                           <div className="text-center">
                             <div className="text-sm text-gray-600 mb-1">{t[language].avgWaitTime}</div>
-                            <div className="text-3xl font-bold text-orange-500">42</div>
+                            <div className="text-3xl font-bold text-orange-500">22</div>
                             <div className="text-sm text-gray-600">{t[language].minutes}</div>
                           </div>
                           <div className="text-center">
@@ -1778,7 +1778,7 @@ function App() {
                       {/* Basic Info */}
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div className="bg-blue-50 rounded-lg p-4 text-center">
-                          <div className="text-2xl font-bold text-blue-600">42 min</div>
+                          <div className="text-2xl font-bold text-blue-600">22 min</div>
                           <div className="text-sm text-blue-800">{t[language].avgWaitTime}</div>
                         </div>
                         <div className="bg-green-50 rounded-lg p-4 text-center">
