@@ -3790,10 +3790,10 @@ function App() {
                   {/* Cost Transparency Filter */}
                   <div className="bg-white rounded-lg border border-gray-200 p-4 md:p-6">
                     <div className="flex items-center gap-3 mb-4">
+                      <h4 className="text-lg font-semibold text-gray-900">
                         {language === 'en' ? 'Cost Transparency Filter' : 'Filtro de Transparencia de Costos'}
                       </h4>
-                        {language === 'en' ? 'Cost Transparency Filter' : 'Filtro de Transparencia de Costos'}
-                      </h4>
+                    </div>
                     <Select value={careOptionsInsurance} onValueChange={setCareOptionsInsurance}>
                       <SelectTrigger className="w-full">
                         <SelectValue placeholder={
@@ -3811,11 +3811,11 @@ function App() {
 
                     <div className="bg-green-50 border border-green-200 rounded-lg p-3 md:p-4 mt-4">
                       <div className="flex items-start gap-2">
-                    <div className="bg-green-50 border border-green-200 rounded-lg p-3 md:p-4 mt-4">
-                        <div className="text-green-800 text-xs leading-relaxed break-words">
                         <Info className="h-3 w-3 md:h-4 md:w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                        <div className="text-green-800 text-xs leading-relaxed break-words">
+                          {language === 'en' 
                             ? 'All costs shown are adapted to specific insurance plans including copays, coinsurance and out-of-pocket maximums'
-                          {language === 'en' gastos de bolsillo'
+                            : 'Todos los costos mostrados están adaptados a planes de seguro específicos incluyendo copagos, coseguro y máximos de gastos de bolsillo'
                           }
                         </div>
                       </div>
@@ -3824,11 +3824,11 @@ function App() {
                     {careOptionsInsurance && (
                       <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 md:p-4 mt-4">
                         <div className="flex items-center gap-2">
-                      <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 md:p-4 mt-4">
-                          <div className="text-blue-800 text-sm font-medium">
                           <CheckCircle className="h-3 w-3 md:h-4 md:w-4 text-blue-600" />
+                          <div className="text-blue-800 text-sm font-medium">
+                            {language === 'en' 
                               ? `Cost estimates updated for ${insuranceOptions.find(opt => opt.value === careOptionsInsurance)?.label}`
-                            {language === 'en' ce)?.label}`
+                              : `Estimaciones de costo actualizadas para ${insuranceOptions.find(opt => opt.value === careOptionsInsurance)?.label}`
                             }
                           </div>
                         </div>
@@ -4747,7 +4747,7 @@ function App() {
                             </h5>
                           </div>
                           <ul className="space-y-1 text-sm text-purple-800">
-                            <li>��� {language === 'en' ? 'Treatment plan' : 'Plan de tratamiento'}</li>
+                            <li>• {language === 'en' ? 'Treatment plan' : 'Plan de tratamiento'}</li>
                             <li>• {language === 'en' ? 'Follow-up instructions' : 'Instrucciones de seguimiento'}</li>
                           </ul>
                         </div>
@@ -4781,7 +4781,7 @@ function App() {
                     <ul className="space-y-3 text-sm text-blue-800">
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
-                        <span>{language === 'en' ? 'Call ahead if your condition allows' : 'Llame antes si su condici��n lo permite'}</span>
+                        <span>{language === 'en' ? 'Call ahead if your condition allows' : 'Llame antes si su condición lo permite'}</span>
                       </li>
                       <li className="flex items-start gap-2">
                         <CheckCircle className="h-4 w-4 text-blue-600 mt-0.5 flex-shrink-0" />
@@ -5037,10 +5037,12 @@ function App() {
         {/* Disclaimer */}
         <div className="mt-6 md:mt-8 p-3 md:p-4 bg-gray-50 border border-gray-200 rounded-lg">
           <p className="text-xs md:text-sm text-gray-600 text-center">
-        </div>
-      </div>
             <strong>{t[language].important}</strong> {t[language].disclaimer}
           </p>
+        </div>
+      </div>
+    </div>
+  )
 }
 
 export default App
