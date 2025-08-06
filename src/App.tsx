@@ -1024,7 +1024,7 @@ function App() {
                 variant="outline"
                 size="sm"
                 onClick={() => setLanguage(language === 'en' ? 'es' : 'en')}
-                className="flex items-center gap-2 text-white border-blue-900 hover:bg-blue-900 font-medium shadow-sm bg-blue-800"
+                className="flex items-center gap-2 text-white border-2 border-yellow-400 hover:bg-yellow-500 hover:border-yellow-500 font-bold shadow-lg bg-gradient-to-r from-blue-600 to-blue-700 transition-all duration-200 hover:scale-105"
               >
                 <Globe className="h-4 w-4" />
                 {language === 'en' ? 'English' : 'Español'}
