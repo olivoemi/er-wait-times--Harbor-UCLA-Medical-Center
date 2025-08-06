@@ -81,7 +81,7 @@ function App() {
   // Translation object
   const t = {
     en: {
-      title: 'Harbor Medical Center',
+      title: 'ER Wait Times',
       waitTimes: 'Wait Times',
       careGuide: 'Care Guide',
       emergency: '911',
@@ -227,7 +227,7 @@ function App() {
       level5: 'Level 5'
     },
     es: {
-      title: 'Harbor Medical Center',
+      title: 'Tiempos de Espera ER',
       waitTimes: 'Tiempos de Espera',
       careGuide: 'Guía de Atención',
       emergency: '911',
