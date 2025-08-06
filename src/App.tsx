@@ -2324,10 +2324,10 @@ function App() {
                   onClick={() => window.open('tel:911', '_self')}
                 >
                   <Phone className="h-4 w-4 mr-2" />
-                  {t[language].call911}
                 </Button>
               </div>
             </div>
+
 
             {/* Care Guide Navigation */}
             <div className="flex border-b border-gray-200 mb-8">
