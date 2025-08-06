@@ -2120,6 +2120,164 @@ function App() {
                           </div>
 
                         </div>
+
+                        {/* 24-Hour Wait Time Patterns Graph */}
+                        <div className="border-t border-gray-200 pt-6">
+                          <div className="flex items-center gap-3 mb-6">
+                            <div className="bg-purple-100 p-3 rounded-lg">
+                              <Activity className="h-6 w-6 text-purple-600" />
+                            </div>
+                            <h4 className="text-xl font-semibold text-gray-900">
+                              {language === 'en' ? '24-Hour Wait Time Patterns' : 'Patrones de Tiempo de Espera de 24 Horas'}
+                            </h4>
+                          </div>
+                          
+                          {/* Graph Container */}
+                          <div className="bg-white border border-gray-200 rounded-lg p-6">
+                            <div className="mb-4">
+                              <p className="text-gray-600 text-sm">
+                                {language === 'en' 
+                                  ? 'Average wait times by acuity level throughout the day. Current time is highlighted.'
+                                  : 'Tiempos de espera promedio por nivel de acuidad durante el día. El tiempo actual está resaltado.'
+                                }
+                              </p>
+                            </div>
+                            
+                            {/* SVG Graph */}
+                            <div className="w-full h-64 mb-6">
+                              <svg width="100%" height="100%" viewBox="0 0 800 240" className="overflow-visible">
+                                {/* Grid lines */}
+                                <defs>
+                                  <pattern id="grid" width="100" height="40" patternUnits="userSpaceOnUse">
+                                    <path d="M 100 0 L 0 0 0 40" fill="none" stroke="#f3f4f6" strokeWidth="1"/>
+                                  </pattern>
+                                </defs>
+                                <rect width="100%" height="100%" fill="url(#grid)" />
+                                
+                                {/* Y-axis labels */}
+                                <text x="20" y="20" className="text-xs fill-gray-500">280</text>
+                                <text x="20" y="80" className="text-xs fill-gray-500">210</text>
+                                <text x="20" y="140" className="text-xs fill-gray-500">140</text>
+                                <text x="20" y="200" className="text-xs fill-gray-500">70</text>
+                                <text x="20" y="220" className="text-xs fill-gray-500">0</text>
+                                
+                                {/* Y-axis title */}
+                                <text x="15" y="120" className="text-xs fill-gray-600" transform="rotate(-90 15 120)">
+                                  {language === 'en' ? 'Wait Time (min)' : 'Tiempo de Espera (min)'}
+                                </text>
+                                
+                                {/* X-axis labels */}
+                                <text x="80" y="235" className="text-xs fill-gray-500">12 AM</text>
+                                <text x="180" y="235" className="text-xs fill-gray-500">3 AM</text>
+                                <text x="280" y="235" className="text-xs fill-gray-500">6 AM</text>
+                                <text x="380" y="235" className="text-xs fill-gray-500">9 AM</text>
+                                <text x="480" y="235" className="text-xs fill-gray-500">12 PM</text>
+                                <text x="580" y="235" className="text-xs fill-gray-500">3 PM</text>
+                                <text x="680" y="235" className="text-xs fill-gray-500">6 PM</text>
+                                <text x="750" y="235" className="text-xs fill-gray-500">9 PM</text>
+                                
+                                {/* Current time indicator (5:30 PM) */}
+                                <line x1="650" y1="10" x2="650" y2="210" stroke="#6366f1" strokeWidth="2" strokeDasharray="5,5" />
+                                <text x="655" y="25" className="text-xs fill-blue-600 font-medium">
+                                  {language === 'en' ? 'Current Time' : 'Tiempo Actual'}
+                                </text>
+                                
+                                {/* Level 4 (Blue) - Highest line */}
+                                <polyline
+                                  fill="none"
+                                  stroke="#3b82f6"
+                                  strokeWidth="2"
+                                  points="80,130 130,135 180,150 230,160 280,170 330,180 380,190 430,185 480,175 530,195 580,205 630,215 680,200 730,180 780,160"
+                                />
+                                
+                                {/* Level 3 (Yellow) - Second highest */}
+                                <polyline
+                                  fill="none"
+                                  stroke="#eab308"
+                                  strokeWidth="2"
+                                  points="80,160 130,165 180,170 230,175 280,180 330,185 380,190 430,185 480,180 530,190 580,195 630,200 680,190 730,175 780,165"
+                                />
+                                
+                                {/* Level 5 (Green) - Middle line */}
+                                <polyline
+                                  fill="none"
+                                  stroke="#22c55e"
+                                  strokeWidth="2"
+                                  points="80,180 130,185 180,190 230,195 280,200 330,205 380,210 430,205 480,200 530,205 580,210 630,205 680,200 730,195 780,190"
+                                />
+                                
+                                {/* Level 2 (Orange) - Lower line */}
+                                <polyline
+                                  fill="none"
+                                  stroke="#f97316"
+                                  strokeWidth="2"
+                                  points="80,195 130,190 180,195 230,200 280,205 330,200 380,195 430,200 480,205 530,200 580,195 630,200 680,205 730,200 780,195"
+                                />
+                                
+                                {/* Level 1 (Red) - Lowest line */}
+                                <polyline
+                                  fill="none"
+                                  stroke="#ef4444"
+                                  strokeWidth="2"
+                                  points="80,205 130,200 180,205 230,210 280,205 330,200 380,205 430,210 480,205 530,200 580,205 630,210 680,205 730,200 780,205"
+                                />
+                                
+                                {/* Data points for current time */}
+                                <circle cx="650" cy="215" r="3" fill="#3b82f6" />
+                                <circle cx="650" cy="200" r="3" fill="#eab308" />
+                                <circle cx="650" cy="205" r="3" fill="#22c55e" />
+                                <circle cx="650" cy="200" r="3" fill="#f97316" />
+                                <circle cx="650" cy="210" r="3" fill="#ef4444" />
+                              </svg>
+                            </div>
+                            
+                            {/* Legend */}
+                            <div className="flex flex-wrap items-center justify-center gap-6 text-sm">
+                              <div className="flex items-center gap-2">
+                                <div className="w-4 h-0.5 bg-red-500"></div>
+                                <span className="text-red-900 font-medium">
+                                  {language === 'en' ? 'Level 1' : 'Nivel 1'}
+                                </span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <div className="w-4 h-0.5 bg-orange-500"></div>
+                                <span className="text-orange-900 font-medium">
+                                  {language === 'en' ? 'Level 2' : 'Nivel 2'}
+                                </span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <div className="w-4 h-0.5 bg-yellow-500"></div>
+                                <span className="text-yellow-900 font-medium">
+                                  {language === 'en' ? 'Level 3' : 'Nivel 3'}
+                                </span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <div className="w-4 h-0.5 bg-blue-500"></div>
+                                <span className="text-blue-900 font-medium">
+                                  {language === 'en' ? 'Level 4' : 'Nivel 4'}
+                                </span>
+                              </div>
+                              <div className="flex items-center gap-2">
+                                <div className="w-4 h-0.5 bg-green-500"></div>
+                                <span className="text-green-900 font-medium">
+                                  {language === 'en' ? 'Level 5' : 'Nivel 5'}
+                                </span>
+                              </div>
+                            </div>
+                            
+                            {/* Key Insights */}
+                            <div className="mt-6 bg-blue-50 border border-blue-200 rounded-lg p-4">
+                              <h5 className="font-semibold text-blue-900 mb-2">
+                                {language === 'en' ? 'Key Insights' : 'Información Clave'}
+                              </h5>
+                              <ul className="space-y-1 text-sm text-blue-800">
+                                <li>• {language === 'en' ? 'Peak wait times typically occur between 2 PM - 8 PM' : 'Los tiempos de espera máximos ocurren típicamente entre 2 PM - 8 PM'}</li>
+                                <li>• {language === 'en' ? 'Shortest wait times are usually between 2 AM - 6 AM' : 'Los tiempos de espera más cortos son usualmente entre 2 AM - 6 AM'}</li>
+                                <li>• {language === 'en' ? 'Level 1 & 2 patients are seen immediately regardless of time' : 'Los pacientes de Nivel 1 y 2 son atendidos inmediatamente sin importar la hora'}</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
                     </div>
                   </CardContent>
                 </Card>
