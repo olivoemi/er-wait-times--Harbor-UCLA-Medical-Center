@@ -176,10 +176,55 @@ function App() {
       currentCensus: 'Current Census',
       patients: 'patients',
       waitTimesByConditionSeverity: 'Wait Times by Condition Severity',
-      serviciosEspecializadosDisponibles: 'Servicios Especializados Disponibles',
-      centroDeTrauma: 'Centro de Trauma',
-      atencionCardiaca: 'Atención Cardíaca',
-      additionalInfoPanel: 'Additional information panel'
+      serviciosEspecializadosDisponibles: 'Specialized Services Available',
+      centroDeTrauma: 'Trauma Center',
+      atencionCardiaca: 'Cardiac Care',
+      additionalInfoPanel: 'Additional information panel',
+      facilityInformation: 'Facility Information',
+      level1TraumaCenter: 'Level 1 Trauma Center',
+      traumaCenterDescription: 'Major Level 1 trauma center serving South Bay and Harbor area with comprehensive emergency services.',
+      contactInformation: 'Contact Information',
+      operatingHours: 'Operating Hours',
+      open24_7: 'Open 24/7 for Emergency Care',
+      mainLine: 'Main Line',
+      officialWebsite: 'Official Website',
+      nedocs: 'NEDOCS',
+      severelyOvercrowded: 'Severely overcrowded',
+      amenitiesServices: 'Amenities & Services',
+      freeWifi: 'Free WiFi',
+      cafeteria: 'Cafeteria',
+      parkingAvailable: 'Parking Available',
+      chapelPrayerRoom: 'Chapel/Prayer Room',
+      wheelchairAccessible: 'Wheelchair Accessible',
+      atm: 'ATM',
+      pharmacy: 'Pharmacy',
+      giftShop: 'Gift Shop',
+      lifeThreatening911: 'Life-Threatening Emergency',
+      lifeThreatening911Desc: 'For immediate life-threatening emergencies, call 911 or go directly to the nearest emergency room.',
+      directions: 'Directions',
+      call: 'Call',
+      harborVideoInfo: 'Harbor Video Information',
+      yourERVisitProcess: 'Your ER Visit Process',
+      checkin: 'Check-in',
+      triage: 'Triage',
+      registration: 'Registration',
+      testingTreatment: 'Testing & Treatment',
+      careAreas: 'Care Areas',
+      reviewResults: 'Review of Results',
+      afterERVisit: 'After Your ER Visit',
+      keyInsights: 'Key Insights',
+      peakWaitTimes: 'Peak wait times typically occur between 2 PM - 8 PM',
+      shortestWaitTimes: 'Shortest wait times are usually between 2 AM - 6 AM',
+      level12Immediate: 'Level 1 & 2 patients are seen immediately regardless of time',
+      waitTimePatternsTitle: '24-Hour Wait Time Patterns',
+      waitTimePatternsDesc: 'Average wait times by acuity level throughout the day. Current time is highlighted.',
+      waitTimeMin: 'Wait Time (min)',
+      currentTime: 'Current Time',
+      level1: 'Level 1',
+      level2: 'Level 2',
+      level3: 'Level 3',
+      level4: 'Level 4',
+      level5: 'Level 5'
     },
     es: {
       title: 'ER Wait Times',
@@ -291,6 +336,41 @@ function App() {
       officialWebsite: 'Sitio Web Oficial',
       nedocs: 'NEDOCS',
       severelyOvercrowded: 'Severamente saturado',
+      amenitiesServices: 'Comodidades y Servicios',
+      freeWifi: 'WiFi Gratis',
+      cafeteria: 'Cafetería',
+      parkingAvailable: 'Estacionamiento Disponible',
+      chapelPrayerRoom: 'Capilla/Sala de Oración',
+      wheelchairAccessible: 'Accesible para Sillas de Ruedas',
+      atm: 'Cajero Automático',
+      pharmacy: 'Farmacia',
+      giftShop: 'Tienda de Regalos',
+      lifeThreatening911: 'Emergencia que Amenaza la Vida',
+      lifeThreatening911Desc: 'Para emergencias inmediatas que amenazan la vida, llame al 911 o vaya directamente a la sala de emergencias más cercana.',
+      directions: 'Direcciones',
+      call: 'Llamar',
+      harborVideoInfo: 'Información en Video de Harbor',
+      yourERVisitProcess: 'Su Proceso de Visita a ER',
+      checkin: 'Registro',
+      triage: 'Triaje',
+      registration: 'Registro',
+      testingTreatment: 'Pruebas y Tratamiento',
+      careAreas: 'Áreas de Atención',
+      reviewResults: 'Revisión de Resultados',
+      afterERVisit: 'Después de su Visita a ER',
+      keyInsights: 'Información Clave',
+      peakWaitTimes: 'Los tiempos de espera máximos ocurren típicamente entre 2 PM - 8 PM',
+      shortestWaitTimes: 'Los tiempos de espera más cortos son usualmente entre 2 AM - 6 AM',
+      level12Immediate: 'Los pacientes de Nivel 1 y 2 son atendidos inmediatamente sin importar la hora',
+      waitTimePatternsTitle: 'Patrones de Tiempo de Espera de 24 Horas',
+      waitTimePatternsDesc: 'Tiempos de espera promedio por nivel de acuidad durante el día. El tiempo actual está resaltado.',
+      waitTimeMin: 'Tiempo de Espera (min)',
+      currentTime: 'Tiempo Actual',
+      level1: 'Nivel 1',
+      level2: 'Nivel 2',
+      level3: 'Nivel 3',
+      level4: 'Nivel 4',
+      level5: 'Nivel 5',
       facilityInformation: 'Facility Information',
       level1TraumaCenter: 'Level 1 Trauma Center',
       traumaCenterDescription: 'Major Level 1 trauma center serving South Bay and Harbor area with comprehensive emergency services.',
@@ -1024,10 +1104,12 @@ function App() {
                 variant="outline"
                 size="sm"
                 onClick={() => setLanguage(language === 'en' ? 'es' : 'en')}
-                className="flex items-center gap-2 text-white border-2 border-yellow-400 hover:bg-yellow-500 hover:border-yellow-500 font-bold shadow-lg bg-gradient-to-r from-blue-600 to-blue-700 transition-all duration-200 hover:scale-105"
+                className="flex items-center gap-2 text-white border-2 border-yellow-400 hover:bg-yellow-500 hover:border-yellow-500 font-bold shadow-lg bg-gradient-to-r from-blue-600 to-blue-700 transition-all duration-200 hover:scale-105 px-4 py-2"
               >
                 <Globe className="h-4 w-4" />
-                {language === 'en' ? 'English' : 'Español'}
+                <span className="text-sm font-semibold">
+                  {language === 'en' ? 'English' : 'Español'}
+                </span>
               </Button>
 
               {/* Emergency Button */}
@@ -1491,7 +1573,7 @@ function App() {
                                   <Plus className="h-4 w-4 text-red-600" />
                                 </div>
                                 <span className="font-medium text-red-900">
-                                  {language === 'en' ? 'Level 1 Trauma Center' : 'Centro de Trauma Nivel 1'}
+                                  {t[language].level1TraumaCenter}
                                 </span>
                               </div>
                               <div className="w-2 h-2 bg-red-500 rounded-full"></div>
@@ -1502,7 +1584,7 @@ function App() {
                                   <Heart className="h-4 w-4 text-pink-600" />
                                 </div>
                                 <span className="font-medium text-pink-900">
-                                  {language === 'en' ? 'Cardiac Care' : 'Atención Cardíaca'}
+                                  {t[language].atencionCardiaca}
                                 </span>
                               </div>
                               <div className="w-2 h-2 bg-pink-500 rounded-full"></div>
@@ -1552,14 +1634,14 @@ function App() {
                               }}
                             >
                               <MapPin className="h-4 w-4" />
-                              {language === 'en' ? 'Directions' : 'Direcciones'}
+                              {t[language].directions}
                             </Button>
                             <Button 
                               className="bg-green-600 hover:bg-green-700 text-white flex-1 flex items-center justify-center gap-2"
                               onClick={() => window.open('tel:(424) 306-5001', '_self')}
                             >
                               <Phone className="h-4 w-4" />
-                              {language === 'en' ? 'Call' : 'Llamar'}
+                              {t[language].call}
                             </Button>
                           </div>
                         </div>
@@ -1573,7 +1655,7 @@ function App() {
                   <div className="bg-gray-50 rounded-lg p-6 flex flex-col items-center justify-center space-y-6">
                     {/* Title */}
                     <h3 className="text-lg font-semibold text-gray-900 text-center">
-                      {language === 'en' ? 'Harbor Video Information' : 'Información en Video de Harbor'}
+                      {t[language].harborVideoInfo}
                     </h3>
                     
                     {/* Play Button */}
@@ -1617,7 +1699,7 @@ function App() {
                   <div className="bg-white rounded-lg border border-blue-200 p-6 shadow-sm">
                     <h3 className="text-lg font-semibold text-blue-900 mb-4 flex items-center gap-2">
                       <Info className="h-5 w-5 text-blue-600" />
-                      {language === 'en' ? 'Your ER Visit Process' : 'Su Proceso de Visita a ER'}
+                      {t[language].yourERVisitProcess}
                     </h3>
                     
                     <div className="space-y-4 text-sm">
@@ -1892,7 +1974,7 @@ function App() {
                             {/* Amenities & Services */}
                             <div className="space-y-4">
                               <h5 className="font-semibold text-gray-900">
-                                {language === 'en' ? 'Amenities & Services' : 'Comodidades y Servicios'}
+                                {t[language].amenitiesServices}
                               </h5>
                               
                               <div className="grid grid-cols-2 gap-4">
@@ -1901,25 +1983,25 @@ function App() {
                                   <div className="flex items-center gap-2">
                                     <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
                                     <span className="text-sm text-gray-700">
-                                      {language === 'en' ? 'Free WiFi' : 'WiFi Gratis'}
+                                      {t[language].freeWifi}
                                     </span>
                                   </div>
                                   <div className="flex items-center gap-2">
                                     <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
                                     <span className="text-sm text-gray-700">
-                                      {language === 'en' ? 'Cafeteria' : 'Cafetería'}
+                                      {t[language].cafeteria}
                                     </span>
                                   </div>
                                   <div className="flex items-center gap-2">
                                     <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
                                     <span className="text-sm text-gray-700">
-                                      {language === 'en' ? 'Parking Available' : 'Estacionamiento Disponible'}
+                                      {t[language].parkingAvailable}
                                     </span>
                                   </div>
                                   <div className="flex items-center gap-2">
                                     <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
                                     <span className="text-sm text-gray-700">
-                                      {language === 'en' ? 'Chapel/Prayer Room' : 'Capilla/Sala de Oración'}
+                                      {t[language].chapelPrayerRoom}
                                     </span>
                                   </div>
                                 </div>
@@ -1929,25 +2011,25 @@ function App() {
                                   <div className="flex items-center gap-2">
                                     <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
                                     <span className="text-sm text-gray-700">
-                                      {language === 'en' ? 'Wheelchair Accessible' : 'Accesible para Sillas de Ruedas'}
+                                      {t[language].wheelchairAccessible}
                                     </span>
                                   </div>
                                   <div className="flex items-center gap-2">
                                     <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
                                     <span className="text-sm text-gray-700">
-                                      {language === 'en' ? 'ATM' : 'Cajero Automático'}
+                                      {t[language].atm}
                                     </span>
                                   </div>
                                   <div className="flex items-center gap-2">
                                     <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
                                     <span className="text-sm text-gray-700">
-                                      {language === 'en' ? 'Pharmacy' : 'Farmacia'}
+                                      {t[language].pharmacy}
                                     </span>
                                   </div>
                                   <div className="flex items-center gap-2">
                                     <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
                                     <span className="text-sm text-gray-700">
-                                      {language === 'en' ? 'Gift Shop' : 'Tienda de Regalos'}
+                                      {t[language].giftShop}
                                     </span>
                                   </div>
                                 </div>
@@ -1960,13 +2042,10 @@ function App() {
                                 <AlertTriangle className="h-5 w-5 text-red-600 mt-0.5" />
                                 <div>
                                   <h5 className="font-semibold text-red-900 mb-2">
-                                    {language === 'en' ? 'Life-Threatening Emergency' : 'Emergencia que Amenaza la Vida'}
+                                    {t[language].lifeThreatening911}
                                   </h5>
                                   <p className="text-red-800 text-sm mb-3">
-                                    {language === 'en' 
-                                      ? 'For immediate life-threatening emergencies, call 911 or go directly to the nearest emergency room.'
-                                      : 'Para emergencias inmediatas que amenazan la vida, llame al 911 o vaya directamente a la sala de emergencias más cercana.'
-                                    }
+                                    {t[language].lifeThreatening911Desc}
                                   </p>
                                   <div className="flex items-center gap-2">
                                     <Phone className="h-4 w-4 text-red-600" />
@@ -2130,7 +2209,7 @@ function App() {
                               <Activity className="h-6 w-6 text-purple-600" />
                             </div>
                             <h4 className="text-xl font-semibold text-gray-900">
-                              {language === 'en' ? '24-Hour Wait Time Patterns' : 'Patrones de Tiempo de Espera de 24 Horas'}
+                              {t[language].waitTimePatternsTitle}
                             </h4>
                           </div>
                           
@@ -2138,10 +2217,7 @@ function App() {
                           <div className="bg-white border border-gray-200 rounded-lg p-6">
                             <div className="mb-4">
                               <p className="text-gray-600 text-sm">
-                                {language === 'en' 
-                                  ? 'Average wait times by acuity level throughout the day. Current time is highlighted.'
-                                  : 'Tiempos de espera promedio por nivel de acuidad durante el día. El tiempo actual está resaltado.'
-                                }
+                                {t[language].waitTimePatternsDesc}
                               </p>
                             </div>
                             
@@ -2165,7 +2241,7 @@ function App() {
                                 
                                 {/* Y-axis title */}
                                 <text x="15" y="120" className="text-xs fill-gray-600" transform="rotate(-90 15 120)">
-                                  {language === 'en' ? 'Wait Time (min)' : 'Tiempo de Espera (min)'}
+                                  {t[language].waitTimeMin}
                                 </text>
                                 
                                 {/* X-axis labels */}
@@ -2181,7 +2257,7 @@ function App() {
                                 {/* Current time indicator (5:30 PM) */}
                                 <line x1="650" y1="10" x2="650" y2="210" stroke="#6366f1" strokeWidth="2" strokeDasharray="5,5" />
                                 <text x="655" y="25" className="text-xs fill-blue-600 font-medium">
-                                  {language === 'en' ? 'Current Time' : 'Tiempo Actual'}
+                                  {t[language].currentTime}
                                 </text>
                                 
                                 {/* Level 4 (Blue) - Highest line */}
@@ -2238,31 +2314,31 @@ function App() {
                               <div className="flex items-center gap-2">
                                 <div className="w-4 h-0.5 bg-red-500"></div>
                                 <span className="text-red-900 font-medium">
-                                  {language === 'en' ? 'Level 1' : 'Nivel 1'}
+                                  {t[language].level1}
                                 </span>
                               </div>
                               <div className="flex items-center gap-2">
                                 <div className="w-4 h-0.5 bg-orange-500"></div>
                                 <span className="text-orange-900 font-medium">
-                                  {language === 'en' ? 'Level 2' : 'Nivel 2'}
+                                  {t[language].level2}
                                 </span>
                               </div>
                               <div className="flex items-center gap-2">
                                 <div className="w-4 h-0.5 bg-yellow-500"></div>
                                 <span className="text-yellow-900 font-medium">
-                                  {language === 'en' ? 'Level 3' : 'Nivel 3'}
+                                  {t[language].level3}
                                 </span>
                               </div>
                               <div className="flex items-center gap-2">
                                 <div className="w-4 h-0.5 bg-blue-500"></div>
                                 <span className="text-blue-900 font-medium">
-                                  {language === 'en' ? 'Level 4' : 'Nivel 4'}
+                                  {t[language].level4}
                                 </span>
                               </div>
                               <div className="flex items-center gap-2">
                                 <div className="w-4 h-0.5 bg-green-500"></div>
                                 <span className="text-green-900 font-medium">
-                                  {language === 'en' ? 'Level 5' : 'Nivel 5'}
+                                  {t[language].level5}
                                 </span>
                               </div>
                             </div>
@@ -2270,12 +2346,12 @@ function App() {
                             {/* Key Insights */}
                             <div className="mt-6 bg-blue-50 border border-blue-200 rounded-lg p-4">
                               <h5 className="font-semibold text-blue-900 mb-2">
-                                {language === 'en' ? 'Key Insights' : 'Información Clave'}
+                                {t[language].keyInsights}
                               </h5>
                               <ul className="space-y-1 text-sm text-blue-800">
-                                <li>• {language === 'en' ? 'Peak wait times typically occur between 2 PM - 8 PM' : 'Los tiempos de espera máximos ocurren típicamente entre 2 PM - 8 PM'}</li>
-                                <li>• {language === 'en' ? 'Shortest wait times are usually between 2 AM - 6 AM' : 'Los tiempos de espera más cortos son usualmente entre 2 AM - 6 AM'}</li>
-                                <li>• {language === 'en' ? 'Level 1 & 2 patients are seen immediately regardless of time' : 'Los pacientes de Nivel 1 y 2 son atendidos inmediatamente sin importar la hora'}</li>
+                                <li>• {t[language].peakWaitTimes}</li>
+                                <li>• {t[language].shortestWaitTimes}</li>
+                                <li>• {t[language].level12Immediate}</li>
                               </ul>
                             </div>
                           </div>
