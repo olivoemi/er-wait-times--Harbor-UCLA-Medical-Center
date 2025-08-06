@@ -1,0 +1,17 @@
+<svg width="400" height="120" viewBox="0 0 400 120" xmlns="http://www.w3.org/2000/svg">
+  <!-- Light blue hexagon background -->
+  <polygon points="50,20 90,20 110,50 90,80 50,80 30,50" fill="#A8D0E8" opacity="0.6"/>
+  
+  <!-- Main blue hexagon -->
+  <polygon points="45,25 85,25 100,50 85,75 45,75 30,50" fill="#0F6CB3"/>
+  
+  <!-- White circles and design elements -->
+  <circle cx="62" cy="50" r="18" fill="white"/>
+  <path d="M 50 42 Q 62 35 74 42" stroke="white" stroke-width="3" fill="none"/>
+  <path d="M 48 47 Q 62 38 76 47" stroke="white" stroke-width="2.5" fill="none"/>
+  <path d="M 46 52 Q 62 41 78 52" stroke="white" stroke-width="2" fill="none"/>
+  
+  <!-- Harbor-UCLA text -->
+  <text x="120" y="40" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#0F6CB3">Harbor-UCLA</text>
+  <text x="120" y="65" font-family="Arial, sans-serif" font-size="14" font-weight="normal" fill="#0F6CB3" letter-spacing="3px">MEDICAL CENTER</text>
+</svg>

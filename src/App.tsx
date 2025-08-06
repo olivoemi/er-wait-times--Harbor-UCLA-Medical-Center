@@ -10,6 +10,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { MapPin, Clock, RefreshCw, AlertTriangle, Heart, FirstAid, Phone, Thermometer, Pill, Eye, Plus, Globe, Info, X, Building, CaretDown, CaretUp, MagnifyingGlass, CheckCircle, Brain, Lungs, Drop, Bandage, Siren, Pulse, Tooth, Activity, Play } from '@phosphor-icons/react'
 // Removed QR code image import as we're using a play button instead
 import harborUCLALogo from '@/assets/images/harbor-ucla-logo.svg'
+import harborUCLAFullLogo from '@/assets/images/harbor-ucla-logo-full.svg'
 
 interface Hospital {
   id: string
@@ -1620,17 +1621,14 @@ function App() {
                             {/* Harbor-UCLA Logo */}
                             <div className="flex-shrink-0">
                               <img 
-                                src={harborUCLALogo} 
+                                src={harborUCLAFullLogo} 
                                 alt="Harbor-UCLA Medical Center Logo" 
-                                className="w-16 h-16 object-contain"
+                                className="w-32 h-12 object-contain"
                               />
                             </div>
-                            <div className="flex items-center gap-2">
+                            <div className="flex items-center gap-2 mt-2">
                               <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                               <div>
-                                <h3 className="font-semibold text-gray-900 mb-1">
-                                  {t[language].harborUCLAMedicalCenter}
-                                </h3>
                                 <div className="flex items-center gap-2 text-sm text-gray-600">
                                   <MapPin className="h-3 w-3" />
                                   <span>18.4 {language === 'en' ? 'miles' : 'millas'}</span>
@@ -1969,15 +1967,12 @@ function App() {
                           {/* Harbor Logo */}
                           <div className="flex-shrink-0">
                             <img 
-                              src={harborUCLALogo} 
+                              src={harborUCLAFullLogo} 
                               alt="Harbor-UCLA Medical Center Logo" 
-                              className="w-12 h-12 object-contain"
+                              className="w-24 h-9 object-contain"
                             />
                           </div>
                           <div>
-                            <h3 className="text-2xl font-bold text-gray-900">
-                              {t[language].harborUCLAMedicalCenter}
-                            </h3>
                             <div className="flex items-center gap-4 text-sm text-gray-600 mt-1">
                               <div className="flex items-center gap-1">
                                 <MapPin className="h-4 w-4" />
