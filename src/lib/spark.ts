@@ -1,105 +1,94 @@
-// Placeholder implementation for spark API functions
-// In a real deployment, you'd replace these with actual implementations
+// Mock Spark API for GitHub Pages deployment
+// This provides fallback implementations for Spark-specific functionality
 
-interface UserInfo {
-  avatarUrl: string
-  email: string
-  id: string
-  isOwner: boolean
-  login: string
+// Mock spark global object for production builds
+declare global {
+  interface Window {
+    spark: {
+      llmPrompt: (strings: string[], ...values: any[]) => string
+      llm: (prompt: string, modelName?: string, jsonMode?: boolean) => Promise<string>
+      user: () => Promise<{
+        avatarUrl: string
+        email: string
+        id: string
+        isOwner: boolean
+        login: string
+      }>
+      kv: {
+        keys: () => Promise<string[]>
+        get: <T>(key: string) => Promise<T | undefined>
+        set: <T>(key: string, value: T) => Promise<void>
+        delete: (key: string) => Promise<void>
+      }
+    }
+  }
 }
 
-interface SparkKV {
-  keys: () => Promise<string[]>
-  get: <T>(key: string) => Promise<T | undefined>
-  set: <T>(key: string, value: T) => Promise<void>
-  delete: (key: string) => Promise<void>
-}
-
-interface SparkAPI {
-  llmPrompt: (strings: TemplateStringsArray, ...values: any[]) => string
-  llm: (prompt: string, modelName?: string, jsonMode?: boolean) => Promise<string>
-  user: () => Promise<UserInfo>
-  kv: SparkKV
-}
-
-// Mock implementation for standalone use
-const mockSparkAPI: SparkAPI = {
-  llmPrompt: (strings: TemplateStringsArray, ...values: any[]): string => {
-    // Simple template literal implementation
+// Mock implementations for GitHub Pages
+const mockSpark = {
+  llmPrompt: (strings: string[], ...values: any[]) => {
     return strings.reduce((result, string, i) => {
       return result + string + (values[i] || '')
     }, '')
   },
 
-  llm: async (prompt: string, modelName?: string, jsonMode?: boolean): Promise<string> => {
-    console.warn('LLM functionality not available in standalone mode')
-    return Promise.resolve('LLM functionality not available in standalone mode')
+  llm: async (prompt: string, modelName?: string, jsonMode?: boolean) => {
+    // Return a mock response for demo purposes
+    return jsonMode 
+      ? '{"message": "This is a demo response. LLM functionality requires the Spark runtime."}' 
+      : 'This is a demo response. LLM functionality requires the Spark runtime.'
   },
 
-  user: async (): Promise<UserInfo> => {
-    // Return a default user for standalone mode
-    return Promise.resolve({
-      avatarUrl: '',
-      email: 'user@example.com',
-      id: 'standalone-user',
-      isOwner: true,
-      login: 'standalone-user'
-    })
-  },
+  user: async () => ({
+    avatarUrl: '',
+    email: 'demo@example.com',
+    id: 'demo-user',
+    isOwner: true,
+    login: 'demo-user'
+  }),
 
   kv: {
-    keys: async (): Promise<string[]> => {
+    keys: async () => {
       const keys: string[] = []
       for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i)
-        if (key) keys.push(key)
+        if (key?.startsWith('spark_kv_')) {
+          keys.push(key.replace('spark_kv_', ''))
+        }
       }
-      return Promise.resolve(keys)
+      return keys
     },
 
     get: async <T>(key: string): Promise<T | undefined> => {
       try {
-        const item = localStorage.getItem(key)
-        return item ? JSON.parse(item) : undefined
-      } catch (error) {
-        console.error('Error reading from localStorage:', error)
+        const stored = localStorage.getItem(`spark_kv_${key}`)
+        return stored ? JSON.parse(stored) : undefined
+      } catch {
         return undefined
       }
     },
 
     set: async <T>(key: string, value: T): Promise<void> => {
       try {
-        localStorage.setItem(key, JSON.stringify(value))
-        return Promise.resolve()
+        localStorage.setItem(`spark_kv_${key}`, JSON.stringify(value))
       } catch (error) {
-        console.error('Error writing to localStorage:', error)
-        return Promise.reject(error)
+        console.warn('Failed to save to localStorage:', error)
       }
     },
 
     delete: async (key: string): Promise<void> => {
       try {
-        localStorage.removeItem(key)
-        return Promise.resolve()
+        localStorage.removeItem(`spark_kv_${key}`)
       } catch (error) {
-        console.error('Error deleting from localStorage:', error)
-        return Promise.reject(error)
+        console.warn('Failed to delete from localStorage:', error)
       }
     }
   }
 }
 
-// Make spark available globally
-declare global {
-  interface Window {
-    spark: SparkAPI
-  }
+// Initialize mock spark if not already available
+if (typeof window !== 'undefined' && !window.spark) {
+  window.spark = mockSpark
 }
 
-// Initialize spark on window
-if (typeof window !== 'undefined') {
-  window.spark = mockSparkAPI
-}
-
-export default mockSparkAPI
+export default mockSpark

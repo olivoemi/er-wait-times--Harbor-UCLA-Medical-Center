@@ -1,58 +1,36 @@
-import { useState, useEffect, useCallback } from 'react'
-
-// Mock implementation for GitHub Spark KV store
-// In the real GitHub Spark environment, this would use the actual spark.kv API
+// Mock implementation of useKV for GitHub Pages deployment
+import { useState, useEffect } from 'react'
 
 export function useKV<T>(key: string, defaultValue: T): [T, (value: T | ((prev: T) => T)) => void, () => void] {
   const [value, setValue] = useState<T>(() => {
     try {
-      const item = localStorage.getItem(key)
-      return item ? JSON.parse(item) : defaultValue
-    } catch (error) {
-      console.error('Error reading from localStorage:', error)
+      const stored = localStorage.getItem(`kv_${key}`)
+      return stored ? JSON.parse(stored) : defaultValue
+    } catch {
       return defaultValue
     }
   })
 
-  const setStoredValue = useCallback((newValue: T | ((prev: T) => T)) => {
-    try {
-      setValue(prev => {
-        const valueToStore = typeof newValue === 'function' ? (newValue as (prev: T) => T)(prev) : newValue
-        localStorage.setItem(key, JSON.stringify(valueToStore))
-        return valueToStore
-      })
-    } catch (error) {
-      console.error('Error writing to localStorage:', error)
-    }
-  }, [key])
+  const setValueAndStore = (newValue: T | ((prev: T) => T)) => {
+    setValue((prev) => {
+      const finalValue = typeof newValue === 'function' ? (newValue as (prev: T) => T)(prev) : newValue
+      try {
+        localStorage.setItem(`kv_${key}`, JSON.stringify(finalValue))
+      } catch (error) {
+        console.warn('Failed to save to localStorage:', error)
+      }
+      return finalValue
+    })
+  }
 
-  const deleteValue = useCallback(() => {
+  const deleteValue = () => {
     try {
-      localStorage.removeItem(key)
+      localStorage.removeItem(`kv_${key}`)
       setValue(defaultValue)
     } catch (error) {
-      console.error('Error deleting from localStorage:', error)
+      console.warn('Failed to delete from localStorage:', error)
     }
-  }, [key, defaultValue])
+  }
 
-  // Listen for storage changes in other tabs
-  useEffect(() => {
-    const handleStorageChange = (e: StorageEvent) => {
-      if (e.key === key && e.newValue !== null) {
-        try {
-          setValue(JSON.parse(e.newValue))
-        } catch (error) {
-          console.error('Error parsing localStorage value:', error)
-        }
-      }
-    }
-
-    window.addEventListener('storage', handleStorageChange)
-
-    return () => {
-      window.removeEventListener('storage', handleStorageChange)
-    }
-  }, [key])
-
-  return [value, setStoredValue, deleteValue]
+  return [value, setValueAndStore, deleteValue]
 }

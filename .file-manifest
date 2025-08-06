@@ -1,0 +1,15 @@
+.spark-initial-sha
+DEPLOYMENT.md
+NEW_SITE_STRUCTURE.md
+PRD.md
+index.html
+src/App.tsx
+src/ErrorFallback.tsx
+src/assets/images/harbor-ucla-logo-full.svg
+src/assets/images/harbor-ucla-logo.png
+src/assets/images/harbor-ucla-logo.svg
+src/assets/images/qr-code.png
+src/hooks/useKV.ts
+src/index.css
+src/lib/spark.ts
+src/main.tsx
