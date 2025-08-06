@@ -107,3 +107,47 @@ a[href^="tel:"] {
 a[href^="tel:"]:hover {
   text-decoration: underline;
 }
+
+/* Mobile-specific optimizations */
+@media (max-width: 768px) {
+  /* Improve touch targets on mobile */
+  button, 
+  a,
+  [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Better spacing for mobile cards */
+  .mobile-card-spacing {
+    padding: 0.75rem;
+  }
+  
+  /* Ensure better text sizing on mobile */
+  .mobile-text-adjust {
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+  
+  /* Improve horizontal scrolling on mobile */
+  .mobile-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .mobile-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Stack elements vertically on mobile */
+  .mobile-stack {
+    flex-direction: column;
+  }
+  
+  /* Full width buttons on mobile */
+  .mobile-full-width {
+    width: 100%;
+  }
+}

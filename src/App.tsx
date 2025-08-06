@@ -1220,53 +1220,56 @@ function App() {
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             {/* Logo and Title */}
-            <div className="flex items-center gap-3">
-              <div className="bg-gradient-to-br from-red-500 to-red-700 text-white p-3 rounded-xl shadow-lg border border-red-400">
-                <div className="relative w-7 h-7">
+            <div className="flex items-center gap-2 md:gap-3 min-w-0">
+              <div className="bg-gradient-to-br from-red-500 to-red-700 text-white p-2 md:p-3 rounded-xl shadow-lg border border-red-400 flex-shrink-0">
+                <div className="relative w-5 h-5 md:w-7 md:h-7">
                   {/* Enhanced Healthcare Cross */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="bg-white w-6 h-2 rounded-full shadow-sm"></div>
+                    <div className="bg-white w-4 h-1.5 md:w-6 md:h-2 rounded-full shadow-sm"></div>
                   </div>
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="bg-white w-2 h-6 rounded-full shadow-sm"></div>
+                    <div className="bg-white w-1.5 h-4 md:w-2 md:h-6 rounded-full shadow-sm"></div>
                   </div>
                   {/* Add subtle glow effect */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-30">
-                    <div className="bg-white w-6 h-2 rounded-full blur-sm"></div>
+                    <div className="bg-white w-4 h-1.5 md:w-6 md:h-2 rounded-full blur-sm"></div>
                   </div>
                   <div className="absolute inset-0 flex items-center justify-center opacity-30">
-                    <div className="bg-white w-2 h-6 rounded-full blur-sm"></div>
+                    <div className="bg-white w-1.5 h-4 md:w-2 md:h-6 rounded-full blur-sm"></div>
                   </div>
                 </div>
               </div>
-              <h1 className="text-xl font-semibold text-gray-900">
+              <h1 className="text-lg md:text-xl font-semibold text-gray-900 truncate">
                 {t[language].title}
               </h1>
             </div>
 
             {/* Right side controls */}
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2 md:gap-4 flex-shrink-0">
               {/* Language Toggle */}
               <Button
                 variant="outline"
                 size="sm"
                 onClick={() => setLanguage(language === 'en' ? 'es' : 'en')}
-                className="flex items-center gap-2 text-white border-2 border-yellow-400 hover:bg-yellow-500 hover:border-yellow-500 font-bold shadow-lg bg-gradient-to-r from-blue-600 to-blue-700 transition-all duration-200 hover:scale-105 px-4 py-2"
+                className="flex items-center gap-1 md:gap-2 text-white border-2 border-yellow-400 hover:bg-yellow-500 hover:border-yellow-500 font-bold shadow-lg bg-gradient-to-r from-blue-600 to-blue-700 transition-all duration-200 hover:scale-105 px-2 md:px-4 py-2"
               >
-                <Globe className="h-4 w-4" />
-                <span className="text-sm font-semibold">
+                <Globe className="h-3 w-3 md:h-4 md:w-4" />
+                <span className="text-xs md:text-sm font-semibold hidden sm:inline">
                   {language === 'en' ? 'English' : 'Español'}
+                </span>
+                <span className="text-xs font-semibold sm:hidden">
+                  {language === 'en' ? 'EN' : 'ES'}
                 </span>
               </Button>
 
               {/* Emergency Button */}
-              <span className="text-gray-600 text-sm">{t[language].emergencyLabel}</span>
+              <span className="text-gray-600 text-xs md:text-sm hidden md:inline">{t[language].emergencyLabel}</span>
               <Button
                 size="sm"
-                className="bg-red-600 hover:bg-red-700 text-white font-bold px-4"
+                className="bg-red-600 hover:bg-red-700 text-white font-bold px-2 md:px-4"
                 onClick={() => window.open('tel:911', '_self')}
               >
-                <Phone className="h-4 w-4 mr-1" />
+                <Phone className="h-3 w-3 md:h-4 md:w-4 mr-1" />
                 911
               </Button>
             </div>
@@ -1275,19 +1278,19 @@ function App() {
           {/* Navigation Tabs */}
           <div className="mt-4">
             <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-              <TabsList className="bg-transparent h-auto p-0 gap-6">
+              <TabsList className="bg-transparent h-auto p-0 gap-3 md:gap-6">
                 <TabsTrigger 
                   value="wait-times" 
-                  className="flex items-center gap-2 bg-transparent text-gray-600 hover:text-gray-900 data-[state=active]:bg-transparent data-[state=active]:text-gray-900 data-[state=active]:border-b-2 data-[state=active]:border-blue-600 rounded-none pb-2 font-medium"
+                  className="flex items-center gap-1 md:gap-2 bg-transparent text-gray-600 hover:text-gray-900 data-[state=active]:bg-transparent data-[state=active]:text-gray-900 data-[state=active]:border-b-2 data-[state=active]:border-blue-600 rounded-none pb-2 font-medium text-sm md:text-base"
                 >
-                  <Clock className="h-4 w-4" />
+                  <Clock className="h-3 w-3 md:h-4 md:w-4" />
                   {t[language].waitTimes}
                 </TabsTrigger>
                 <TabsTrigger 
                   value="care-guide" 
-                  className="flex items-center gap-2 bg-transparent text-gray-600 hover:text-gray-900 data-[state=active]:bg-transparent data-[state=active]:text-gray-900 data-[state=active]:border-b-2 data-[state=active]:border-blue-600 rounded-none pb-2 font-medium"
+                  className="flex items-center gap-1 md:gap-2 bg-transparent text-gray-600 hover:text-gray-900 data-[state=active]:bg-transparent data-[state=active]:text-gray-900 data-[state=active]:border-b-2 data-[state=active]:border-blue-600 rounded-none pb-2 font-medium text-sm md:text-base"
                 >
-                  <FirstAid className="h-4 w-4" />
+                  <FirstAid className="h-3 w-3 md:h-4 md:w-4" />
                   {t[language].careGuide}
                 </TabsTrigger>
               </TabsList>
@@ -1295,20 +1298,20 @@ function App() {
           </div>
         </div>
       </header>
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-2 md:px-4 py-4 md:py-8">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
 
           {/* Wait Times Tab */}
-          <TabsContent value="wait-times" className="space-y-6">
+          <TabsContent value="wait-times" className="space-y-4 md:space-y-6">
             {/* Emergency Departments Header Section */}
-            <div className="space-y-6">
+            <div className="space-y-4 md:space-y-6">
               {/* Title and Status Row */}
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div>
-                  <h2 className="text-3xl font-bold text-gray-900 mb-2">{t[language].emergencyDepartments}</h2>
-                  <p className="text-gray-600">{t[language].realTimeWaitTimes}</p>
+                  <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">{t[language].emergencyDepartments}</h2>
+                  <p className="text-gray-600 text-sm md:text-base">{t[language].realTimeWaitTimes}</p>
                 </div>
-                <div className="flex items-center gap-4">
+                <div className="flex flex-wrap items-center gap-2 md:gap-4">
                   <div className="flex items-center gap-2">
                     <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                     <span className="text-sm text-gray-600">{t[language].live}</span>
@@ -1331,44 +1334,44 @@ function App() {
               </div>
 
               {/* How Our Wait Time System Works */}
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 md:p-4">
                 <div className="flex items-start gap-3">
                   <Info className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
                   <div>
-                    <h3 className="font-semibold text-blue-900 mb-2">{t[language].howSystemWorks}</h3>
-                    <p className="text-blue-800 text-sm leading-relaxed">{t[language].systemDescription}</p>
+                    <h3 className="font-semibold text-blue-900 mb-2 text-sm md:text-base">{t[language].howSystemWorks}</h3>
+                    <p className="text-blue-800 text-xs md:text-sm leading-relaxed">{t[language].systemDescription}</p>
                   </div>
                 </div>
               </div>
 
               {/* Emergency Condition Severity Levels */}
-              <div className="space-y-6">
+              <div className="space-y-4 md:space-y-6">
                 <div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{t[language].conditionSeverityLevels}</h3>
-                  <p className="text-gray-600">{t[language].acuityDescription}</p>
+                  <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2">{t[language].conditionSeverityLevels}</h3>
+                  <p className="text-gray-600 text-sm md:text-base">{t[language].acuityDescription}</p>
                 </div>
 
                 {/* Acuity Level Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 md:gap-4">
                   {/* Level 1 - Critical */}
                   <Card className="bg-red-50 border-red-200 hover:shadow-md transition-shadow h-full flex flex-col">
-                    <CardContent className="p-5 flex-1 flex flex-col">
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="w-6 h-6 bg-red-500 rounded-full flex items-center justify-center">
+                    <CardContent className="p-3 md:p-5 flex-1 flex flex-col">
+                      <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
+                        <div className="w-5 h-5 md:w-6 md:h-6 bg-red-500 rounded-full flex items-center justify-center">
                           <span className="text-white text-xs font-bold">1</span>
                         </div>
-                        <h4 className="font-bold text-red-900 text-sm">{t[language].level1Critical}</h4>
+                        <h4 className="font-bold text-red-900 text-xs md:text-sm">{t[language].level1Critical}</h4>
                       </div>
                       
-                      <div className="mb-4 flex-1">
-                        <p className="text-xs text-red-700 mb-4 leading-relaxed">
+                      <div className="mb-3 md:mb-4 flex-1">
+                        <p className="text-xs text-red-700 mb-3 md:mb-4 leading-relaxed">
                           {language === 'en' 
                             ? 'Life-threatening conditions requiring immediate medical intervention - seen within 24 hours'
                             : 'Condiciones que amenazan la vida que requieren intervención médica inmediata - atendidas en 24 horas'
                           }
                         </p>
 
-                        <div className="mb-4">
+                        <div className="mb-3 md:mb-4">
                           <h5 className="text-xs font-semibold text-red-900 mb-2">
                             {language === 'en' ? 'Common Examples:' : 'Ejemplos Comunes:'}
                           </h5>
@@ -1380,7 +1383,7 @@ function App() {
                           </ul>
                         </div>
 
-                        <div className="mb-4">
+                        <div className="mb-3 md:mb-4">
                           <h5 className="text-xs font-semibold text-red-900 mb-2">
                             {language === 'en' ? 'What to Expect:' : 'Qué Esperar:'}
                           </h5>
@@ -1392,7 +1395,7 @@ function App() {
                         </div>
                       </div>
 
-                      <div className="bg-red-600 text-white text-center py-2 px-3 rounded-lg mt-auto">
+                      <div className="bg-red-600 text-white text-center py-2 px-2 md:px-3 rounded-lg mt-auto">
                         <div className="text-xs font-black tracking-wide">{t[language].highestPriority}</div>
                       </div>
                     </CardContent>
@@ -1400,23 +1403,23 @@ function App() {
 
                   {/* Level 2 - Urgent */}
                   <Card className="bg-orange-50 border-orange-200 hover:shadow-md transition-shadow h-full flex flex-col">
-                    <CardContent className="p-5 flex-1 flex flex-col">
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center">
+                    <CardContent className="p-3 md:p-5 flex-1 flex flex-col">
+                      <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
+                        <div className="w-5 h-5 md:w-6 md:h-6 bg-orange-500 rounded-full flex items-center justify-center">
                           <span className="text-white text-xs font-bold">2</span>
                         </div>
-                        <h4 className="font-bold text-orange-900 text-sm">{t[language].level2Urgent}</h4>
+                        <h4 className="font-bold text-orange-900 text-xs md:text-sm">{t[language].level2Urgent}</h4>
                       </div>
                       
-                      <div className="mb-4 flex-1">
-                        <p className="text-xs text-orange-700 mb-4 leading-relaxed">
+                      <div className="mb-3 md:mb-4 flex-1">
+                        <p className="text-xs text-orange-700 mb-3 md:mb-4 leading-relaxed">
                           {language === 'en' 
                             ? 'Serious conditions with unstable vital signs requiring prompt medical attention'
                             : 'Condiciones serias con signos vitales inestables que necesitan atención médica pronta'
                           }
                         </p>
 
-                        <div className="mb-4">
+                        <div className="mb-3 md:mb-4">
                           <h5 className="text-xs font-semibold text-orange-900 mb-2">
                             {language === 'en' ? 'Common Examples:' : 'Ejemplos Comunes:'}
                           </h5>
@@ -1430,7 +1433,7 @@ function App() {
                           </ul>
                         </div>
 
-                        <div className="mb-4">
+                        <div className="mb-3 md:mb-4">
                           <h5 className="text-xs font-semibold text-orange-900 mb-2">
                             {language === 'en' ? 'What to Expect:' : 'Qué Esperar:'}
                           </h5>
@@ -1442,7 +1445,7 @@ function App() {
                         </div>
                       </div>
 
-                      <div className="bg-orange-600 text-white text-center py-2 px-3 rounded-lg mt-auto">
+                      <div className="bg-orange-600 text-white text-center py-2 px-2 md:px-3 rounded-lg mt-auto">
                         <div className="text-xs font-black tracking-wide">{t[language].highPriority}</div>
                       </div>
                     </CardContent>
@@ -1450,23 +1453,23 @@ function App() {
 
                   {/* Level 3 - Less Urgent */}
                   <Card className="bg-yellow-50 border-yellow-200 hover:shadow-md transition-shadow h-full flex flex-col">
-                    <CardContent className="p-5 flex-1 flex flex-col">
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center">
+                    <CardContent className="p-3 md:p-5 flex-1 flex flex-col">
+                      <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
+                        <div className="w-5 h-5 md:w-6 md:h-6 bg-yellow-500 rounded-full flex items-center justify-center">
                           <span className="text-white text-xs font-bold">3</span>
                         </div>
-                        <h4 className="font-bold text-yellow-900 text-sm">{t[language].level3LessUrgent}</h4>
+                        <h4 className="font-bold text-yellow-900 text-xs md:text-sm">{t[language].level3LessUrgent}</h4>
                       </div>
                       
-                      <div className="mb-4 flex-1">
-                        <p className="text-xs text-yellow-700 mb-4 leading-relaxed">
+                      <div className="mb-3 md:mb-4 flex-1">
+                        <p className="text-xs text-yellow-700 mb-3 md:mb-4 leading-relaxed">
                           {language === 'en' 
                             ? 'Stable conditions with routine blood work, imaging, and specialty consultation needed'
                             : 'Condiciones estables con trabajo de sangre de rutina, imágenes y consulta de especialidad necesaria'
                           }
                         </p>
 
-                        <div className="mb-4">
+                        <div className="mb-3 md:mb-4">
                           <h5 className="text-xs font-semibold text-yellow-900 mb-2">
                             {language === 'en' ? 'Common Examples:' : 'Ejemplos Comunes:'}
                           </h5>
@@ -1479,7 +1482,7 @@ function App() {
                           </ul>
                         </div>
 
-                        <div className="mb-4">
+                        <div className="mb-3 md:mb-4">
                           <h5 className="text-xs font-semibold text-yellow-900 mb-2">
                             {language === 'en' ? 'What to Expect:' : 'Qué Esperar:'}
                           </h5>
@@ -1491,7 +1494,7 @@ function App() {
                         </div>
                       </div>
 
-                      <div className="bg-yellow-600 text-white text-center py-2 px-3 rounded-lg mt-auto">
+                      <div className="bg-yellow-600 text-white text-center py-2 px-2 md:px-3 rounded-lg mt-auto">
                         <div className="text-xs font-black tracking-wide">{t[language].mediumPriority}</div>
                       </div>
                     </CardContent>
@@ -1499,23 +1502,23 @@ function App() {
 
                   {/* Level 4 - Non-Urgent */}
                   <Card className="bg-blue-50 border-blue-200 hover:shadow-md transition-shadow h-full flex flex-col">
-                    <CardContent className="p-5 flex-1 flex flex-col">
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
+                    <CardContent className="p-3 md:p-5 flex-1 flex flex-col">
+                      <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
+                        <div className="w-5 h-5 md:w-6 md:h-6 bg-blue-500 rounded-full flex items-center justify-center">
                           <span className="text-white text-xs font-bold">4</span>
                         </div>
-                        <h4 className="font-bold text-blue-900 text-sm">{t[language].level4NonUrgent}</h4>
+                        <h4 className="font-bold text-blue-900 text-xs md:text-sm">{t[language].level4NonUrgent}</h4>
                       </div>
                       
-                      <div className="mb-4 flex-1">
-                        <p className="text-xs text-blue-700 mb-4 leading-relaxed">
+                      <div className="mb-3 md:mb-4 flex-1">
+                        <p className="text-xs text-blue-700 mb-3 md:mb-4 leading-relaxed">
                           {language === 'en' 
                             ? 'Stable conditions including minor injuries and common complaints'
                             : 'Condiciones estables incluyendo lesiones menores y quejas comunes'
                           }
                         </p>
 
-                        <div className="mb-4">
+                        <div className="mb-3 md:mb-4">
                           <h5 className="text-xs font-semibold text-blue-900 mb-2">
                             {language === 'en' ? 'Common Examples:' : 'Ejemplos Comunes:'}
                           </h5>
@@ -1526,7 +1529,7 @@ function App() {
                           </ul>
                         </div>
 
-                        <div className="mb-4">
+                        <div className="mb-3 md:mb-4">
                           <h5 className="text-xs font-semibold text-blue-900 mb-2">
                             {language === 'en' ? 'What to Expect:' : 'Qué Esperar:'}
                           </h5>
@@ -1536,7 +1539,7 @@ function App() {
                         </div>
                       </div>
 
-                      <div className="bg-blue-600 text-white text-center py-2 px-3 rounded-lg mt-auto">
+                      <div className="bg-blue-600 text-white text-center py-2 px-2 md:px-3 rounded-lg mt-auto">
                         <div className="text-xs font-black tracking-wide">{t[language].lowPriority}</div>
                       </div>
                     </CardContent>
@@ -1544,23 +1547,23 @@ function App() {
 
                   {/* Level 5 - Low Acuity */}
                   <Card className="bg-green-50 border-green-200 hover:shadow-md transition-shadow h-full flex flex-col">
-                    <CardContent className="p-5 flex-1 flex flex-col">
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                    <CardContent className="p-3 md:p-5 flex-1 flex flex-col">
+                      <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
+                        <div className="w-5 h-5 md:w-6 md:h-6 bg-green-500 rounded-full flex items-center justify-center">
                           <span className="text-white text-xs font-bold">5</span>
                         </div>
-                        <h4 className="font-bold text-green-900 text-sm">{t[language].level5LowAcuity}</h4>
+                        <h4 className="font-bold text-green-900 text-xs md:text-sm">{t[language].level5LowAcuity}</h4>
                       </div>
                       
-                      <div className="mb-4 flex-1">
-                        <p className="text-xs text-green-700 mb-4 leading-relaxed">
+                      <div className="mb-3 md:mb-4 flex-1">
+                        <p className="text-xs text-green-700 mb-3 md:mb-4 leading-relaxed">
                           {language === 'en' 
                             ? 'Primary care complaints and routine health needs'
                             : 'Quejas de atención primaria y necesidades de salud rutinarias'
                           }
                         </p>
 
-                        <div className="mb-4">
+                        <div className="mb-3 md:mb-4">
                           <h5 className="text-xs font-semibold text-green-900 mb-2">
                             {language === 'en' ? 'Common Examples:' : 'Ejemplos Comunes:'}
                           </h5>
@@ -1571,7 +1574,7 @@ function App() {
                           </ul>
                         </div>
 
-                        <div className="mb-4">
+                        <div className="mb-3 md:mb-4">
                           <h5 className="text-xs font-semibold text-green-900 mb-2">
                             {language === 'en' ? 'What to Expect:' : 'Qué Esperar:'}
                           </h5>
@@ -1582,7 +1585,7 @@ function App() {
                         </div>
                       </div>
 
-                      <div className="bg-green-600 text-white text-center py-2 px-3 rounded-lg mt-auto">
+                      <div className="bg-green-600 text-white text-center py-2 px-2 md:px-3 rounded-lg mt-auto">
                         <div className="text-xs font-black tracking-wide">{t[language].lowestPriority}</div>
                       </div>
                     </CardContent>
@@ -1592,7 +1595,7 @@ function App() {
             </div>
 
             {/* Controls Row */}
-            <div className="flex justify-between items-center pt-6 border-t border-gray-200">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 pt-4 md:pt-6 border-t border-gray-200">
               {/* Overview/Detailed Toggle */}
               <div className="flex gap-2">
                 <Button
@@ -1616,20 +1619,20 @@ function App() {
 
             {/* Harbor-UCLA Medical Center Card */}
             {viewMode === 'overview' ? (
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 md:gap-6">
                 {/* Left side - Hospital Card */}
                 <div>
                   {sortedHospitals.map((hospital) => (
                     <Card key={hospital.id} className="overflow-hidden">
-                      <CardContent className="p-6">
+                      <CardContent className="p-4 md:p-6">
                         {/* Hospital Header */}
-                        <div className="flex items-start justify-between mb-6">
-                          <div className="flex items-start gap-4">
+                        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4 md:mb-6">
+                          <div className="flex items-start gap-3 md:gap-4 min-w-0">
                             {/* Harbor-UCLA Medical Center Logo styled like image */}
                             <div className="flex-shrink-0">
-                              <div className="flex items-center gap-3">
+                              <div className="flex items-center gap-2 md:gap-3">
                                 {/* Hexagonal logo with circular elements */}
-                                <div className="relative w-16 h-16">
+                                <div className="relative w-12 h-12 md:w-16 md:h-16">
                                   {/* Outer light blue hexagon */}
                                   <div className="absolute inset-0 bg-gradient-to-br from-sky-200 to-sky-300 transform rotate-0" 
                                        style={{
@@ -1638,7 +1641,7 @@ function App() {
                                   </div>
                                   
                                   {/* Inner darker blue hexagon */}
-                                  <div className="absolute inset-2 bg-gradient-to-br from-blue-600 to-blue-700 transform rotate-0" 
+                                  <div className="absolute inset-1 md:inset-2 bg-gradient-to-br from-blue-600 to-blue-700 transform rotate-0" 
                                        style={{
                                          clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'
                                        }}>
@@ -1646,19 +1649,19 @@ function App() {
                                   
                                   {/* Central circular element with arcs */}
                                   <div className="absolute inset-0 flex items-center justify-center">
-                                    <div className="relative w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                                    <div className="relative w-6 h-6 md:w-8 md:h-8 bg-white rounded-full flex items-center justify-center">
                                       {/* Stylized circular arcs representing medical/health */}
-                                      <div className="absolute inset-1">
+                                      <div className="absolute inset-0.5 md:inset-1">
                                         <div className="w-full h-full border-2 border-blue-600 rounded-full border-dashed opacity-60"></div>
-                                        <div className="absolute top-1 left-1 w-4 h-4 border-2 border-blue-600 rounded-full border-t-transparent border-r-transparent transform rotate-45"></div>
+                                        <div className="absolute top-0.5 left-0.5 md:top-1 md:left-1 w-3 h-3 md:w-4 md:h-4 border-2 border-blue-600 rounded-full border-t-transparent border-r-transparent transform rotate-45"></div>
                                       </div>
                                     </div>
                                   </div>
                                 </div>
                                 
                                 {/* Text portion */}
-                                <div className="flex flex-col">
-                                  <div className="text-blue-600 font-bold text-lg tracking-tight">
+                                <div className="flex flex-col min-w-0">
+                                  <div className="text-blue-600 font-bold text-sm md:text-lg tracking-tight">
                                     Harbor-UCLA
                                   </div>
                                   <div className="text-blue-600 font-medium text-xs tracking-widest uppercase">
@@ -1677,135 +1680,135 @@ function App() {
                               </div>
                             </div>
                           </div>
-                          <div className="text-right">
+                          <div className="text-right flex-shrink-0">
                             <div className="text-sm text-gray-600 mb-1 whitespace-nowrap">{t[language].status}</div>
                             <div className="font-semibold text-green-600 whitespace-nowrap">{t[language].open}</div>
                           </div>
                         </div>
 
                         {/* Stats Row */}
-                        <div className="grid grid-cols-2 gap-4 mb-6">
+                        <div className="grid grid-cols-2 gap-4 mb-4 md:mb-6">
                           <div className="text-center">
                             <div className="text-sm text-gray-600 mb-1">{t[language].avgWaitTime}</div>
-                            <div className="text-3xl font-bold text-orange-500">22</div>
+                            <div className="text-2xl md:text-3xl font-bold text-orange-500">22</div>
                             <div className="text-sm text-gray-600">{t[language].minutes}</div>
                           </div>
                           <div className="text-center">
                             <div className="text-sm text-gray-600 mb-1">{t[language].currentCensus}</div>
-                            <div className="text-3xl font-bold text-gray-700">46</div>
+                            <div className="text-2xl md:text-3xl font-bold text-gray-700">46</div>
                             <div className="text-sm text-gray-600">{t[language].patients}</div>
                           </div>
                         </div>
 
                         {/* Wait Times for Discharge */}
-                        <div className="mb-6">
-                          <h4 className="font-semibold text-gray-900 mb-4">{language === 'en' ? 'Wait Times for Discharge' : 'Tiempos de Espera para el Alta'}</h4>
-                          <div className="flex gap-4">
+                        <div className="mb-4 md:mb-6">
+                          <h4 className="font-semibold text-gray-900 mb-3 md:mb-4 text-sm md:text-base">{language === 'en' ? 'Wait Times for Discharge' : 'Tiempos de Espera para el Alta'}</h4>
+                          <div className="flex gap-2 md:gap-4 overflow-x-auto">
                             {/* L1 */}
-                            <div className="text-center flex-1">
-                              <div className="w-3 h-3 bg-red-500 rounded-full mx-auto mb-2"></div>
+                            <div className="text-center flex-1 min-w-0">
+                              <div className="w-2 h-2 md:w-3 md:h-3 bg-red-500 rounded-full mx-auto mb-1 md:mb-2"></div>
                               <div className="text-xs font-medium text-gray-600 mb-1">L1</div>
                               <div className="text-xs text-gray-500 mb-1">Q: 3</div>
-                              <div className="text-sm font-bold text-green-600">&lt;15m</div>
+                              <div className="text-xs md:text-sm font-bold text-green-600">&lt;15m</div>
                             </div>
                             {/* L2 */}
-                            <div className="text-center flex-1">
-                              <div className="w-3 h-3 bg-orange-500 rounded-full mx-auto mb-2"></div>
+                            <div className="text-center flex-1 min-w-0">
+                              <div className="w-2 h-2 md:w-3 md:h-3 bg-orange-500 rounded-full mx-auto mb-1 md:mb-2"></div>
                               <div className="text-xs font-medium text-gray-600 mb-1">L2</div>
                               <div className="text-xs text-gray-500 mb-1">Q: 7</div>
-                              <div className="text-sm font-bold text-green-600">&lt;15m</div>
+                              <div className="text-xs md:text-sm font-bold text-green-600">&lt;15m</div>
                             </div>
                             {/* L3 */}
-                            <div className="text-center flex-1">
-                              <div className="w-3 h-3 bg-yellow-500 rounded-full mx-auto mb-2"></div>
+                            <div className="text-center flex-1 min-w-0">
+                              <div className="w-2 h-2 md:w-3 md:h-3 bg-yellow-500 rounded-full mx-auto mb-1 md:mb-2"></div>
                               <div className="text-xs font-medium text-gray-600 mb-1">L3</div>
                               <div className="text-xs text-gray-500 mb-1">Q: 19</div>
-                              <div className="text-sm font-bold text-orange-600">693m</div>
+                              <div className="text-xs md:text-sm font-bold text-orange-600">693m</div>
                             </div>
                             {/* L4 */}
-                            <div className="text-center flex-1">
-                              <div className="w-3 h-3 bg-blue-500 rounded-full mx-auto mb-2"></div>
+                            <div className="text-center flex-1 min-w-0">
+                              <div className="w-2 h-2 md:w-3 md:h-3 bg-blue-500 rounded-full mx-auto mb-1 md:mb-2"></div>
                               <div className="text-xs font-medium text-gray-600 mb-1">L4</div>
                               <div className="text-xs text-gray-500 mb-1">Q: 13</div>
-                              <div className="text-sm font-bold text-red-600">1020m</div>
+                              <div className="text-xs md:text-sm font-bold text-red-600">1020m</div>
                             </div>
                             {/* L5 */}
-                            <div className="text-center flex-1">
-                              <div className="w-3 h-3 bg-green-500 rounded-full mx-auto mb-2"></div>
+                            <div className="text-center flex-1 min-w-0">
+                              <div className="w-2 h-2 md:w-3 md:h-3 bg-green-500 rounded-full mx-auto mb-1 md:mb-2"></div>
                               <div className="text-xs font-medium text-gray-600 mb-1">L5</div>
                               <div className="text-xs text-gray-500 mb-1">Q: 3</div>
-                              <div className="text-sm font-bold text-red-600">943m</div>
+                              <div className="text-xs md:text-sm font-bold text-red-600">943m</div>
                             </div>
                           </div>
                         </div>
 
                         {/* Specialized Services */}
                         <div>
-                          <h4 className="font-semibold text-gray-900 mb-3 text-center">
+                          <h4 className="font-semibold text-gray-900 mb-3 text-center text-sm md:text-base">
                             {language === 'en' ? 'Specialized Services Available' : 'Servicios Especializados Disponibles'}
                           </h4>
                           <div className="space-y-2 mb-4">
-                            <div className="flex items-center justify-between p-3 bg-red-50 rounded-lg border border-red-200">
-                              <div className="flex items-center gap-3">
-                                <div className="w-8 h-8 bg-red-100 rounded-full flex items-center justify-center">
-                                  <Plus className="h-4 w-4 text-red-600" />
+                            <div className="flex items-center justify-between p-2 md:p-3 bg-red-50 rounded-lg border border-red-200">
+                              <div className="flex items-center gap-2 md:gap-3 min-w-0">
+                                <div className="w-6 h-6 md:w-8 md:h-8 bg-red-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                  <Plus className="h-3 w-3 md:h-4 md:w-4 text-red-600" />
                                 </div>
-                                <span className="font-medium text-red-900">
+                                <span className="font-medium text-red-900 text-xs md:text-sm truncate">
                                   {t[language].level1TraumaCenter}
                                 </span>
                               </div>
-                              <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                              <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-red-500 rounded-full flex-shrink-0"></div>
                             </div>
-                            <div className="flex items-center justify-between p-3 bg-pink-50 rounded-lg border border-pink-200">
-                              <div className="flex items-center gap-3">
-                                <div className="w-8 h-8 bg-pink-100 rounded-full flex items-center justify-center">
-                                  <Heart className="h-4 w-4 text-pink-600" />
+                            <div className="flex items-center justify-between p-2 md:p-3 bg-pink-50 rounded-lg border border-pink-200">
+                              <div className="flex items-center gap-2 md:gap-3 min-w-0">
+                                <div className="w-6 h-6 md:w-8 md:h-8 bg-pink-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                  <Heart className="h-3 w-3 md:h-4 md:w-4 text-pink-600" />
                                 </div>
-                                <span className="font-medium text-pink-900">
+                                <span className="font-medium text-pink-900 text-xs md:text-sm truncate">
                                   {t[language].atencionCardiaca}
                                 </span>
                               </div>
-                              <div className="w-2 h-2 bg-pink-500 rounded-full"></div>
+                              <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-pink-500 rounded-full flex-shrink-0"></div>
                             </div>
-                            <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg border border-blue-200">
-                              <div className="flex items-center gap-3">
-                                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                                  <Brain className="h-4 w-4 text-blue-600" />
+                            <div className="flex items-center justify-between p-2 md:p-3 bg-blue-50 rounded-lg border border-blue-200">
+                              <div className="flex items-center gap-2 md:gap-3 min-w-0">
+                                <div className="w-6 h-6 md:w-8 md:h-8 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                  <Brain className="h-3 w-3 md:h-4 md:w-4 text-blue-600" />
                                 </div>
-                                <span className="font-medium text-blue-900">
+                                <span className="font-medium text-blue-900 text-xs md:text-sm truncate">
                                   {language === 'en' ? 'Stroke Care' : 'Atención de Accidentes Cerebrovasculares'}
                                 </span>
                               </div>
-                              <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                              <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-blue-500 rounded-full flex-shrink-0"></div>
                             </div>
-                            <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg border border-green-200">
-                              <div className="flex items-center gap-3">
-                                <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-                                  <Activity className="h-4 w-4 text-green-600" />
+                            <div className="flex items-center justify-between p-2 md:p-3 bg-green-50 rounded-lg border border-green-200">
+                              <div className="flex items-center gap-2 md:gap-3 min-w-0">
+                                <div className="w-6 h-6 md:w-8 md:h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                  <Activity className="h-3 w-3 md:h-4 md:w-4 text-green-600" />
                                 </div>
-                                <span className="font-medium text-green-900">
+                                <span className="font-medium text-green-900 text-xs md:text-sm truncate">
                                   {language === 'en' ? 'Critical Care' : 'Cuidados Intensivos'}
                                 </span>
                               </div>
-                              <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                              <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-green-500 rounded-full flex-shrink-0"></div>
                             </div>
-                            <div className="flex items-center justify-between p-3 bg-purple-50 rounded-lg border border-purple-200">
-                              <div className="flex items-center gap-3">
-                                <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
-                                  <FirstAid className="h-4 w-4 text-purple-600" />
+                            <div className="flex items-center justify-between p-2 md:p-3 bg-purple-50 rounded-lg border border-purple-200">
+                              <div className="flex items-center gap-2 md:gap-3 min-w-0">
+                                <div className="w-6 h-6 md:w-8 md:h-8 bg-purple-100 rounded-full flex items-center justify-center flex-shrink-0">
+                                  <FirstAid className="h-3 w-3 md:h-4 md:w-4 text-purple-600" />
                                 </div>
-                                <span className="font-medium text-purple-900">
+                                <span className="font-medium text-purple-900 text-xs md:text-sm truncate">
                                   {language === 'en' ? 'Emergency Surgery' : 'Cirugía de Emergencia'}
                                 </span>
                               </div>
-                              <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                              <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-purple-500 rounded-full flex-shrink-0"></div>
                             </div>
                           </div>
 
                           {/* Directions and Call Buttons */}
-                          <div className="flex gap-2">
+                          <div className="flex flex-col sm:flex-row gap-2">
                             <Button 
-                              className="bg-blue-600 hover:bg-blue-700 text-white flex-1 flex items-center justify-center gap-2"
+                              className="bg-blue-600 hover:bg-blue-700 text-white flex-1 flex items-center justify-center gap-2 text-sm"
                               onClick={() => {
                                 const encodedAddress = encodeURIComponent('1000 W Carson St, Torrance, CA 90509')
                                 window.open(`https://www.google.com/maps/dir/?api=1&destination=${encodedAddress}`, '_blank')
@@ -1815,7 +1818,7 @@ function App() {
                               {t[language].directions}
                             </Button>
                             <Button 
-                              className="bg-green-600 hover:bg-green-700 text-white flex-1 flex items-center justify-center gap-2"
+                              className="bg-green-600 hover:bg-green-700 text-white flex-1 flex items-center justify-center gap-2 text-sm"
                               onClick={() => window.open('tel:(424) 306-5001', '_self')}
                             >
                               <Phone className="h-4 w-4" />
@@ -1828,11 +1831,11 @@ function App() {
                   ))}
                 </div>
                 {/* Right side - Video Play Button and ER Process Information */}
-                <div className="space-y-6">
+                <div className="space-y-4 md:space-y-6">
                   {/* Video Section */}
-                  <div className="bg-gray-50 rounded-lg p-6 flex flex-col items-center justify-center space-y-6">
+                  <div className="bg-gray-50 rounded-lg p-4 md:p-6 flex flex-col items-center justify-center space-y-4 md:space-y-6">
                     {/* Title */}
-                    <h3 className="text-lg font-semibold text-gray-900 text-center">
+                    <h3 className="text-base md:text-lg font-semibold text-gray-900 text-center">
                       {t[language].harborVideoInfo}
                     </h3>
                     
@@ -1841,14 +1844,14 @@ function App() {
                       href="https://m.youtube.com/watch?v=86z2k4zEOlw" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="group relative bg-white p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer border-2 border-gray-200 hover:border-blue-300"
+                      className="group relative bg-white p-6 md:p-8 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer border-2 border-gray-200 hover:border-blue-300"
                     >
                       <div className="relative flex items-center justify-center">
                         {/* Background circle */}
-                        <div className="w-20 h-20 bg-red-600 rounded-full flex items-center justify-center group-hover:bg-red-700 transition-colors duration-300 shadow-lg">
+                        <div className="w-16 h-16 md:w-20 md:h-20 bg-red-600 rounded-full flex items-center justify-center group-hover:bg-red-700 transition-colors duration-300 shadow-lg">
                           {/* Play icon */}
                           <Play 
-                            className="h-8 w-8 text-white ml-1" 
+                            className="h-6 w-6 md:h-8 md:w-8 text-white ml-1" 
                             fill="currentColor"
                           />
                         </div>
@@ -1859,7 +1862,7 @@ function App() {
                     </a>
                     
                     {/* Descriptive text */}
-                    <p className="text-sm text-gray-600 text-center max-w-60 leading-relaxed">
+                    <p className="text-xs md:text-sm text-gray-600 text-center max-w-60 leading-relaxed">
                       {language === 'en' 
                         ? 'Watch our video guide for Harbor facility information and emergency department procedures'
                         : 'Vea nuestra guía en video para información de las instalaciones de Harbor y procedimientos del departamento de emergencias'
@@ -1874,15 +1877,15 @@ function App() {
                   </div>
 
                   {/* ER Process Information */}
-                  <div className="bg-white rounded-lg border border-blue-200 p-6 shadow-sm">
-                    <h3 className="text-lg font-semibold text-blue-900 mb-4 flex items-center gap-2">
-                      <Info className="h-5 w-5 text-blue-600" />
+                  <div className="bg-white rounded-lg border border-blue-200 p-4 md:p-6 shadow-sm">
+                    <h3 className="text-base md:text-lg font-semibold text-blue-900 mb-4 flex items-center gap-2">
+                      <Info className="h-4 w-4 md:h-5 md:w-5 text-blue-600" />
                       {t[language].yourERVisitProcess}
                     </h3>
                     
-                    <div className="space-y-4 text-sm">
+                    <div className="space-y-3 md:space-y-4 text-xs md:text-sm">
                       {/* Step 1: Check-in */}
-                      <div className="border-l-4 border-blue-500 pl-4">
+                      <div className="border-l-4 border-blue-500 pl-3 md:pl-4">
                         <h4 className="font-semibold text-blue-900 mb-2">
                           {language === 'en' ? '1. Check-in' : '1. Registro'}
                         </h4>
@@ -1901,7 +1904,7 @@ function App() {
                       </div>
 
                       {/* Step 2: Triage */}
-                      <div className="border-l-4 border-orange-500 pl-4">
+                      <div className="border-l-4 border-orange-500 pl-3 md:pl-4">
                         <h4 className="font-semibold text-orange-900 mb-2">
                           {language === 'en' ? '2. Triage' : '2. Triaje'}
                         </h4>
@@ -1918,7 +1921,7 @@ function App() {
                       </div>
 
                       {/* Step 3: Registration */}
-                      <div className="border-l-4 border-green-500 pl-4">
+                      <div className="border-l-4 border-green-500 pl-3 md:pl-4">
                         <h4 className="font-semibold text-green-900 mb-2">
                           {language === 'en' ? '3. Registration' : '3. Registro'}
                         </h4>
@@ -1934,7 +1937,7 @@ function App() {
                       </div>
 
                         {/* Step 4: Testing & Treatment */}
-                        <div className="border-l-4 border-purple-500 pl-4">
+                        <div className="border-l-4 border-purple-500 pl-3 md:pl-4">
                           <h4 className="font-semibold text-purple-900 mb-2">
                             {language === 'en' ? '4. Testing & Treatment' : '4. Pruebas y Tratamiento'}
                           </h4>
@@ -1949,7 +1952,7 @@ function App() {
                         </div>
 
                         {/* Step 5: Care Areas */}
-                        <div className="border-l-4 border-indigo-500 pl-4">
+                        <div className="border-l-4 border-indigo-500 pl-3 md:pl-4">
                           <h4 className="font-semibold text-indigo-900 mb-2">
                             {language === 'en' ? '5. Care Areas' : '5. Áreas de Atención'}
                           </h4>
@@ -1964,7 +1967,7 @@ function App() {
                         </div>
 
                         {/* Step 6: Review of Results */}
-                        <div className="border-l-4 border-teal-500 pl-4">
+                        <div className="border-l-4 border-teal-500 pl-3 md:pl-4">
                           <h4 className="font-semibold text-teal-900 mb-2">
                             {language === 'en' ? '6. Review of Results' : '6. Revisión de Resultados'}
                           </h4>
@@ -1979,7 +1982,7 @@ function App() {
                         </div>
 
                         {/* Step 7: After Your ER Visit */}
-                        <div className="border-l-4 border-gray-500 pl-4">
+                        <div className="border-l-4 border-gray-500 pl-3 md:pl-4">
                           <h4 className="font-semibold text-gray-900 mb-2">
                             {language === 'en' ? '7. After Your ER Visit' : '7. Después de su Visita a ER'}
                           </h4>
@@ -2578,33 +2581,33 @@ function App() {
           </TabsContent>
 
           {/* Care Guide Tab */}
-          <TabsContent value="care-guide" className="space-y-6">
-            <div className="text-center mb-8">
-              <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Heart className="h-8 w-8 text-blue-600" />
+          <TabsContent value="care-guide" className="space-y-4 md:space-y-6">
+            <div className="text-center mb-6 md:mb-8">
+              <div className="bg-blue-100 w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6">
+                <Heart className="h-6 w-6 md:h-8 md:w-8 text-blue-600" />
               </div>
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">{t[language].emergencyCareGuidance}</h2>
-              <p className="text-gray-600 max-w-4xl mx-auto text-lg leading-relaxed">
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">{t[language].emergencyCareGuidance}</h2>
+              <p className="text-gray-600 max-w-4xl mx-auto text-sm md:text-lg leading-relaxed">
                 {t[language].emergencyCareGuidanceSubtitle}
               </p>
             </div>
 
             {/* Life-Threatening Emergency Alert */}
-            <div className="bg-red-50 border border-red-200 rounded-lg p-6 mb-8">
-              <div className="flex items-start justify-between">
-                <div className="flex items-start gap-4">
-                  <div className="bg-red-100 p-2 rounded-lg">
-                    <AlertTriangle className="h-6 w-6 text-red-600" />
+            <div className="bg-red-50 border border-red-200 rounded-lg p-4 md:p-6 mb-6 md:mb-8">
+              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
+                <div className="flex items-start gap-3 md:gap-4">
+                  <div className="bg-red-100 p-2 rounded-lg flex-shrink-0">
+                    <AlertTriangle className="h-5 w-5 md:h-6 md:w-6 text-red-600" />
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-red-900 mb-2">{t[language].lifeThreatening}</h3>
-                    <p className="text-red-800 leading-relaxed">
+                    <h3 className="text-base md:text-lg font-semibold text-red-900 mb-2">{t[language].lifeThreatening}</h3>
+                    <p className="text-red-800 leading-relaxed text-sm md:text-base">
                       {t[language].lifeThreateneingDescription}
                     </p>
                   </div>
                 </div>
                 <Button 
-                  className="bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-3"
+                  className="bg-red-600 hover:bg-red-700 text-white font-bold px-4 md:px-6 py-2 md:py-3 w-full sm:w-auto flex-shrink-0"
                   onClick={() => window.open('tel:911', '_self')}
                 >
                   <Phone className="h-4 w-4 mr-2" />
@@ -2615,43 +2618,45 @@ function App() {
 
 
             {/* Care Guide Navigation */}
-            <div className="flex border-b border-gray-200 mb-8">
-              <Button
-                variant={careGuideSection === 'recommendation' ? 'default' : 'ghost'}
-                onClick={() => setCareGuideSection('recommendation')}
-                className={`flex items-center gap-2 rounded-none border-b-2 px-6 py-3 ${
-                  careGuideSection === 'recommendation' 
-                    ? 'border-blue-600 bg-transparent text-blue-600 hover:bg-blue-50' 
-                    : 'border-transparent text-gray-600 hover:text-gray-900 hover:bg-gray-50'
-                }`}
-              >
-                <Heart className="h-4 w-4" />
-                {t[language].careRecommendation}
-              </Button>
-              <Button
-                variant={careGuideSection === 'options' ? 'default' : 'ghost'}
-                onClick={() => setCareGuideSection('options')}
-                className={`flex items-center gap-2 rounded-none border-b-2 px-6 py-3 ${
-                  careGuideSection === 'options' 
-                    ? 'border-blue-600 bg-transparent text-blue-600 hover:bg-blue-50' 
-                    : 'border-transparent text-gray-600 hover:text-gray-900 hover:bg-gray-50'
-                }`}
-              >
-                <MapPin className="h-4 w-4" />
-                {t[language].careOptions}
-              </Button>
-              <Button
-                variant={careGuideSection === 'prepare' ? 'default' : 'ghost'}
-                onClick={() => setCareGuideSection('prepare')}
-                className={`flex items-center gap-2 rounded-none border-b-2 px-6 py-3 ${
-                  careGuideSection === 'prepare' 
-                    ? 'border-blue-600 bg-transparent text-blue-600 hover:bg-blue-50' 
-                    : 'border-transparent text-gray-600 hover:text-gray-900 hover:bg-gray-50'
-                }`}
-              >
-                <Clock className="h-4 w-4" />
-                {t[language].prepareForVisit}
-              </Button>
+            <div className="border-b border-gray-200 mb-6 md:mb-8 overflow-x-auto">
+              <div className="flex min-w-max">
+                <Button
+                  variant={careGuideSection === 'recommendation' ? 'default' : 'ghost'}
+                  onClick={() => setCareGuideSection('recommendation')}
+                  className={`flex items-center gap-1 md:gap-2 rounded-none border-b-2 px-3 md:px-6 py-3 text-sm md:text-base whitespace-nowrap ${
+                    careGuideSection === 'recommendation' 
+                      ? 'border-blue-600 bg-transparent text-blue-600 hover:bg-blue-50' 
+                      : 'border-transparent text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                  }`}
+                >
+                  <Heart className="h-3 w-3 md:h-4 md:w-4" />
+                  {t[language].careRecommendation}
+                </Button>
+                <Button
+                  variant={careGuideSection === 'options' ? 'default' : 'ghost'}
+                  onClick={() => setCareGuideSection('options')}
+                  className={`flex items-center gap-1 md:gap-2 rounded-none border-b-2 px-3 md:px-6 py-3 text-sm md:text-base whitespace-nowrap ${
+                    careGuideSection === 'options' 
+                      ? 'border-blue-600 bg-transparent text-blue-600 hover:bg-blue-50' 
+                      : 'border-transparent text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                  }`}
+                >
+                  <MapPin className="h-3 w-3 md:h-4 md:w-4" />
+                  {t[language].careOptions}
+                </Button>
+                <Button
+                  variant={careGuideSection === 'prepare' ? 'default' : 'ghost'}
+                  onClick={() => setCareGuideSection('prepare')}
+                  className={`flex items-center gap-1 md:gap-2 rounded-none border-b-2 px-3 md:px-6 py-3 text-sm md:text-base whitespace-nowrap ${
+                    careGuideSection === 'prepare' 
+                      ? 'border-blue-600 bg-transparent text-blue-600 hover:bg-blue-50' 
+                      : 'border-transparent text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                  }`}
+                >
+                  <Clock className="h-3 w-3 md:h-4 md:w-4" />
+                  {t[language].prepareForVisit}
+                </Button>
+              </div>
             </div>
 
             {/* Care Guide Content */}
@@ -3665,16 +3670,16 @@ function App() {
             )}
 
             {careGuideSection === 'options' && (
-              <div className="space-y-8">
+              <div className="space-y-6 md:space-y-8">
                 {/* Header */}
                 <div className="text-left">
                   <div className="text-sm text-gray-600 mb-2">
                     {language === 'en' ? 'Alternative care facilities' : 'Instalaciones de atención alternativa'}
                   </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-4">
                     {language === 'en' ? 'Alternative Care Options' : 'Opciones de Atención Alternativa'}
                   </h3>
-                  <p className="text-gray-600 max-w-4xl">
+                  <p className="text-gray-600 max-w-4xl text-sm md:text-base">
                     {language === 'en' 
                       ? 'Find alternative care options near you with estimated costs and wait times.'
                       : 'Encuentre opciones de atención alternativa cerca de usted con costos y tiempos de espera estimados.'
@@ -3685,9 +3690,9 @@ function App() {
                 {/* Location Status Messages */}
                 <div>
                   {!locationEnabled && !userLocation && (
-                    <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 mb-4">
+                    <div className="bg-orange-50 border border-orange-200 rounded-lg p-3 md:p-4 mb-4">
                       <div className="flex items-start gap-3">
-                        <AlertTriangle className="h-5 w-5 text-orange-600 mt-0.5 flex-shrink-0" />
+                        <AlertTriangle className="h-4 w-4 md:h-5 md:w-5 text-orange-600 mt-0.5 flex-shrink-0" />
                         <div>
                           <div className="font-medium text-orange-900 text-sm">
                             {language === 'en' ? 'Location unavailable' : 'Ubicación no disponible'}
@@ -3702,9 +3707,9 @@ function App() {
 
                   {/* Location Success */}
                   {(locationEnabled || userLocation) && (
-                    <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-4">
+                    <div className="bg-green-50 border border-green-200 rounded-lg p-3 md:p-4 mb-4">
                       <div className="flex items-start gap-3">
-                        <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
+                        <CheckCircle className="h-4 w-4 md:h-5 md:w-5 text-green-600 mt-0.5 flex-shrink-0" />
                         <div>
                           <div className="font-medium text-green-900 text-sm">
                             {language === 'en' ? 'Location enabled - Sorted by proximity' : 'Ubicación habilitada - Ordenado por proximidad'}
@@ -3729,9 +3734,9 @@ function App() {
                   )}
 
                   {/* Manual Location Entry */}
-                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 md:p-4">
                     <div className="flex items-start gap-3">
-                      <MapPin className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                      <MapPin className="h-4 w-4 md:h-5 md:w-5 text-blue-600 mt-0.5 flex-shrink-0" />
                       <div className="flex-1">
                         <div className="font-medium text-blue-900 text-sm mb-2">
                           {language === 'en' ? 'Enter Zip Code for Proximity Sorting' : 'Ingrese Código Postal para Ordenar por Proximidad'}
@@ -3742,7 +3747,7 @@ function App() {
                             : 'Ingrese su código postal para ordenar los centros de atención urgente por proximidad a su ubicación.'
                           }
                         </div>
-                        <div className="flex gap-2">
+                        <div className="flex flex-col sm:flex-row gap-2">
                           <input 
                             type="text" 
                             value={manualZipCode}
@@ -3755,7 +3760,7 @@ function App() {
                             size="sm" 
                             onClick={handleZipCodeClassify}
                             disabled={!manualZipCode.trim() || isCalculatingProximity}
-                            className="bg-blue-600 hover:bg-blue-700 text-white px-4"
+                            className="bg-blue-600 hover:bg-blue-700 text-white px-4 w-full sm:w-auto"
                           >
                             {isCalculatingProximity ? (
                               <>
@@ -3783,10 +3788,10 @@ function App() {
                   </div>
 
                   {/* Cost Transparency Filter */}
-                  <div className="bg-white rounded-lg border border-gray-200 p-6">
+                  <div className="bg-white rounded-lg border border-gray-200 p-4 md:p-6">
                     <div className="flex items-center gap-3 mb-4">
-                      <Building className="h-5 w-5 text-green-600" />
-                      <h4 className="text-lg font-semibold text-gray-900">
+                      <Building className="h-4 w-4 md:h-5 md:w-5 text-green-600" />
+                      <h4 className="text-base md:text-lg font-semibold text-gray-900">
                         {language === 'en' ? 'Cost Transparency Filter' : 'Filtro de Transparencia de Costos'}
                       </h4>
                     </div>
@@ -3806,9 +3811,9 @@ function App() {
                       </SelectContent>
                     </Select>
 
-                    <div className="bg-green-50 border border-green-200 rounded-lg p-4 mt-4">
+                    <div className="bg-green-50 border border-green-200 rounded-lg p-3 md:p-4 mt-4">
                       <div className="flex items-start gap-2">
-                        <Info className="h-4 w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                        <Info className="h-3 w-3 md:h-4 md:w-4 text-green-600 mt-0.5 flex-shrink-0" />
                         <div className="text-green-800 text-xs leading-relaxed break-words">
                           {language === 'en' 
                             ? 'All costs shown are adapted to specific insurance plans including copays, coinsurance and out-of-pocket maximums'
@@ -3819,9 +3824,9 @@ function App() {
                     </div>
 
                     {careOptionsInsurance && (
-                      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-4">
+                      <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 md:p-4 mt-4">
                         <div className="flex items-center gap-2">
-                          <CheckCircle className="h-4 w-4 text-blue-600" />
+                          <CheckCircle className="h-3 w-3 md:h-4 md:w-4 text-blue-600" />
                           <div className="text-blue-800 text-sm font-medium">
                             {language === 'en' 
                               ? `Cost estimates updated for ${insuranceOptions.find(opt => opt.value === careOptionsInsurance)?.label}`
@@ -5032,8 +5037,8 @@ function App() {
         </Tabs>
 
         {/* Disclaimer */}
-        <div className="mt-8 p-4 bg-gray-50 border border-gray-200 rounded-lg">
-          <p className="text-sm text-gray-600 text-center">
+        <div className="mt-6 md:mt-8 p-3 md:p-4 bg-gray-50 border border-gray-200 rounded-lg">
+          <p className="text-xs md:text-sm text-gray-600 text-center">
             <strong>{t[language].important}</strong> {t[language].disclaimer}
           </p>
         </div>
