@@ -9,8 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { MapPin, Clock, RefreshCw, AlertTriangle, Heart, FirstAid, Phone, Thermometer, Pill, Eye, Plus, Globe, Info, X, Building, CaretDown, CaretUp, MagnifyingGlass, CheckCircle, Brain, Drop, Siren, Pulse, Tooth, Activity, Play } from '@phosphor-icons/react'
 // Removed QR code image import as we're using a play button instead
-import harborUCLALogo from '@/assets/images/harbor-ucla-logo.svg'
-import harborUCLAFullLogo from '@/assets/images/harbor-ucla-logo-full.svg'
+import harborUCLALogo from '@/assets/images/harbor-ucla-logo.png'
 
 interface Hospital {
   id: string
@@ -1628,47 +1627,13 @@ function App() {
                         {/* Hospital Header */}
                         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4 md:mb-6">
                           <div className="flex items-start gap-3 md:gap-4 min-w-0">
-                            {/* Harbor-UCLA Medical Center Logo styled like image */}
+                            {/* Harbor-UCLA Medical Center Logo */}
                             <div className="flex-shrink-0">
-                              <div className="flex items-center gap-2 md:gap-3">
-                                {/* Hexagonal logo with circular elements */}
-                                <div className="relative w-12 h-12 md:w-16 md:h-16">
-                                  {/* Outer light blue hexagon */}
-                                  <div className="absolute inset-0 bg-gradient-to-br from-sky-200 to-sky-300 transform rotate-0" 
-                                       style={{
-                                         clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'
-                                       }}>
-                                  </div>
-                                  
-                                  {/* Inner darker blue hexagon */}
-                                  <div className="absolute inset-1 md:inset-2 bg-gradient-to-br from-blue-600 to-blue-700 transform rotate-0" 
-                                       style={{
-                                         clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'
-                                       }}>
-                                  </div>
-                                  
-                                  {/* Central circular element with arcs */}
-                                  <div className="absolute inset-0 flex items-center justify-center">
-                                    <div className="relative w-6 h-6 md:w-8 md:h-8 bg-white rounded-full flex items-center justify-center">
-                                      {/* Stylized circular arcs representing medical/health */}
-                                      <div className="absolute inset-0.5 md:inset-1">
-                                        <div className="w-full h-full border-2 border-blue-600 rounded-full border-dashed opacity-60"></div>
-                                        <div className="absolute top-0.5 left-0.5 md:top-1 md:left-1 w-3 h-3 md:w-4 md:h-4 border-2 border-blue-600 rounded-full border-t-transparent border-r-transparent transform rotate-45"></div>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                
-                                {/* Text portion */}
-                                <div className="flex flex-col min-w-0">
-                                  <div className="text-blue-600 font-bold text-sm md:text-lg tracking-tight">
-                                    Harbor-UCLA
-                                  </div>
-                                  <div className="text-blue-600 font-medium text-xs tracking-widest uppercase">
-                                    Medical Center
-                                  </div>
-                                </div>
-                              </div>
+                              <img 
+                                src={harborUCLALogo} 
+                                alt="Harbor-UCLA Medical Center" 
+                                className="h-12 md:h-16 w-auto"
+                              />
                             </div>
                             <div className="flex items-center gap-2 mt-2">
                               <div className="w-2 h-2 bg-green-500 rounded-full"></div>
@@ -2010,44 +1975,11 @@ function App() {
                         <div className="flex items-center gap-4">
                           {/* Harbor Logo with styled design */}
                           <div className="flex-shrink-0">
-                            <div className="flex items-center gap-2">
-                              {/* Compact hexagonal logo */}
-                              <div className="relative w-10 h-10">
-                                {/* Outer light blue hexagon */}
-                                <div className="absolute inset-0 bg-gradient-to-br from-sky-200 to-sky-300" 
-                                     style={{
-                                       clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'
-                                     }}>
-                                </div>
-                                
-                                {/* Inner darker blue hexagon */}
-                                <div className="absolute inset-1 bg-gradient-to-br from-blue-600 to-blue-700" 
-                                     style={{
-                                       clipPath: 'polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)'
-                                     }}>
-                                </div>
-                                
-                                {/* Central circular element */}
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                  <div className="relative w-5 h-5 bg-white rounded-full flex items-center justify-center">
-                                    <div className="absolute inset-0.5">
-                                      <div className="w-full h-full border border-blue-600 rounded-full border-dashed opacity-60"></div>
-                                      <div className="absolute top-0.5 left-0.5 w-2 h-2 border border-blue-600 rounded-full border-t-transparent border-r-transparent transform rotate-45"></div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                              
-                              {/* Compact text */}
-                              <div className="flex flex-col">
-                                <div className="text-blue-600 font-bold text-sm">
-                                  Harbor-UCLA
-                                </div>
-                                <div className="text-blue-600 font-medium text-xs uppercase tracking-wide">
-                                  Medical Center
-                                </div>
-                              </div>
-                            </div>
+                            <img 
+                              src={harborUCLALogo} 
+                              alt="Harbor-UCLA Medical Center" 
+                              className="h-10 w-auto"
+                            />
                           </div>
                           <div>
                             <div className="flex items-center gap-4 text-sm text-gray-600 mt-1">
