@@ -682,8 +682,11 @@ function App() {
     if (manualZipCode.trim()) {
       const coords = getCoordinatesFromZip(manualZipCode.trim())
       if (coords) {
+        // Set manual location as user location to trigger proximity sorting
+        setUserLocation(coords)
         calculateProximity(coords)
         setLocationError('')
+        setLocationEnabled(true) // Mark location as enabled via zip code
       } else {
         setLocationError('Invalid or unsupported zip code')
       }
@@ -692,9 +695,14 @@ function App() {
 
   // Initialize urgent care locations on component mount
   useEffect(() => {
-    // Initialize with default sorting (alphabetical)
-    const sortedLocations = [...urgentCareData].sort((a, b) => a.name.localeCompare(b.name))
-    setUrgentCareLocations(sortedLocations)
+    // If user has location, prioritize proximity sorting
+    if (userLocation) {
+      calculateProximity(userLocation)
+    } else {
+      // Default to alphabetical sorting when no location
+      const sortedLocations = [...urgentCareData].sort((a, b) => a.name.localeCompare(b.name))
+      setUrgentCareLocations(sortedLocations)
+    }
   }, [language])
 
   // Auto-arrange by proximity when user location changes
@@ -3629,7 +3637,7 @@ function App() {
                         <CheckCircle className="h-5 w-5 text-green-600 mt-0.5 flex-shrink-0" />
                         <div>
                           <div className="font-medium text-green-900 text-sm">
-                            {language === 'en' ? 'Location enabled' : 'Ubicación habilitada'}
+                            {language === 'en' ? 'Location enabled - Sorted by proximity' : 'Ubicación habilitada - Ordenado por proximidad'}
                           </div>
                           <div className="text-green-700 text-xs mt-1">
                             {language === 'en' ? 'Urgent care centers are now sorted by distance from your location' : 'Los centros de atención urgente ahora están ordenados por distancia desde su ubicación'}
@@ -3656,12 +3664,12 @@ function App() {
                       <MapPin className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
                       <div className="flex-1">
                         <div className="font-medium text-blue-900 text-sm mb-2">
-                          {language === 'en' ? 'Enter Zip Code for Manual Location' : 'Ingrese Código Postal para Ubicación Manual'}
+                          {language === 'en' ? 'Enter Zip Code for Proximity Sorting' : 'Ingrese Código Postal para Ordenar por Proximidad'}
                         </div>
                         <div className="text-blue-700 text-xs mb-3">
                           {language === 'en' 
-                            ? 'Enter your zip code to classify urgent care centers by proximity to your location.'
-                            : 'Ingrese su código postal para clasificar los centros de atención urgente por proximidad a su ubicación.'
+                            ? 'Enter your zip code to sort urgent care centers by proximity to your location.'
+                            : 'Ingrese su código postal para ordenar los centros de atención urgente por proximidad a su ubicación.'
                           }
                         </div>
                         <div className="flex gap-2">
@@ -3687,11 +3695,19 @@ function App() {
                             ) : (
                               <>
                                 <MagnifyingGlass className="h-4 w-4 mr-1" />
-                                {language === 'en' ? 'Classify by Zip Code' : 'Clasificar por Código Postal'}
+                                {language === 'en' ? 'Sort by Proximity' : 'Ordenar por Proximidad'}
                               </>
                             )}
                           </Button>
                         </div>
+                        {(!userLocation && !locationEnabled) && (
+                          <div className="mt-2 text-blue-600 text-xs">
+                            {language === 'en' 
+                              ? 'Or allow location access in your browser for automatic sorting'
+                              : 'O permita el acceso a la ubicación en su navegador para ordenamiento automático'
+                            }
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
