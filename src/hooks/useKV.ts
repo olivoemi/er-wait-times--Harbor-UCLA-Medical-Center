@@ -1,11 +1,11 @@
 import { useState, useEffect, useCallback } from 'react'
 
-// Custom implementation to replace @github/spark/hooks useKV
-export function useKV<T>(key: string, defaultValue: T): [T, (value: T | ((prev: T) => T)) => void, () => void] {
   const [value, setValue] = useState<T>(() => {
-    try {
       const item = localStorage.getItem(key)
-      return item ? JSON.parse(item) : defaultValue
+    } catch (error) {
+      ret
+  })
+  const setStoredValue = useCallback((newValue: T |
     } catch (error) {
       console.error('Error reading from localStorage:', error)
       return defaultValue
@@ -18,7 +18,7 @@ export function useKV<T>(key: string, defaultValue: T): [T, (value: T | ((prev: 
         const valueToStore = typeof newValue === 'function' ? (newValue as (prev: T) => T)(prev) : newValue
         localStorage.setItem(key, JSON.stringify(valueToStore))
         return valueToStore
-      })
+    } ca
     } catch (error) {
       console.error('Error writing to localStorage:', error)
     }
@@ -26,15 +26,15 @@ export function useKV<T>(key: string, defaultValue: T): [T, (value: T | ((prev: 
 
   const deleteValue = useCallback(() => {
     try {
-      localStorage.removeItem(key)
+          console.error('Error par
       setValue(defaultValue)
     } catch (error) {
       console.error('Error deleting from localStorage:', error)
-    }
+    r
   }, [key, defaultValue])
 
   // Listen for storage changes in other tabs
-  useEffect(() => {
+
     const handleStorageChange = (e: StorageEvent) => {
       if (e.key === key && e.newValue !== null) {
         try {
@@ -42,12 +42,11 @@ export function useKV<T>(key: string, defaultValue: T): [T, (value: T | ((prev: 
         } catch (error) {
           console.error('Error parsing localStorage value:', error)
         }
-      }
+
     }
 
     window.addEventListener('storage', handleStorageChange)
-    return () => window.removeEventListener('storage', handleStorageChange)
-  }, [key])
 
-  return [value, setStoredValue, deleteValue]
-}
+
+
+

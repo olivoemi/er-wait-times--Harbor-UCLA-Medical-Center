@@ -1658,9 +1658,9 @@ function App() {
                           </div>
                         </div>
 
-                        {/* Wait Times by Condition Severity */}
+                        {/* Wait Times for Discharge */}
                         <div className="mb-6">
-                          <h4 className="font-semibold text-gray-900 mb-4">{t[language].waitTimesByConditionSeverity}</h4>
+                          <h4 className="font-semibold text-gray-900 mb-4">{language === 'en' ? 'Wait Times for Discharge' : 'Tiempos de Espera para el Alta'}</h4>
                           <div className="flex gap-4">
                             {/* L1 */}
                             <div className="text-center flex-1">
@@ -2203,7 +2203,7 @@ function App() {
                             <div className="bg-orange-100 p-3 rounded-lg">
                               <Clock className="h-6 w-6 text-orange-600" />
                             </div>
-                            <h4 className="text-xl font-semibold text-gray-900">{t[language].waitTimesByConditionSeverity}</h4>
+                            <h4 className="text-xl font-semibold text-gray-900">{language === 'en' ? 'Wait Times for Discharge' : 'Tiempos de Espera para el Alta'}</h4>
                           </div>
 
                           {/* Clean Summary Table */}
