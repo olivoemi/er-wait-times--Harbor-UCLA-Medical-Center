@@ -2,20 +2,20 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { AlertTriangle, RefreshCw } from "@phosphor-icons/react";
 
-interface ErrorFallbackProps {
-  error: Error;
-  resetErrorBoundary: () => void;
-}
 
-export function ErrorFallback({ error, resetErrorBoundary }: ErrorFallbackProps) {
-  // In development, throw the error to show the dev error overlay
-  // The parent UI will take care of showing a more helpful dialog.
-  if (import.meta.env.DEV) throw error;
+  // In develop
+  if (import.meta.env.DEV) throw 
+ 
 
-  return (
-    <div className="min-h-screen bg-background flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
-        <Alert variant="destructive" className="mb-6">
+          <AlertTriangle className="h-4 w-4" />
+            <h3 className="font-semibold">This spark has encounter
+              Something unexpected happened while running the appli
+          </div>
+
+          
+            {error.message}
+        </div>
+        <Button 
           <AlertTriangle className="h-4 w-4" />
           <div>
             <h3 className="font-semibold">This spark has encountered a runtime error</h3>
@@ -34,13 +34,12 @@ export function ErrorFallback({ error, resetErrorBoundary }: ErrorFallbackProps)
         
         <Button 
           onClick={resetErrorBoundary}
-          variant="outline"
-          className="w-full"
-        >
-          <RefreshCw className="h-4 w-4 mr-2" />
-          Try Again
-        </Button>
-      </div>
-    </div>
-  );
-}
+
+
+
+
+
+
+
+
+
