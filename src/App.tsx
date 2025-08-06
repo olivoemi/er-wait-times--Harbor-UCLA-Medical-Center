@@ -1985,26 +1985,13 @@ function App() {
                     <div className="bg-white border-b border-gray-200 p-6">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-4">
-                          {/* Healthcare Cross Logo */}
+                          {/* Harbor Logo with styled design */}
                           <div className="flex-shrink-0">
-                            <div className="bg-gradient-to-br from-red-500 to-red-700 text-white p-2 rounded-xl shadow-lg border border-red-400 flex items-center justify-center">
-                              <div className="relative w-6 h-6">
-                                {/* Enhanced Healthcare Cross */}
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                  <div className="bg-white w-4 h-1.5 rounded-full shadow-sm"></div>
-                                </div>
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                  <div className="bg-white w-1.5 h-4 rounded-full shadow-sm"></div>
-                                </div>
-                                {/* Add subtle glow effect */}
-                                <div className="absolute inset-0 flex items-center justify-center opacity-30">
-                                  <div className="bg-white w-4 h-1.5 rounded-full blur-sm"></div>
-                                </div>
-                                <div className="absolute inset-0 flex items-center justify-center opacity-30">
-                                  <div className="bg-white w-1.5 h-4 rounded-full blur-sm"></div>
-                                </div>
-                              </div>
-                            </div>
+                            <img 
+                              src={harborUCLALogo} 
+                              alt="Harbor-UCLA Medical Center" 
+                              className="h-10 w-auto"
+                            />
                           </div>
                           <div>
                             <div className="flex items-center gap-4 text-sm text-gray-600 mt-1">
