@@ -1307,7 +1307,7 @@ function App() {
                     disabled={isLoading}
                     className="flex items-center gap-2"
                   >
-                    <RefreshCw className={`h-4 w-4 ${isLoading ? 'animate-spin' : ''}`} />
+                    <span className="text-gray-600">•</span>
                     {t[language].refreshButton}
                   </Button>
                 </div>
