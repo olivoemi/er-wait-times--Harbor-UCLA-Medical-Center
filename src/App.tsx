@@ -1035,6 +1035,7 @@ function App() {
               <Button
                 size="sm"
                 className="bg-red-600 hover:bg-red-700 text-white font-bold px-4"
+                onClick={() => window.open('tel:911', '_self')}
               >
                 📞 911
               </Button>
@@ -1389,7 +1390,7 @@ function App() {
                 {/* Left side - Hospital Card */}
                 <div>
                   {sortedHospitals.map((hospital) => (
-                    <Card key={hospital.id} className="overflow-hidden">
+                    <Card key={hospital.id} className="overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-200">
                       <CardContent className="p-6">
                         {/* Hospital Header */}
                         <div className="flex items-start justify-between mb-6">
@@ -2317,8 +2318,11 @@ function App() {
                     </p>
                   </div>
                 </div>
-                <Button className="bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-3">
-                  ���� {t[language].call911}
+                <Button 
+                  className="bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-3"
+                  onClick={() => window.open('tel:911', '_self')}
+                >
+                  📞 {t[language].call911}
                 </Button>
               </div>
             </div>
@@ -2638,7 +2642,10 @@ function App() {
 
                               {/* Action Buttons */}
                               <div className="flex gap-4">
-                                <Button className="bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-3">
+                                <Button 
+                                  className="bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-3"
+                                  onClick={() => window.open('tel:911', '_self')}
+                                >
                                   <Phone className="h-4 w-4 mr-2" />
                                   {language === 'en' ? 'Call 911' : 'Llamar 911'}
                                 </Button>
@@ -4256,7 +4263,10 @@ function App() {
                           : 'No espere a reunir elementos. Vaya inmediatamente o llame al 911. Su seguridad es lo primero.'
                         }
                       </p>
-                      <Button className="bg-red-600 hover:bg-red-700 text-white text-sm px-4 py-2">
+                      <Button 
+                        className="bg-red-600 hover:bg-red-700 text-white text-sm px-4 py-2"
+                        onClick={() => window.open('tel:911', '_self')}
+                      >
                         <Phone className="h-4 w-4 mr-2" />
                         {language === 'en' ? 'Call 911 Now' : 'Llamar 911 Ahora'}
                       </Button>
@@ -4596,24 +4606,33 @@ function App() {
                       </h4>
                       
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div className="bg-white border border-red-300 rounded-lg p-4 text-center">
+                        <button 
+                          className="bg-white border border-red-300 rounded-lg p-4 text-center hover:bg-red-50 transition-colors w-full"
+                          onClick={() => window.open('tel:911', '_self')}
+                        >
                           <div className="text-2xl font-bold text-red-600 mb-1">911</div>
                           <div className="text-sm font-medium text-red-900">
                             {language === 'en' ? 'Emergency Services' : 'Servicios de Emergencia'}
                           </div>
-                        </div>
-                        <div className="bg-white border border-red-300 rounded-lg p-4 text-center">
+                        </button>
+                        <button 
+                          className="bg-white border border-red-300 rounded-lg p-4 text-center hover:bg-blue-50 transition-colors w-full"
+                          onClick={() => window.open('tel:18002221222', '_self')}
+                        >
                           <div className="text-lg font-bold text-blue-600 mb-1">1-800-222-1222</div>
                           <div className="text-sm font-medium text-blue-900">
                             {language === 'en' ? 'Poison Control' : 'Control de Envenenamiento'}
                           </div>
-                        </div>
-                        <div className="bg-white border border-red-300 rounded-lg p-4 text-center">
+                        </button>
+                        <button 
+                          className="bg-white border border-red-300 rounded-lg p-4 text-center hover:bg-blue-50 transition-colors w-full"
+                          onClick={() => window.open('tel:18007332767', '_self')}
+                        >
                           <div className="text-lg font-bold text-blue-600 mb-1">1-800-733-2767</div>
                           <div className="text-sm font-medium text-blue-900">
                             {language === 'en' ? 'Red Cross' : 'Cruz Roja'}
                           </div>
-                        </div>
+                        </button>
                       </div>
                     </div>
                   </div>

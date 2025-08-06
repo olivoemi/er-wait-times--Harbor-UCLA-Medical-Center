@@ -81,3 +81,29 @@ body {
   overflow-wrap: break-word;
   hyphens: auto;
 }
+
+/* Enhanced focus styles for accessibility */
+button:focus-visible,
+a:focus-visible,
+[role="button"]:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Smooth transitions for interactive elements */
+button,
+a,
+[role="button"] {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Ensure clickable phone numbers have proper styling */
+a[href^="tel:"] {
+  color: inherit;
+  text-decoration: none;
+}
+
+a[href^="tel:"]:hover {
+  text-decoration: underline;
+}
