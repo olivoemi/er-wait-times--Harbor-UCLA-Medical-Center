@@ -1221,14 +1221,21 @@ function App() {
           <div className="flex items-center justify-between">
             {/* Logo and Title */}
             <div className="flex items-center gap-3">
-              <div className="bg-red-600 text-white p-2 rounded-lg shadow-md">
-                <div className="relative w-6 h-6">
-                  {/* Healthcare Cross */}
+              <div className="bg-gradient-to-br from-red-500 to-red-700 text-white p-3 rounded-xl shadow-lg border border-red-400">
+                <div className="relative w-7 h-7">
+                  {/* Enhanced Healthcare Cross */}
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="bg-white w-5 h-1.5 rounded-sm"></div>
+                    <div className="bg-white w-6 h-2 rounded-full shadow-sm"></div>
                   </div>
                   <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="bg-white w-1.5 h-5 rounded-sm"></div>
+                    <div className="bg-white w-2 h-6 rounded-full shadow-sm"></div>
+                  </div>
+                  {/* Add subtle glow effect */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-30">
+                    <div className="bg-white w-6 h-2 rounded-full blur-sm"></div>
+                  </div>
+                  <div className="absolute inset-0 flex items-center justify-center opacity-30">
+                    <div className="bg-white w-2 h-6 rounded-full blur-sm"></div>
                   </div>
                 </div>
               </div>
