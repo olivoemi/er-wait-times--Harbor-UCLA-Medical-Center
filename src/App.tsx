@@ -1037,7 +1037,8 @@ function App() {
                 className="bg-red-600 hover:bg-red-700 text-white font-bold px-4"
                 onClick={() => window.open('tel:911', '_self')}
               >
-                📞 911
+                <Phone className="h-4 w-4 mr-1" />
+                911
               </Button>
             </div>
           </div>
@@ -2318,8 +2319,12 @@ function App() {
                     </p>
                   </div>
                 </div>
-                <Button className="bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-3">
-                  ���� {t[language].call911}
+                <Button 
+                  className="bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-3"
+                  onClick={() => window.open('tel:911', '_self')}
+                >
+                  <Phone className="h-4 w-4 mr-2" />
+                  {t[language].call911}
                 </Button>
               </div>
             </div>
@@ -2639,7 +2644,10 @@ function App() {
 
                               {/* Action Buttons */}
                               <div className="flex gap-4">
-                                <Button className="bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-3">
+                                <Button 
+                                  className="bg-red-600 hover:bg-red-700 text-white font-bold px-6 py-3"
+                                  onClick={() => window.open('tel:911', '_self')}
+                                >
                                   <Phone className="h-4 w-4 mr-2" />
                                   {language === 'en' ? 'Call 911' : 'Llamar 911'}
                                 </Button>
@@ -4257,7 +4265,10 @@ function App() {
                           : 'No espere a reunir elementos. Vaya inmediatamente o llame al 911. Su seguridad es lo primero.'
                         }
                       </p>
-                      <Button className="bg-red-600 hover:bg-red-700 text-white text-sm px-4 py-2">
+                      <Button 
+                        className="bg-red-600 hover:bg-red-700 text-white text-sm px-4 py-2"
+                        onClick={() => window.open('tel:911', '_self')}
+                      >
                         <Phone className="h-4 w-4 mr-2" />
                         {language === 'en' ? 'Call 911 Now' : 'Llamar 911 Ahora'}
                       </Button>
