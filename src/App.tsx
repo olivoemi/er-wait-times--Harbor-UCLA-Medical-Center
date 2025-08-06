@@ -9,7 +9,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { MapPin, Clock, RefreshCw, AlertTriangle, Heart, FirstAid, Phone, Thermometer, Pill, Eye, Plus, Globe, Info, X, Building, CaretDown, CaretUp, MagnifyingGlass, CheckCircle, Brain, Drop, Siren, Pulse, Tooth, Activity, Play } from '@phosphor-icons/react'
 // Removed QR code image import as we're using a play button instead
-import harborUCLALogo from '@/assets/images/harbor-ucla-logo.png'
 
 interface Hospital {
   id: string
@@ -1627,13 +1626,26 @@ function App() {
                         {/* Hospital Header */}
                         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4 md:mb-6">
                           <div className="flex items-start gap-3 md:gap-4 min-w-0">
-                            {/* Harbor-UCLA Medical Center Logo */}
+                            {/* Healthcare Cross Logo */}
                             <div className="flex-shrink-0">
-                              <img 
-                                src={harborUCLALogo} 
-                                alt="Harbor-UCLA Medical Center" 
-                                className="h-12 md:h-16 w-auto"
-                              />
+                              <div className="bg-gradient-to-br from-red-500 to-red-700 text-white p-2 rounded-xl shadow-lg border border-red-400 flex items-center justify-center">
+                                <div className="relative w-8 h-8">
+                                  {/* Enhanced Healthcare Cross */}
+                                  <div className="absolute inset-0 flex items-center justify-center">
+                                    <div className="bg-white w-6 h-2 rounded-full shadow-sm"></div>
+                                  </div>
+                                  <div className="absolute inset-0 flex items-center justify-center">
+                                    <div className="bg-white w-2 h-6 rounded-full shadow-sm"></div>
+                                  </div>
+                                  {/* Add subtle glow effect */}
+                                  <div className="absolute inset-0 flex items-center justify-center opacity-30">
+                                    <div className="bg-white w-6 h-2 rounded-full blur-sm"></div>
+                                  </div>
+                                  <div className="absolute inset-0 flex items-center justify-center opacity-30">
+                                    <div className="bg-white w-2 h-6 rounded-full blur-sm"></div>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
                             <div className="flex items-center gap-2 mt-2">
                               <div className="w-2 h-2 bg-green-500 rounded-full"></div>
@@ -1973,13 +1985,26 @@ function App() {
                     <div className="bg-white border-b border-gray-200 p-6">
                       <div className="flex items-center justify-between">
                         <div className="flex items-center gap-4">
-                          {/* Harbor Logo with styled design */}
+                          {/* Healthcare Cross Logo */}
                           <div className="flex-shrink-0">
-                            <img 
-                              src={harborUCLALogo} 
-                              alt="Harbor-UCLA Medical Center" 
-                              className="h-10 w-auto"
-                            />
+                            <div className="bg-gradient-to-br from-red-500 to-red-700 text-white p-2 rounded-xl shadow-lg border border-red-400 flex items-center justify-center">
+                              <div className="relative w-6 h-6">
+                                {/* Enhanced Healthcare Cross */}
+                                <div className="absolute inset-0 flex items-center justify-center">
+                                  <div className="bg-white w-4 h-1.5 rounded-full shadow-sm"></div>
+                                </div>
+                                <div className="absolute inset-0 flex items-center justify-center">
+                                  <div className="bg-white w-1.5 h-4 rounded-full shadow-sm"></div>
+                                </div>
+                                {/* Add subtle glow effect */}
+                                <div className="absolute inset-0 flex items-center justify-center opacity-30">
+                                  <div className="bg-white w-4 h-1.5 rounded-full blur-sm"></div>
+                                </div>
+                                <div className="absolute inset-0 flex items-center justify-center opacity-30">
+                                  <div className="bg-white w-1.5 h-4 rounded-full blur-sm"></div>
+                                </div>
+                              </div>
+                            </div>
                           </div>
                           <div>
                             <div className="flex items-center gap-4 text-sm text-gray-600 mt-1">
