@@ -3790,12 +3790,10 @@ function App() {
                   {/* Cost Transparency Filter */}
                   <div className="bg-white rounded-lg border border-gray-200 p-4 md:p-6">
                     <div className="flex items-center gap-3 mb-4">
-                      <Building className="h-4 w-4 md:h-5 md:w-5 text-green-600" />
-                      <h4 className="text-base md:text-lg font-semibold text-gray-900">
                         {language === 'en' ? 'Cost Transparency Filter' : 'Filtro de Transparencia de Costos'}
                       </h4>
-                    </div>
-                    
+                        {language === 'en' ? 'Cost Transparency Filter' : 'Filtro de Transparencia de Costos'}
+                      </h4>
                     <Select value={careOptionsInsurance} onValueChange={setCareOptionsInsurance}>
                       <SelectTrigger className="w-full">
                         <SelectValue placeholder={
@@ -3813,11 +3811,11 @@ function App() {
 
                     <div className="bg-green-50 border border-green-200 rounded-lg p-3 md:p-4 mt-4">
                       <div className="flex items-start gap-2">
-                        <Info className="h-3 w-3 md:h-4 md:w-4 text-green-600 mt-0.5 flex-shrink-0" />
+                    <div className="bg-green-50 border border-green-200 rounded-lg p-3 md:p-4 mt-4">
                         <div className="text-green-800 text-xs leading-relaxed break-words">
-                          {language === 'en' 
+                        <Info className="h-3 w-3 md:h-4 md:w-4 text-green-600 mt-0.5 flex-shrink-0" />
                             ? 'All costs shown are adapted to specific insurance plans including copays, coinsurance and out-of-pocket maximums'
-                            : 'Todos los costos mostrados están adaptados a planes de seguro específicos incluyendo copagos, coseguro y máximos de gastos de bolsillo'
+                          {language === 'en' gastos de bolsillo'
                           }
                         </div>
                       </div>
@@ -3826,11 +3824,11 @@ function App() {
                     {careOptionsInsurance && (
                       <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 md:p-4 mt-4">
                         <div className="flex items-center gap-2">
-                          <CheckCircle className="h-3 w-3 md:h-4 md:w-4 text-blue-600" />
+                      <div className="bg-blue-50 border border-blue-200 rounded-lg p-3 md:p-4 mt-4">
                           <div className="text-blue-800 text-sm font-medium">
-                            {language === 'en' 
+                          <CheckCircle className="h-3 w-3 md:h-4 md:w-4 text-blue-600" />
                               ? `Cost estimates updated for ${insuranceOptions.find(opt => opt.value === careOptionsInsurance)?.label}`
-                              : `Estimaciones de costo actualizadas para ${insuranceOptions.find(opt => opt.value === careOptionsInsurance)?.label}`
+                            {language === 'en' ce)?.label}`
                             }
                           </div>
                         </div>
@@ -5039,12 +5037,10 @@ function App() {
         {/* Disclaimer */}
         <div className="mt-6 md:mt-8 p-3 md:p-4 bg-gray-50 border border-gray-200 rounded-lg">
           <p className="text-xs md:text-sm text-gray-600 text-center">
-            <strong>{t[language].important}</strong> {t[language].disclaimer}
-          </p>
         </div>
       </div>
-    </div>
-  );
+            <strong>{t[language].important}</strong> {t[language].disclaimer}
+          </p>
 }
 
 export default App
