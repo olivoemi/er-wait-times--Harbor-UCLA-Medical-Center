@@ -2650,7 +2650,7 @@ function App() {
                                   onClick={() => window.open('tel:911', '_self')}
                                 >
                                   <Phone className="h-4 w-4 mr-2" />
-                                  911
+                                  {language === 'en' ? 'Call 911' : 'Llamar 911'}
                                 </Button>
                                 <Button 
                                   variant="outline" 
@@ -4267,11 +4267,11 @@ function App() {
                         }
                       </p>
                       <Button 
-                        className="bg-red-600 hover:bg-red-700 text-white font-bold text-sm px-4 py-2"
+                        className="bg-red-600 hover:bg-red-700 text-white text-sm px-4 py-2"
                         onClick={() => window.open('tel:911', '_self')}
                       >
                         <Phone className="h-4 w-4 mr-2" />
-                        911
+                        {language === 'en' ? 'Call 911 Now' : 'Llamar 911 Ahora'}
                       </Button>
                     </div>
                   </div>
