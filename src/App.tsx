@@ -81,7 +81,7 @@ function App() {
   // Translation object
   const t = {
     en: {
-      title: 'ER Wait Times',
+      title: 'Harbor Medical Center',
       waitTimes: 'Wait Times',
       careGuide: 'Care Guide',
       emergency: '911',
@@ -227,7 +227,7 @@ function App() {
       level5: 'Level 5'
     },
     es: {
-      title: 'ER Wait Times',
+      title: 'Harbor Medical Center',
       waitTimes: 'Tiempos de Espera',
       careGuide: 'Guía de Atención',
       emergency: '911',
@@ -1951,12 +1951,12 @@ function App() {
                                 <Globe className="h-4 w-4 text-gray-600" />
                                 <div>
                                   <a 
-                                    href="https://dhs.lacounty.gov/harbor-ucla-medical-center/" 
+                                    href="https://harborucla.org/" 
                                     target="_blank" 
                                     rel="noopener noreferrer"
                                     className="text-blue-600 hover:text-blue-800 font-medium"
                                   >
-                                    dhs.lacounty.gov/harbor-ucla-medical-center/
+                                    harborucla.org
                                   </a>
                                   <div className="text-sm text-gray-600">{t[language].officialWebsite}</div>
                                 </div>
