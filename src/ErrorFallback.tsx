@@ -2,20 +2,21 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { AlertTriangle, RefreshCw } from "@phosphor-icons/react";
 
+interface ErrorFallbackProps {
+  error: Error;
+  resetErrorBoundary: () => void;
+}
 
-  // In develop
-  if (import.meta.env.DEV) throw 
- 
+export function ErrorFallback({ error, resetErrorBoundary }: ErrorFallbackProps) {
+  // In development, also throw the error to the console for better debugging
+  if (import.meta.env.DEV) {
+    console.error("Error caught by ErrorFallback:", error);
+  }
 
-          <AlertTriangle className="h-4 w-4" />
-            <h3 className="font-semibold">This spark has encounter
-              Something unexpected happened while running the appli
-          </div>
-
-          
-            {error.message}
-        </div>
-        <Button 
+  return (
+    <div className="min-h-screen bg-background flex items-center justify-center p-4">
+      <div className="max-w-md w-full space-y-6">
+        <Alert variant="destructive">
           <AlertTriangle className="h-4 w-4" />
           <div>
             <h3 className="font-semibold">This spark has encountered a runtime error</h3>
@@ -34,12 +35,13 @@ import { AlertTriangle, RefreshCw } from "@phosphor-icons/react";
         
         <Button 
           onClick={resetErrorBoundary}
-
-
-
-
-
-
-
-
-
+          className="w-full"
+          variant="outline"
+        >
+          <RefreshCw className="h-4 w-4 mr-2" />
+          Try Again
+        </Button>
+      </div>
+    </div>
+  );
+}
