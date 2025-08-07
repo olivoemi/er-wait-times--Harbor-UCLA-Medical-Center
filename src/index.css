@@ -82,6 +82,31 @@ body {
   hyphens: auto;
 }
 
+/* Prevent text breaking where it shouldn't */
+.whitespace-nowrap {
+  white-space: nowrap !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Better handling of flex and grid containers */
+.flex {
+  flex-wrap: wrap;
+}
+
+.grid {
+  word-break: normal;
+}
+
+/* Button text should never break */
+button {
+  white-space: nowrap;
+}
+
+button span {
+  white-space: nowrap;
+}
+
 /* Enhanced focus styles for accessibility */
 button:focus-visible,
 a:focus-visible,
@@ -149,5 +174,93 @@ a[href^="tel:"]:hover {
   /* Full width buttons on mobile */
   .mobile-full-width {
     width: 100%;
+  }
+  
+  /* Fix text wrapping issues on mobile */
+  h1, h2, h3, h4, h5, h6 {
+    word-break: keep-all;
+    overflow-wrap: normal;
+    hyphens: none;
+    white-space: normal;
+  }
+  
+  /* Prevent awkward breaking in titles and labels */
+  .text-lg, .text-xl, .text-2xl, .text-3xl {
+    word-break: keep-all;
+    overflow-wrap: normal;
+  }
+  
+  /* Special handling for titles that should wrap gracefully */
+  .text-2xl, .text-3xl {
+    white-space: normal;
+    line-height: 1.2;
+  }
+  
+  /* Allow wrapping only when necessary */
+  .font-semibold, .font-bold {
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    hyphens: none;
+  }
+  
+  /* Better paragraph text handling */
+  p, .text-sm, .text-xs {
+    word-break: normal;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    line-height: 1.6;
+  }
+  
+  /* Header specific fixes */
+  header h1 {
+    font-size: 1.125rem !important;
+    line-height: 1.4 !important;
+    white-space: nowrap;
+  }
+  
+  /* Card title fixes */
+  .card-title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  /* Button text fixes */
+  button span {
+    white-space: nowrap;
+  }
+  
+  /* Flex container adjustments */
+  .flex {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  
+  /* Grid responsive adjustments */
+  .grid {
+    gap: 0.75rem;
+  }
+  
+  /* Navigation tab fixes */
+  .tabs-list {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+  
+  /* Prevent breaking in navigation items */
+  [role="tab"] {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  
+  /* Header container improvements */
+  header .container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  /* Specific fix for the main title area */
+  .flex.items-center.justify-between {
+    gap: 0.5rem;
   }
 }

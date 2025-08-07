@@ -1216,9 +1216,9 @@ function App() {
       {/* Header */}
       <header className="bg-white border-b border-gray-200 shadow-sm">
         <div className="container mx-auto px-4 py-3">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between gap-2">
             {/* Logo and Title */}
-            <div className="flex items-center gap-2 md:gap-3 min-w-0">
+            <div className="flex items-center gap-2 md:gap-3 min-w-0 flex-1">
               <div className="bg-gradient-to-br from-red-500 to-red-700 text-white p-2 md:p-3 rounded-xl shadow-lg border border-red-400 flex-shrink-0">
                 <div className="relative w-5 h-5 md:w-7 md:h-7">
                   {/* Enhanced Healthcare Cross */}
@@ -1237,7 +1237,7 @@ function App() {
                   </div>
                 </div>
               </div>
-              <h1 className="text-lg md:text-xl font-semibold text-gray-900 truncate">
+              <h1 className="text-lg md:text-xl font-semibold text-gray-900 whitespace-nowrap overflow-hidden text-ellipsis flex-1 min-w-0">
                 {t[language].title}
               </h1>
             </div>
@@ -1249,26 +1249,26 @@ function App() {
                 variant="outline"
                 size="sm"
                 onClick={() => setLanguage(language === 'en' ? 'es' : 'en')}
-                className="flex items-center gap-1 md:gap-2 text-white border-2 border-yellow-400 hover:bg-yellow-500 hover:border-yellow-500 font-bold shadow-lg bg-gradient-to-r from-blue-600 to-blue-700 transition-all duration-200 hover:scale-105 px-2 md:px-4 py-2"
+                className="flex items-center gap-1 md:gap-2 text-white border-2 border-yellow-400 hover:bg-yellow-500 hover:border-yellow-500 font-bold shadow-lg bg-gradient-to-r from-blue-600 to-blue-700 transition-all duration-200 hover:scale-105 px-2 md:px-4 py-2 whitespace-nowrap"
               >
-                <Globe className="h-3 w-3 md:h-4 md:w-4" />
-                <span className="text-xs md:text-sm font-semibold hidden sm:inline">
+                <Globe className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
+                <span className="text-xs md:text-sm font-semibold hidden sm:inline whitespace-nowrap">
                   {language === 'en' ? 'English' : 'Español'}
                 </span>
-                <span className="text-xs font-semibold sm:hidden">
+                <span className="text-xs font-semibold sm:hidden whitespace-nowrap">
                   {language === 'en' ? 'EN' : 'ES'}
                 </span>
               </Button>
 
               {/* Emergency Button */}
-              <span className="text-gray-600 text-xs md:text-sm hidden md:inline">{t[language].emergencyLabel}</span>
+              <span className="text-gray-600 text-xs md:text-sm hidden md:inline whitespace-nowrap">{t[language].emergencyLabel}</span>
               <Button
                 size="sm"
-                className="bg-red-600 hover:bg-red-700 text-white font-bold px-2 md:px-4"
+                className="bg-red-600 hover:bg-red-700 text-white font-bold px-2 md:px-4 whitespace-nowrap"
                 onClick={() => window.open('tel:911', '_self')}
               >
-                <Phone className="h-3 w-3 md:h-4 md:w-4 mr-1" />
-                911
+                <Phone className="h-3 w-3 md:h-4 md:w-4 mr-1 flex-shrink-0" />
+                <span className="whitespace-nowrap">911</span>
               </Button>
             </div>
           </div>
@@ -1276,20 +1276,20 @@ function App() {
           {/* Navigation Tabs */}
           <div className="mt-4">
             <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-              <TabsList className="bg-transparent h-auto p-0 gap-3 md:gap-6">
+              <TabsList className="bg-transparent h-auto p-0 gap-3 md:gap-6 overflow-x-auto">
                 <TabsTrigger 
                   value="wait-times" 
-                  className="flex items-center gap-1 md:gap-2 bg-transparent text-gray-600 hover:text-gray-900 data-[state=active]:bg-transparent data-[state=active]:text-gray-900 data-[state=active]:border-b-2 data-[state=active]:border-blue-600 rounded-none pb-2 font-medium text-sm md:text-base"
+                  className="flex items-center gap-1 md:gap-2 bg-transparent text-gray-600 hover:text-gray-900 data-[state=active]:bg-transparent data-[state=active]:text-gray-900 data-[state=active]:border-b-2 data-[state=active]:border-blue-600 rounded-none pb-2 font-medium text-sm md:text-base whitespace-nowrap flex-shrink-0"
                 >
-                  <Clock className="h-3 w-3 md:h-4 md:w-4" />
-                  {t[language].waitTimes}
+                  <Clock className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
+                  <span className="whitespace-nowrap">{t[language].waitTimes}</span>
                 </TabsTrigger>
                 <TabsTrigger 
                   value="care-guide" 
-                  className="flex items-center gap-1 md:gap-2 bg-transparent text-gray-600 hover:text-gray-900 data-[state=active]:bg-transparent data-[state=active]:text-gray-900 data-[state=active]:border-b-2 data-[state=active]:border-blue-600 rounded-none pb-2 font-medium text-sm md:text-base"
+                  className="flex items-center gap-1 md:gap-2 bg-transparent text-gray-600 hover:text-gray-900 data-[state=active]:bg-transparent data-[state=active]:text-gray-900 data-[state=active]:border-b-2 data-[state=active]:border-blue-600 rounded-none pb-2 font-medium text-sm md:text-base whitespace-nowrap flex-shrink-0"
                 >
-                  <FirstAid className="h-3 w-3 md:h-4 md:w-4" />
-                  {t[language].careGuide}
+                  <FirstAid className="h-3 w-3 md:h-4 md:w-4 flex-shrink-0" />
+                  <span className="whitespace-nowrap">{t[language].careGuide}</span>
                 </TabsTrigger>
               </TabsList>
             </Tabs>
@@ -1306,8 +1306,8 @@ function App() {
               {/* Title and Status Row */}
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">{t[language].emergencyDepartments}</h2>
-                  <p className="text-gray-600 text-sm md:text-base">{t[language].realTimeWaitTimes}</p>
+                  <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2 break-words">{t[language].emergencyDepartments}</h2>
+                  <p className="text-gray-600 text-sm md:text-base break-words">{t[language].realTimeWaitTimes}</p>
                 </div>
                 <div className="flex flex-wrap items-center gap-2 md:gap-4">
                   <div className="flex items-center gap-2">
@@ -1336,8 +1336,8 @@ function App() {
                 <div className="flex items-start gap-3">
                   <Info className="h-5 w-5 text-blue-600 mt-0.5 flex-shrink-0" />
                   <div>
-                    <h3 className="font-semibold text-blue-900 mb-2 text-sm md:text-base">{t[language].howSystemWorks}</h3>
-                    <p className="text-blue-800 text-xs md:text-sm leading-relaxed">{t[language].systemDescription}</p>
+                    <h3 className="font-semibold text-blue-900 mb-2 text-sm md:text-base whitespace-nowrap">{t[language].howSystemWorks}</h3>
+                    <p className="text-blue-800 text-xs md:text-sm leading-relaxed break-words">{t[language].systemDescription}</p>
                   </div>
                 </div>
               </div>
@@ -1345,8 +1345,8 @@ function App() {
               {/* Emergency Condition Severity Levels */}
               <div className="space-y-4 md:space-y-6">
                 <div>
-                  <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2">{t[language].conditionSeverityLevels}</h3>
-                  <p className="text-gray-600 text-sm md:text-base">{t[language].acuityDescription}</p>
+                  <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-2 break-words">{t[language].conditionSeverityLevels}</h3>
+                  <p className="text-gray-600 text-sm md:text-base break-words">{t[language].acuityDescription}</p>
                 </div>
 
                 {/* Acuity Level Cards */}
@@ -1358,7 +1358,7 @@ function App() {
                         <div className="w-5 h-5 md:w-6 md:h-6 bg-red-500 rounded-full flex items-center justify-center">
                           <span className="text-white text-xs font-bold">1</span>
                         </div>
-                        <h4 className="font-bold text-red-900 text-xs md:text-sm">{t[language].level1Critical}</h4>
+                        <h4 className="font-bold text-red-900 text-xs md:text-sm whitespace-nowrap">{t[language].level1Critical}</h4>
                       </div>
                       
                       <div className="mb-3 md:mb-4 flex-1">
@@ -1406,7 +1406,7 @@ function App() {
                         <div className="w-5 h-5 md:w-6 md:h-6 bg-orange-500 rounded-full flex items-center justify-center">
                           <span className="text-white text-xs font-bold">2</span>
                         </div>
-                        <h4 className="font-bold text-orange-900 text-xs md:text-sm">{t[language].level2Urgent}</h4>
+                        <h4 className="font-bold text-orange-900 text-xs md:text-sm whitespace-nowrap">{t[language].level2Urgent}</h4>
                       </div>
                       
                       <div className="mb-3 md:mb-4 flex-1">
@@ -1456,7 +1456,7 @@ function App() {
                         <div className="w-5 h-5 md:w-6 md:h-6 bg-yellow-500 rounded-full flex items-center justify-center">
                           <span className="text-white text-xs font-bold">3</span>
                         </div>
-                        <h4 className="font-bold text-yellow-900 text-xs md:text-sm">{t[language].level3LessUrgent}</h4>
+                        <h4 className="font-bold text-yellow-900 text-xs md:text-sm whitespace-nowrap">{t[language].level3LessUrgent}</h4>
                       </div>
                       
                       <div className="mb-3 md:mb-4 flex-1">
@@ -1505,7 +1505,7 @@ function App() {
                         <div className="w-5 h-5 md:w-6 md:h-6 bg-blue-500 rounded-full flex items-center justify-center">
                           <span className="text-white text-xs font-bold">4</span>
                         </div>
-                        <h4 className="font-bold text-blue-900 text-xs md:text-sm">{t[language].level4NonUrgent}</h4>
+                        <h4 className="font-bold text-blue-900 text-xs md:text-sm whitespace-nowrap">{t[language].level4NonUrgent}</h4>
                       </div>
                       
                       <div className="mb-3 md:mb-4 flex-1">
@@ -1550,7 +1550,7 @@ function App() {
                         <div className="w-5 h-5 md:w-6 md:h-6 bg-green-500 rounded-full flex items-center justify-center">
                           <span className="text-white text-xs font-bold">5</span>
                         </div>
-                        <h4 className="font-bold text-green-900 text-xs md:text-sm">{t[language].level5LowAcuity}</h4>
+                        <h4 className="font-bold text-green-900 text-xs md:text-sm whitespace-nowrap">{t[language].level5LowAcuity}</h4>
                       </div>
                       
                       <div className="mb-3 md:mb-4 flex-1">
