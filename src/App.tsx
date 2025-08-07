@@ -1243,7 +1243,7 @@ function App() {
             </div>
 
             {/* Right side controls */}
-            <div className="flex items-center gap-2 md:gap-4 flex-shrink-0">
+            <div className="flex items-center gap-1 md:gap-4 flex-shrink-0">
               {/* Language Toggle */}
               <Button
                 variant="outline"
@@ -1260,16 +1260,18 @@ function App() {
                 </span>
               </Button>
 
-              {/* Emergency Button */}
-              <span className="text-gray-600 text-xs md:text-sm hidden md:inline whitespace-nowrap">{t[language].emergencyLabel}</span>
-              <Button
-                size="sm"
-                className="bg-red-600 hover:bg-red-700 text-white font-bold px-2 md:px-4 whitespace-nowrap"
-                onClick={() => window.open('tel:911', '_self')}
-              >
-                <Phone className="h-3 w-3 md:h-4 md:w-4 mr-1 flex-shrink-0" />
-                <span className="whitespace-nowrap">911</span>
-              </Button>
+              {/* Emergency Button with label */}
+              <div className="flex items-center gap-1">
+                <span className="text-gray-600 text-xs hidden sm:inline whitespace-nowrap">{t[language].emergencyLabel}</span>
+                <Button
+                  size="sm"
+                  className="bg-red-600 hover:bg-red-700 text-white font-bold px-2 md:px-4 whitespace-nowrap"
+                  onClick={() => window.open('tel:911', '_self')}
+                >
+                  <Phone className="h-3 w-3 md:h-4 md:w-4 mr-1 flex-shrink-0" />
+                  <span className="whitespace-nowrap">911</span>
+                </Button>
+              </div>
             </div>
           </div>
 

@@ -218,6 +218,19 @@ a[href^="tel:"]:hover {
     white-space: nowrap;
   }
   
+  /* Emergency label fix */
+  header .text-gray-600 {
+    white-space: nowrap;
+    word-break: keep-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  /* Header right controls container */
+  header .flex.items-center.gap-1 {
+    flex-wrap: nowrap;
+  }
+  
   /* Card title fixes */
   .card-title {
     white-space: nowrap;
