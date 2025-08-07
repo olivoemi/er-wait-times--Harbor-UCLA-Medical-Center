@@ -224,7 +224,7 @@ a[href^="tel:"]:hover {
     overflow: hidden;
     text-overflow: ellipsis;
   }
-  
+}  
   /* Button text fixes */
   button span {
     white-space: nowrap;
