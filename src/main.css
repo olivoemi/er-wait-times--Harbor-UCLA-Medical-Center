@@ -2,18 +2,18 @@
 
 @import './styles/theme.css';
 @import './index.css';
-@import "tw-animate-css";
+@custom-variant dark (&:i
 
 @custom-variant dark (&:is(.dark *));
 
-@config '../tailwind.config.js';
+  color utility to any element t
 
-/*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
+  
+    border-color: var(--color-border);
+}
+/* Keyframes for animations */
 
-  If we ever want to remove these styles, we need to add an explicit border
+  }
   color utility to any element that depends on these defaults.
 */
 @layer base {
@@ -30,23 +30,23 @@
     height: 0;
   }
   to {
-    height: var(--radix-accordion-content-height);
-  }
 }
+  }
+ 
 
 @keyframes accordion-up {
   from {
     height: var(--radix-accordion-content-height);
   }
-  to {
+
     height: 0;
-  }
-}
+
+
 
 /* Animation utilities */
 .animate-accordion-down {
   animation: accordion-down 0.2s ease-out;
-}
+
 
 .animate-accordion-up {
   animation: accordion-up 0.2s ease-out;
