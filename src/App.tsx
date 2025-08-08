@@ -1893,9 +1893,8 @@ function App() {
                     </p>
                     
                     {/* Video length indicator */}
-                    <div className="flex items-center gap-1 text-xs text-gray-500 mt-2 justify-center">
                       <Clock className="h-4 w-4" />
-                      <span>{language === 'en' ? 'Educational Video' : 'Video Educativo'}</span>
+                      <Clock className="h-4 w-4" />eo Educativo'}</span>
                     </div>
                     </div>
                   </div>
