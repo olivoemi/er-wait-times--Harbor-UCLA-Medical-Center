@@ -1860,15 +1860,14 @@ function App() {
                     </h3>
                     
                     {/* Play Button */}
-                    <div className="flex justify-center mb-6">
                       <a 
                         href="https://m.youtube.com/watch?v=86z2k4zEOlw" 
                         target="_blank" 
-                        rel="noopener noreferrer"
+                        target="_blank" 
                         className="group relative bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer border-2 border-gray-200 hover:border-blue-300"
                       >
                         <div className="relative flex items-center justify-center">
-                          {/* Background circle */}
+                        <div className="relative flex items-center justify-center">
                           <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center group-hover:bg-red-700 transition-colors duration-300 shadow-lg">
                             {/* Play icon */}
                             <Play 
@@ -1877,27 +1876,27 @@ function App() {
                             />
                           </div>
                         </div>
+                        </div>
                         
-                        {/* Hover overlay */}
                         <div className="absolute inset-0 bg-blue-50 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
                       </a>
                     </div>
+                    </div>
                     
                     {/* Descriptive text */}
-                    <p className="text-sm text-gray-600 text-center leading-relaxed mb-4">
                       {language === 'en' 
-                        ? 'Watch our video guide for Harbor facility information and emergency department procedures'
+                      {language === 'en' lity information and emergency department procedures'
                         : 'Vea nuestra guía en video para información de la instalación Harbor y procedimientos del departamento de emergencias'
+                      }
                       }
                     </p>
                     
                     {/* Video length indicator */}
-                    <div className="flex items-center justify-center gap-2 text-sm text-gray-500">
                       <Clock className="h-4 w-4" />
-                      <span>{language === 'en' ? 'Educational Video' : 'Video Educativo'}</span>
+                      <Clock className="h-4 w-4" />eo Educativo'}</span>
+                    </div>
                     </div>
                   </div>
-
                   {/* Your ER Visit Process Section */}
                   <div className="bg-white rounded-lg border border-blue-200 p-6">
                     <div className="flex items-center gap-2 mb-6">
@@ -2033,6 +2032,7 @@ function App() {
                       </div>
                     </div>
                   </div>
+                </div>
                 </div>
               </div>
             ) : (
@@ -2173,7 +2173,6 @@ function App() {
                                 </div>
                               </div>
 
-                              {/* Phone */}
                               <div className="flex items-center gap-3">
                                 <Phone className="h-4 w-4 text-gray-600" />
                                 <div>
