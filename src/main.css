@@ -2,19 +2,11 @@
 
 @import './styles/theme.css';
 @import './index.css';
-@custom-variant dark (&:i
 
 @custom-variant dark (&:is(.dark *));
 
-  color utility to any element t
-
-  
-    border-color: var(--color-border);
-}
-/* Keyframes for animations */
-
-  }
-  color utility to any element that depends on these defaults.
+/*
+  This will add the border color utility to any element that depends on these defaults.
 */
 @layer base {
   *,
@@ -30,23 +22,23 @@
     height: 0;
   }
   to {
-}
+    height: var(--radix-accordion-content-height);
   }
- 
+}
 
 @keyframes accordion-up {
   from {
     height: var(--radix-accordion-content-height);
   }
-
+  to {
     height: 0;
-
-
+  }
+}
 
 /* Animation utilities */
 .animate-accordion-down {
   animation: accordion-down 0.2s ease-out;
-
+}
 
 .animate-accordion-up {
   animation: accordion-up 0.2s ease-out;
