@@ -28,6 +28,7 @@ pids/6084.pid
 pids/6405.pid
 pids/6677.pid
 pids/7209.pid
+src/App.test.tsx
 src/App.tsx
 src/ErrorFallback.tsx
 src/assets/images/harbor-ucla-logo-full.svg
