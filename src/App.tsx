@@ -1649,8 +1649,8 @@ function App() {
             {/* Harbor-UCLA Medical Center Card */}
             {viewMode === 'overview' ? (
               <div className="flex gap-4 md:gap-6">
-                {/* Left side - Hospital Card (shrunk to fit with video) */}
-                <div className="flex-[2]">
+                {/* Left side - Hospital Card (50% width) */}
+                <div className="flex-1">
                   {sortedHospitals.map((hospital) => (
                     <Card key={hospital.id} className="overflow-hidden">
                       <CardContent className="p-4 md:p-6">
@@ -1850,7 +1850,7 @@ function App() {
                     </Card>
                   ))}
                 </div>
-                {/* Right side - Video Information */}
+                {/* Right side - Video Information (50% width) */}
                 <div className="flex-1 space-y-6">
                   {/* Harbor Video Information Section */}
                   <div className="bg-gray-50 rounded-lg p-6">
