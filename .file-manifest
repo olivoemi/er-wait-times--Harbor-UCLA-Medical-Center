@@ -40,3 +40,4 @@ src/lib/spark.ts
 src/main.css
 src/main.tsx
 vite.config.production.ts
+vite.config.ts

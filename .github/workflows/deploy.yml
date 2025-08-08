@@ -12,7 +12,7 @@ permissions:
 
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
@@ -31,10 +31,16 @@ jobs:
         run: |
           # Copy GitHub-specific package.json
           cp package.github.json package.json
-          npm ci
+          # Use npm install so we don't require a matching lockfile after the copy
+          npm install --no-audit --no-fund
           
       - name: Build application
         run: npm run build:github
+
+      - name: Add Pages helpers (SPA + no Jekyll)
+        run: |
+          cp dist/index.html dist/404.html || true
+          touch dist/.nojekyll
         
       - name: Setup Pages
         uses: actions/configure-pages@v4
