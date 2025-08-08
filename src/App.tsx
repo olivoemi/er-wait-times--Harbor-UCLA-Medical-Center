@@ -7,7 +7,7 @@ import { Badge } from '@/components/ui/badge'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { MapPin, Clock, RefreshCw, AlertTriangle, Heart, FirstAid, Phone, Thermometer, Pill, Eye, Plus, Globe, Info, X, Building, CaretDown, CaretUp, MagnifyingGlass, CheckCircle, Brain, Drop, Siren, Pulse, Tooth, Activity, Play } from '@phosphor-icons/react'
+import { MapPin, Clock, RefreshCw, Warning, Heart, FirstAid, Phone, Thermometer, Pill, Eye, Plus, Globe, Info, X, Building, CaretDown, CaretUp, MagnifyingGlass, CheckCircle, Brain, Drop, Siren, Pulse, Tooth, Activity, Play, AlertTriangle } from '@phosphor-icons/react'
 // Removed QR code image import as we're using a play button instead
 
 interface Hospital {
@@ -549,13 +549,11 @@ function App() {
   const getCoordinatesFromZip = (zipCode: string): { lat: number, lng: number } | null => {
     // Simplified mapping of some LA area zip codes to coordinates
     const zipCoordinates: { [key: string]: { lat: number, lng: number } } = {
-      '90210': { lat: 34.0901, lng: -118.4065 }, // Beverly Hills
       '90211': { lat: 34.0901, lng: -118.4065 }, // Beverly Hills
       '90028': { lat: 34.1016, lng: -118.3432 }, // Hollywood
       '90210': { lat: 34.0901, lng: -118.4065 }, // Beverly Hills
       '90401': { lat: 34.0195, lng: -118.4912 }, // Santa Monica
       '90291': { lat: 33.9778, lng: -118.4695 }, // Venice
-      '90405': { lat: 34.0195, lng: -118.4912 }, // Santa Monica
       '90212': { lat: 34.0901, lng: -118.4065 }, // Beverly Hills
       '90036': { lat: 34.0669, lng: -118.3370 }, // Hollywood/West Hollywood
       '90048': { lat: 34.0669, lng: -118.3370 }, // West Hollywood
@@ -1628,30 +1626,42 @@ function App() {
                         {/* Hospital Header */}
                         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4 md:mb-6">
                           <div className="flex items-start gap-3 md:gap-4 min-w-0">
-                            {/* Healthcare Cross Logo */}
+                            {/* Harbor Logo */}
                             <div className="flex-shrink-0">
-                              <div className="bg-gradient-to-br from-red-500 to-red-700 text-white p-2 rounded-xl shadow-lg border border-red-400 flex items-center justify-center">
+                              <div className="bg-white p-2 rounded-xl shadow-lg border border-gray-200 flex items-center justify-center">
                                 <div className="relative w-8 h-8">
-                                  {/* Enhanced Healthcare Cross */}
-                                  <div className="absolute inset-0 flex items-center justify-center">
-                                    <div className="bg-white w-6 h-2 rounded-full shadow-sm"></div>
-                                  </div>
-                                  <div className="absolute inset-0 flex items-center justify-center">
-                                    <div className="bg-white w-2 h-6 rounded-full shadow-sm"></div>
-                                  </div>
-                                  {/* Add subtle glow effect */}
-                                  <div className="absolute inset-0 flex items-center justify-center opacity-30">
-                                    <div className="bg-white w-6 h-2 rounded-full blur-sm"></div>
-                                  </div>
-                                  <div className="absolute inset-0 flex items-center justify-center opacity-30">
-                                    <div className="bg-white w-2 h-6 rounded-full blur-sm"></div>
-                                  </div>
+                                  {/* Harbor-UCLA Medical Center Logo */}
+                                  <svg viewBox="0 0 100 60" className="w-full h-full">
+                                    {/* Hexagonal background shape */}
+                                    <path d="M10 15 L25 5 L75 5 L90 15 L90 45 L75 55 L25 55 L10 45 Z" fill="#1976D2" />
+                                    <path d="M15 18 L28 10 L72 10 L85 18 L85 42 L72 50 L28 50 L15 42 Z" fill="#2196F3" />
+                                    
+                                    {/* Central circular element with arcs */}
+                                    <circle cx="30" cy="30" r="15" fill="white" />
+                                    
+                                    {/* Arc elements - representing Harbor's logo design */}
+                                    <path d="M20 30 A 10 10 0 0 1 40 30" stroke="#1976D2" strokeWidth="2" fill="none" />
+                                    <path d="M18 30 A 12 12 0 0 1 42 30" stroke="#1976D2" strokeWidth="1.5" fill="none" />
+                                    <path d="M16 30 A 14 14 0 0 1 44 30" stroke="#1976D2" strokeWidth="1" fill="none" />
+                                    
+                                    {/* Central connecting element */}
+                                    <rect x="28" y="28" width="4" height="4" fill="#1976D2" rx="1" />
+                                    
+                                    {/* "Harbor-UCLA" text representation */}
+                                    <rect x="50" y="20" width="35" height="3" fill="#1976D2" rx="1" />
+                                    <rect x="50" y="26" width="35" height="3" fill="#1976D2" rx="1" />
+                                    <rect x="50" y="32" width="20" height="2" fill="#64B5F6" rx="1" />
+                                    <rect x="50" y="36" width="20" height="2" fill="#64B5F6" rx="1" />
+                                  </svg>
                                 </div>
                               </div>
                             </div>
                             <div className="flex items-center gap-2 mt-2">
                               <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                               <div>
+                                <div className="text-base font-semibold text-gray-900 mb-1">
+                                  Harbor-UCLA Medical
+                                </div>
                                 <div className="flex items-center gap-2 text-sm text-gray-600">
                                   <MapPin className="h-3 w-3" />
                                   <span>18.4 {language === 'en' ? 'miles' : 'millas'}</span>
@@ -1989,22 +1999,31 @@ function App() {
                         <div className="flex items-center gap-4">
                           {/* Harbor Logo with styled design */}
                           <div className="flex-shrink-0">
-                            <div className="bg-gradient-to-br from-red-500 to-red-700 text-white p-2 rounded-xl shadow-lg border border-red-400 flex items-center justify-center">
+                            <div className="bg-white p-2 rounded-xl shadow-lg border border-gray-200 flex items-center justify-center">
                               <div className="relative w-8 h-8">
-                                {/* Enhanced Healthcare Cross */}
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                  <div className="bg-white w-6 h-2 rounded-full shadow-sm"></div>
-                                </div>
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                  <div className="bg-white w-2 h-6 rounded-full shadow-sm"></div>
-                                </div>
-                                {/* Add subtle glow effect */}
-                                <div className="absolute inset-0 flex items-center justify-center opacity-30">
-                                  <div className="bg-white w-6 h-2 rounded-full blur-sm"></div>
-                                </div>
-                                <div className="absolute inset-0 flex items-center justify-center opacity-30">
-                                  <div className="bg-white w-2 h-6 rounded-full blur-sm"></div>
-                                </div>
+                                {/* Harbor-UCLA Medical Center Logo */}
+                                <svg viewBox="0 0 100 60" className="w-full h-full">
+                                  {/* Hexagonal background shape */}
+                                  <path d="M10 15 L25 5 L75 5 L90 15 L90 45 L75 55 L25 55 L10 45 Z" fill="#1976D2" />
+                                  <path d="M15 18 L28 10 L72 10 L85 18 L85 42 L72 50 L28 50 L15 42 Z" fill="#2196F3" />
+                                  
+                                  {/* Central circular element with arcs */}
+                                  <circle cx="30" cy="30" r="15" fill="white" />
+                                  
+                                  {/* Arc elements - representing Harbor's logo design */}
+                                  <path d="M20 30 A 10 10 0 0 1 40 30" stroke="#1976D2" strokeWidth="2" fill="none" />
+                                  <path d="M18 30 A 12 12 0 0 1 42 30" stroke="#1976D2" strokeWidth="1.5" fill="none" />
+                                  <path d="M16 30 A 14 14 0 0 1 44 30" stroke="#1976D2" strokeWidth="1" fill="none" />
+                                  
+                                  {/* Central connecting element */}
+                                  <rect x="28" y="28" width="4" height="4" fill="#1976D2" rx="1" />
+                                  
+                                  {/* "Harbor-UCLA" text representation */}
+                                  <rect x="50" y="20" width="35" height="3" fill="#1976D2" rx="1" />
+                                  <rect x="50" y="26" width="35" height="3" fill="#1976D2" rx="1" />
+                                  <rect x="50" y="32" width="20" height="2" fill="#64B5F6" rx="1" />
+                                  <rect x="50" y="36" width="20" height="2" fill="#64B5F6" rx="1" />
+                                </svg>
                               </div>
                             </div>
                           </div>

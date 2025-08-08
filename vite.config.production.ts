@@ -21,7 +21,7 @@ export default defineConfig({
     outDir: 'dist',
     assetsDir: 'assets',
     sourcemap: false,
-    minify: 'terser',
+    // Remove `minify: 'terser'` so Vite uses the default (esbuild), which requires no extra deps
     rollupOptions: {
       output: {
         manualChunks: {
@@ -32,6 +32,9 @@ export default defineConfig({
     }
   },
   define: {
-    'process.env.NODE_ENV': '"production"'
+    'process.env.NODE_ENV': '"production"',
+    // Safe stubs so the public build never crashes if referenced
+    GITHUB_RUNTIME_PERMANENT_NAME: JSON.stringify(''),
+    BASE_KV_SERVICE_URL: JSON.stringify(''),
   }
 });

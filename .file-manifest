@@ -4,6 +4,7 @@
 .devcontainer/refreshTools.sh
 .devcontainer/spark.conf
 .file-manifest
+.github/workflows/.github/workflows/deploy-pages.yml
 .github/workflows/deploy.yml
 .spark-initial-sha
 DEPLOYMENT.md
@@ -14,6 +15,12 @@ index.html
 package-lock.json
 package.github.json
 packages/spark-tools/package.json
+pids/2177.pid
+pids/2186.pid
+pids/2435.pid
+pids/2991.pid
+pids/3005.pid
+pids/3185.pid
 src/App.tsx
 src/ErrorFallback.tsx
 src/assets/images/harbor-ucla-logo-full.svg
@@ -26,3 +33,4 @@ src/lib/spark.ts
 src/main.css
 src/main.tsx
 vite.config.production.ts
+vite.config.ts
