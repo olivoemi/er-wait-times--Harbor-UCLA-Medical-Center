@@ -1650,6 +1650,9 @@ function App() {
                             <div className="flex items-center gap-2 mt-2">
                               <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                               <div>
+                                <div className="text-sm font-semibold text-gray-900 mb-1">
+                                  Harbor-UCLA Medical
+                                </div>
                                 <div className="flex items-center gap-2 text-sm text-gray-600">
                                   <MapPin className="h-3 w-3" />
                                   <span>18.4 {language === 'en' ? 'miles' : 'millas'}</span>
