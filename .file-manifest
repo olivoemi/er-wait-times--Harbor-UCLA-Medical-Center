@@ -23,5 +23,6 @@ src/assets/images/qr-code.png
 src/hooks/useKV.ts
 src/index.css
 src/lib/spark.ts
+src/main.css
 src/main.tsx
 vite.config.production.ts
