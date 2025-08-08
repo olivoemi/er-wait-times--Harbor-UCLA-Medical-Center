@@ -1894,7 +1894,7 @@ function App() {
                   </div>
 
                   {/* ER Process Information - Below video */}
-                  {/* ER Process Information - Below video */}
+                  <div>
                     <h4 className="text-base font-semibold text-gray-900 mb-3 text-center">
                       {t[language].yourERVisitProcess}
                     </h4>
@@ -1991,6 +1991,7 @@ function App() {
                         </p>
                       </div>
                     </div>
+                  </div>
                   </div>
                 </div>
               </div>
