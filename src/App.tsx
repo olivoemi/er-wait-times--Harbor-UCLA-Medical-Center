@@ -1860,42 +1860,36 @@ function App() {
                     </h3>
                     
                     {/* Play Button */}
-                      <a 
-                        href="https://m.youtube.com/watch?v=86z2k4zEOlw" 
-                        target="_blank" 
-                        target="_blank" 
-                        className="group relative bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer border-2 border-gray-200 hover:border-blue-300"
-                      >
-                        <div className="relative flex items-center justify-center">
-                        <div className="relative flex items-center justify-center">
-                          <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center group-hover:bg-red-700 transition-colors duration-300 shadow-lg">
-                            {/* Play icon */}
-                            <Play 
-                              className="h-8 w-8 text-white ml-1" 
-                              fill="currentColor"
-                            />
-                          </div>
+                    <a 
+                      href="https://m.youtube.com/watch?v=86z2k4zEOlw" 
+                      target="_blank" 
+                      className="group relative bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer border-2 border-gray-200 hover:border-blue-300 block"
+                    >
+                      <div className="relative flex items-center justify-center">
+                        <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center group-hover:bg-red-700 transition-colors duration-300 shadow-lg">
+                          {/* Play icon */}
+                          <Play 
+                            className="h-8 w-8 text-white ml-1" 
+                            fill="currentColor"
+                          />
                         </div>
-                        </div>
-                        
-                        <div className="absolute inset-0 bg-blue-50 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
-                      </a>
-                    </div>
-                    </div>
+                      </div>
+                      
+                      <div className="absolute inset-0 bg-blue-50 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
+                    </a>
                     
                     {/* Descriptive text */}
-                    <p className="text-center text-sm text-gray-600 mb-3">
+                    <p className="text-center text-sm text-gray-600 mb-3 mt-4">
                       {language === 'en' 
                         ? 'Watch our video guide for Harbor facility information and emergency department procedures'
                         : 'Vea nuestra guía en video para información de la instalación Harbor y procedimientos del departamento de emergencias'
                       }
                     </p>
-                    </p>
                     
                     {/* Video length indicator */}
+                    <div className="flex items-center justify-center gap-1 text-xs text-gray-500">
                       <Clock className="h-4 w-4" />
-                      <Clock className="h-4 w-4" />eo Educativo'}</span>
-                    </div>
+                      <span>{language === 'en' ? 'Educational Video' : 'Video Educativo'}</span>
                     </div>
                   </div>
                   {/* Your ER Visit Process Section */}
