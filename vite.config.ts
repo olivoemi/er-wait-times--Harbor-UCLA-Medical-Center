@@ -8,8 +8,9 @@ import { resolve } from 'path'
 
 const projectRoot = process.env.PROJECT_ROOT || import.meta.dirname
 
-// https://vite.dev/config/
+// IMPORTANT: This makes built files work under the repo subpath on GitHub Pages
 export default defineConfig({
+  base: '/er-wait-times--Harbor-UCLA-Medical-Center/',
   plugins: [
     react(),
     tailwindcss(),

@@ -7,7 +7,7 @@ import { Badge } from '@/components/ui/badge'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { MapPin, Clock, RefreshCw, AlertTriangle, Heart, FirstAid, Phone, Thermometer, Pill, Eye, Plus, Globe, Info, X, Building, CaretDown, CaretUp, MagnifyingGlass, CheckCircle, Brain, Drop, Siren, Pulse, Tooth, Activity, Play } from '@phosphor-icons/react'
+import { MapPin, Clock, RefreshCw, Warning, Heart, FirstAid, Phone, Thermometer, Pill, Eye, Plus, Globe, Info, X, Building, CaretDown, CaretUp, MagnifyingGlass, CheckCircle, Brain, Drop, Siren, Pulse, Tooth, Activity, Play } from '@phosphor-icons/react'
 // Removed QR code image import as we're using a play button instead
 
 interface Hospital {
@@ -549,13 +549,11 @@ function App() {
   const getCoordinatesFromZip = (zipCode: string): { lat: number, lng: number } | null => {
     // Simplified mapping of some LA area zip codes to coordinates
     const zipCoordinates: { [key: string]: { lat: number, lng: number } } = {
-      '90210': { lat: 34.0901, lng: -118.4065 }, // Beverly Hills
       '90211': { lat: 34.0901, lng: -118.4065 }, // Beverly Hills
       '90028': { lat: 34.1016, lng: -118.3432 }, // Hollywood
       '90210': { lat: 34.0901, lng: -118.4065 }, // Beverly Hills
       '90401': { lat: 34.0195, lng: -118.4912 }, // Santa Monica
       '90291': { lat: 33.9778, lng: -118.4695 }, // Venice
-      '90405': { lat: 34.0195, lng: -118.4912 }, // Santa Monica
       '90212': { lat: 34.0901, lng: -118.4065 }, // Beverly Hills
       '90036': { lat: 34.0669, lng: -118.3370 }, // Hollywood/West Hollywood
       '90048': { lat: 34.0669, lng: -118.3370 }, // West Hollywood
