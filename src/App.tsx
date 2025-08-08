@@ -1884,16 +1884,18 @@ function App() {
                     </div>
                     
                     {/* Descriptive text */}
+                    <p className="text-center text-sm text-gray-600 mb-3">
                       {language === 'en' 
-                      {language === 'en' lity information and emergency department procedures'
+                        ? 'Watch our video guide for Harbor facility information and emergency department procedures'
                         : 'Vea nuestra guía en video para información de la instalación Harbor y procedimientos del departamento de emergencias'
                       }
-                      }
+                    </p>
                     </p>
                     
                     {/* Video length indicator */}
+                    <div className="flex items-center gap-1 text-xs text-gray-500 mt-2 justify-center">
                       <Clock className="h-4 w-4" />
-                      <Clock className="h-4 w-4" />eo Educativo'}</span>
+                      <span>{language === 'en' ? 'Educational Video' : 'Video Educativo'}</span>
                     </div>
                     </div>
                   </div>
