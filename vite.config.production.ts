@@ -5,7 +5,7 @@ import { resolve } from 'path'
 
 const projectRoot = process.env.PROJECT_ROOT || import.meta.dirname
 
-// Production configuration for GitHub Pages deployment
+// Production configuration for GitHub Pages deployment (github.app root)
 export default defineConfig({
   plugins: [
     react(),
@@ -16,7 +16,8 @@ export default defineConfig({
       '@': resolve(projectRoot, 'src')
     }
   },
-  base: '/er-wait-times--Harbor-UCLA-Medical-Center/',
+  // IMPORTANT: Serve at domain root for github.app
+  base: '/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
