@@ -1949,7 +1949,6 @@ function App() {
                           {language === 'en' ? '3. Registration' : '3. Registro'}
                         </h5>
                         <p className="text-green-800 text-xs space-y-1 mb-3">{language === 'en' ? 'You will be treated and verify your insurance coverage or help you sign up for emergency coverage if eligible' : 'Será tratado y verificará su cobertura de seguro o le ayudaremos a inscribirse en cobertura de emergencia si es elegible'}</p>
-                        </div>
                         <div className="text-green-800 text-xs">
                           <div className="flex items-start gap-1">
                             <span className="text-green-600">•</span>
