@@ -1,13 +1,40 @@
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react'
-import { useKV } from './hooks/useKV'
-import './lib/spark' // Initialize mock spark API
+import { useKV } from '@/hooks/useKV'
+import '@/lib/spark' // Initialize mock spark API
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { MapPin, Clock, RefreshCw, Warning, Heart, FirstAid, Phone, Thermometer, Pill, Eye, Plus, Globe, Info, X, Building, CaretDown, CaretUp, MagnifyingGlass, CheckCircle, Brain, Drop, Siren, Pulse, Tooth, Activity, Play, AlertTriangle } from '@phosphor-icons/react'
+import { 
+  MapPin, 
+  Clock, 
+  RefreshCw, 
+  Heart, 
+  FirstAid, 
+  Phone, 
+  Thermometer,
+  Pill,
+  Eye,
+  Plus, 
+  Globe, 
+  Info, 
+  X, 
+  Building, 
+  CaretDown, 
+  CaretUp, 
+  MagnifyingGlass, 
+  CheckCircle, 
+  Brain, 
+  Drop,
+  Pulse,
+  Tooth,
+  Siren, 
+  Activity, 
+  Play, 
+  AlertTriangle 
+} from '@phosphor-icons/react'
 // Removed QR code image import as we're using a play button instead
 
 interface Hospital {
@@ -1202,8 +1229,15 @@ function App() {
   })
 
   // Main render
-  if (!t) {
-    return <div>Loading translations...</div>
+  if (!t || !t[language]) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center">
+        <div className="text-center">
+          <div className="text-lg font-semibold text-gray-900 mb-2">Loading...</div>
+          <div className="text-sm text-gray-600">Initializing application...</div>
+        </div>
+      </div>
+    )
   }
 
   return (
