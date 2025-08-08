@@ -1650,7 +1650,7 @@ function App() {
             {viewMode === 'overview' ? (
               <div className="flex gap-4 md:gap-6">
                 {/* Left side - Hospital Card (shrunk to fit with video) */}
-                <div className="flex-1">
+                <div className="flex-[2]">
                   {sortedHospitals.map((hospital) => (
                     <Card key={hospital.id} className="overflow-hidden">
                       <CardContent className="p-4 md:p-6">
@@ -1850,12 +1850,11 @@ function App() {
                     </Card>
                   ))}
                 </div>
-                
                 {/* Right side - Video Button */}
-                <div className="w-48 flex flex-col justify-center">
-                  <div className="bg-gray-50 rounded-lg p-4 flex flex-col items-center space-y-4">
+                <div className="flex-1 flex flex-col justify-center">
+                  <div className="bg-gray-50 rounded-lg p-6 flex flex-col items-center space-y-6">
                     {/* Title */}
-                    <h3 className="text-sm font-semibold text-gray-900 text-center">
+                    <h3 className="text-lg font-semibold text-gray-900 text-center">
                       {t[language].harborVideoInfo}
                     </h3>
                     
@@ -1864,14 +1863,14 @@ function App() {
                       href="https://m.youtube.com/watch?v=86z2k4zEOlw" 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="group relative bg-white p-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer border-2 border-gray-200 hover:border-blue-300"
+                      className="group relative bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer border-2 border-gray-200 hover:border-blue-300"
                     >
                       <div className="relative flex items-center justify-center">
                         {/* Background circle */}
-                        <div className="w-12 h-12 bg-red-600 rounded-full flex items-center justify-center group-hover:bg-red-700 transition-colors duration-300 shadow-lg">
+                        <div className="w-16 h-16 bg-red-600 rounded-full flex items-center justify-center group-hover:bg-red-700 transition-colors duration-300 shadow-lg">
                           {/* Play icon */}
                           <Play 
-                            className="h-5 w-5 text-white ml-1" 
+                            className="h-8 w-8 text-white ml-1" 
                             fill="currentColor"
                           />
                         </div>
@@ -1882,17 +1881,17 @@ function App() {
                     </a>
                     
                     {/* Descriptive text */}
-                    <p className="text-xs text-gray-600 text-center leading-relaxed">
+                    <p className="text-sm text-gray-600 text-center leading-relaxed max-w-xs">
                       {language === 'en' 
-                        ? 'Watch ER procedures guide'
-                        : 'Ver guía de procedimientos ER'
+                        ? 'Watch our comprehensive guide on ER procedures and what to expect during your visit'
+                        : 'Vea nuestra guía completa sobre procedimientos de ER y qué esperar durante su visita'
                       }
                     </p>
                     
                     {/* Video length indicator */}
-                    <div className="flex items-center gap-2 text-xs text-gray-500">
-                      <Clock className="h-3 w-3" />
-                      <span>{language === 'en' ? 'Educational' : 'Educativo'}</span>
+                    <div className="flex items-center gap-2 text-sm text-gray-500">
+                      <Clock className="h-4 w-4" />
+                      <span>{language === 'en' ? 'Educational Resource' : 'Recurso Educativo'}</span>
                     </div>
                   </div>
                 </div>
