@@ -1,12 +1,9 @@
 import { useState } from 'react'
 
+function TestApp() {
   return (
-      <p>Test compon
+    <p>Test component</p>
   )
-
-
-
-
-
+}
 
 export default TestApp
