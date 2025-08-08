@@ -1923,19 +1923,18 @@ function App() {
                             <span>{language === 'en' ? 'You will start in the "Waiting for Triage" line after registration' : 'Comenzará en la línea "Esperando Triaje" después del registro'}</span>
                           </div>
                         </div>
-                      </div>
 
-                      {/* 2. Triage */}
+
                       <div className="bg-orange-50 border border-orange-200 rounded-lg p-3">
-                        <h5 className="font-semibold text-orange-900 mb-2">
+                      <div className="bg-orange-50 border border-orange-200 rounded-lg p-3">
+                          {language === 'en' ? '2. Triage' : '2. Triaje'}
                           {language === 'en' ? '2. Triage' : '2. Triaje'}
                         </h5>
-                        <div className="text-orange-800 text-xs space-y-1 mb-3">
                           <p>{language === 'en' ? 'You will be seen by a doctor/nurse practitioner (NP) and nurse who will check your temperature, heart rate, and blood pressure' : 'Será atendido por un médico/enfermero especialista (NP) y enfermero que verificará su temperatura, ritmo cardíaco y presión arterial'}</p>
                         </div>
                         <div className="text-orange-800 text-xs space-y-1">
                           <div className="flex items-start gap-1">
-                            <span className="text-orange-600">•</span>
+                          <div className="flex items-start gap-1">
                             <span>{language === 'en' ? 'They will determine blood tests, x-rays, and medications necessary to evaluate your concern' : 'Determinarán análisis de sangre, radiografías y medicamentos necesarios para evaluar su preocupación'}</span>
                           </div>
                           <div className="flex items-start gap-1">
@@ -1944,13 +1943,13 @@ function App() {
                           </div>
                         </div>
                       </div>
+                      </div>
 
-                      {/* 3. Registration */}
                       <div className="bg-green-50 border border-green-200 rounded-lg p-3">
-                        <h5 className="font-semibold text-green-900 mb-2">
+                      <div className="bg-green-50 border border-green-200 rounded-lg p-3">
                           {language === 'en' ? '3. Registration' : '3. Registro'}
-                        </h5>
-                        <div className="text-green-800 text-xs space-y-1 mb-3">
+                          {language === 'en' ? '3. Registration' : '3. Registro'}
+                        </h5>xt-xs space-y-1 mb-3">
                           <p>{language === 'en' ? 'You will be treated and verify your insurance coverage or help you sign up for emergency coverage if eligible' : 'Será tratado y verificará su cobertura de seguro o le ayudaremos a inscribirse en cobertura de emergencia si es elegible'}</p>
                         </div>
                         <div className="text-green-800 text-xs">
@@ -1960,48 +1959,49 @@ function App() {
                           </div>
                         </div>
                       </div>
+                      </div>
 
-                      {/* 4. Testing & Treatment */}
                       <div className="bg-purple-50 border border-purple-200 rounded-lg p-3">
-                        <h5 className="font-semibold text-purple-900 mb-2">
+                      <div className="bg-purple-50 border border-purple-200 rounded-lg p-3">
+                          {language === 'en' ? '4. Testing & Treatment' : '4. Pruebas y Tratamiento'}
                           {language === 'en' ? '4. Testing & Treatment' : '4. Pruebas y Tratamiento'}
                         </h5>
-                        <div className="text-purple-800 text-xs">
                           <p>{language === 'en' ? 'If ordered by the provider, our nurses will provide medications, obtain labs, and arrange X-ray, ultrasound, or CT' : 'Si es ordenado por el proveedor, nuestros enfermeros proporcionarán medicamentos, obtendrán laboratorios y organizarán radiografías, ultrasonido o tomografía'}</p>
                         </div>
                       </div>
+                      </div>
 
-                      {/* 5. Care Areas */}
                       <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-3">
-                        <h5 className="font-semibold text-indigo-900 mb-2">
+                      <div className="bg-indigo-50 border border-indigo-200 rounded-lg p-3">
+                          {language === 'en' ? '5. Care Areas' : '5. Áreas de Atención'}
                           {language === 'en' ? '5. Care Areas' : '5. Áreas de Atención'}
                         </h5>
-                        <div className="text-indigo-800 text-xs space-y-1 mb-2">
                           <p>{language === 'en' ? 'Multiple ER areas: Trauma, Critical, Adult, Pediatric, and FastTrack for Urgent Care or minor injuries' : 'Múltiples áreas de ER: Trauma, Crítico, Adulto, Pediátrico y FastTrack para Atención Urgente o lesiones menores'}</p>
                         </div>
                         <div className="text-indigo-800 text-xs">
                           <p>{language === 'en' ? 'Patients are seen by severity of illness, not arrival order. Sicker patients are placed in a room more quickly.' : 'Los pacientes son atendidos por severidad de enfermedad, no por orden de llegada. Los pacientes más enfermos son colocados en una habitación más rápidamente.'}</p>
                         </div>
                       </div>
+                      </div>
 
-                      {/* 6. Review of Results */}
                       <div className="bg-teal-50 border border-teal-200 rounded-lg p-3">
-                        <h5 className="font-semibold text-teal-900 mb-2">
+                      <div className="bg-teal-50 border border-teal-200 rounded-lg p-3">
                           {language === 'en' ? '6. Review of Results' : '6. Revisión de Resultados'}
-                        </h5>
-                        <div className="text-teal-800 text-xs">
+                          {language === 'en' ? '6. Review of Results' : '6. Revisión de Resultados'}
+                        </h5> text-xs">
                           <p>{language === 'en' ? 'Once your workup is completed, you will be seen by a doctor or NP. Additional testing may be required based on initial results.' : 'Una vez que su evaluación esté completada, será visto por un médico o NP. Pueden requerirse pruebas adicionales basadas en los resultados iniciales.'}</p>
                         </div>
                       </div>
-
-                      {/* 7. After Your ER Visit */}
+                      </div>
+t */}
                       <div className="bg-gray-50 border border-gray-200 rounded-lg p-3">
-                        <h5 className="font-semibold text-gray-900 mb-2">
+                      <div className="bg-gray-50 border border-gray-200 rounded-lg p-3">
+                          {language === 'en' ? '7. After Your ER Visit' : '7. Después de su Visita a ER'}
                           {language === 'en' ? '7. After Your ER Visit' : '7. Después de su Visita a ER'}
                         </h5>
-                        <div className="text-gray-800 text-xs">
                           <p>{language === 'en' ? 'Decision options: 1) Discharge you home, 2) Admit to our hospital, or 3) Transfer to a hospital in our network (if requested by insurance)' : 'Opciones de decisión: 1) Alta a casa, 2) Admisión a nuestro hospital, o 3) Transferencia a un hospital en nuestra red (si es solicitado por el seguro)'}</p>
                         </div>
+                      </div>
                       </div>
                     </div>
                   </div>
@@ -2024,7 +2024,6 @@ function App() {
                                 {/* Harbor-UCLA Medical Center Logo */}
                                 <svg viewBox="0 0 100 60" className="w-full h-full">
                                   {/* Hexagonal background shape */}
-                                  <path d="M10 15 L25 5 L75 5 L90 15 L90 45 L75 55 L25 55 L10 45 Z" fill="#1976D2" />
                                   <path d="M15 18 L28 10 L72 10 L85 18 L85 42 L72 50 L28 50 L15 42 Z" fill="#2196F3" />
                                   
                                   {/* Central circular element with arcs */}
