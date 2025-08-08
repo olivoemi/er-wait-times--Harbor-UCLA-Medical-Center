@@ -3,9 +3,7 @@
 @import './styles/theme.css';
 @import './index.css';
 @import "tw-animate-css";
-/*
-  ---break---
-*/
+
 @custom-variant dark (&:is(.dark *));
 
 @config '../tailwind.config.js';
@@ -15,173 +13,41 @@
   so we've added these compatibility styles to make sure everything still
   looks the same as it did with Tailwind CSS v3.
 
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
 @layer base {
   *,
-  
-  ::file-sele
-
-
-  ---break
-:root {
-  --backgroun
-  --card: oklch(1 0 0);
-  --popover: oklch(1 0 0);
-  -
- 
-
-  
-  --destructi
-  
-:root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
-}
-
-  
-  --ring: okl
-  
-  --cha
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-primary: oklch(0.488 
-  --sidebar-accent: oklch(0
-  --sidebar-border: oklch(1 0 0 / 10%)
-}
-/*
-*/
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-lg: var(--radius);
-  --color-background: var(--background);
-  --color-card: var(--card);
-  --color-popover: var(--popover);
-  --color-primary: var(--prim
-  --color-secondary: var(--secondary);
-  --color-muted: var(--muted);
-  --color-accent: var(--accent)
-  --color-destructive: var(--d
-  --color-border: var(--bor
-  --color-ring: var(--ring);
-  --color-chart-2: var(--chart-2);
-  --color-chart-4: var(--chart-4);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-primary: var(--sideba
-  --color-sidebar-accent: var(
-  --color-sidebar-border: var(--sidebar-b
-  --animate-accordion-down: accordion-down 0.2s 
-
-  ---break---
-  @keyframes accordion-down {
-      height: 0;
-
- 
-
-  
-*/
-  
-    }
-    to {
-    }
-}
-/*
-*/
-  * {
+  ::before,
+  ::after {
+    border-color: var(--color-border);
   }
-  body {
+}
+
+/* Keyframes for animations */
+@keyframes accordion-down {
+  from {
+    height: 0;
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+/* Animation utilities */
+.animate-accordion-down {
+  animation: accordion-down 0.2s ease-out;
+}
+
+.animate-accordion-up {
+  animation: accordion-up 0.2s ease-out;
+}
