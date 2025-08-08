@@ -1894,7 +1894,7 @@ function App() {
                   </div>
 
                   {/* ER Process Information - Below video */}
-                  <div className="w-full max-w-md">
+                  {/* ER Process Information - Below video */}
                     <h4 className="text-base font-semibold text-gray-900 mb-3 text-center">
                       {t[language].yourERVisitProcess}
                     </h4>
