@@ -6,12 +6,12 @@
 .file-manifest
 .github/workflows/deploy.yml
 .spark-initial-sha
-.spark-workbench-id
 DEPLOYMENT.md
 DEPLOYMENT_GUIDE.md
 NEW_SITE_STRUCTURE.md
 PRD.md
 index.html
+package-lock.json
 package.github.json
 packages/spark-tools/package.json
 src/App.tsx
