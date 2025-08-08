@@ -1628,22 +1628,30 @@ function App() {
                           <div className="flex items-start gap-3 md:gap-4 min-w-0">
                             {/* Harbor Logo */}
                             <div className="flex-shrink-0">
-                              <div className="bg-gradient-to-br from-red-500 to-red-700 text-white p-2 rounded-xl shadow-lg border border-red-400 flex items-center justify-center">
+                              <div className="bg-white p-2 rounded-xl shadow-lg border border-gray-200 flex items-center justify-center">
                                 <div className="relative w-8 h-8">
                                   {/* Harbor-UCLA Medical Center Logo */}
-                                  <svg viewBox="0 0 32 32" className="w-full h-full">
-                                    {/* Background circle */}
-                                    <circle cx="16" cy="16" r="14" fill="white" />
+                                  <svg viewBox="0 0 100 60" className="w-full h-full">
+                                    {/* Hexagonal background shape */}
+                                    <path d="M10 15 L25 5 L75 5 L90 15 L90 45 L75 55 L25 55 L10 45 Z" fill="#1976D2" />
+                                    <path d="M15 18 L28 10 L72 10 L85 18 L85 42 L72 50 L28 50 L15 42 Z" fill="#2196F3" />
                                     
-                                    {/* UCLA Blue H */}
-                                    <path d="M8 10 L8 22 L10 22 L10 17 L14 17 L14 22 L16 22 L16 10 L14 10 L14 15 L10 15 L10 10 Z" fill="#2774AE" />
+                                    {/* Central circular element with arcs */}
+                                    <circle cx="30" cy="30" r="15" fill="white" />
                                     
-                                    {/* Medical Cross */}
-                                    <rect x="20" y="12" width="6" height="2" fill="#DC2626" />
-                                    <rect x="22" y="10" width="2" height="6" fill="#DC2626" />
+                                    {/* Arc elements - representing Harbor's logo design */}
+                                    <path d="M20 30 A 10 10 0 0 1 40 30" stroke="#1976D2" strokeWidth="2" fill="none" />
+                                    <path d="M18 30 A 12 12 0 0 1 42 30" stroke="#1976D2" strokeWidth="1.5" fill="none" />
+                                    <path d="M16 30 A 14 14 0 0 1 44 30" stroke="#1976D2" strokeWidth="1" fill="none" />
                                     
-                                    {/* UCLA text styling element */}
-                                    <rect x="18" y="20" width="8" height="1" fill="#2774AE" />
+                                    {/* Central connecting element */}
+                                    <rect x="28" y="28" width="4" height="4" fill="#1976D2" rx="1" />
+                                    
+                                    {/* "Harbor-UCLA" text representation */}
+                                    <rect x="50" y="20" width="35" height="3" fill="#1976D2" rx="1" />
+                                    <rect x="50" y="26" width="35" height="3" fill="#1976D2" rx="1" />
+                                    <rect x="50" y="32" width="20" height="2" fill="#64B5F6" rx="1" />
+                                    <rect x="50" y="36" width="20" height="2" fill="#64B5F6" rx="1" />
                                   </svg>
                                 </div>
                               </div>
@@ -1991,22 +1999,30 @@ function App() {
                         <div className="flex items-center gap-4">
                           {/* Harbor Logo with styled design */}
                           <div className="flex-shrink-0">
-                            <div className="bg-gradient-to-br from-red-500 to-red-700 text-white p-2 rounded-xl shadow-lg border border-red-400 flex items-center justify-center">
+                            <div className="bg-white p-2 rounded-xl shadow-lg border border-gray-200 flex items-center justify-center">
                               <div className="relative w-8 h-8">
                                 {/* Harbor-UCLA Medical Center Logo */}
-                                <svg viewBox="0 0 32 32" className="w-full h-full">
-                                  {/* Background circle */}
-                                  <circle cx="16" cy="16" r="14" fill="white" />
+                                <svg viewBox="0 0 100 60" className="w-full h-full">
+                                  {/* Hexagonal background shape */}
+                                  <path d="M10 15 L25 5 L75 5 L90 15 L90 45 L75 55 L25 55 L10 45 Z" fill="#1976D2" />
+                                  <path d="M15 18 L28 10 L72 10 L85 18 L85 42 L72 50 L28 50 L15 42 Z" fill="#2196F3" />
                                   
-                                  {/* UCLA Blue H */}
-                                  <path d="M8 10 L8 22 L10 22 L10 17 L14 17 L14 22 L16 22 L16 10 L14 10 L14 15 L10 15 L10 10 Z" fill="#2774AE" />
+                                  {/* Central circular element with arcs */}
+                                  <circle cx="30" cy="30" r="15" fill="white" />
                                   
-                                  {/* Medical Cross */}
-                                  <rect x="20" y="12" width="6" height="2" fill="#DC2626" />
-                                  <rect x="22" y="10" width="2" height="6" fill="#DC2626" />
+                                  {/* Arc elements - representing Harbor's logo design */}
+                                  <path d="M20 30 A 10 10 0 0 1 40 30" stroke="#1976D2" strokeWidth="2" fill="none" />
+                                  <path d="M18 30 A 12 12 0 0 1 42 30" stroke="#1976D2" strokeWidth="1.5" fill="none" />
+                                  <path d="M16 30 A 14 14 0 0 1 44 30" stroke="#1976D2" strokeWidth="1" fill="none" />
                                   
-                                  {/* UCLA text styling element */}
-                                  <rect x="18" y="20" width="8" height="1" fill="#2774AE" />
+                                  {/* Central connecting element */}
+                                  <rect x="28" y="28" width="4" height="4" fill="#1976D2" rx="1" />
+                                  
+                                  {/* "Harbor-UCLA" text representation */}
+                                  <rect x="50" y="20" width="35" height="3" fill="#1976D2" rx="1" />
+                                  <rect x="50" y="26" width="35" height="3" fill="#1976D2" rx="1" />
+                                  <rect x="50" y="32" width="20" height="2" fill="#64B5F6" rx="1" />
+                                  <rect x="50" y="36" width="20" height="2" fill="#64B5F6" rx="1" />
                                 </svg>
                               </div>
                             </div>
