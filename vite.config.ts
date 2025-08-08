@@ -8,9 +8,9 @@ import { resolve } from 'path'
 
 const projectRoot = process.env.PROJECT_ROOT || import.meta.dirname
 
-// IMPORTANT: This makes built files work under the repo subpath on GitHub Pages
+// IMPORTANT: Serve at domain root for github.app
 export default defineConfig({
-  base: '/er-wait-times--Harbor-UCLA-Medical-Center/',
+  base: '/',
   plugins: [
     react(),
     tailwindcss(),
