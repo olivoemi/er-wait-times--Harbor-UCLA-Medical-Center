@@ -4,9 +4,13 @@ import { useState, useEffect } from 'react'
 export function useKV<T>(key: string, defaultValue: T): [T, (value: T | ((prev: T) => T)) => void, () => void] {
   const [value, setValue] = useState<T>(() => {
     try {
+      if (typeof window === 'undefined') {
+        return defaultValue
+      }
       const stored = localStorage.getItem(`kv_${key}`)
       return stored ? JSON.parse(stored) : defaultValue
-    } catch {
+    } catch (error) {
+      console.warn(`Failed to load ${key} from localStorage:`, error)
       return defaultValue
     }
   })
@@ -15,9 +19,11 @@ export function useKV<T>(key: string, defaultValue: T): [T, (value: T | ((prev: 
     setValue((prev) => {
       const finalValue = typeof newValue === 'function' ? (newValue as (prev: T) => T)(prev) : newValue
       try {
-        localStorage.setItem(`kv_${key}`, JSON.stringify(finalValue))
+        if (typeof window !== 'undefined') {
+          localStorage.setItem(`kv_${key}`, JSON.stringify(finalValue))
+        }
       } catch (error) {
-        console.warn('Failed to save to localStorage:', error)
+        console.warn(`Failed to save ${key} to localStorage:`, error)
       }
       return finalValue
     })
@@ -25,10 +31,13 @@ export function useKV<T>(key: string, defaultValue: T): [T, (value: T | ((prev: 
 
   const deleteValue = () => {
     try {
-      localStorage.removeItem(`kv_${key}`)
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem(`kv_${key}`)
+      }
       setValue(defaultValue)
     } catch (error) {
-      console.warn('Failed to delete from localStorage:', error)
+      console.warn(`Failed to delete ${key} from localStorage:`, error)
+      setValue(defaultValue)
     }
   }
 

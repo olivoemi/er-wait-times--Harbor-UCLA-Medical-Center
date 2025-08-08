@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo, useCallback, useRef } from 'react'
 import { useKV } from './hooks/useKV'
 import './lib/spark' // Initialize mock spark API
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -49,6 +49,7 @@ interface SymptomCategory {
 }
 
 function App() {
+  const initRef = useRef(false)
   const [hospitals, setHospitals] = useKV<Hospital[]>('hospitals', [])
   const [userLocation, setUserLocation] = useState<UserLocation | null>(null)
   const [isLoading, setIsLoading] = useState(false)
@@ -78,8 +79,8 @@ function App() {
   const [careOptionsInsurance, setCareOptionsInsurance] = useState('')
   const [showAllUrgentCare, setShowAllUrgentCare] = useState(false)
 
-  // Translation object
-  const t = {
+  // Translation object - memoized to prevent unnecessary re-renders
+  const t = useMemo(() => ({
     en: {
       title: 'ER Wait Times',
       waitTimes: 'Wait Times',
@@ -370,22 +371,12 @@ function App() {
       level2: 'Nivel 2',
       level3: 'Nivel 3',
       level4: 'Nivel 4',
-      level5: 'Nivel 5',
-      facilityInformation: 'Facility Information',
-      level1TraumaCenter: 'Level 1 Trauma Center',
-      traumaCenterDescription: 'Major Level 1 trauma center serving South Bay and Harbor area with comprehensive emergency services.',
-      contactInformation: 'Contact Information',
-      operatingHours: 'Operating Hours',
-      open24_7: 'Open 24/7 for Emergency Care',
-      mainLine: 'Main Line',
-      officialWebsite: 'Official Website',
-      nedocs: 'NEDOCS',
-      severelyOvercrowded: 'Severely overcrowded'
+      level5: 'Nivel 5'
     }
-  }
+  }), [language])
 
-  // Urgent care locations data
-  const urgentCareData = [
+  // Urgent care locations data - memoized to prevent unnecessary re-computation
+  const urgentCareData = useMemo(() => [
     {
       id: 'roybal',
       name: 'Edward R. Roybal Comprehensive Health Center',
@@ -530,10 +521,10 @@ function App() {
       lng: -118.4231,
       isER: true
     }
-  ]
+  ], [language])
 
   // Calculate distance between two coordinates using Haversine formula
-  const calculateDistance = (lat1: number, lng1: number, lat2: number, lng2: number): number => {
+  const calculateDistance = useCallback((lat1: number, lng1: number, lat2: number, lng2: number): number => {
     const R = 3959 // Earth's radius in miles
     const dLat = (lat2 - lat1) * Math.PI / 180
     const dLng = (lng2 - lng1) * Math.PI / 180
@@ -543,7 +534,7 @@ function App() {
       Math.sin(dLng/2) * Math.sin(dLng/2)
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))
     return R * c
-  }
+  }, [])
 
   // Get coordinates from zip code (simplified - in real app would use geocoding API)
   const getCoordinatesFromZip = (zipCode: string): { lat: number, lng: number } | null => {
@@ -1156,14 +1147,7 @@ function App() {
     }
   }, [])
 
-  useEffect(() => {
-    // Initialize with sample data if empty
-    if (hospitals.length === 0) {
-      refreshData()
-    }
-  }, [hospitals.length])
-
-  const refreshData = async () => {
+  const refreshData = useCallback(async () => {
     setIsLoading(true)
     
     // Simulate API call with sample data
@@ -1190,7 +1174,15 @@ function App() {
     setHospitals(hospitalsWithDistance)
     setLastRefresh(new Date())
     setIsLoading(false)
-  }
+  }, [userLocation, setHospitals])
+
+  useEffect(() => {
+    // Initialize with sample data if empty - only run once on mount
+    if (hospitals.length === 0 && !initRef.current) {
+      initRef.current = true
+      refreshData()
+    }
+  }, [hospitals.length]) // Don't include refreshData to prevent loop
 
   const getWaitTimeBadge = (waitTime: number) => {
     if (waitTime <= 20) {
@@ -1208,6 +1200,11 @@ function App() {
     }
     return a.name.localeCompare(b.name)
   })
+
+  // Main render
+  if (!t) {
+    return <div>Loading translations...</div>
+  }
 
   return (
     <div className="min-h-screen bg-background">
