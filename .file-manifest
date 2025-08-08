@@ -84,5 +84,6 @@ src/index.css
 src/lib/spark.ts
 src/main.css
 src/main.tsx
+test-syntax.js
 vite.config.production.ts
 vite.config.ts
