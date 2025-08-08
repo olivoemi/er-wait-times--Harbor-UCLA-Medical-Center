@@ -1626,31 +1626,32 @@ function App() {
                         {/* Hospital Header */}
                         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4 md:mb-6">
                           <div className="flex items-start gap-3 md:gap-4 min-w-0">
-                            {/* Healthcare Cross Logo */}
+                            {/* Harbor Logo */}
                             <div className="flex-shrink-0">
                               <div className="bg-gradient-to-br from-red-500 to-red-700 text-white p-2 rounded-xl shadow-lg border border-red-400 flex items-center justify-center">
                                 <div className="relative w-8 h-8">
-                                  {/* Enhanced Healthcare Cross */}
-                                  <div className="absolute inset-0 flex items-center justify-center">
-                                    <div className="bg-white w-6 h-2 rounded-full shadow-sm"></div>
-                                  </div>
-                                  <div className="absolute inset-0 flex items-center justify-center">
-                                    <div className="bg-white w-2 h-6 rounded-full shadow-sm"></div>
-                                  </div>
-                                  {/* Add subtle glow effect */}
-                                  <div className="absolute inset-0 flex items-center justify-center opacity-30">
-                                    <div className="bg-white w-6 h-2 rounded-full blur-sm"></div>
-                                  </div>
-                                  <div className="absolute inset-0 flex items-center justify-center opacity-30">
-                                    <div className="bg-white w-2 h-6 rounded-full blur-sm"></div>
-                                  </div>
+                                  {/* Harbor-UCLA Medical Center Logo */}
+                                  <svg viewBox="0 0 32 32" className="w-full h-full">
+                                    {/* Background circle */}
+                                    <circle cx="16" cy="16" r="14" fill="white" />
+                                    
+                                    {/* UCLA Blue H */}
+                                    <path d="M8 10 L8 22 L10 22 L10 17 L14 17 L14 22 L16 22 L16 10 L14 10 L14 15 L10 15 L10 10 Z" fill="#2774AE" />
+                                    
+                                    {/* Medical Cross */}
+                                    <rect x="20" y="12" width="6" height="2" fill="#DC2626" />
+                                    <rect x="22" y="10" width="2" height="6" fill="#DC2626" />
+                                    
+                                    {/* UCLA text styling element */}
+                                    <rect x="18" y="20" width="8" height="1" fill="#2774AE" />
+                                  </svg>
                                 </div>
                               </div>
                             </div>
                             <div className="flex items-center gap-2 mt-2">
                               <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                               <div>
-                                <div className="text-sm font-semibold text-gray-900 mb-1">
+                                <div className="text-base font-semibold text-gray-900 mb-1">
                                   Harbor-UCLA Medical
                                 </div>
                                 <div className="flex items-center gap-2 text-sm text-gray-600">
@@ -1992,20 +1993,21 @@ function App() {
                           <div className="flex-shrink-0">
                             <div className="bg-gradient-to-br from-red-500 to-red-700 text-white p-2 rounded-xl shadow-lg border border-red-400 flex items-center justify-center">
                               <div className="relative w-8 h-8">
-                                {/* Enhanced Healthcare Cross */}
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                  <div className="bg-white w-6 h-2 rounded-full shadow-sm"></div>
-                                </div>
-                                <div className="absolute inset-0 flex items-center justify-center">
-                                  <div className="bg-white w-2 h-6 rounded-full shadow-sm"></div>
-                                </div>
-                                {/* Add subtle glow effect */}
-                                <div className="absolute inset-0 flex items-center justify-center opacity-30">
-                                  <div className="bg-white w-6 h-2 rounded-full blur-sm"></div>
-                                </div>
-                                <div className="absolute inset-0 flex items-center justify-center opacity-30">
-                                  <div className="bg-white w-2 h-6 rounded-full blur-sm"></div>
-                                </div>
+                                {/* Harbor-UCLA Medical Center Logo */}
+                                <svg viewBox="0 0 32 32" className="w-full h-full">
+                                  {/* Background circle */}
+                                  <circle cx="16" cy="16" r="14" fill="white" />
+                                  
+                                  {/* UCLA Blue H */}
+                                  <path d="M8 10 L8 22 L10 22 L10 17 L14 17 L14 22 L16 22 L16 10 L14 10 L14 15 L10 15 L10 10 Z" fill="#2774AE" />
+                                  
+                                  {/* Medical Cross */}
+                                  <rect x="20" y="12" width="6" height="2" fill="#DC2626" />
+                                  <rect x="22" y="10" width="2" height="6" fill="#DC2626" />
+                                  
+                                  {/* UCLA text styling element */}
+                                  <rect x="18" y="20" width="8" height="1" fill="#2774AE" />
+                                </svg>
                               </div>
                             </div>
                           </div>
