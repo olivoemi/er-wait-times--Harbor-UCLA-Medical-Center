@@ -1996,7 +1996,8 @@ function App() {
               </div>
             ) : (
               /* Detailed view - Full width */
-              (sortedHospitals.map((hospital) => (
+              <div>
+                {sortedHospitals.map((hospital) => (
                 <Card key={hospital.id} className="overflow-hidden shadow-lg">
                   <CardContent className="p-0">
                     {/* Simple Hospital Header */}
@@ -2554,7 +2555,8 @@ function App() {
                     </div>
                   </CardContent>
                 </Card>
-              )))
+              ))}
+              </div>
             )}
 
             {sortedHospitals.length === 0 && !isLoading && (
